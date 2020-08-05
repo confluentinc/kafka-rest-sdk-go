@@ -4,8 +4,8 @@ OPENAPI_SPEC_DIR=../kafka-rest/api/v3/kafka-rest-v3-spec.yaml
 SDK_OUTPUT_DIR=../kafka-rest-sdk-go/kafkarestv3
 
 
-.PHONY: deps
-deps:
+.PHONY: gen-deps
+gen-deps:
 	# https://github.com/travisjeffery/mocker
 	go install github.com/travisjeffery/mocker/cmd/mocker
 
@@ -14,16 +14,17 @@ deps:
 	# cd ../openapi-generator && git checkout ath-add-interfaces && mvn clean install
 
 
-.PHONY: build
-build:
+.PHONY: gen
+gen:
 	cd $(GENERATOR_DIR) && java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
 		-i $(OPENAPI_SPEC_DIR) \
 		-g go \
 		-o $(SDK_OUTPUT_DIR) \
   		-p enumClassPrefix=true,packageName=kafkarestv3,generateInterfaces=true
+	echo "Remember to git restore kafkarestv3/go.mod"
 
-.PHONY: mock
-mock:
+.PHONY: gen-mock
+gen-mock:
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_acl.go --pkg mock $(SDK_OUTPUT_DIR)/api_acl.go ACLApi
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_broker.go --pkg mock $(SDK_OUTPUT_DIR)/api_broker.go BrokerApi
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_cluster.go --pkg mock $(SDK_OUTPUT_DIR)/api_cluster.go ClusterApi
