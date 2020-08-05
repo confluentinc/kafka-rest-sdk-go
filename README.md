@@ -6,6 +6,7 @@ See Makefile to see how to update a version of the kafka-rest sdk.
 
 ## How to generate/update the sdk
 See Makefile:
+
     make gen-deps
     # go install github.com/travisjeffery/mocker/cmd/mocker
     # cd .. && git clone https://github.com/confluentinc/openapi-generator.git
