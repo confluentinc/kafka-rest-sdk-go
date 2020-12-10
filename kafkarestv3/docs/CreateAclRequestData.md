@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceType** | [**AclResourceType**](AclResourceType.md) |  | 
+**ResourceName** | **string** |  | 
 **PatternType** | [**AclPatternType**](AclPatternType.md) |  | 
 **Principal** | **string** |  | 
 **Host** | **string** |  | 
