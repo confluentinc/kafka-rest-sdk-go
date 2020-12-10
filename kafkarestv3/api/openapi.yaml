@@ -3629,9 +3629,12 @@ components:
       example:
         principal: principal
         host: host
+        resource_name: resource_name
       properties:
         resource_type:
           $ref: '#/components/schemas/AclResourceType'
+        resource_name:
+          type: string
         pattern_type:
           $ref: '#/components/schemas/AclPatternType'
         principal:
