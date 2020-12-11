@@ -12,6 +12,7 @@ package kafkarestv3
 type AclDataAllOf struct {
 	ClusterId string `json:"cluster_id"`
 	ResourceType AclResourceType `json:"resource_type"`
+	ResourceName string `json:"resource_name"`
 	PatternType AclPatternType `json:"pattern_type"`
 	Principal string `json:"principal"`
 	Host string `json:"host"`

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
 **ResourceType** | [**AclResourceType**](AclResourceType.md) |  | 
+**ResourceName** | **string** |  | 
 **PatternType** | [**AclPatternType**](AclPatternType.md) |  | 
 **Principal** | **string** |  | 
 **Host** | **string** |  | 

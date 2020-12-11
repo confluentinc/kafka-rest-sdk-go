@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **ResourceType** | [**AclResourceType**](AclResourceType.md) |  | 
+**ResourceName** | **string** |  | 
 **PatternType** | [**AclPatternType**](AclPatternType.md) |  | 
 **Principal** | **string** |  | 
 **Host** | **string** |  | 
