@@ -52,6 +52,8 @@ type APIClient struct {
 
 	BrokerApi BrokerApi
 
+	CLLinkOpApi CLLinkOpApi
+
 	ClusterApi ClusterApi
 
 	ConfigsApi ConfigsApi
@@ -83,6 +85,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ACLApi = (*ACLApiService)(&c.common)
 	c.BrokerApi = (*BrokerApiService)(&c.common)
+	c.CLLinkOpApi = (*CLLinkOpApiService)(&c.common)
 	c.ClusterApi = (*ClusterApiService)(&c.common)
 	c.ConfigsApi = (*ConfigsApiService)(&c.common)
 	c.ConsumerGroupApi = (*ConsumerGroupApiService)(&c.common)
@@ -178,12 +181,13 @@ func parameterToJson(obj interface{}) (string, error) {
 	return string(jsonBuf), err
 }
 
+
 // callAPI do the request.
 func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
-		dump, err := httputil.DumpRequestOut(request, true)
+	        dump, err := httputil.DumpRequestOut(request, true)
 		if err != nil {
-			return nil, err
+		        return nil, err
 		}
 		log.Printf("\n%s\n", string(dump))
 	}

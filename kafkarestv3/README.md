@@ -38,6 +38,15 @@ Class | Method | HTTP request | Description
 *BrokerApi* | [**ClustersClusterIdBrokersBrokerIdGet**](docs/BrokerApi.md#clustersclusteridbrokersbrokeridget) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 *BrokerApi* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerApi.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *BrokerApi* | [**ClustersClusterIdBrokersGet**](docs/BrokerApi.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
+*CLLinkOpApi* | [**ClustersClusterIdLinksLinkNameConfigsalterPost**](docs/CLLinkOpApi.md#clustersclusteridlinkslinknameconfigsalterpost) | **Post** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksGet**](docs/CLLinkOpApi.md#v3clustersclusteridlinksget) | **Get** /v3/clusters/{cluster_id}/links | List all cluster links in the given cluster
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknameconfigsconfignamedelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Reset the given config to default value
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknameconfigsconfignameget) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | List the given config
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknameconfigsconfignameput) | **Put** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Update the given config
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameConfigsGet**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknameconfigsget) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs | List the configs of the given link
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameDelete**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknamedelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name} | Delete the given link
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksLinkNameGet**](docs/CLLinkOpApi.md#v3clustersclusteridlinkslinknameget) | **Get** /v3/clusters/{cluster_id}/links/{link_name} | List the info of the given link
+*CLLinkOpApi* | [**V3ClustersClusterIdLinksPost**](docs/CLLinkOpApi.md#v3clustersclusteridlinkspost) | **Post** /v3/clusters/{cluster_id}/links | Create a new link
 *ClusterApi* | [**ClustersClusterIdGet**](docs/ClusterApi.md#clustersclusteridget) | **Get** /clusters/{cluster_id} | Get Cluster
 *ClusterApi* | [**ClustersGet**](docs/ClusterApi.md#clustersget) | **Get** /clusters | List Clusters
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsget) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
@@ -121,9 +130,18 @@ Class | Method | HTTP request | Description
  - [ConsumerGroupDataListAllOf](docs/ConsumerGroupDataListAllOf.md)
  - [ConsumerGroupState](docs/ConsumerGroupState.md)
  - [CreateAclRequestData](docs/CreateAclRequestData.md)
+ - [CreateLinkRequestData](docs/CreateLinkRequestData.md)
  - [CreateTopicRequestData](docs/CreateTopicRequestData.md)
  - [CreateTopicRequestDataConfigs](docs/CreateTopicRequestDataConfigs.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [ListLinkConfigsResponseData](docs/ListLinkConfigsResponseData.md)
+ - [ListLinkConfigsResponseDataAllOf](docs/ListLinkConfigsResponseDataAllOf.md)
+ - [ListLinkConfigsResponseDataList](docs/ListLinkConfigsResponseDataList.md)
+ - [ListLinkConfigsResponseDataListAllOf](docs/ListLinkConfigsResponseDataListAllOf.md)
+ - [ListLinksResponseData](docs/ListLinksResponseData.md)
+ - [ListLinksResponseDataAllOf](docs/ListLinksResponseDataAllOf.md)
+ - [ListLinksResponseDataList](docs/ListLinksResponseDataList.md)
+ - [ListLinksResponseDataListAllOf](docs/ListLinksResponseDataListAllOf.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)
  - [PartitionDataList](docs/PartitionDataList.md)
@@ -150,6 +168,7 @@ Class | Method | HTTP request | Description
  - [TopicDataList](docs/TopicDataList.md)
  - [TopicDataListAllOf](docs/TopicDataListAllOf.md)
  - [UpdateConfigRequestData](docs/UpdateConfigRequestData.md)
+ - [UpdateLinkConfigRequestData](docs/UpdateLinkConfigRequestData.md)
 
 
 ## Documentation For Authorization

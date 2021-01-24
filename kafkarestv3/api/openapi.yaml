@@ -2277,6 +2277,374 @@ paths:
       summary: Get Replica
       tags:
       - Replica
+  /v3/clusters/{cluster_id}/links:
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkDataList
+                metadata:
+                  self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
+                  next: null
+                data:
+                - kind: KafkaLinkData
+                  metadata:
+                    self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
+                    resource_name: null
+                  cluster_id: src-cluster-id
+                  link_name: my-new-link-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                  topics:
+                  - topic-sb-1
+                  - topic-sb-2
+                - kind: KafkaLinkData
+                  metadata:
+                    self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
+                    resource_name: null
+                  cluster_id: src-cluster-id
+                  link_name: my-new-link-2
+                  link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+                  topics:
+                  - topic-db-1
+                  - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinksResponseDataList'
+          description: A list of link names and properties
+      summary: List all cluster links in the given cluster
+      tags:
+      - CLLinkOp
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CreateLinkRequest'
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Create a new link
+      tags:
+      - CLLinkOp
+  /v3/clusters/{cluster_id}/links/{link_name}:
+    delete:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Delete the given link
+      tags:
+      - CLLinkOp
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkData
+                metadata:
+                  self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                  resource_name: null
+                cluster_id: src-cluster-id
+                link_name: my-new-link-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                topics:
+                - topic-db-1
+                - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinksResponseData'
+          description: Single link name and properties
+      summary: List the info of the given link
+      tags:
+      - CLLinkOp
+  /v3/clusters/{cluster_id}/links/{link_name}/configs:
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkConfigDataList
+                metadata:
+                  self: http://localhost:56450/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
+                  next: null
+                data:
+                - kind: KafkaLinkConfigData
+                  metadata:
+                    self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                    resource_name: null
+                  name: consumer.offset.sync.ms
+                  value: "3825940"
+                  default: false
+                  read_only: false
+                  sensitive: false
+                  source: DYNAMIC_CLUSTER_LINK_CONFIG
+                  synonyms:
+                  - null
+                  link_name: link-db-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                - kind: KafkaLinkConfigData
+                  metadata:
+                    self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                    resource_name: null
+                  name: acl.sync.ms
+                  value: "5000"
+                  default: false
+                  read_only: false
+                  sensitive: false
+                  source: DYNAMIC_CLUSTER_LINK_CONFIG
+                  synonyms:
+                  - null
+                  link_name: link-db-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+              schema:
+                $ref: '#/components/schemas/ListLinkConfigsResponseDataList'
+          description: Config name and value
+      summary: List the configs of the given link
+      tags:
+      - CLLinkOp
+  /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name}:
+    delete:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Reset the given config to default value
+      tags:
+      - CLLinkOp
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkConfigData
+                metadata:
+                  self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                  resource_name: null
+                name: consumer.offset.sync.ms
+                value: "3825940"
+                default: false
+                read_only: false
+                sensitive: false
+                source: DYNAMIC_CLUSTER_LINK_CONFIG
+                synonyms:
+                - null
+                link_name: link-db-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                topics:
+                - topic-db-1
+                - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinkConfigsResponseData'
+          description: Config name and value
+      summary: List the given config
+      tags:
+      - CLLinkOp
+    put:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateLinkConfigRequest'
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Update the given config
+      tags:
+      - CLLinkOp
+  /clusters/{cluster_id}/links/{link_name}/configs:alter:
+    post:
+      description: Updates or deletes a set of link configs.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AlterLinkConfigBatchRequest'
+      responses:
+        "204":
+          description: No Content
+      summary: Batch Alter Topic Configs
+      tags:
+      - CLLinkOp
 components:
   parameters:
     AclHost:
@@ -2412,6 +2780,36 @@ components:
       schema:
         type: string
       style: simple
+    ValidateOnly:
+      description: Should validate-only or not.
+      example: false
+      explode: false
+      in: query
+      name: validate_only
+      required: false
+      schema:
+        type: boolean
+      style: simple
+    LinkName:
+      description: The link name
+      example: link-sb1
+      explode: false
+      in: path
+      name: link_name
+      required: true
+      schema:
+        type: string
+      style: simple
+    LinkConfigName:
+      description: The link config name
+      example: consumer.offset.sync.enable
+      explode: false
+      in: path
+      name: config_name
+      required: true
+      schema:
+        type: string
+      style: simple
   requestBodies:
     AlterBrokerConfigBatchRequest:
       content:
@@ -2494,6 +2892,38 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateConfigRequestData'
       description: The topic configuration parameter update request.
+    CreateLinkRequest:
+      content:
+        application/json:
+          example:
+            cluster_id: cluster-1
+            configs:
+            - name: acl.sync.enable
+              value: false
+            - name: consumer.offset.sync.ms
+              value: 30000
+          schema:
+            $ref: '#/components/schemas/CreateLinkRequestData'
+      description: Create a cluster link
+    UpdateLinkConfigRequest:
+      content:
+        application/json:
+          example:
+            value: "300000"
+          schema:
+            $ref: '#/components/schemas/UpdateLinkConfigRequestData'
+      description: Link config value to update
+    AlterLinkConfigBatchRequest:
+      content:
+        application/json:
+          example:
+            data:
+            - name: cleanup.policy
+              operation: DELETE
+            - name: compression.type
+              value: gzip
+          schema:
+            $ref: '#/components/schemas/AlterConfigBatchRequestData'
   responses:
     CreateTopicResponse:
       content:
@@ -3518,6 +3948,123 @@ components:
           schema:
             $ref: '#/components/schemas/ReplicaDataList'
       description: The list of replicas.
+    NoContentResponse:
+      content:
+        application/json: {}
+      description: Operation succeeded, no content in the response
+    ListLinksResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkDataList
+            metadata:
+              self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
+              next: null
+            data:
+            - kind: KafkaLinkData
+              metadata:
+                self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
+                resource_name: null
+              cluster_id: src-cluster-id
+              link_name: my-new-link-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+              topics:
+              - topic-sb-1
+              - topic-sb-2
+            - kind: KafkaLinkData
+              metadata:
+                self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
+                resource_name: null
+              cluster_id: src-cluster-id
+              link_name: my-new-link-2
+              link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+              topics:
+              - topic-db-1
+              - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinksResponseDataList'
+      description: A list of link names and properties
+    GetLinkResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkData
+            metadata:
+              self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+              resource_name: null
+            cluster_id: src-cluster-id
+            link_name: my-new-link-1
+            link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            topics:
+            - topic-db-1
+            - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinksResponseData'
+      description: Single link name and properties
+    ListLinkConfigsResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkData
+            metadata:
+              self: http://localhost:56450/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
+              next: null
+            data:
+            - kind: KafkaLinkConfigData
+              metadata:
+                self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                resource_name: null
+              name: consumer.offset.sync.ms
+              value: "3825940"
+              default: false
+              read_only: false
+              sensitive: false
+              source: DYNAMIC_CLUSTER_LINK_CONFIG
+              synonyms:
+              - null
+              link_name: link-db-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            - kind: KafkaLinkConfigData
+              metadata:
+                self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                resource_name: null
+              name: acl.sync.ms
+              value: "5000"
+              default: false
+              read_only: false
+              sensitive: false
+              source: DYNAMIC_CLUSTER_LINK_CONFIG
+              synonyms:
+              - null
+              link_name: link-db-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+          schema:
+            $ref: '#/components/schemas/ListLinkConfigsResponseDataList'
+      description: Config name and value
+    GetLinkConfigsResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkConfigData
+            metadata:
+              self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+              resource_name: null
+            name: consumer.offset.sync.ms
+            value: "3825940"
+            default: false
+            read_only: false
+            sensitive: false
+            source: DYNAMIC_CLUSTER_LINK_CONFIG
+            synonyms:
+            - null
+            link_name: link-db-1
+            link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            topics:
+            - topic-db-1
+            - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinkConfigsResponseData'
+      description: Config name and value
   schemas:
     AbstractConfigData:
       allOf:
@@ -4251,6 +4798,114 @@ components:
         data:
           items:
             $ref: '#/components/schemas/TopicData'
+          type: array
+      required:
+      - data
+    CreateLinkRequestData:
+      example:
+        configs:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        link_name: link_name
+      properties:
+        link_name:
+          type: string
+        configs:
+          items:
+            $ref: '#/components/schemas/CreateTopicRequestData_configs'
+          type: array
+      required:
+      - link_name
+      type: object
+    UpdateLinkConfigRequestData:
+      example:
+        value: value
+      properties:
+        value:
+          type: string
+      required:
+      - value
+      type: object
+    ListLinksResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ListLinksResponseData_allOf'
+    ListLinksResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ListLinksResponseDataList_allOf'
+    ListLinkConfigsResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ListLinkConfigsResponseData_allOf'
+    ListLinkConfigsResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ListLinkConfigsResponseDataList_allOf'
+    ListLinksResponseData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        link_name:
+          type: string
+        link_id:
+          type: string
+        topics:
+          items:
+            type: string
+          type: array
+      required:
+      - cluster_id
+      - link_id
+      - link_name
+      - topics
+    ListLinksResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListLinksResponseData'
+          type: array
+      required:
+      - data
+    ListLinkConfigsResponseData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
+        read_only:
+          type: boolean
+        sensitive:
+          type: boolean
+        source:
+          enum:
+          - DYNAMIC_CLUSTER_LINK_CONFIG
+          type: string
+        synonyms:
+          items:
+            type: string
+          type: array
+        link_name:
+          type: string
+      required:
+      - cluster_id
+      - default
+      - link_name
+      - name
+      - read_only
+      - sensitive
+      - source
+      - synonyms
+      - value
+    ListLinkConfigsResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListLinkConfigsResponseData'
           type: array
       required:
       - data
