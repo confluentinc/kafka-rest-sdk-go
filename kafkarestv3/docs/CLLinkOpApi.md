@@ -5,14 +5,14 @@ All URIs are relative to *http://localhost:8082/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ClustersClusterIdLinksGet**](CLLinkOpApi.md#ClustersClusterIdLinksGet) | **Get** /clusters/{cluster_id}/links | List all cluster links in the given cluster
-[**ClustersClusterIdLinksLinkNameConfigsalterPost**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsalterPost) | **Post** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
-[**ClustersClusterIdLinksPost**](CLLinkOpApi.md#ClustersClusterIdLinksPost) | **Post** /clusters/{cluster_id}/links | Create a new link
-[**V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Reset the given config to default value
-[**V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | List the given config
-[**V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut) | **Put** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Update the given config
-[**V3ClustersClusterIdLinksLinkNameConfigsGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs | List the configs of the given link
-[**V3ClustersClusterIdLinksLinkNameDelete**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameDelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name} | Delete the given link
-[**V3ClustersClusterIdLinksLinkNameGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name} | List the info of the given link
+[**ClustersClusterIdLinksLinkNameConfigsConfigNameDelete**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsConfigNameDelete) | **Delete** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Reset the config under the cluster link
+[**ClustersClusterIdLinksLinkNameConfigsConfigNameGet**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsConfigNameGet) | **Get** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Describe the config under the cluster link
+[**ClustersClusterIdLinksLinkNameConfigsConfigNamePut**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsConfigNamePut) | **Put** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Alter the config under the cluster link
+[**ClustersClusterIdLinksLinkNameConfigsGet**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsGet) | **Get** /clusters/{cluster_id}/links/{link_name}/configs | List all configs of the cluster link
+[**ClustersClusterIdLinksLinkNameConfigsalterPut**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsalterPut) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Link Configs
+[**ClustersClusterIdLinksLinkNameDelete**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameDelete) | **Delete** /clusters/{cluster_id}/links/{link_name} | Delete the cluster link
+[**ClustersClusterIdLinksLinkNameGet**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameGet) | **Get** /clusters/{cluster_id}/links/{link_name} | Describe the cluster link
+[**ClustersClusterIdLinksPost**](CLLinkOpApi.md#ClustersClusterIdLinksPost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 
 
 
@@ -48,105 +48,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdLinksLinkNameConfigsalterPost
+## ClustersClusterIdLinksLinkNameConfigsConfigNameDelete
 
-> ClustersClusterIdLinksLinkNameConfigsalterPost(ctx, clusterId, linkName, optional)
+> ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx, clusterId, linkName, configName)
 
-Batch Alter Topic Configs
-
-Updates or deletes a set of link configs.
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksLinkNameConfigsalterPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameConfigsalterPostOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **alterConfigBatchRequestData** | [**optional.Interface of AlterConfigBatchRequestData**](AlterConfigBatchRequestData.md)|  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClustersClusterIdLinksPost
-
-> ClustersClusterIdLinksPost(ctx, clusterId, linkName, optional)
-
-Create a new link
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksPostOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **validateOnly** | **optional.Bool**| Should validate-only or not. | 
- **validateLink** | **optional.Bool**| To validate the dest cluster ID is expected and topics are readable. | 
- **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete
-
-> V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx, clusterId, linkName, configName)
-
-Reset the given config to default value
+Reset the config under the cluster link
 
 ### Required Parameters
 
@@ -176,11 +82,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet
+## ClustersClusterIdLinksLinkNameConfigsConfigNameGet
 
-> ListLinkConfigsResponseData V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx, clusterId, linkName, configName)
+> ListLinkConfigsResponseData ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx, clusterId, linkName, configName)
 
-List the given config
+Describe the config under the cluster link
 
 ### Required Parameters
 
@@ -210,11 +116,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut
+## ClustersClusterIdLinksLinkNameConfigsConfigNamePut
 
-> V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx, clusterId, linkName, configName, optional)
+> ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx, clusterId, linkName, configName, optional)
 
-Update the given config
+Alter the config under the cluster link
 
 ### Required Parameters
 
@@ -225,11 +131,11 @@ Name | Type | Description  | Notes
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
 **configName** | **string**| The link config name | 
- **optional** | ***V3ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts** | optional parameters | nil if no parameters
+ **optional** | ***ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a V3ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts struct
 
 
 Name | Type | Description  | Notes
@@ -237,7 +143,7 @@ Name | Type | Description  | Notes
 
 
 
- **updateLinkConfigRequestData** | [**optional.Interface of UpdateLinkConfigRequestData**](UpdateLinkConfigRequestData.md)| Link config value to update | 
+ **updateLinkConfigRequestData** | [**optional.Interface of UpdateLinkConfigRequestData**](UpdateLinkConfigRequestData.md)| New cluster link config value | 
 
 ### Return type
 
@@ -257,11 +163,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksLinkNameConfigsGet
+## ClustersClusterIdLinksLinkNameConfigsGet
 
-> ListLinkConfigsResponseDataList V3ClustersClusterIdLinksLinkNameConfigsGet(ctx, clusterId, linkName)
+> ListLinkConfigsResponseDataList ClustersClusterIdLinksLinkNameConfigsGet(ctx, clusterId, linkName)
 
-List the configs of the given link
+List all configs of the cluster link
 
 ### Required Parameters
 
@@ -290,11 +196,58 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksLinkNameDelete
+## ClustersClusterIdLinksLinkNameConfigsalterPut
 
-> V3ClustersClusterIdLinksLinkNameDelete(ctx, clusterId, linkName)
+> ClustersClusterIdLinksLinkNameConfigsalterPut(ctx, clusterId, linkName, optional)
 
-Delete the given link
+Batch Alter Link Configs
+
+Batch update configs of the cluster link.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***ClustersClusterIdLinksLinkNameConfigsalterPutOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameConfigsalterPutOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **alterConfigBatchRequestData** | [**optional.Interface of AlterConfigBatchRequestData**](AlterConfigBatchRequestData.md)|  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksLinkNameDelete
+
+> ClustersClusterIdLinksLinkNameDelete(ctx, clusterId, linkName)
+
+Delete the cluster link
 
 ### Required Parameters
 
@@ -323,11 +276,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksLinkNameGet
+## ClustersClusterIdLinksLinkNameGet
 
-> ListLinksResponseData V3ClustersClusterIdLinksLinkNameGet(ctx, clusterId, linkName)
+> ListLinksResponseData ClustersClusterIdLinksLinkNameGet(ctx, clusterId, linkName)
 
-List the info of the given link
+Describe the cluster link
 
 ### Required Parameters
 
@@ -349,6 +302,53 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksPost
+
+> ClustersClusterIdLinksPost(ctx, clusterId, linkName, optional)
+
+Create a cluster link
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***ClustersClusterIdLinksPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksPostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| Is validate-only or not. default: false | 
+ **validateLink** | **optional.Bool**| To validate the dest cluster ID is expected and topics are readable. default: true | 
+ **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Source cluster id and cluster link configs | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

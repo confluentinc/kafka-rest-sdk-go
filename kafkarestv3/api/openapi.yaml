@@ -2345,16 +2345,17 @@ paths:
         schema:
           type: string
         style: form
-      - description: Should validate-only or not.
+      - description: 'Is validate-only or not. default: false'
         example: false
-        explode: false
+        explode: true
         in: query
         name: validate_only
         required: false
         schema:
           type: boolean
-        style: simple
-      - description: To validate the dest cluster ID is expected and topics are readable.
+        style: form
+      - description: 'To validate the dest cluster ID is expected and topics are readable.
+          default: true'
         example: false
         explode: true
         in: query
@@ -2370,10 +2371,10 @@ paths:
           content:
             application/json: {}
           description: Operation succeeded, no content in the response
-      summary: Create a new link
+      summary: Create a cluster link
       tags:
       - CLLinkOp
-  /v3/clusters/{cluster_id}/links/{link_name}:
+  /clusters/{cluster_id}/links/{link_name}:
     delete:
       parameters:
       - description: The Kafka cluster ID.
@@ -2399,7 +2400,7 @@ paths:
           content:
             application/json: {}
           description: Operation succeeded, no content in the response
-      summary: Delete the given link
+      summary: Delete the cluster link
       tags:
       - CLLinkOp
     get:
@@ -2440,10 +2441,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListLinksResponseData'
           description: Single link name and properties
-      summary: List the info of the given link
+      summary: Describe the cluster link
       tags:
       - CLLinkOp
-  /v3/clusters/{cluster_id}/links/{link_name}/configs:
+  /clusters/{cluster_id}/links/{link_name}/configs:
     get:
       parameters:
       - description: The Kafka cluster ID.
@@ -2469,7 +2470,7 @@ paths:
           content:
             application/json:
               example:
-                kind: KafkaLinkConfigDataList
+                kind: KafkaLinkData
                 metadata:
                   self: http://localhost:56450/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
                   next: null
@@ -2505,10 +2506,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListLinkConfigsResponseDataList'
           description: Config name and value
-      summary: List the configs of the given link
+      summary: List all configs of the cluster link
       tags:
       - CLLinkOp
-  /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name}:
+  /clusters/{cluster_id}/links/{link_name}/configs/{config_name}:
     delete:
       parameters:
       - description: The Kafka cluster ID.
@@ -2543,7 +2544,7 @@ paths:
           content:
             application/json: {}
           description: Operation succeeded, no content in the response
-      summary: Reset the given config to default value
+      summary: Reset the config under the cluster link
       tags:
       - CLLinkOp
     get:
@@ -2600,7 +2601,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListLinkConfigsResponseData'
           description: Config name and value
-      summary: List the given config
+      summary: Describe the config under the cluster link
       tags:
       - CLLinkOp
     put:
@@ -2639,12 +2640,12 @@ paths:
           content:
             application/json: {}
           description: Operation succeeded, no content in the response
-      summary: Update the given config
+      summary: Alter the config under the cluster link
       tags:
       - CLLinkOp
   /clusters/{cluster_id}/links/{link_name}/configs:alter:
-    post:
-      description: Updates or deletes a set of link configs.
+    put:
+      description: Batch update configs of the cluster link.
       parameters:
       - description: The Kafka cluster ID.
         example: cluster-1
@@ -2669,7 +2670,7 @@ paths:
       responses:
         "204":
           description: No Content
-      summary: Batch Alter Topic Configs
+      summary: Batch Alter Link Configs
       tags:
       - CLLinkOp
 components:
@@ -2808,17 +2809,18 @@ components:
         type: string
       style: simple
     ValidateOnly:
-      description: Should validate-only or not.
+      description: 'Is validate-only or not. default: false'
       example: false
-      explode: false
+      explode: true
       in: query
       name: validate_only
       required: false
       schema:
         type: boolean
-      style: simple
+      style: form
     ValidateLink:
-      description: To validate the dest cluster ID is expected and topics are readable.
+      description: 'To validate the dest cluster ID is expected and topics are readable.
+        default: true'
       example: false
       explode: true
       in: query
@@ -2945,13 +2947,15 @@ components:
           example:
             src_cluster_id: cluster-1
             configs:
+            - name: bootstrap.servers
+              value: 127.0.0.1:9092
             - name: acl.sync.enable
               value: false
             - name: consumer.offset.sync.ms
               value: 30000
           schema:
             $ref: '#/components/schemas/CreateLinkRequestData'
-      description: Create a cluster link
+      description: Source cluster id and cluster link configs
     UpdateLinkConfigRequest:
       content:
         application/json:
@@ -2959,16 +2963,16 @@ components:
             value: "300000"
           schema:
             $ref: '#/components/schemas/UpdateLinkConfigRequestData'
-      description: Link config value to update
+      description: New cluster link config value
     AlterLinkConfigBatchRequest:
       content:
         application/json:
           example:
             data:
-            - name: cleanup.policy
+            - name: consumer.offset.sync.ms
               operation: DELETE
-            - name: compression.type
-              value: gzip
+            - name: cluster.link.retry.timeout.ms
+              value: 285714
           schema:
             $ref: '#/components/schemas/AlterConfigBatchRequestData'
   responses:
