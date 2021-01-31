@@ -2277,7 +2277,7 @@ paths:
       summary: Get Replica
       tags:
       - Replica
-  /v3/clusters/{cluster_id}/links:
+  /clusters/{cluster_id}/links:
     get:
       parameters:
       - description: The Kafka cluster ID.
@@ -2336,6 +2336,33 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The link name
+        example: link-sb1
+        explode: true
+        in: query
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: Should validate-only or not.
+        example: false
+        explode: false
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: simple
+      - description: To validate the dest cluster ID is expected and topics are readable.
+        example: false
+        explode: true
+        in: query
+        name: validate_link
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/CreateLinkRequest'
       responses:
@@ -2790,6 +2817,16 @@ components:
       schema:
         type: boolean
       style: simple
+    ValidateLink:
+      description: To validate the dest cluster ID is expected and topics are readable.
+      example: false
+      explode: true
+      in: query
+      name: validate_link
+      required: false
+      schema:
+        type: boolean
+      style: form
     LinkName:
       description: The link name
       example: link-sb1
@@ -2800,6 +2837,16 @@ components:
       schema:
         type: string
       style: simple
+    LinkNameQuery:
+      description: The link name
+      example: link-sb1
+      explode: true
+      in: query
+      name: link_name
+      required: true
+      schema:
+        type: string
+      style: form
     LinkConfigName:
       description: The link config name
       example: consumer.offset.sync.enable
@@ -2896,7 +2943,7 @@ components:
       content:
         application/json:
           example:
-            cluster_id: cluster-1
+            src_cluster_id: cluster-1
             configs:
             - name: acl.sync.enable
               value: false
@@ -4808,16 +4855,16 @@ components:
           value: value
         - name: name
           value: value
-        link_name: link_name
+        src_cluster_id: src_cluster_id
       properties:
-        link_name:
+        src_cluster_id:
           type: string
         configs:
           items:
             $ref: '#/components/schemas/CreateTopicRequestData_configs'
           type: array
       required:
-      - link_name
+      - src_cluster_id
       type: object
     UpdateLinkConfigRequestData:
       example:

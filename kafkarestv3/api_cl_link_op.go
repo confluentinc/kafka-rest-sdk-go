@@ -26,6 +26,15 @@ var (
 type CLLinkOpApi interface {
 
     /*
+     * ClustersClusterIdLinksGet List all cluster links in the given cluster
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @return ListLinksResponseDataList
+     */
+    ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error)
+
+    /*
      * ClustersClusterIdLinksLinkNameConfigsalterPost Batch Alter Topic Configs
      *
      * Updates or deletes a set of link configs.
@@ -39,13 +48,17 @@ type CLLinkOpApi interface {
     ClustersClusterIdLinksLinkNameConfigsalterPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPostOpts) (*_nethttp.Response, error)
 
     /*
-     * V3ClustersClusterIdLinksGet List all cluster links in the given cluster
+     * ClustersClusterIdLinksPost Create a new link
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
-     * @return ListLinksResponseDataList
+     * @param linkName The link name
+     * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
+     * @param "ValidateOnly" (optional.Bool) -  Should validate-only or not.
+     * @param "ValidateLink" (optional.Bool) -  To validate the dest cluster ID is expected and topics are readable.
+     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
      */
-    V3ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error)
+    ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
 
     /*
      * V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete Reset the given config to default value
@@ -108,20 +121,88 @@ type CLLinkOpApi interface {
      * @return ListLinksResponseData
      */
     V3ClustersClusterIdLinksLinkNameGet(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error)
-
-    /*
-     * V3ClustersClusterIdLinksPost Create a new link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *V3ClustersClusterIdLinksPostOpts - Optional Parameters:
-     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
-     */
-    V3ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, localVarOptionals *V3ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
 }
 
 // CLLinkOpApiService CLLinkOpApi service
 type CLLinkOpApiService service
+
+/*
+ * ClustersClusterIdLinksGet List all cluster links in the given cluster
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @return ListLinksResponseDataList
+ */
+func (a *CLLinkOpApiService) ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ListLinksResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 // ClustersClusterIdLinksLinkNameConfigsalterPostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameConfigsalterPost'
 type ClustersClusterIdLinksLinkNameConfigsalterPostOpts struct {
@@ -211,33 +292,50 @@ func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsalterPost(ctx 
 	return localVarHTTPResponse, nil
 }
 
+// ClustersClusterIdLinksPostOpts Optional parameters for the method 'ClustersClusterIdLinksPost'
+type ClustersClusterIdLinksPostOpts struct {
+    ValidateOnly optional.Bool
+    ValidateLink optional.Bool
+    CreateLinkRequestData optional.Interface
+}
+
 /*
- * V3ClustersClusterIdLinksGet List all cluster links in the given cluster
+ * ClustersClusterIdLinksPost Create a new link
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @return ListLinksResponseDataList
+ * @param linkName The link name
+ * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
+ * @param "ValidateOnly" (optional.Bool) -  Should validate-only or not.
+ * @param "ValidateLink" (optional.Bool) -  To validate the dest cluster ID is expected and topics are readable.
+ * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
  */
-func (a *CLLinkOpApiService) V3ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error) {
+func (a *CLLinkOpApiService) ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ListLinksResponseDataList
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v3/clusters/{cluster_id}/links"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	localVarQueryParams.Add("link_name", parameterToString(linkName, ""))
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ValidateLink.IsSet() {
+		localVarQueryParams.Add("validate_link", parameterToString(localVarOptionals.ValidateLink.Value(), ""))
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -253,20 +351,29 @@ func (a *CLLinkOpApiService) V3ClustersClusterIdLinksGet(ctx _context.Context, c
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.CreateLinkRequestData.IsSet() {
+		localVarOptionalCreateLinkRequestData, localVarOptionalCreateLinkRequestDataok := localVarOptionals.CreateLinkRequestData.Value().(CreateLinkRequestData)
+		if !localVarOptionalCreateLinkRequestDataok {
+			return nil, reportError("createLinkRequestData should be CreateLinkRequestData")
+		}
+		localVarPostBody = &localVarOptionalCreateLinkRequestData
+	}
+
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -274,19 +381,10 @@ func (a *CLLinkOpApiService) V3ClustersClusterIdLinksGet(ctx _context.Context, c
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 /*
@@ -765,87 +863,4 @@ func (a *CLLinkOpApiService) V3ClustersClusterIdLinksLinkNameGet(ctx _context.Co
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// V3ClustersClusterIdLinksPostOpts Optional parameters for the method 'V3ClustersClusterIdLinksPost'
-type V3ClustersClusterIdLinksPostOpts struct {
-    CreateLinkRequestData optional.Interface
-}
-
-/*
- * V3ClustersClusterIdLinksPost Create a new link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param optional nil or *V3ClustersClusterIdLinksPostOpts - Optional Parameters:
- * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
- */
-func (a *CLLinkOpApiService) V3ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, localVarOptionals *V3ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/v3/clusters/{cluster_id}/links"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.CreateLinkRequestData.IsSet() {
-		localVarOptionalCreateLinkRequestData, localVarOptionalCreateLinkRequestDataok := localVarOptionals.CreateLinkRequestData.Value().(CreateLinkRequestData)
-		if !localVarOptionalCreateLinkRequestDataok {
-			return nil, reportError("createLinkRequestData should be CreateLinkRequestData")
-		}
-		localVarPostBody = &localVarOptionalCreateLinkRequestData
-	}
-
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
 }

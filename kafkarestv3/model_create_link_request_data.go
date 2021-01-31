@@ -10,6 +10,6 @@
 package kafkarestv3
 // CreateLinkRequestData struct for CreateLinkRequestData
 type CreateLinkRequestData struct {
-	LinkName string `json:"link_name"`
+	SrcClusterId string `json:"src_cluster_id"`
 	Configs []CreateTopicRequestDataConfigs `json:"configs,omitempty"`
 }

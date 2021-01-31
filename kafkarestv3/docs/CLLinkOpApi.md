@@ -4,16 +4,48 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ClustersClusterIdLinksGet**](CLLinkOpApi.md#ClustersClusterIdLinksGet) | **Get** /clusters/{cluster_id}/links | List all cluster links in the given cluster
 [**ClustersClusterIdLinksLinkNameConfigsalterPost**](CLLinkOpApi.md#ClustersClusterIdLinksLinkNameConfigsalterPost) | **Post** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
-[**V3ClustersClusterIdLinksGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksGet) | **Get** /v3/clusters/{cluster_id}/links | List all cluster links in the given cluster
+[**ClustersClusterIdLinksPost**](CLLinkOpApi.md#ClustersClusterIdLinksPost) | **Post** /clusters/{cluster_id}/links | Create a new link
 [**V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNameDelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Reset the given config to default value
 [**V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNameGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | List the given config
 [**V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsConfigNamePut) | **Put** /v3/clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Update the given config
 [**V3ClustersClusterIdLinksLinkNameConfigsGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameConfigsGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name}/configs | List the configs of the given link
 [**V3ClustersClusterIdLinksLinkNameDelete**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameDelete) | **Delete** /v3/clusters/{cluster_id}/links/{link_name} | Delete the given link
 [**V3ClustersClusterIdLinksLinkNameGet**](CLLinkOpApi.md#V3ClustersClusterIdLinksLinkNameGet) | **Get** /v3/clusters/{cluster_id}/links/{link_name} | List the info of the given link
-[**V3ClustersClusterIdLinksPost**](CLLinkOpApi.md#V3ClustersClusterIdLinksPost) | **Post** /v3/clusters/{cluster_id}/links | Create a new link
 
+
+
+## ClustersClusterIdLinksGet
+
+> ListLinksResponseDataList ClustersClusterIdLinksGet(ctx, clusterId)
+
+List all cluster links in the given cluster
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+
+### Return type
+
+[**ListLinksResponseDataList**](ListLinksResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ClustersClusterIdLinksLinkNameConfigsalterPost
@@ -63,11 +95,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## V3ClustersClusterIdLinksGet
+## ClustersClusterIdLinksPost
 
-> ListLinksResponseDataList V3ClustersClusterIdLinksGet(ctx, clusterId)
+> ClustersClusterIdLinksPost(ctx, clusterId, linkName, optional)
 
-List all cluster links in the given cluster
+Create a new link
 
 ### Required Parameters
 
@@ -76,10 +108,25 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***ClustersClusterIdLinksPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksPostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| Should validate-only or not. | 
+ **validateLink** | **optional.Bool**| To validate the dest cluster ID is expected and topics are readable. | 
+ **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
 
 ### Return type
 
-[**ListLinksResponseDataList**](ListLinksResponseDataList.md)
+ (empty response body)
 
 ### Authorization
 
@@ -87,7 +134,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -302,49 +349,6 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V3ClustersClusterIdLinksPost
-
-> V3ClustersClusterIdLinksPost(ctx, clusterId, optional)
-
-Create a new link
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***V3ClustersClusterIdLinksPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a V3ClustersClusterIdLinksPostOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
