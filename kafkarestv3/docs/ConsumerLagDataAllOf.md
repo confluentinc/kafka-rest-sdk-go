@@ -1,4 +1,4 @@
-# ConsumerGroupDataAllOf
+# ConsumerLagDataAllOf
 
 ## Properties
 
@@ -6,12 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
 **ConsumerGroupId** | **string** |  | 
-**IsSimple** | **bool** |  | 
-**PartitionAssignor** | **string** |  | 
-**State** | [**ConsumerGroupState**](ConsumerGroupState.md) |  | 
-**Coordinator** | [**Relationship**](Relationship.md) |  | 
-**Consumer** | [**Relationship**](Relationship.md) |  | [optional] 
-**Lag** | [**Relationship**](Relationship.md) |  | 
+**TopicName** | **string** |  | 
+**PartitionId** | **int32** |  | 
+**CurrentOffset** | **int32** |  | 
+**LogEndOffset** | **int32** |  | 
+**Lag** | **int32** |  | 
+**ConsumerId** | **string** |  | 
+**InstanceId** | Pointer to **string** |  | [optional] 
+**ClientId** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

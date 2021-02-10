@@ -4,12 +4,50 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet**](PartitionApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags/{topic_name}/partitions/{partition_id} | Get Consumer Lag
 [**ClustersClusterIdTopicsPartitionsReassignmentGet**](PartitionApi.md#ClustersClusterIdTopicsPartitionsReassignmentGet) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/reassignment | List All Replica Reassignments
 [**ClustersClusterIdTopicsTopicNamePartitionsGet**](PartitionApi.md#ClustersClusterIdTopicsTopicNamePartitionsGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions | List Partitions
 [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet**](PartitionApi.md#ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id} | Get Partition
 [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet**](PartitionApi.md#ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/reassignment | Get Replica Reassignments
 [**ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet**](PartitionApi.md#ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/reassignment | Search Replica Reassignments By Topic
 
+
+
+## ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet
+
+> ConsumerLagData ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet(ctx, clusterId, consumerGroupId, topicName, partitionId)
+
+Get Consumer Lag
+
+Returns the consumer lag on a partition with the given `partition_id`.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**consumerGroupId** | **string**| The consumer group ID. | 
+**topicName** | **string**| The topic name. | 
+**partitionId** | **int32**| The partition ID. | 
+
+### Return type
+
+[**ConsumerLagData**](ConsumerLagData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ClustersClusterIdTopicsPartitionsReassignmentGet
