@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // ConsumerGroupDataListAllOf struct for ConsumerGroupDataListAllOf
 type ConsumerGroupDataListAllOf struct {
 	Data []ConsumerGroupData `json:"data"`

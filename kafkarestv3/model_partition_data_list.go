@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // PartitionDataList struct for PartitionDataList
 type PartitionDataList struct {
-	Kind string `json:"kind"`
+	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []PartitionData `json:"data"`
+	Data     []PartitionData            `json:"data"`
 }

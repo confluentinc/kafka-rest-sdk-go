@@ -8,17 +8,18 @@
  */
 
 package kafkarestv3
+
 // TopicConfigData struct for TopicConfigData
 type TopicConfigData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	Name string `json:"name"`
-	Value *string `json:"value,omitempty"`
-	IsDefault bool `json:"is_default"`
-	IsReadOnly bool `json:"is_read_only"`
-	IsSensitive bool `json:"is_sensitive"`
-	Source ConfigSource `json:"source"`
-	Synonyms []ConfigSynonymData `json:"synonyms"`
-	TopicName string `json:"topic_name"`
+	Kind        string              `json:"kind"`
+	Metadata    ResourceMetadata    `json:"metadata"`
+	ClusterId   string              `json:"cluster_id"`
+	Name        string              `json:"name"`
+	Value       *string             `json:"value,omitempty"`
+	IsDefault   bool                `json:"is_default"`
+	IsReadOnly  bool                `json:"is_read_only"`
+	IsSensitive bool                `json:"is_sensitive"`
+	Source      ConfigSource        `json:"source"`
+	Synonyms    []ConfigSynonymData `json:"synonyms"`
+	TopicName   string              `json:"topic_name"`
 }

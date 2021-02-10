@@ -8,15 +8,16 @@
  */
 
 package kafkarestv3
+
 // TopicData struct for TopicData
 type TopicData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	TopicName string `json:"topic_name"`
-	IsInternal bool `json:"is_internal"`
-	ReplicationFactor int32 `json:"replication_factor"`
-	Partitions Relationship `json:"partitions"`
-	Configs Relationship `json:"configs"`
-	PartitionReassignments Relationship `json:"partition_reassignments"`
+	Kind                   string           `json:"kind"`
+	Metadata               ResourceMetadata `json:"metadata"`
+	ClusterId              string           `json:"cluster_id"`
+	TopicName              string           `json:"topic_name"`
+	IsInternal             bool             `json:"is_internal"`
+	ReplicationFactor      int32            `json:"replication_factor"`
+	Partitions             Relationship     `json:"partitions"`
+	Configs                Relationship     `json:"configs"`
+	PartitionReassignments Relationship     `json:"partition_reassignments"`
 }

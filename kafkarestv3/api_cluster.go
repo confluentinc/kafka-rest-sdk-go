@@ -24,26 +24,26 @@ var (
 
 type ClusterApi interface {
 
-    /*
-     * ClustersClusterIdGet Get Cluster
-     *
-     * Returns the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return ClusterData
-     */
-    ClustersClusterIdGet(ctx _context.Context, clusterId string) (ClusterData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdGet Get Cluster
+	 *
+	 * Returns the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return ClusterData
+	 */
+	ClustersClusterIdGet(ctx _context.Context, clusterId string) (ClusterData, *_nethttp.Response, error)
 
-    /*
-     * ClustersGet List Clusters
-     *
-     * Returns a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @return ClusterDataList
-     */
-    ClustersGet(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersGet List Clusters
+	 *
+	 * Returns a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @return ClusterDataList
+	 */
+	ClustersGet(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error)
 }
 
 // ClusterApiService ClusterApi service
@@ -70,7 +70,7 @@ func (a *ClusterApiService) ClustersClusterIdGet(ctx _context.Context, clusterId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
