@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // Relationship struct for Relationship
 type Relationship struct {
 	Related string `json:"related"`

@@ -8,22 +8,23 @@
  */
 
 package kafkarestv3
+
 // AclOperation the model 'AclOperation'
 type AclOperation string
 
 // List of AclOperation
 const (
-	ACLOPERATION_UNKNOWN AclOperation = "UNKNOWN"
-	ACLOPERATION_ANY AclOperation = "ANY"
-	ACLOPERATION_ALL AclOperation = "ALL"
-	ACLOPERATION_READ AclOperation = "READ"
-	ACLOPERATION_WRITE AclOperation = "WRITE"
-	ACLOPERATION_CREATE AclOperation = "CREATE"
-	ACLOPERATION_DELETE AclOperation = "DELETE"
-	ACLOPERATION_ALTER AclOperation = "ALTER"
-	ACLOPERATION_DESCRIBE AclOperation = "DESCRIBE"
-	ACLOPERATION_CLUSTER_ACTION AclOperation = "CLUSTER_ACTION"
+	ACLOPERATION_UNKNOWN          AclOperation = "UNKNOWN"
+	ACLOPERATION_ANY              AclOperation = "ANY"
+	ACLOPERATION_ALL              AclOperation = "ALL"
+	ACLOPERATION_READ             AclOperation = "READ"
+	ACLOPERATION_WRITE            AclOperation = "WRITE"
+	ACLOPERATION_CREATE           AclOperation = "CREATE"
+	ACLOPERATION_DELETE           AclOperation = "DELETE"
+	ACLOPERATION_ALTER            AclOperation = "ALTER"
+	ACLOPERATION_DESCRIBE         AclOperation = "DESCRIBE"
+	ACLOPERATION_CLUSTER_ACTION   AclOperation = "CLUSTER_ACTION"
 	ACLOPERATION_DESCRIBE_CONFIGS AclOperation = "DESCRIBE_CONFIGS"
-	ACLOPERATION_ALTER_CONFIGS AclOperation = "ALTER_CONFIGS"
+	ACLOPERATION_ALTER_CONFIGS    AclOperation = "ALTER_CONFIGS"
 	ACLOPERATION_IDEMPOTENT_WRITE AclOperation = "IDEMPOTENT_WRITE"
 )

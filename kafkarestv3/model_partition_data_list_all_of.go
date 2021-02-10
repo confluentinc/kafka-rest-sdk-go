@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // PartitionDataListAllOf struct for PartitionDataListAllOf
 type PartitionDataListAllOf struct {
 	Data []PartitionData `json:"data"`

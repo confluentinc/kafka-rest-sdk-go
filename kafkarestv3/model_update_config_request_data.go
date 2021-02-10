@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // UpdateConfigRequestData struct for UpdateConfigRequestData
 type UpdateConfigRequestData struct {
 	Value *string `json:"value,omitempty"`

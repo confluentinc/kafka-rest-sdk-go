@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // ReassignmentDataListAllOf struct for ReassignmentDataListAllOf
 type ReassignmentDataListAllOf struct {
 	Data []ReassignmentData `json:"data"`

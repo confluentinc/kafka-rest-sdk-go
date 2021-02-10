@@ -11,11 +11,11 @@ package kafkarestv3
 
 import (
 	_context "context"
+	"github.com/antihax/optional"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,52 +25,52 @@ var (
 
 type TopicApi interface {
 
-    /*
-     * ClustersClusterIdTopicsGet List Topics
-     *
-     * Returns the list of topics that belong to the specified Kafka cluster.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return TopicDataList
-     */
-    ClustersClusterIdTopicsGet(ctx _context.Context, clusterId string) (TopicDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsGet List Topics
+	 *
+	 * Returns the list of topics that belong to the specified Kafka cluster.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return TopicDataList
+	 */
+	ClustersClusterIdTopicsGet(ctx _context.Context, clusterId string) (TopicDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsPost Create Topic
-     *
-     * Creates a topic.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *ClustersClusterIdTopicsPostOpts - Optional Parameters:
-     * @param "CreateTopicRequestData" (optional.Interface of CreateTopicRequestData) -  The topic creation request.
-     * @return TopicData
-     */
-    ClustersClusterIdTopicsPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdTopicsPostOpts) (TopicData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsPost Create Topic
+	 *
+	 * Creates a topic.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdTopicsPostOpts - Optional Parameters:
+	 * @param "CreateTopicRequestData" (optional.Interface of CreateTopicRequestData) -  The topic creation request.
+	 * @return TopicData
+	 */
+	ClustersClusterIdTopicsPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdTopicsPostOpts) (TopicData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNameDelete Delete Topic
-     *
-     * Deletes the topic with the given &#x60;topic_name&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     */
-    ClustersClusterIdTopicsTopicNameDelete(ctx _context.Context, clusterId string, topicName string) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNameDelete Delete Topic
+	 *
+	 * Deletes the topic with the given &#x60;topic_name&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 */
+	ClustersClusterIdTopicsTopicNameDelete(ctx _context.Context, clusterId string, topicName string) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNameGet Get Topic
-     *
-     * Returns the topic with the given &#x60;topic_name&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @return TopicData
-     */
-    ClustersClusterIdTopicsTopicNameGet(ctx _context.Context, clusterId string, topicName string) (TopicData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNameGet Get Topic
+	 *
+	 * Returns the topic with the given &#x60;topic_name&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @return TopicData
+	 */
+	ClustersClusterIdTopicsTopicNameGet(ctx _context.Context, clusterId string, topicName string) (TopicData, *_nethttp.Response, error)
 }
 
 // TopicApiService TopicApi service
@@ -97,7 +97,7 @@ func (a *TopicApiService) ClustersClusterIdTopicsGet(ctx _context.Context, clust
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -158,7 +158,7 @@ func (a *TopicApiService) ClustersClusterIdTopicsGet(ctx _context.Context, clust
 
 // ClustersClusterIdTopicsPostOpts Optional parameters for the method 'ClustersClusterIdTopicsPost'
 type ClustersClusterIdTopicsPostOpts struct {
-    CreateTopicRequestData optional.Interface
+	CreateTopicRequestData optional.Interface
 }
 
 /*
@@ -184,7 +184,7 @@ func (a *TopicApiService) ClustersClusterIdTopicsPost(ctx _context.Context, clus
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -272,9 +272,9 @@ func (a *TopicApiService) ClustersClusterIdTopicsTopicNameDelete(ctx _context.Co
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -346,9 +346,9 @@ func (a *TopicApiService) ClustersClusterIdTopicsTopicNameGet(ctx _context.Conte
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

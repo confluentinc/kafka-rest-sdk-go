@@ -6,12 +6,14 @@ SDK_OUTPUT_DIR=../kafka-rest-sdk-go/kafkarestv3
 
 .PHONY: gen-deps
 gen-deps:
+	# You only have to run gen-deps once.
 	# https://github.com/travisjeffery/mocker
+	go get github.com/travisjeffery/mocker/cmd/mocker
 	go install github.com/travisjeffery/mocker/cmd/mocker
 
 	# https://github.com/confluentinc/openapi-generator
-	# cd .. && git clone https://github.com/confluentinc/openapi-generator.git
-	# cd ../openapi-generator && git checkout ath-add-interfaces && mvn clean install
+	cd .. && git clone https://github.com/confluentinc/openapi-generator.git
+	cd ../openapi-generator && git checkout ath-add-interfaces && mvn clean install
 
 
 .PHONY: gen
@@ -21,6 +23,7 @@ gen:
 		-g go \
 		-o $(SDK_OUTPUT_DIR) \
   		-p enumClassPrefix=true,packageName=kafkarestv3,generateInterfaces=true
+	cd $(INIT_DIR) && gofmt -w .
 	echo "Remember to git restore kafkarestv3/go.mod"
 
 .PHONY: gen-mock

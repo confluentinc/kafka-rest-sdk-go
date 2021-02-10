@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // ConsumerDataList struct for ConsumerDataList
 type ConsumerDataList struct {
-	Kind string `json:"kind"`
+	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []ConsumerData `json:"data"`
+	Data     []ConsumerData             `json:"data"`
 }

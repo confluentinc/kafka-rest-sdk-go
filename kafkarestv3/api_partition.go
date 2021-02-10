@@ -24,66 +24,66 @@ var (
 
 type PartitionApi interface {
 
-    /*
-     * ClustersClusterIdTopicsPartitionsReassignmentGet List All Replica Reassignments
-     *
-     * Returns the list of all ongoing replica reassignments in the given Kafka cluster.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return ReassignmentDataList
-     */
-    ClustersClusterIdTopicsPartitionsReassignmentGet(ctx _context.Context, clusterId string) (ReassignmentDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsPartitionsReassignmentGet List All Replica Reassignments
+	 *
+	 * Returns the list of all ongoing replica reassignments in the given Kafka cluster.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return ReassignmentDataList
+	 */
+	ClustersClusterIdTopicsPartitionsReassignmentGet(ctx _context.Context, clusterId string) (ReassignmentDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsGet List Partitions
-     *
-     * Returns the list of partitions that belong to the specified topic.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @return PartitionDataList
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsGet(ctx _context.Context, clusterId string, topicName string) (PartitionDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsGet List Partitions
+	 *
+	 * Returns the list of partitions that belong to the specified topic.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @return PartitionDataList
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsGet(ctx _context.Context, clusterId string, topicName string) (PartitionDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet Get Partition
-     *
-     * Returns the partition with the given &#x60;partition_id&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @param partitionId The partition ID.
-     * @return PartitionData
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (PartitionData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet Get Partition
+	 *
+	 * Returns the partition with the given &#x60;partition_id&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @param partitionId The partition ID.
+	 * @return PartitionData
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (PartitionData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet Get Replica Reassignments
-     *
-     * Returns the list of ongoing replica reassignments for the given partition.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @param partitionId The partition ID.
-     * @return ReassignmentData
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (ReassignmentData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet Get Replica Reassignments
+	 *
+	 * Returns the list of ongoing replica reassignments for the given partition.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @param partitionId The partition ID.
+	 * @return ReassignmentData
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (ReassignmentData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet Search Replica Reassignments By Topic
-     *
-     * Returns the list of ongoing replica reassignments for the given topic.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @return ReassignmentDataList
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet(ctx _context.Context, clusterId string, topicName string) (ReassignmentDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet Search Replica Reassignments By Topic
+	 *
+	 * Returns the list of ongoing replica reassignments for the given topic.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @return ReassignmentDataList
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet(ctx _context.Context, clusterId string, topicName string) (ReassignmentDataList, *_nethttp.Response, error)
 }
 
 // PartitionApiService PartitionApi service
@@ -110,7 +110,7 @@ func (a *PartitionApiService) ClustersClusterIdTopicsPartitionsReassignmentGet(c
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/-/partitions/-/reassignment"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -191,9 +191,9 @@ func (a *PartitionApiService) ClustersClusterIdTopicsTopicNamePartitionsGet(ctx 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -275,11 +275,11 @@ func (a *PartitionApiService) ClustersClusterIdTopicsTopicNamePartitionsPartitio
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -361,11 +361,11 @@ func (a *PartitionApiService) ClustersClusterIdTopicsTopicNamePartitionsPartitio
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/reassignment"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -446,9 +446,9 @@ func (a *PartitionApiService) ClustersClusterIdTopicsTopicNamePartitionsReassign
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions/-/reassignment"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
