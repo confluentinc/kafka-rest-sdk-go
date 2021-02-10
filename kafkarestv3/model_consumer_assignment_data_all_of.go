@@ -17,4 +17,5 @@ type ConsumerAssignmentDataAllOf struct {
 	TopicName       string       `json:"topic_name"`
 	PartitionId     int32        `json:"partition_id"`
 	Partition       Relationship `json:"partition"`
+	Lag             Relationship `json:"lag"`
 }
