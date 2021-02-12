@@ -60,7 +60,7 @@ Class | Method | HTTP request | Description
 *ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidconsumersconsumeridget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id} | Get Consumer
 *ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidconsumersget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers | List Consumers
 *ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id} | Get Consumer Group
-*ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidlagget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag | Get Consumer Group Lag.
+*ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidlagsummaryget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary | Get Consumer Group Lag Summary.
 *ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsconsumergroupidlagsget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags | List Consumer Lags
 *ConsumerGroupApi* | [**ClustersClusterIdConsumerGroupsGet**](docs/ConsumerGroupApi.md#clustersclusteridconsumergroupsget) | **Get** /clusters/{cluster_id}/consumer-groups | List Consumer Groups
 *PartitionApi* | [**ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet**](docs/PartitionApi.md#clustersclusteridconsumergroupsconsumergroupidlagstopicnamepartitionspartitionidget) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags/{topic_name}/partitions/{partition_id} | Get Consumer Lag
@@ -122,8 +122,8 @@ Class | Method | HTTP request | Description
  - [ConsumerGroupDataAllOf](docs/ConsumerGroupDataAllOf.md)
  - [ConsumerGroupDataList](docs/ConsumerGroupDataList.md)
  - [ConsumerGroupDataListAllOf](docs/ConsumerGroupDataListAllOf.md)
- - [ConsumerGroupLagData](docs/ConsumerGroupLagData.md)
- - [ConsumerGroupLagDataAllOf](docs/ConsumerGroupLagDataAllOf.md)
+ - [ConsumerGroupLagSummaryData](docs/ConsumerGroupLagSummaryData.md)
+ - [ConsumerGroupLagSummaryDataAllOf](docs/ConsumerGroupLagSummaryDataAllOf.md)
  - [ConsumerGroupState](docs/ConsumerGroupState.md)
  - [ConsumerLagData](docs/ConsumerLagData.md)
  - [ConsumerLagDataAllOf](docs/ConsumerLagDataAllOf.md)

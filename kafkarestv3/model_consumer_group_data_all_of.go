@@ -18,5 +18,5 @@ type ConsumerGroupDataAllOf struct {
 	State             ConsumerGroupState `json:"state"`
 	Coordinator       Relationship       `json:"coordinator"`
 	Consumer          Relationship       `json:"consumer,omitempty"`
-	Lag               Relationship       `json:"lag"`
+	LagSummary        Relationship       `json:"lag_summary"`
 }

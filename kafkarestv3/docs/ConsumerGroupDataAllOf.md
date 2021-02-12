@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **State** | [**ConsumerGroupState**](ConsumerGroupState.md) |  | 
 **Coordinator** | [**Relationship**](Relationship.md) |  | 
 **Consumer** | [**Relationship**](Relationship.md) |  | [optional] 
-**Lag** | [**Relationship**](Relationship.md) |  | 
+**LagSummary** | [**Relationship**](Relationship.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

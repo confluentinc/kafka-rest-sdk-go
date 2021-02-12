@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id} | Get Consumer
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers | List Consumers
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id} | Get Consumer Group
-[**ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag | Get Consumer Group Lag.
+[**ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary | Get Consumer Group Lag Summary.
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags | List Consumer Lags
 [**ClustersClusterIdConsumerGroupsGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsGet) | **Get** /clusters/{cluster_id}/consumer-groups | List Consumer Groups
 
@@ -195,11 +195,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet
+## ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet
 
-> ConsumerGroupLagData ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet(ctx, clusterId, consumerGroupId)
+> ConsumerGroupLagSummaryData ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx, clusterId, consumerGroupId)
 
-Get Consumer Group Lag.
+Get Consumer Group Lag Summary.
 
 Returns the max and total lag of the consumers belonging to the specified consumer group.
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ConsumerGroupLagData**](ConsumerGroupLagData.md)
+[**ConsumerGroupLagSummaryData**](ConsumerGroupLagSummaryData.md)
 
 ### Authorization
 

@@ -90,16 +90,16 @@ type ConsumerGroupApi interface {
 	ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupData, *_nethttp.Response, error)
 
 	/*
-	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet Get Consumer Group Lag.
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
 	 *
 	 * Returns the max and total lag of the consumers belonging to the specified consumer group.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @param consumerGroupId The consumer group ID.
-	 * @return ConsumerGroupLagData
+	 * @return ConsumerGroupLagSummaryData
 	 */
-	ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagData, *_nethttp.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error)
 
 	/*
 	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet List Consumer Lags
@@ -559,27 +559,27 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 }
 
 /*
- * ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet Get Consumer Group Lag.
+ * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
  *
  * Returns the max and total lag of the consumers belonging to the specified consumer group.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param consumerGroupId The consumer group ID.
- * @return ConsumerGroupLagData
+ * @return ConsumerGroupLagSummaryData
  */
-func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupIdLagGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagData, *_nethttp.Response, error) {
+func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ConsumerGroupLagData
+		localVarReturnValue  ConsumerGroupLagSummaryData
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
