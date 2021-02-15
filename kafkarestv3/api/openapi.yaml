@@ -2345,7 +2345,7 @@ paths:
         schema:
           type: string
         style: form
-      - description: 'Is validate-only or not. default: false'
+      - description: 'To validate if the link can be created or not, but not to create it. Default: false'
         example: false
         explode: true
         in: query
@@ -2354,8 +2354,7 @@ paths:
         schema:
           type: boolean
         style: form
-      - description: 'To validate the dest cluster ID is expected and topics are readable.
-          default: true'
+      - description: 'To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true'
         example: false
         explode: true
         in: query
@@ -2945,7 +2944,7 @@ components:
       content:
         application/json:
           example:
-            src_cluster_id: cluster-1
+            source_cluster_id: cluster-1
             configs:
             - name: bootstrap.servers
               value: 127.0.0.1:9092
@@ -4861,14 +4860,14 @@ components:
           value: value
         src_cluster_id: src_cluster_id
       properties:
-        src_cluster_id:
+        source_cluster_id:
           type: string
         configs:
           items:
             $ref: '#/components/schemas/CreateTopicRequestData_configs'
           type: array
       required:
-      - src_cluster_id
+      - source_cluster_id
       type: object
     UpdateLinkConfigRequestData:
       example:
@@ -4881,8 +4880,24 @@ components:
       type: object
     ListLinksResponseData:
       allOf:
-      - $ref: '#/components/schemas/Resource'
-      - $ref: '#/components/schemas/ListLinksResponseData_allOf'
+        - $ref: '#/components/schemas/Resource'
+        - type: object
+          required:
+            - cluster_id
+            - link_name
+            - link_id
+            - topic_names
+          properties:
+            cluster_id:
+              type: string
+            link_name:
+              type: string
+            link_id:
+              type: string
+            topics_names:
+              type: array
+              items:
+                type: string
     ListLinksResponseDataList:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
