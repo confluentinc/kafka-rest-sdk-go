@@ -8,8 +8,7 @@
  */
 
 package kafkarestv3
-// CreateLinkRequestData struct for CreateLinkRequestData
-type CreateLinkRequestData struct {
-	SourceClusterId string `json:"source_cluster_id"`
-	Configs []CreateTopicRequestDataConfigs `json:"configs,omitempty"`
+// AlterMirrorStatusResponseDataListAllOf struct for AlterMirrorStatusResponseDataListAllOf
+type AlterMirrorStatusResponseDataListAllOf struct {
+	Data []AlterMirrorStatusResponseData `json:"data"`
 }

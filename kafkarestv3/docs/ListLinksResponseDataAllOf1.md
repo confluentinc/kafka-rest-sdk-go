@@ -1,11 +1,9 @@
-# ListLinksResponseData
+# ListLinksResponseDataAllOf1
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | **string** |  | 
-**Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **LinkName** | **string** |  | 
 **LinkId** | **string** |  | 

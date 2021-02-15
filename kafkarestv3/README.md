@@ -49,6 +49,13 @@ Class | Method | HTTP request | Description
 *CLLinkOpApi* | [**ClustersClusterIdLinksPost**](docs/CLLinkOpApi.md#clustersclusteridlinkspost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterApi* | [**ClustersClusterIdGet**](docs/ClusterApi.md#clustersclusteridget) | **Get** /clusters/{cluster_id} | Get Cluster
 *ClusterApi* | [**ClustersGet**](docs/ClusterApi.md#clustersget) | **Get** /clusters | List Clusters
+*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsdestinationtopicnameget) | **Get** /cluster/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name} | Describe the mirror topic
+*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsFailoverPost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsfailoverpost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
+*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsPausePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorspausepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
+*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsPromotePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorspromotepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
+*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsResumePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsresumepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsget) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPut**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsput) | **Put** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsget) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameDelete**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnamedelete) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnameget) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Cluster Config
@@ -97,6 +104,11 @@ Class | Method | HTTP request | Description
  - [AclResourceType](docs/AclResourceType.md)
  - [AlterConfigBatchRequestData](docs/AlterConfigBatchRequestData.md)
  - [AlterConfigBatchRequestDataData](docs/AlterConfigBatchRequestDataData.md)
+ - [AlterMirrorStatusResponseData](docs/AlterMirrorStatusResponseData.md)
+ - [AlterMirrorStatusResponseDataAllOf](docs/AlterMirrorStatusResponseDataAllOf.md)
+ - [AlterMirrorStatusResponseDataList](docs/AlterMirrorStatusResponseDataList.md)
+ - [AlterMirrorStatusResponseDataListAllOf](docs/AlterMirrorStatusResponseDataListAllOf.md)
+ - [AlterMirrorsRequestData](docs/AlterMirrorsRequestData.md)
  - [BrokerConfigData](docs/BrokerConfigData.md)
  - [BrokerConfigDataAllOf](docs/BrokerConfigDataAllOf.md)
  - [BrokerConfigDataList](docs/BrokerConfigDataList.md)
@@ -131,6 +143,7 @@ Class | Method | HTTP request | Description
  - [ConsumerGroupState](docs/ConsumerGroupState.md)
  - [CreateAclRequestData](docs/CreateAclRequestData.md)
  - [CreateLinkRequestData](docs/CreateLinkRequestData.md)
+ - [CreateMirrorTopicRequestData](docs/CreateMirrorTopicRequestData.md)
  - [CreateTopicRequestData](docs/CreateTopicRequestData.md)
  - [CreateTopicRequestDataConfigs](docs/CreateTopicRequestDataConfigs.md)
  - [InlineResponse200](docs/InlineResponse200.md)
@@ -140,8 +153,13 @@ Class | Method | HTTP request | Description
  - [ListLinkConfigsResponseDataListAllOf](docs/ListLinkConfigsResponseDataListAllOf.md)
  - [ListLinksResponseData](docs/ListLinksResponseData.md)
  - [ListLinksResponseDataAllOf](docs/ListLinksResponseDataAllOf.md)
+ - [ListLinksResponseDataAllOf1](docs/ListLinksResponseDataAllOf1.md)
  - [ListLinksResponseDataList](docs/ListLinksResponseDataList.md)
  - [ListLinksResponseDataListAllOf](docs/ListLinksResponseDataListAllOf.md)
+ - [ListMirrorTopicsResponseData](docs/ListMirrorTopicsResponseData.md)
+ - [ListMirrorTopicsResponseDataAllOf](docs/ListMirrorTopicsResponseDataAllOf.md)
+ - [ListMirrorTopicsResponseDataList](docs/ListMirrorTopicsResponseDataList.md)
+ - [ListMirrorTopicsResponseDataListAllOf](docs/ListMirrorTopicsResponseDataListAllOf.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)
  - [PartitionDataList](docs/PartitionDataList.md)

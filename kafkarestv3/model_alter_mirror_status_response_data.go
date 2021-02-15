@@ -8,12 +8,11 @@
  */
 
 package kafkarestv3
-// ListLinksResponseData struct for ListLinksResponseData
-type ListLinksResponseData struct {
+// AlterMirrorStatusResponseData struct for AlterMirrorStatusResponseData
+type AlterMirrorStatusResponseData struct {
 	Kind string `json:"kind"`
 	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	LinkName string `json:"link_name"`
-	LinkId string `json:"link_id"`
-	TopicsNames []string `json:"topics_names,omitempty"`
+	DestinationTopicName string `json:"destination_topic_name"`
+	ErrorMessage string `json:"error_message"`
+	ErrorCode int32 `json:"error_code"`
 }

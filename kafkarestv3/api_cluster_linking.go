@@ -23,129 +23,124 @@ var (
 	_ _context.Context
 )
 
-type CLLinkOpApi interface {
+type ClusterLinkingApi interface {
 
     /*
-     * ClustersClusterIdLinksGet List all cluster links in the given cluster
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return ListLinksResponseDataList
-     */
-    ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error)
-
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNameDelete Reset the config under the cluster link
+     * ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet Describe the mirror topic
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @param configName The link config name
+     * @param destinationTopicName Cluster Linking destination topic name
+     * @return ListMirrorTopicsResponseData
      */
-    ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx _context.Context, clusterId string, linkName string, configName string) (*_nethttp.Response, error)
+    ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet(ctx _context.Context, clusterId string, linkName string, destinationTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNameGet Describe the config under the cluster link
+     * ClusterClusterIdLinksLinkNameMirrorsFailoverPost Failover the mirror topics
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @param configName The link config name
-     * @return ListLinkConfigsResponseData
+     * @param destinationTopicName Cluster Linking destination topic name
+     * @param body
+     * @return AlterMirrorStatusResponseDataList
      */
-    ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx _context.Context, clusterId string, linkName string, configName string) (ListLinkConfigsResponseData, *_nethttp.Response, error)
+    ClusterClusterIdLinksLinkNameMirrorsFailoverPost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNamePut Alter the config under the cluster link
+     * ClusterClusterIdLinksLinkNameMirrorsPausePost Pause the mirror topics
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @param configName The link config name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts - Optional Parameters:
-     * @param "UpdateLinkConfigRequestData" (optional.Interface of UpdateLinkConfigRequestData) -  New cluster link config value
+     * @param destinationTopicName Cluster Linking destination topic name
+     * @param body
+     * @return AlterMirrorStatusResponseDataList
      */
-    ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx _context.Context, clusterId string, linkName string, configName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts) (*_nethttp.Response, error)
+    ClusterClusterIdLinksLinkNameMirrorsPausePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameConfigsGet List all configs of the cluster link
+     * ClusterClusterIdLinksLinkNameMirrorsPromotePost Promote the mirror topics
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @return ListLinkConfigsResponseDataList
+     * @param destinationTopicName Cluster Linking destination topic name
+     * @param body
+     * @return AlterMirrorStatusResponseDataList
      */
-    ClustersClusterIdLinksLinkNameConfigsGet(ctx _context.Context, clusterId string, linkName string) (ListLinkConfigsResponseDataList, *_nethttp.Response, error)
+    ClusterClusterIdLinksLinkNameMirrorsPromotePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameConfigsalterPut Batch Alter Link Configs
-     *
-     * Batch update configs of the cluster link.
+     * ClusterClusterIdLinksLinkNameMirrorsResumePost Resume the mirror topics
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsalterPutOpts - Optional Parameters:
-     * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) - 
+     * @param destinationTopicName Cluster Linking destination topic name
+     * @param body
+     * @return AlterMirrorStatusResponseDataList
      */
-    ClustersClusterIdLinksLinkNameConfigsalterPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPutOpts) (*_nethttp.Response, error)
+    ClusterClusterIdLinksLinkNameMirrorsResumePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameDelete Delete the cluster link
+     * ClustersClusterIdLinksLinkNameMirrorsGet List mirror topics
+     *
+     * List all mirror topics under the link
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
+     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsGetOpts - Optional Parameters:
+     * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
+     * @return ListMirrorTopicsResponseDataList
      */
-    ClustersClusterIdLinksLinkNameDelete(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error)
+    ClustersClusterIdLinksLinkNameMirrorsGet(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error)
 
     /*
-     * ClustersClusterIdLinksLinkNameGet Describe the cluster link
+     * ClustersClusterIdLinksLinkNameMirrorsPut Create a mirror topic
+     *
+     * Create a topic in the destination cluster mirroring a topic in the source cluster
      *
      * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
      * @param clusterId The Kafka cluster ID.
      * @param linkName The link name
-     * @return ListLinksResponseData
+     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsPutOpts - Optional Parameters:
+     * @param "CreateMirrorTopicRequestData" (optional.Interface of CreateMirrorTopicRequestData) -  Name of the topics mirroring from and mirroring to
      */
-    ClustersClusterIdLinksLinkNameGet(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error)
-
-    /*
-     * ClustersClusterIdLinksPost Create a cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
-     * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
-     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Source cluster id and cluster link configs
-     */
-    ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
+    ClustersClusterIdLinksLinkNameMirrorsPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsPutOpts) (*_nethttp.Response, error)
 }
 
-// CLLinkOpApiService CLLinkOpApi service
-type CLLinkOpApiService service
+// ClusterLinkingApiService ClusterLinkingApi service
+type ClusterLinkingApiService service
 
 /*
- * ClustersClusterIdLinksGet List all cluster links in the given cluster
+ * ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet Describe the mirror topic
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @return ListLinksResponseDataList
+ * @param linkName The link name
+ * @param destinationTopicName Cluster Linking destination topic name
+ * @return ListMirrorTopicsResponseData
  */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error) {
+func (a *ClusterLinkingApiService) ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet(ctx _context.Context, clusterId string, linkName string, destinationTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ListLinksResponseDataList
+		localVarReturnValue  ListMirrorTopicsResponseData
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
+	localVarPath := a.client.cfg.BasePath + "/cluster/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"destination_topic_name"+"}", _neturl.QueryEscape(parameterToString(destinationTopicName, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -205,613 +200,37 @@ func (a *CLLinkOpApiService) ClustersClusterIdLinksGet(ctx _context.Context, clu
 }
 
 /*
- * ClustersClusterIdLinksLinkNameConfigsConfigNameDelete Reset the config under the cluster link
+ * ClusterClusterIdLinksLinkNameMirrorsFailoverPost Failover the mirror topics
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
- * @param configName The link config name
+ * @param destinationTopicName Cluster Linking destination topic name
+ * @param body
+ * @return AlterMirrorStatusResponseDataList
  */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx _context.Context, clusterId string, linkName string, configName string) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-/*
- * ClustersClusterIdLinksLinkNameConfigsConfigNameGet Describe the config under the cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param configName The link config name
- * @return ListLinkConfigsResponseData
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx _context.Context, clusterId string, linkName string, configName string) (ListLinkConfigsResponseData, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ListLinkConfigsResponseData
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameConfigsConfigNamePut'
-type ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts struct {
-    UpdateLinkConfigRequestData optional.Interface
-}
-
-/*
- * ClustersClusterIdLinksLinkNameConfigsConfigNamePut Alter the config under the cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param configName The link config name
- * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts - Optional Parameters:
- * @param "UpdateLinkConfigRequestData" (optional.Interface of UpdateLinkConfigRequestData) -  New cluster link config value
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx _context.Context, clusterId string, linkName string, configName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.UpdateLinkConfigRequestData.IsSet() {
-		localVarOptionalUpdateLinkConfigRequestData, localVarOptionalUpdateLinkConfigRequestDataok := localVarOptionals.UpdateLinkConfigRequestData.Value().(UpdateLinkConfigRequestData)
-		if !localVarOptionalUpdateLinkConfigRequestDataok {
-			return nil, reportError("updateLinkConfigRequestData should be UpdateLinkConfigRequestData")
-		}
-		localVarPostBody = &localVarOptionalUpdateLinkConfigRequestData
-	}
-
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-/*
- * ClustersClusterIdLinksLinkNameConfigsGet List all configs of the cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @return ListLinkConfigsResponseDataList
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsGet(ctx _context.Context, clusterId string, linkName string) (ListLinkConfigsResponseDataList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ListLinkConfigsResponseDataList
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// ClustersClusterIdLinksLinkNameConfigsalterPutOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameConfigsalterPut'
-type ClustersClusterIdLinksLinkNameConfigsalterPutOpts struct {
-    AlterConfigBatchRequestData optional.Interface
-}
-
-/*
- * ClustersClusterIdLinksLinkNameConfigsalterPut Batch Alter Link Configs
- *
- * Batch update configs of the cluster link.
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsalterPutOpts - Optional Parameters:
- * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) - 
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameConfigsalterPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPutOpts) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.AlterConfigBatchRequestData.IsSet() {
-		localVarOptionalAlterConfigBatchRequestData, localVarOptionalAlterConfigBatchRequestDataok := localVarOptionals.AlterConfigBatchRequestData.Value().(AlterConfigBatchRequestData)
-		if !localVarOptionalAlterConfigBatchRequestDataok {
-			return nil, reportError("alterConfigBatchRequestData should be AlterConfigBatchRequestData")
-		}
-		localVarPostBody = &localVarOptionalAlterConfigBatchRequestData
-	}
-
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-/*
- * ClustersClusterIdLinksLinkNameDelete Delete the cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameDelete(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodDelete
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-/*
- * ClustersClusterIdLinksLinkNameGet Describe the cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @return ListLinksResponseData
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksLinkNameGet(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ListLinksResponseData
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// ClustersClusterIdLinksPostOpts Optional parameters for the method 'ClustersClusterIdLinksPost'
-type ClustersClusterIdLinksPostOpts struct {
-    ValidateOnly optional.Bool
-    ValidateLink optional.Bool
-    CreateLinkRequestData optional.Interface
-}
-
-/*
- * ClustersClusterIdLinksPost Create a cluster link
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
- * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
- * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Source cluster id and cluster link configs
- */
-func (a *CLLinkOpApiService) ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error) {
+func (a *ClusterLinkingApiService) ClusterClusterIdLinksLinkNameMirrorsFailoverPost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
+	localVarPath := a.client.cfg.BasePath + "/cluster/{cluster_id}/links/{link_name}/mirrors/failover"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"destination_topic_name"+"}", _neturl.QueryEscape(parameterToString(destinationTopicName, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	localVarQueryParams.Add("link_name", parameterToString(linkName, ""))
-	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
-		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.ValidateLink.IsSet() {
-		localVarQueryParams.Add("validate_link", parameterToString(localVarOptionals.ValidateLink.Value(), ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -830,12 +249,456 @@ func (a *CLLinkOpApiService) ClustersClusterIdLinksPost(ctx _context.Context, cl
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.CreateLinkRequestData.IsSet() {
-		localVarOptionalCreateLinkRequestData, localVarOptionalCreateLinkRequestDataok := localVarOptionals.CreateLinkRequestData.Value().(CreateLinkRequestData)
-		if !localVarOptionalCreateLinkRequestDataok {
-			return nil, reportError("createLinkRequestData should be CreateLinkRequestData")
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
-		localVarPostBody = &localVarOptionalCreateLinkRequestData
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+ * ClusterClusterIdLinksLinkNameMirrorsPausePost Pause the mirror topics
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param destinationTopicName Cluster Linking destination topic name
+ * @param body
+ * @return AlterMirrorStatusResponseDataList
+ */
+func (a *ClusterLinkingApiService) ClusterClusterIdLinksLinkNameMirrorsPausePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/cluster/{cluster_id}/links/{link_name}/mirrors/pause"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"destination_topic_name"+"}", _neturl.QueryEscape(parameterToString(destinationTopicName, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+ * ClusterClusterIdLinksLinkNameMirrorsPromotePost Promote the mirror topics
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param destinationTopicName Cluster Linking destination topic name
+ * @param body
+ * @return AlterMirrorStatusResponseDataList
+ */
+func (a *ClusterLinkingApiService) ClusterClusterIdLinksLinkNameMirrorsPromotePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/cluster/{cluster_id}/links/{link_name}/mirrors/promote"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"destination_topic_name"+"}", _neturl.QueryEscape(parameterToString(destinationTopicName, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+ * ClusterClusterIdLinksLinkNameMirrorsResumePost Resume the mirror topics
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param destinationTopicName Cluster Linking destination topic name
+ * @param body
+ * @return AlterMirrorStatusResponseDataList
+ */
+func (a *ClusterLinkingApiService) ClusterClusterIdLinksLinkNameMirrorsResumePost(ctx _context.Context, clusterId string, linkName string, destinationTopicName string, body AlterMirrorsRequest) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/cluster/{cluster_id}/links/{link_name}/mirrors/resume"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"destination_topic_name"+"}", _neturl.QueryEscape(parameterToString(destinationTopicName, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = &body
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ClustersClusterIdLinksLinkNameMirrorsGetOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsGet'
+type ClustersClusterIdLinksLinkNameMirrorsGetOpts struct {
+    MirrorStatus optional.Interface
+}
+
+/*
+ * ClustersClusterIdLinksLinkNameMirrorsGet List mirror topics
+ *
+ * List all mirror topics under the link
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsGetOpts - Optional Parameters:
+ * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
+ * @return ListMirrorTopicsResponseDataList
+ */
+func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsGet(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ListMirrorTopicsResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.MirrorStatus.IsSet() {
+		localVarQueryParams.Add("mirror_status", parameterToString(localVarOptionals.MirrorStatus.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ClustersClusterIdLinksLinkNameMirrorsPutOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsPut'
+type ClustersClusterIdLinksLinkNameMirrorsPutOpts struct {
+    CreateMirrorTopicRequestData optional.Interface
+}
+
+/*
+ * ClustersClusterIdLinksLinkNameMirrorsPut Create a mirror topic
+ *
+ * Create a topic in the destination cluster mirroring a topic in the source cluster
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsPutOpts - Optional Parameters:
+ * @param "CreateMirrorTopicRequestData" (optional.Interface of CreateMirrorTopicRequestData) -  Name of the topics mirroring from and mirroring to
+ */
+func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsPutOpts) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.CreateMirrorTopicRequestData.IsSet() {
+		localVarOptionalCreateMirrorTopicRequestData, localVarOptionalCreateMirrorTopicRequestDataok := localVarOptionals.CreateMirrorTopicRequestData.Value().(CreateMirrorTopicRequestData)
+		if !localVarOptionalCreateMirrorTopicRequestDataok {
+			return nil, reportError("createMirrorTopicRequestData should be CreateMirrorTopicRequestData")
+		}
+		localVarPostBody = &localVarOptionalCreateMirrorTopicRequestData
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)

@@ -8,10 +8,8 @@
  */
 
 package kafkarestv3
-// ListLinksResponseData struct for ListLinksResponseData
-type ListLinksResponseData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
+// ListLinksResponseDataAllOf1 struct for ListLinksResponseDataAllOf1
+type ListLinksResponseDataAllOf1 struct {
 	ClusterId string `json:"cluster_id"`
 	LinkName string `json:"link_name"`
 	LinkId string `json:"link_id"`

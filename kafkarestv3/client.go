@@ -56,6 +56,8 @@ type APIClient struct {
 
 	ClusterApi ClusterApi
 
+	ClusterLinkingApi ClusterLinkingApi
+
 	ConfigsApi ConfigsApi
 
 	ConsumerGroupApi ConsumerGroupApi
@@ -87,6 +89,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BrokerApi = (*BrokerApiService)(&c.common)
 	c.CLLinkOpApi = (*CLLinkOpApiService)(&c.common)
 	c.ClusterApi = (*ClusterApiService)(&c.common)
+	c.ClusterLinkingApi = (*ClusterLinkingApiService)(&c.common)
 	c.ConfigsApi = (*ConfigsApiService)(&c.common)
 	c.ConsumerGroupApi = (*ConsumerGroupApiService)(&c.common)
 	c.PartitionApi = (*PartitionApiService)(&c.common)
