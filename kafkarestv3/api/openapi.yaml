@@ -5584,3 +5584,11 @@ components:
       - destination_topic_name
       - error_code
       - error_message
+    MirrorTopicStatus:
+      enum:
+      - active
+      - failed
+      - paused
+      - stopped
+      - pending_stopped
+      type: string

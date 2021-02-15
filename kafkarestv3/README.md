@@ -49,13 +49,13 @@ Class | Method | HTTP request | Description
 *CLLinkOpApi* | [**ClustersClusterIdLinksPost**](docs/CLLinkOpApi.md#clustersclusteridlinkspost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterApi* | [**ClustersClusterIdGet**](docs/ClusterApi.md#clustersclusteridget) | **Get** /clusters/{cluster_id} | Get Cluster
 *ClusterApi* | [**ClustersGet**](docs/ClusterApi.md#clustersget) | **Get** /clusters | List Clusters
-*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsdestinationtopicnameget) | **Get** /cluster/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name} | Describe the mirror topic
-*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsFailoverPost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsfailoverpost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
-*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsPausePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorspausepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
-*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsPromotePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorspromotepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
-*ClusterLinkingApi* | [**ClusterClusterIdLinksLinkNameMirrorsResumePost**](docs/ClusterLinkingApi.md#clusterclusteridlinkslinknamemirrorsresumepost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsDestinationTopicNameGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsdestinationtopicnameget) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name} | Describe the mirror topic
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsFailoverPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsfailoverpost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
 *ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsget) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPausePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspausepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPromotePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspromotepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
 *ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPut**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsput) | **Put** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsResumePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsresumepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsget) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameDelete**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnamedelete) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnameget) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Cluster Config
@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
  - [ListMirrorTopicsResponseDataAllOf](docs/ListMirrorTopicsResponseDataAllOf.md)
  - [ListMirrorTopicsResponseDataList](docs/ListMirrorTopicsResponseDataList.md)
  - [ListMirrorTopicsResponseDataListAllOf](docs/ListMirrorTopicsResponseDataListAllOf.md)
+ - [MirrorTopicStatus](docs/MirrorTopicStatus.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)
  - [PartitionDataList](docs/PartitionDataList.md)

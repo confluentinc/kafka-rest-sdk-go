@@ -4,19 +4,19 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet**](ClusterLinkingApi.md#ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet) | **Get** /cluster/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name} | Describe the mirror topic
-[**ClusterClusterIdLinksLinkNameMirrorsFailoverPost**](ClusterLinkingApi.md#ClusterClusterIdLinksLinkNameMirrorsFailoverPost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
-[**ClusterClusterIdLinksLinkNameMirrorsPausePost**](ClusterLinkingApi.md#ClusterClusterIdLinksLinkNameMirrorsPausePost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
-[**ClusterClusterIdLinksLinkNameMirrorsPromotePost**](ClusterLinkingApi.md#ClusterClusterIdLinksLinkNameMirrorsPromotePost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
-[**ClusterClusterIdLinksLinkNameMirrorsResumePost**](ClusterLinkingApi.md#ClusterClusterIdLinksLinkNameMirrorsResumePost) | **Post** /cluster/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorsDestinationTopicNameGet**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsDestinationTopicNameGet) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name} | Describe the mirror topic
+[**ClustersClusterIdLinksLinkNameMirrorsFailoverPost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsFailoverPost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsGet**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsGet) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorsPausePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPausePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorsPromotePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPromotePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsPut**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPut) | **Put** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
+[**ClustersClusterIdLinksLinkNameMirrorsResumePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsResumePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
 
 
 
-## ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet
+## ClustersClusterIdLinksLinkNameMirrorsDestinationTopicNameGet
 
-> ListMirrorTopicsResponseData ClusterClusterIdLinksLinkNameMirrorsDestinationTopicNameGet(ctx, clusterId, linkName, destinationTopicName)
+> ListMirrorTopicsResponseData ClustersClusterIdLinksLinkNameMirrorsDestinationTopicNameGet(ctx, clusterId, linkName, destinationTopicName)
 
 Describe the mirror topic
 
@@ -48,116 +48,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClusterClusterIdLinksLinkNameMirrorsFailoverPost
+## ClustersClusterIdLinksLinkNameMirrorsFailoverPost
 
-> AlterMirrorStatusResponseDataList ClusterClusterIdLinksLinkNameMirrorsFailoverPost(ctx, clusterId, linkName, destinationTopicName, body)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsFailoverPost(ctx, clusterId, linkName, destinationTopicName, body)
 
 Failover the mirror topics
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
-
-### Return type
-
-[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClusterClusterIdLinksLinkNameMirrorsPausePost
-
-> AlterMirrorStatusResponseDataList ClusterClusterIdLinksLinkNameMirrorsPausePost(ctx, clusterId, linkName, destinationTopicName, body)
-
-Pause the mirror topics
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
-
-### Return type
-
-[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClusterClusterIdLinksLinkNameMirrorsPromotePost
-
-> AlterMirrorStatusResponseDataList ClusterClusterIdLinksLinkNameMirrorsPromotePost(ctx, clusterId, linkName, destinationTopicName, body)
-
-Promote the mirror topics
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
-
-### Return type
-
-[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ClusterClusterIdLinksLinkNameMirrorsResumePost
-
-> AlterMirrorStatusResponseDataList ClusterClusterIdLinksLinkNameMirrorsResumePost(ctx, clusterId, linkName, destinationTopicName, body)
-
-Resume the mirror topics
 
 ### Required Parameters
 
@@ -235,6 +130,76 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ClustersClusterIdLinksLinkNameMirrorsPausePost
+
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPausePost(ctx, clusterId, linkName, destinationTopicName, body)
+
+Pause the mirror topics
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+**destinationTopicName** | **string**| Cluster Linking destination topic name | 
+**body** | **AlterMirrorsRequest**|  | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksLinkNameMirrorsPromotePost
+
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPromotePost(ctx, clusterId, linkName, destinationTopicName, body)
+
+Promote the mirror topics
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+**destinationTopicName** | **string**| Cluster Linking destination topic name | 
+**body** | **AlterMirrorsRequest**|  | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ClustersClusterIdLinksLinkNameMirrorsPut
 
 > ClustersClusterIdLinksLinkNameMirrorsPut(ctx, clusterId, linkName, optional)
@@ -267,6 +232,41 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksLinkNameMirrorsResumePost
+
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsResumePost(ctx, clusterId, linkName, destinationTopicName, body)
+
+Resume the mirror topics
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+**destinationTopicName** | **string**| Cluster Linking destination topic name | 
+**body** | **AlterMirrorsRequest**|  | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
 
 ### Authorization
 
