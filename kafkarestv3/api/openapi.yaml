@@ -2324,7 +2324,7 @@ paths:
           description: A list of link names and properties
       summary: List all cluster links in the given cluster
       tags:
-      - CLLinkOp
+      - ClusterLinking
     post:
       parameters:
       - description: The Kafka cluster ID.
@@ -2375,7 +2375,7 @@ paths:
           description: Operation succeeded, no content in the response
       summary: Create a cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}:
     delete:
       parameters:
@@ -2404,7 +2404,7 @@ paths:
           description: Operation succeeded, no content in the response
       summary: Delete the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
     get:
       parameters:
       - description: The Kafka cluster ID.
@@ -2445,7 +2445,7 @@ paths:
           description: Single link name and properties
       summary: Describe the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}/configs:
     get:
       parameters:
@@ -2510,7 +2510,7 @@ paths:
           description: Config name and value
       summary: List all configs of the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}/configs/{config_name}:
     delete:
       parameters:
@@ -2548,7 +2548,7 @@ paths:
           description: Operation succeeded, no content in the response
       summary: Reset the config under the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
     get:
       parameters:
       - description: The Kafka cluster ID.
@@ -2605,7 +2605,7 @@ paths:
           description: Config name and value
       summary: Describe the config under the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
     put:
       parameters:
       - description: The Kafka cluster ID.
@@ -2644,7 +2644,7 @@ paths:
           description: Operation succeeded, no content in the response
       summary: Alter the config under the cluster link
       tags:
-      - CLLinkOp
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}/configs:alter:
     put:
       description: Batch update configs of the cluster link.
@@ -2674,7 +2674,7 @@ paths:
           description: No Content
       summary: Batch Alter Link Configs
       tags:
-      - CLLinkOp
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}/mirrors:
     get:
       description: List all mirror topics under the link
@@ -2738,7 +2738,7 @@ paths:
       summary: List mirror topics
       tags:
       - ClusterLinking
-    put:
+    post:
       description: Create a topic in the destination cluster mirroring a topic in
         the source cluster
       parameters:
@@ -2839,6 +2839,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
@@ -2893,6 +2902,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
@@ -2947,6 +2965,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
@@ -3001,6 +3028,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
@@ -3170,7 +3206,8 @@ components:
         type: string
       style: simple
     ValidateOnly:
-      description: 'Is validate-only or not. default: false'
+      description: 'To validate if the link can be created or not, but not to create
+        it. Default: false'
       example: false
       explode: true
       in: query
@@ -3362,9 +3399,13 @@ components:
         application/json:
           example:
             source_topic_name: topic-1
+            configs:
+            - name: unclean.leader.election.enable
+              value: "true"
+            replication_factor: 1
           schema:
             $ref: '#/components/schemas/CreateMirrorTopicRequestData'
-      description: Name of the topics mirroring from and mirroring to
+      description: Name and configs of the topics mirroring from and mirroring to
     AlterMirrorsRequest:
       content:
         application/json:
