@@ -50,7 +50,7 @@ No authorization required
 
 ## ClustersClusterIdLinksLinkNameMirrorsFailoverPost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsFailoverPost(ctx, clusterId, linkName, destinationTopicName, body)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsFailoverPost(ctx, clusterId, linkName, optional)
 
 Failover the mirror topics
 
@@ -62,8 +62,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsFailoverPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsFailoverPostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
 
@@ -132,7 +142,7 @@ No authorization required
 
 ## ClustersClusterIdLinksLinkNameMirrorsPausePost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPausePost(ctx, clusterId, linkName, destinationTopicName, body)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPausePost(ctx, clusterId, linkName, optional)
 
 Pause the mirror topics
 
@@ -144,8 +154,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsPausePostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsPausePostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
 
@@ -167,7 +187,7 @@ No authorization required
 
 ## ClustersClusterIdLinksLinkNameMirrorsPromotePost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPromotePost(ctx, clusterId, linkName, destinationTopicName, body)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPromotePost(ctx, clusterId, linkName, optional)
 
 Promote the mirror topics
 
@@ -179,8 +199,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsPromotePostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsPromotePostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
 
@@ -249,7 +279,7 @@ No authorization required
 
 ## ClustersClusterIdLinksLinkNameMirrorsResumePost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsResumePost(ctx, clusterId, linkName, destinationTopicName, body)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsResumePost(ctx, clusterId, linkName, optional)
 
 Resume the mirror topics
 
@@ -261,8 +291,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
-**destinationTopicName** | **string**| Cluster Linking destination topic name | 
-**body** | **AlterMirrorsRequest**|  | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsResumePostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsResumePostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
 

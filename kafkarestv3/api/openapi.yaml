@@ -2839,21 +2839,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cluster Linking destination topic name
-        example: topic-1
-        explode: false
-        in: path
-        name: destination_topic_name
-        required: true
-        schema:
-          type: string
-        style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/AlterMirrorsRequest'
-        required: true
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
         "200":
           content:
@@ -2906,21 +2893,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cluster Linking destination topic name
-        example: topic-1
-        explode: false
-        in: path
-        name: destination_topic_name
-        required: true
-        schema:
-          type: string
-        style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/AlterMirrorsRequest'
-        required: true
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
         "200":
           content:
@@ -2973,21 +2947,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cluster Linking destination topic name
-        example: topic-1
-        explode: false
-        in: path
-        name: destination_topic_name
-        required: true
-        schema:
-          type: string
-        style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/AlterMirrorsRequest'
-        required: true
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
         "200":
           content:
@@ -3040,21 +3001,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cluster Linking destination topic name
-        example: topic-1
-        explode: false
-        in: path
-        name: destination_topic_name
-        required: true
-        schema:
-          type: string
-        style: simple
       requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/requestBodies/AlterMirrorsRequest'
-        required: true
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
       responses:
         "200":
           content:
@@ -5480,6 +5428,19 @@ components:
           type: array
       required:
       - data
+    ConfigData:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          nullable: true
+          type: string
+      required:
+      - name
+      - value
     CreateMirrorTopicRequestData:
       example:
         configs:
@@ -5500,6 +5461,10 @@ components:
       - source_topic_name
       type: object
     AlterMirrorsRequestData:
+      example:
+        destination_topic_names:
+        - destination_topic_names
+        - destination_topic_names
       properties:
         destination_topic_names:
           items:

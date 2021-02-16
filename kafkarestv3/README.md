@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
  - [ClusterDataAllOf](docs/ClusterDataAllOf.md)
  - [ClusterDataList](docs/ClusterDataList.md)
  - [ClusterDataListAllOf](docs/ClusterDataListAllOf.md)
+ - [ConfigData](docs/ConfigData.md)
  - [ConfigSource](docs/ConfigSource.md)
  - [ConfigSynonymData](docs/ConfigSynonymData.md)
  - [ConsumerAssignmentData](docs/ConsumerAssignmentData.md)
