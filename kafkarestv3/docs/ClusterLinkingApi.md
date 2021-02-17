@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
  **validateOnly** | **optional.Bool**| To validate if the link can be created or not, but not to create it. Default: false | 
  **validateLink** | **optional.Bool**| To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true | 
- **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Source cluster id and cluster link configs | 
+ **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
 
 ### Return type
 

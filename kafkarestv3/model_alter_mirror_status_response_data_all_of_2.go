@@ -8,10 +8,8 @@
  */
 
 package kafkarestv3
-// AlterMirrorStatusResponseData struct for AlterMirrorStatusResponseData
-type AlterMirrorStatusResponseData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
+// AlterMirrorStatusResponseDataAllOf2 struct for AlterMirrorStatusResponseDataAllOf2
+type AlterMirrorStatusResponseDataAllOf2 struct {
 	DestinationTopicName string `json:"destination_topic_name"`
 	ErrorMessage *string `json:"error_message"`
 	ErrorCode *int32 `json:"error_code"`

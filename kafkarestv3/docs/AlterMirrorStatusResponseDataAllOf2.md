@@ -1,4 +1,4 @@
-# AlterMirrorStatusResponseDataAllOf
+# AlterMirrorStatusResponseDataAllOf2
 
 ## Properties
 

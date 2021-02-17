@@ -208,7 +208,7 @@ type ClusterLinkingApi interface {
      * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
      * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
      * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
-     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Source cluster id and cluster link configs
+     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
      */
     ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
 }
@@ -1549,7 +1549,7 @@ type ClustersClusterIdLinksPostOpts struct {
  * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
  * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
  * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
- * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Source cluster id and cluster link configs
+ * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
  */
 func (a *ClusterLinkingApiService) ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error) {
 	var (

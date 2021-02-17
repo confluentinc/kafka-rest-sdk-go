@@ -3260,7 +3260,7 @@ components:
     MirrorTopicStatus:
       description: The status of the mirror topic. If not specified, all mirror topics
         will be returned.
-      example: ACTIVE
+      example: active
       explode: true
       in: query
       name: mirror_status
@@ -4570,19 +4570,23 @@ components:
               next: null
             data:
             - kind: KafkaMirrorData
-              self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+              metadata:
+                self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
+                resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
               destination_topic_name: topic-1
               source_topic_name: topic-1
-              mirror_topic_status: ACTIVE
-              state_time_ms: "1612550939300"
+              mirror_topic_status: active
+              state_time_ms: 1612550939300
             - kind: KafkaMirrorData
-              self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-2
+              metadata:
+                self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
+                resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
               destination_topic_name: topic-2
               source_topic_name: topic-2
-              mirror_topic_status: STOPPED
-              state_time_ms: "1612551353640"
+              mirror_topic_status: stopped
+              state_time_ms: 1612551353640
           schema:
             $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
       description: Metadata of mirror topics
@@ -4591,12 +4595,13 @@ components:
         application/json:
           example:
             kind: KafkaMirrorData
-            self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
-            resource_name: crn:///kafka=cluster-1
+            metadata:
+              self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+              resource_name: crn:///kafka=cluster-1
             destination_topic_name: topic-1
             source_topic_name: topic-1
-            mirror_topic_status: ACTIVE
-            state_time_ms: "1612550939300"
+            mirror_topic_status: active
+            state_time_ms: 1612550939300
           schema:
             $ref: '#/components/schemas/ListMirrorTopicsResponseData'
       description: Metadata of the mirror topic
@@ -4613,16 +4618,16 @@ components:
               metadata:
                 self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                 resource: crn:///kafka=cluster-1
-              destinationTopicName: topic-sb
-              errorCode: null
-              errorMessage: null
+              destination_topic_name: topic-sb
+              error_code: null
+              error_message: null
             - kind: AlterMirrorsData
               metadata:
                 self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                 resource: crn:///kafka=cluster-1
-              destinationTopicName: topic-2
-              errorCode: 400
-              errorMessage: Topic 'topic-2' has already stopped its mirror from 'my-new-link-1'
+              destination_topic_name: topic-2
+              error_code: 400
+              error_message: Topic 'topic-2' has already stopped its mirror from 'my-new-link-1'
           schema:
             $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
       description: Mirror status alternation result
@@ -5531,38 +5536,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Resource'
       - $ref: '#/components/schemas/AlterMirrorStatusResponseData_allOf'
-    ListLinksResponseData_allOf_1:
-      properties:
-        cluster_id:
-          type: string
-        link_name:
-          type: string
-        link_id:
-          type: string
-        topics_names:
-          items:
-            type: string
-          type: array
-      required:
-      - cluster_id
-      - link_id
-      - link_name
-      - topic_names
-    ListMirrorTopicsResponseData_allOf:
-      properties:
-        destination_topic_name:
-          type: string
-        source_topic_name:
-          type: string
-        mirror_topic_status:
-          $ref: '#/components/schemas/MirrorTopicStatus'
-        state_time_ms:
-          type: integer
-      required:
-      - destination_topic_name
-      - mirror_topic_status
-      - source_topic_name
-      - state_time_ms
     ListMirrorTopicsResponseDataList_allOf:
       properties:
         data:
@@ -5579,18 +5552,6 @@ components:
           type: array
       required:
       - data
-    AlterMirrorStatusResponseData_allOf:
-      properties:
-        destination_topic_name:
-          type: string
-        error_message:
-          type: string
-        error_code:
-          type: integer
-      required:
-      - destination_topic_name
-      - error_code
-      - error_message
     MirrorTopicStatus:
       enum:
       - active
@@ -5599,3 +5560,17 @@ components:
       - stopped
       - pending_stopped
       type: string
+    AlterMirrorStatusResponseData_allOf:
+      properties:
+        destination_topic_name:
+          type: string
+        error_message:
+          nullable: true
+          type: string
+        error_code:
+          nullable: true
+          type: integer
+      required:
+      - destination_topic_name
+      - error_code
+      - error_message
