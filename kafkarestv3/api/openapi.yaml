@@ -3366,15 +3366,13 @@ components:
           example:
             source_cluster_id: cluster-1
             configs:
-            - name: bootstrap.servers
-              value: 127.0.0.1:9092
             - name: acl.sync.enable
-              value: false
+              value: "false"
             - name: consumer.offset.sync.ms
-              value: 30000
+              value: "30000"
           schema:
             $ref: '#/components/schemas/CreateLinkRequestData'
-      description: Source cluster id and cluster link configs
+      description: Create a cluster link
     UpdateLinkConfigRequest:
       content:
         application/json:
@@ -4451,27 +4449,27 @@ components:
           example:
             kind: KafkaLinkDataList
             metadata:
-              self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
+              self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
               next: null
             data:
             - kind: KafkaLinkData
               metadata:
-                self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
+                self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
                 resource_name: null
               cluster_id: src-cluster-id
               link_name: my-new-link-1
               link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-              topics:
+              topic_names:
               - topic-sb-1
               - topic-sb-2
             - kind: KafkaLinkData
               metadata:
-                self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
+                self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
                 resource_name: null
               cluster_id: src-cluster-id
               link_name: my-new-link-2
               link_id: abced-f7d8-4844-a577-abcdefghijklmnp
-              topics:
+              topic_names:
               - topic-db-1
               - topic-db-2
           schema:
@@ -4483,12 +4481,12 @@ components:
           example:
             kind: KafkaLinkData
             metadata:
-              self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+              self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
               resource_name: null
             cluster_id: src-cluster-id
             link_name: my-new-link-1
             link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-            topics:
+            topic_names:
             - topic-db-1
             - topic-db-2
           schema:
@@ -4498,15 +4496,16 @@ components:
       content:
         application/json:
           example:
-            kind: KafkaLinkData
+            kind: KafkaLinkConfigDataList
             metadata:
-              self: http://localhost:56450/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
+              self: http://localhost:56450/kafka/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
               next: null
             data:
             - kind: KafkaLinkConfigData
               metadata:
-                self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
                 resource_name: null
+              cluster_id: 1Rh_4htxSuen7RYGvGmgNw
               name: consumer.offset.sync.ms
               value: "3825940"
               default: false
@@ -4514,13 +4513,14 @@ components:
               sensitive: false
               source: DYNAMIC_CLUSTER_LINK_CONFIG
               synonyms:
-              - null
+              - cosm
               link_name: link-db-1
               link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
             - kind: KafkaLinkConfigData
               metadata:
-                self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
                 resource_name: null
+              cluster_id: 1Rh_4htxSuen7RYGvGmgNw
               name: acl.sync.ms
               value: "5000"
               default: false
@@ -4528,7 +4528,7 @@ components:
               sensitive: false
               source: DYNAMIC_CLUSTER_LINK_CONFIG
               synonyms:
-              - null
+              - asm
               link_name: link-db-1
               link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
           schema:
@@ -4540,8 +4540,9 @@ components:
           example:
             kind: KafkaLinkConfigData
             metadata:
-              self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+              self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
               resource_name: null
+            cluster_id: 1Rh_4htxSuen7RYGvGmgNw
             name: consumer.offset.sync.ms
             value: "3825940"
             default: false
@@ -4549,7 +4550,7 @@ components:
             sensitive: false
             source: DYNAMIC_CLUSTER_LINK_CONFIG
             synonyms:
-            - null
+            - cosm
             link_name: link-db-1
             link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
             topics:
