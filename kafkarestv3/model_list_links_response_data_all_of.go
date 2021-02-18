@@ -13,5 +13,5 @@ type ListLinksResponseDataAllOf struct {
 	ClusterId string `json:"cluster_id"`
 	LinkName string `json:"link_name"`
 	LinkId string `json:"link_id"`
-	Topics []string `json:"topics"`
+	TopicsNames []string `json:"topics_names,omitempty"`
 }
