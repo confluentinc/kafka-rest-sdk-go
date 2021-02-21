@@ -5574,3 +5574,18 @@ components:
       - link_id
       - link_name
       - topic_names
+    ListMirrorTopicsResponseData_allOf:
+      properties:
+        destination_topic_name:
+          type: string
+        source_topic_name:
+          type: string
+        mirror_topic_status:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        state_time_ms:
+          type: integer
+      required:
+      - destination_topic_name
+      - mirror_topic_status
+      - source_topic_name
+      - state_time_ms
