@@ -5458,19 +5458,6 @@ components:
           type: array
       required:
       - data
-    ConfigData:
-      example:
-        name: name
-        value: value
-      properties:
-        name:
-          type: string
-        value:
-          nullable: true
-          type: string
-      required:
-      - name
-      - value
     CreateMirrorTopicRequestData:
       example:
         configs:
@@ -5485,7 +5472,7 @@ components:
           type: integer
         configs:
           items:
-            $ref: '#/components/schemas/ConfigData'
+            $ref: '#/components/schemas/CreateTopicRequestData_configs'
           type: array
       required:
       - source_topic_name
