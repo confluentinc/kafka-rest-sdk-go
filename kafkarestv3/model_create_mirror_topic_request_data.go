@@ -12,5 +12,5 @@ package kafkarestv3
 type CreateMirrorTopicRequestData struct {
 	SourceTopicName string `json:"source_topic_name"`
 	ReplicationFactor int32 `json:"replication_factor,omitempty"`
-	Configs []ConfigData `json:"configs,omitempty"`
+	Configs []CreateTopicRequestDataConfigs `json:"configs,omitempty"`
 }

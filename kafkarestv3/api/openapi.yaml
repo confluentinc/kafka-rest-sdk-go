@@ -3408,7 +3408,7 @@ components:
       content:
         application/json:
           example:
-            destination_topic_names:
+            destination_topics:
             - topic-1
             - topic-2
             - topic-3
@@ -5479,16 +5479,16 @@ components:
       type: object
     AlterMirrorsRequestData:
       example:
-        destination_topic_names:
+        destination_topics:
         - destination_topic_names
         - destination_topic_names
       properties:
-        destination_topic_names:
+        destination_topics:
           items:
             type: string
           type: array
       required:
-      - destination_topic_names
+      - destination_topics
       type: object
     ListMirrorTopicsResponseData:
       allOf:
