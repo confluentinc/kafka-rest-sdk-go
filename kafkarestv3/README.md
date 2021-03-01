@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
 *ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
 *ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPromotePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspromotepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
 *ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsResumePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsresumepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksMirrorsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinksmirrorsget) | **Get** /clusters/{cluster_id}/links/-/mirrors | List mirror topics
 *ClusterLinkingApi* | [**ClustersClusterIdLinksPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkspost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsget) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameDelete**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnamedelete) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config

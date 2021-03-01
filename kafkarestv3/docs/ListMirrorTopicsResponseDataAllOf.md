@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**LinkName** | **string** |  | 
 **DestinationTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **MirrorTopicStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
+**LinkName** | **string** |  | 
 **DestinationTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **MirrorTopicStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 

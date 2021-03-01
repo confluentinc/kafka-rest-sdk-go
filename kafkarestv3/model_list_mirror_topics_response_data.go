@@ -12,6 +12,7 @@ package kafkarestv3
 type ListMirrorTopicsResponseData struct {
 	Kind string `json:"kind"`
 	Metadata ResourceMetadata `json:"metadata"`
+	LinkName string `json:"link_name"`
 	DestinationTopicName string `json:"destination_topic_name"`
 	SourceTopicName string `json:"source_topic_name"`
 	MirrorTopicStatus MirrorTopicStatus `json:"mirror_topic_status"`

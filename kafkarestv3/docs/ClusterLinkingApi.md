@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**ClustersClusterIdLinksLinkNameMirrorsPost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
 [**ClustersClusterIdLinksLinkNameMirrorsPromotePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPromotePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsResumePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsResumePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+[**ClustersClusterIdLinksMirrorsGet**](ClusterLinkingApi.md#ClustersClusterIdLinksMirrorsGet) | **Get** /clusters/{cluster_id}/links/-/mirrors | List mirror topics
 [**ClustersClusterIdLinksPost**](ClusterLinkingApi.md#ClustersClusterIdLinksPost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 
 
@@ -621,6 +622,51 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksMirrorsGet
+
+> ListMirrorTopicsResponseDataList ClustersClusterIdLinksMirrorsGet(ctx, clusterId, optional)
+
+List mirror topics
+
+List all mirror topics in the cluster
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+ **optional** | ***ClustersClusterIdLinksMirrorsGetOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksMirrorsGetOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **mirrorStatus** | [**optional.Interface of MirrorTopicStatus**](.md)| The status of the mirror topic. If not specified, all mirror topics will be returned. | 
+
+### Return type
+
+[**ListMirrorTopicsResponseDataList**](ListMirrorTopicsResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

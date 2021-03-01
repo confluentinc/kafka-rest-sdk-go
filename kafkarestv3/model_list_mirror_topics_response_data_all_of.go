@@ -10,6 +10,7 @@
 package kafkarestv3
 // ListMirrorTopicsResponseDataAllOf struct for ListMirrorTopicsResponseDataAllOf
 type ListMirrorTopicsResponseDataAllOf struct {
+	LinkName string `json:"link_name"`
 	DestinationTopicName string `json:"destination_topic_name"`
 	SourceTopicName string `json:"source_topic_name"`
 	MirrorTopicStatus MirrorTopicStatus `json:"mirror_topic_status"`

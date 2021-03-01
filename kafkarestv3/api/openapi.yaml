@@ -2675,6 +2675,64 @@ paths:
       summary: Batch Alter Link Configs
       tags:
       - ClusterLinking
+  /clusters/{cluster_id}/links/-/mirrors:
+    get:
+      description: List all mirror topics in the cluster
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The status of the mirror topic. If not specified, all mirror
+          topics will be returned.
+        example: active
+        explode: true
+        in: query
+        name: mirror_status
+        required: false
+        schema:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaMirrorDataList
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                  next: null
+                data:
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
+                    resource_name: crn:///kafka=cluster-1
+                  resource_name: crn:///kafka=cluster-1
+                  destination_topic_name: topic-1
+                  source_topic_name: topic-1
+                  mirror_topic_status: active
+                  state_time_ms: 1612550939300
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
+                    resource_name: crn:///kafka=cluster-1
+                  resource_name: crn:///kafka=cluster-1
+                  destination_topic_name: topic-2
+                  source_topic_name: topic-2
+                  mirror_topic_status: stopped
+                  state_time_ms: 1612551353640
+              schema:
+                $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
+          description: Metadata of mirror topics
+      summary: List mirror topics
+      tags:
+      - ClusterLinking
   /clusters/{cluster_id}/links/{link_name}/mirrors:
     get:
       description: List all mirror topics under the link
@@ -3408,7 +3466,7 @@ components:
       content:
         application/json:
           example:
-            destination_topics:
+            destination_topic_names:
             - topic-1
             - topic-2
             - topic-3
@@ -4574,6 +4632,7 @@ components:
                 self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
                 resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
+              link_name: link-1
               destination_topic_name: topic-1
               source_topic_name: topic-1
               mirror_topic_status: active
@@ -4583,6 +4642,7 @@ components:
                 self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
                 resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
+              link_name: link-1
               destination_topic_name: topic-2
               source_topic_name: topic-2
               mirror_topic_status: stopped
@@ -4598,6 +4658,7 @@ components:
             metadata:
               self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
               resource_name: crn:///kafka=cluster-1
+            link_name: link-1
             destination_topic_name: topic-1
             source_topic_name: topic-1
             mirror_topic_status: active
@@ -5479,16 +5540,16 @@ components:
       type: object
     AlterMirrorsRequestData:
       example:
-        destination_topics:
+        destination_topic_names:
         - destination_topic_names
         - destination_topic_names
       properties:
-        destination_topics:
+        destination_topic_names:
           items:
             type: string
           type: array
       required:
-      - destination_topics
+      - destination_topic_names
       type: object
     ListMirrorTopicsResponseData:
       allOf:
@@ -5506,14 +5567,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/Resource'
       - $ref: '#/components/schemas/AlterMirrorStatusResponseData_allOf'
-    ListMirrorTopicsResponseDataList_allOf:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ListMirrorTopicsResponseData'
-          type: array
-      required:
-      - data
     AlterMirrorStatusResponseDataList_allOf:
       properties:
         data:
@@ -5563,6 +5616,8 @@ components:
       - topic_names
     ListMirrorTopicsResponseData_allOf:
       properties:
+        link_name:
+          type: string
         destination_topic_name:
           type: string
         source_topic_name:
@@ -5573,6 +5628,15 @@ components:
           type: integer
       required:
       - destination_topic_name
+      - link_name
       - mirror_topic_status
       - source_topic_name
       - state_time_ms
+    ListMirrorTopicsResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListMirrorTopicsResponseData'
+          type: array
+      required:
+      - data
