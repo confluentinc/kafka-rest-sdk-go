@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id} | Get Consumer
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers | List Consumers
 [**ClustersClusterIdConsumerGroupsConsumerGroupIdGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id} | Get Consumer Group
+[**ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary | Get Consumer Group Lag Summary.
+[**ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags | List Consumer Lags
 [**ClustersClusterIdConsumerGroupsGet**](ConsumerGroupApi.md#ClustersClusterIdConsumerGroupsGet) | **Get** /clusters/{cluster_id}/consumer-groups | List Consumer Groups
 
 
@@ -178,6 +180,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ConsumerGroupData**](ConsumerGroupData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet
+
+> ConsumerGroupLagSummaryData ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx, clusterId, consumerGroupId)
+
+Get Consumer Group Lag Summary.
+
+Returns the max and total lag of the consumers belonging to the specified consumer group.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**consumerGroupId** | **string**| The consumer group ID. | 
+
+### Return type
+
+[**ConsumerGroupLagSummaryData**](ConsumerGroupLagSummaryData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet
+
+> ConsumerLagDataList ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx, clusterId, consumerGroupId)
+
+List Consumer Lags
+
+Returns a list of consumer lags of the consumers belonging to the specified consumer group.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**consumerGroupId** | **string**| The consumer group ID. | 
+
+### Return type
+
+[**ConsumerLagDataList**](ConsumerLagDataList.md)
 
 ### Authorization
 

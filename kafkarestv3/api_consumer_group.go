@@ -90,6 +90,30 @@ type ConsumerGroupApi interface {
 	ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupData, *_nethttp.Response, error)
 
 	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
+	 *
+	 * Returns the max and total lag of the consumers belonging to the specified consumer group.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerGroupLagSummaryData
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error)
+
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet List Consumer Lags
+	 *
+	 * Returns a list of consumer lags of the consumers belonging to the specified consumer group.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerLagDataList
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerLagDataList, *_nethttp.Response, error)
+
+	/*
 	 * ClustersClusterIdConsumerGroupsGet List Consumer Groups
 	 *
 	 * Returns the list of consumer groups that belong to the specified Kafka cluster.
@@ -473,6 +497,172 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+ * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
+ *
+ * Returns the max and total lag of the consumers belonging to the specified consumer group.
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param consumerGroupId The consumer group ID.
+ * @return ConsumerGroupLagSummaryData
+ */
+func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ConsumerGroupLagSummaryData
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+ * ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet List Consumer Lags
+ *
+ * Returns a list of consumer lags of the consumers belonging to the specified consumer group.
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param consumerGroupId The consumer group ID.
+ * @return ConsumerLagDataList
+ */
+func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerLagDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ConsumerLagDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)

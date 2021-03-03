@@ -1,4 +1,4 @@
-# ConsumerAssignmentData
+# ConsumerGroupLagSummaryData
 
 ## Properties
 
@@ -8,11 +8,15 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **ConsumerGroupId** | **string** |  | 
-**ConsumerId** | **string** |  | 
-**TopicName** | **string** |  | 
-**PartitionId** | **int32** |  | 
-**Partition** | [**Relationship**](Relationship.md) |  | 
-**Lag** | [**Relationship**](Relationship.md) |  | 
+**MaxLagConsumerId** | **string** |  | 
+**MaxLagInstanceId** | Pointer to **string** |  | [optional] 
+**MaxLagClientId** | **string** |  | 
+**MaxLagTopicName** | **string** |  | 
+**MaxLagPartitionId** | **int32** |  | 
+**MaxLag** | **int32** |  | 
+**TotalLag** | **int32** |  | 
+**MaxLagConsumer** | [**Relationship**](Relationship.md) |  | 
+**MaxLagPartition** | [**Relationship**](Relationship.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
