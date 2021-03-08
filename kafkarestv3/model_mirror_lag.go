@@ -11,5 +11,5 @@ package kafkarestv3
 // MirrorLag struct for MirrorLag
 type MirrorLag struct {
 	Partition int32 `json:"partition"`
-	Items int32 `json:"items,omitempty"`
+	Lag int32 `json:"lag"`
 }

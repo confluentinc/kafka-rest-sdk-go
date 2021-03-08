@@ -5749,7 +5749,7 @@ components:
       properties:
         partition:
           type: integer
-        items:
+        lag:
           type: integer
       required:
       - lag
