@@ -13,4 +13,5 @@ type AlterMirrorStatusResponseDataAllOf struct {
 	DestinationTopicName string `json:"destination_topic_name"`
 	ErrorMessage *string `json:"error_message"`
 	ErrorCode *int32 `json:"error_code"`
+	MirrorLags []MirrorLag `json:"mirror_lags,omitempty"`
 }

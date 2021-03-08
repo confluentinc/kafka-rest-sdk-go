@@ -2306,7 +2306,7 @@ paths:
                   cluster_id: src-cluster-id
                   link_name: my-new-link-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-                  topics:
+                  topic_names:
                   - topic-sb-1
                   - topic-sb-2
                 - kind: KafkaLinkData
@@ -2316,7 +2316,7 @@ paths:
                   cluster_id: src-cluster-id
                   link_name: my-new-link-2
                   link_id: abced-f7d8-4844-a577-abcdefghijklmnp
-                  topics:
+                  topic_names:
                   - topic-db-1
                   - topic-db-2
               schema:
@@ -2437,7 +2437,7 @@ paths:
                 cluster_id: src-cluster-id
                 link_name: my-new-link-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-                topics:
+                topic_names:
                 - topic-db-1
                 - topic-db-2
               schema:
@@ -2484,11 +2484,12 @@ paths:
                   name: consumer.offset.sync.ms
                   value: "3825940"
                   default: false
+                  cluster_id: "cluster-1"
                   read_only: false
                   sensitive: false
                   source: DYNAMIC_CLUSTER_LINK_CONFIG
                   synonyms:
-                  - null
+                  - "cosm"
                   link_name: link-db-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 - kind: KafkaLinkConfigData
@@ -2498,11 +2499,12 @@ paths:
                   name: acl.sync.ms
                   value: "5000"
                   default: false
+                  cluster_id: "cluster-1"
                   read_only: false
                   sensitive: false
                   source: DYNAMIC_CLUSTER_LINK_CONFIG
                   synonyms:
-                  - null
+                  - "asm"
                   link_name: link-db-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
               schema:
@@ -2587,6 +2589,7 @@ paths:
                 metadata:
                   self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
                   resource_name: null
+                cluster_id: "cluster-1"
                 name: consumer.offset.sync.ms
                 value: "3825940"
                 default: false
@@ -2594,7 +2597,7 @@ paths:
                 sensitive: false
                 source: DYNAMIC_CLUSTER_LINK_CONFIG
                 synonyms:
-                - null
+                - "cosm"
                 link_name: link-db-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 topics:
@@ -2716,6 +2719,15 @@ paths:
                   resource_name: crn:///kafka=cluster-1
                   destination_topic_name: topic-1
                   source_topic_name: topic-1
+                  num_partitions: 3
+                  link_name: link-1
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
                   mirror_topic_status: active
                   state_time_ms: 1612550939300
                 - kind: KafkaMirrorData
@@ -2725,6 +2737,15 @@ paths:
                   resource_name: crn:///kafka=cluster-1
                   destination_topic_name: topic-2
                   source_topic_name: topic-2
+                  num_partitions: 3
+                  link_name: link-1
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
                   mirror_topic_status: stopped
                   state_time_ms: 1612551353640
               schema:
@@ -2757,7 +2778,7 @@ paths:
         style: simple
       - description: The status of the mirror topic. If not specified, all mirror
           topics will be returned.
-        example: ACTIVE
+        example: active
         explode: true
         in: query
         name: mirror_status
@@ -2777,19 +2798,39 @@ paths:
                   next: null
                 data:
                 - kind: KafkaMirrorData
-                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
-                  resource_name: crn:///kafka=cluster-1
+                  metadata:
+                    self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+                    resource_name: crn:///kafka=cluster-1
                   destination_topic_name: topic-1
                   source_topic_name: topic-1
-                  mirror_topic_status: ACTIVE
-                  state_time_ms: "1612550939300"
+                  link_name: link-1
+                  num_partitions: 3
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_topic_status: active
+                  state_time_ms: 1612550939300
                 - kind: KafkaMirrorData
-                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-2
-                  resource_name: crn:///kafka=cluster-1
+                  metadata:
+                    self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-2
+                    resource_name: crn:///kafka=cluster-1
                   destination_topic_name: topic-2
                   source_topic_name: topic-2
-                  mirror_topic_status: STOPPED
-                  state_time_ms: "1612551353640"
+                  link_name: link-1
+                  num_partitions: 3
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_topic_status: stopped
+                  state_time_ms: 1612551353640
               schema:
                 $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
           description: Metadata of mirror topics
@@ -2864,12 +2905,22 @@ paths:
             application/json:
               example:
                 kind: KafkaMirrorData
-                self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
-                resource_name: crn:///kafka=cluster-1
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+                  resource_name: crn:///kafka=cluster-1
+                link_name: link-1
                 destination_topic_name: topic-1
+                num_partitions: 3
+                mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
                 source_topic_name: topic-1
-                mirror_topic_status: ACTIVE
-                state_time_ms: "1612550939300"
+                mirror_topic_status: active
+                state_time_ms: 1612550939300
               schema:
                 $ref: '#/components/schemas/ListMirrorTopicsResponseData'
           description: Metadata of the mirror topic
@@ -2922,17 +2973,31 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-sb
-                  errorCode: null
-                  errorMessage: null
+                  destination_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-2
-                  errorCode: 400
-                  errorMessage: Topic 'topic-2' has already stopped its mirror from
+                  destination_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
               schema:
                 $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
           description: Mirror status alternation result
@@ -2985,16 +3050,16 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-sb
-                  errorCode: null
-                  errorMessage: null
+                  destination_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-2
-                  errorCode: 400
-                  errorMessage: Topic 'topic-2' has already stopped its mirror from
+                  destination_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
               schema:
                 $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
@@ -3048,16 +3113,16 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-sb
-                  errorCode: null
-                  errorMessage: null
+                  destination_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-2
-                  errorCode: 400
-                  errorMessage: Topic 'topic-2' has already stopped its mirror from
+                  destination_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
               schema:
                 $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
@@ -3111,16 +3176,16 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-sb
-                  errorCode: null
-                  errorMessage: null
+                  destination_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destinationTopicName: topic-2
-                  errorCode: 400
-                  errorMessage: Topic 'topic-2' has already stopped its mirror from
+                  destination_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
               schema:
                 $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
@@ -3447,7 +3512,7 @@ components:
             - name: consumer.offset.sync.ms
               operation: DELETE
             - name: cluster.link.retry.timeout.ms
-              value: 285714
+              value: "285714"
           schema:
             $ref: '#/components/schemas/AlterConfigBatchRequestData'
     CreateMirrorTopicRequest:
@@ -4635,6 +4700,14 @@ components:
               link_name: link-1
               destination_topic_name: topic-1
               source_topic_name: topic-1
+              num_partitions: 3
+              mirror_lags:
+                - partition: 0
+                  lag: 0
+                - partition: 1
+                  lag: 10000
+                - partition: 2
+                  lag: 40000
               mirror_topic_status: active
               state_time_ms: 1612550939300
             - kind: KafkaMirrorData
@@ -4645,6 +4718,14 @@ components:
               link_name: link-1
               destination_topic_name: topic-2
               source_topic_name: topic-2
+              num_partitions: 3
+              mirror_lags:
+                - partition: 0
+                  lag: 0
+                - partition: 1
+                  lag: 10000
+                - partition: 2
+                  lag: 40000
               mirror_topic_status: stopped
               state_time_ms: 1612551353640
           schema:
@@ -4661,6 +4742,14 @@ components:
             link_name: link-1
             destination_topic_name: topic-1
             source_topic_name: topic-1
+            num_partitions: 3
+            mirror_lags:
+              - partition: 0
+                lag: 0
+              - partition: 1
+                lag: 10000
+              - partition: 2
+                lag: 40000
             mirror_topic_status: active
             state_time_ms: 1612550939300
           schema:
@@ -5593,6 +5682,10 @@ components:
         error_code:
           nullable: true
           type: integer
+        mirror_lags:
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
       required:
       - destination_topic_name
       - error_code
@@ -5614,24 +5707,6 @@ components:
       - link_id
       - link_name
       - topic_names
-    ListMirrorTopicsResponseData_allOf:
-      properties:
-        link_name:
-          type: string
-        destination_topic_name:
-          type: string
-        source_topic_name:
-          type: string
-        mirror_topic_status:
-          $ref: '#/components/schemas/MirrorTopicStatus'
-        state_time_ms:
-          type: integer
-      required:
-      - destination_topic_name
-      - link_name
-      - mirror_topic_status
-      - source_topic_name
-      - state_time_ms
     ListMirrorTopicsResponseDataList_allOf:
       properties:
         data:
@@ -5640,3 +5715,43 @@ components:
           type: array
       required:
       - data
+    ListMirrorTopicsResponseData_allOf:
+      properties:
+        link_name:
+          type: string
+        destination_topic_name:
+          type: string
+        source_topic_name:
+          type: string
+        num_partitions:
+          type: integer
+        mirror_lags:
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
+        mirror_topic_status:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        state_time_ms:
+          type: integer
+      required:
+      - destination_topic_name
+      - link_name
+      - mirror_lags
+      - mirror_topic_status
+      - num_partitions
+      - source_topic_name
+      - state_time_ms
+    MirrorLags:
+      items:
+        $ref: '#/components/schemas/MirrorLag'
+      type: array
+    MirrorLag:
+      properties:
+        partition:
+          type: integer
+        items:
+          type: integer
+      required:
+      - lag
+      - partition
+      type: object

@@ -1,15 +1,16 @@
-# AlterMirrorStatusResponseData
+# ListMirrorTopicsResponseDataAllOf1
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kind** | **string** |  | 
-**Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
+**LinkName** | **string** |  | 
 **DestinationTopicName** | **string** |  | 
-**ErrorMessage** | Pointer to **string** |  | 
-**ErrorCode** | Pointer to **int32** |  | 
-**MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | [optional] 
+**SourceTopicName** | **string** |  | 
+**NumPartitions** | **int32** |  | 
+**MirrorLags** | [**MirrorLags**](MirrorLags.md) |  | 
+**MirrorTopicStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 
+**StateTimeMs** | **int32** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

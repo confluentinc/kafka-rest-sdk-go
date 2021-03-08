@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
  - [ListMirrorTopicsResponseDataAllOf](docs/ListMirrorTopicsResponseDataAllOf.md)
  - [ListMirrorTopicsResponseDataList](docs/ListMirrorTopicsResponseDataList.md)
  - [ListMirrorTopicsResponseDataListAllOf](docs/ListMirrorTopicsResponseDataListAllOf.md)
+ - [MirrorLag](docs/MirrorLag.md)
  - [MirrorTopicStatus](docs/MirrorTopicStatus.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)
