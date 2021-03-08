@@ -2484,12 +2484,12 @@ paths:
                   name: consumer.offset.sync.ms
                   value: "3825940"
                   default: false
-                  cluster_id: "cluster-1"
+                  cluster_id: cluster-1
                   read_only: false
                   sensitive: false
                   source: DYNAMIC_CLUSTER_LINK_CONFIG
                   synonyms:
-                  - "cosm"
+                  - cosm
                   link_name: link-db-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 - kind: KafkaLinkConfigData
@@ -2499,12 +2499,12 @@ paths:
                   name: acl.sync.ms
                   value: "5000"
                   default: false
-                  cluster_id: "cluster-1"
+                  cluster_id: cluster-1
                   read_only: false
                   sensitive: false
                   source: DYNAMIC_CLUSTER_LINK_CONFIG
                   synonyms:
-                  - "asm"
+                  - asm
                   link_name: link-db-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
               schema:
@@ -2589,7 +2589,7 @@ paths:
                 metadata:
                   self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
                   resource_name: null
-                cluster_id: "cluster-1"
+                cluster_id: cluster-1
                 name: consumer.offset.sync.ms
                 value: "3825940"
                 default: false
@@ -2597,7 +2597,7 @@ paths:
                 sensitive: false
                 source: DYNAMIC_CLUSTER_LINK_CONFIG
                 synonyms:
-                - "cosm"
+                - cosm
                 link_name: link-db-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 topics:
@@ -2912,12 +2912,12 @@ paths:
                 destination_topic_name: topic-1
                 num_partitions: 3
                 mirror_lags:
-                  - partition: 0
-                    lag: 0
-                  - partition: 1
-                    lag: 10000
-                  - partition: 2
-                    lag: 40000
+                - partition: 0
+                  lag: 0
+                - partition: 1
+                  lag: 10000
+                - partition: 2
+                  lag: 40000
                 source_topic_name: topic-1
                 mirror_topic_status: active
                 state_time_ms: 1612550939300
@@ -4702,12 +4702,12 @@ components:
               source_topic_name: topic-1
               num_partitions: 3
               mirror_lags:
-                - partition: 0
-                  lag: 0
-                - partition: 1
-                  lag: 10000
-                - partition: 2
-                  lag: 40000
+              - partition: 0
+                lag: 0
+              - partition: 1
+                lag: 10000
+              - partition: 2
+                lag: 40000
               mirror_topic_status: active
               state_time_ms: 1612550939300
             - kind: KafkaMirrorData
@@ -4720,12 +4720,12 @@ components:
               source_topic_name: topic-2
               num_partitions: 3
               mirror_lags:
-                - partition: 0
-                  lag: 0
-                - partition: 1
-                  lag: 10000
-                - partition: 2
-                  lag: 40000
+              - partition: 0
+                lag: 0
+              - partition: 1
+                lag: 10000
+              - partition: 2
+                lag: 40000
               mirror_topic_status: stopped
               state_time_ms: 1612551353640
           schema:
@@ -4744,12 +4744,12 @@ components:
             source_topic_name: topic-1
             num_partitions: 3
             mirror_lags:
-              - partition: 0
-                lag: 0
-              - partition: 1
-                lag: 10000
-              - partition: 2
-                lag: 40000
+            - partition: 0
+              lag: 0
+            - partition: 1
+              lag: 10000
+            - partition: 2
+              lag: 40000
             mirror_topic_status: active
             state_time_ms: 1612550939300
           schema:
