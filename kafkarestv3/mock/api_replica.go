@@ -5,23 +5,22 @@
 package mock
 
 import (
+	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
-
-	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ReplicaApi is a mock of ReplicaApi interface
 type ReplicaApi struct {
 	lockClustersClusterIdBrokersBrokerIdPartitionReplicasGet sync.Mutex
-	ClustersClusterIdBrokersBrokerIdPartitionReplicasGetFunc func(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdPartitionReplicasGetFunc func(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.ReplicaDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGetFunc func(ctx context.Context, clusterId, topicName string, partitionId, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaData, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGetFunc func(ctx context.Context, clusterId, topicName string, partitionId, brokerId int32) (command_line_arguments.ReplicaData, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReplicaDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBrokersBrokerIdPartitionReplicasGet []struct {
@@ -46,7 +45,7 @@ type ReplicaApi struct {
 }
 
 // ClustersClusterIdBrokersBrokerIdPartitionReplicasGet mocks base method by wrapping the associated func.
-func (m *ReplicaApi) ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaDataList, *net_http.Response, error) {
+func (m *ReplicaApi) ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.ReplicaDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdPartitionReplicasGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdPartitionReplicasGet.Unlock()
 
@@ -90,7 +89,7 @@ func (m *ReplicaApi) ClustersClusterIdBrokersBrokerIdPartitionReplicasGetCalls()
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet mocks base method by wrapping the associated func.
-func (m *ReplicaApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet(ctx context.Context, clusterId, topicName string, partitionId, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaData, *net_http.Response, error) {
+func (m *ReplicaApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet(ctx context.Context, clusterId, topicName string, partitionId, brokerId int32) (command_line_arguments.ReplicaData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet.Unlock()
 
@@ -140,7 +139,7 @@ func (m *ReplicaApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplic
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet mocks base method by wrapping the associated func.
-func (m *ReplicaApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaDataList, *net_http.Response, error) {
+func (m *ReplicaApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReplicaDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet.Unlock()
 

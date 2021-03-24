@@ -5,31 +5,40 @@
 package mock
 
 import (
+	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
-
-	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // PartitionApi is a mock of PartitionApi interface
 type PartitionApi struct {
+	lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet sync.Mutex
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetFunc func(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (command_line_arguments.ConsumerLagData, *net_http.Response, error)
+
 	lockClustersClusterIdTopicsPartitionsReassignmentGet sync.Mutex
-	ClustersClusterIdTopicsPartitionsReassignmentGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsPartitionsReassignmentGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.ReassignmentDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsGetFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsGetFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.PartitionDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionData, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.PartitionData, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentData, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReassignmentData, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsReassignmentGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsReassignmentGetFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsReassignmentGetFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.ReassignmentDataList, *net_http.Response, error)
 
 	calls struct {
+		ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet []struct {
+			Ctx             context.Context
+			ClusterId       string
+			ConsumerGroupId string
+			TopicName       string
+			PartitionId     int32
+		}
 		ClustersClusterIdTopicsPartitionsReassignmentGet []struct {
 			Ctx       context.Context
 			ClusterId string
@@ -59,8 +68,58 @@ type PartitionApi struct {
 	}
 }
 
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet mocks base method by wrapping the associated func.
+func (m *PartitionApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (command_line_arguments.ConsumerLagData, *net_http.Response, error) {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Unlock()
+
+	if m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetFunc == nil {
+		panic("mocker: PartitionApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetFunc is nil but PartitionApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet was called.")
+	}
+
+	call := struct {
+		Ctx             context.Context
+		ClusterId       string
+		ConsumerGroupId string
+		TopicName       string
+		PartitionId     int32
+	}{
+		Ctx:             ctx,
+		ClusterId:       clusterId,
+		ConsumerGroupId: consumerGroupId,
+		TopicName:       topicName,
+		PartitionId:     partitionId,
+	}
+
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet = append(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet, call)
+
+	return m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetFunc(ctx, clusterId, consumerGroupId, topicName, partitionId)
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetCalled returns true if ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet was called at least once.
+func (m *PartitionApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetCalled() bool {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Unlock()
+
+	return len(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet) > 0
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetCalls returns the calls made to ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.
+func (m *PartitionApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGetCalls() []struct {
+	Ctx             context.Context
+	ClusterId       string
+	ConsumerGroupId string
+	TopicName       string
+	PartitionId     int32
+} {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Unlock()
+
+	return m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet
+}
+
 // ClustersClusterIdTopicsPartitionsReassignmentGet mocks base method by wrapping the associated func.
-func (m *PartitionApi) ClustersClusterIdTopicsPartitionsReassignmentGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentDataList, *net_http.Response, error) {
+func (m *PartitionApi) ClustersClusterIdTopicsPartitionsReassignmentGet(ctx context.Context, clusterId string) (command_line_arguments.ReassignmentDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsPartitionsReassignmentGet.Lock()
 	defer m.lockClustersClusterIdTopicsPartitionsReassignmentGet.Unlock()
 
@@ -101,7 +160,7 @@ func (m *PartitionApi) ClustersClusterIdTopicsPartitionsReassignmentGetCalls() [
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsGet mocks base method by wrapping the associated func.
-func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsGet(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionDataList, *net_http.Response, error) {
+func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsGet(ctx context.Context, clusterId, topicName string) (command_line_arguments.PartitionDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsGet.Unlock()
 
@@ -145,7 +204,7 @@ func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsGetCalls() []st
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet mocks base method by wrapping the associated func.
-func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionData, *net_http.Response, error) {
+func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.PartitionData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdGet.Unlock()
 
@@ -192,7 +251,7 @@ func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdGetC
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet mocks base method by wrapping the associated func.
-func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentData, *net_http.Response, error) {
+func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReassignmentData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet.Unlock()
 
@@ -239,7 +298,7 @@ func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReas
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet mocks base method by wrapping the associated func.
-func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReassignmentDataList, *net_http.Response, error) {
+func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet(ctx context.Context, clusterId, topicName string) (command_line_arguments.ReassignmentDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsReassignmentGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsReassignmentGet.Unlock()
 
@@ -284,6 +343,9 @@ func (m *PartitionApi) ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet
 
 // Reset resets the calls made to the mocked methods.
 func (m *PartitionApi) Reset() {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Lock()
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet = nil
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsTopicNamePartitionsPartitionIdGet.Unlock()
 	m.lockClustersClusterIdTopicsPartitionsReassignmentGet.Lock()
 	m.calls.ClustersClusterIdTopicsPartitionsReassignmentGet = nil
 	m.lockClustersClusterIdTopicsPartitionsReassignmentGet.Unlock()

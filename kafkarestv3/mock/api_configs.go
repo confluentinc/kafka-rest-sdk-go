@@ -5,59 +5,58 @@
 package mock
 
 import (
+	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
-
-	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ConfigsApi is a mock of ConfigsApi interface
 type ConfigsApi struct {
 	lockClustersClusterIdBrokerConfigsGet sync.Mutex
-	ClustersClusterIdBrokerConfigsGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterConfigDataList, *net_http.Response, error)
+	ClustersClusterIdBrokerConfigsGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.ClusterConfigDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokerConfigsNameDelete sync.Mutex
 	ClustersClusterIdBrokerConfigsNameDeleteFunc func(ctx context.Context, clusterId, name string) (*net_http.Response, error)
 
 	lockClustersClusterIdBrokerConfigsNameGet sync.Mutex
-	ClustersClusterIdBrokerConfigsNameGetFunc func(ctx context.Context, clusterId, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterConfigData, *net_http.Response, error)
+	ClustersClusterIdBrokerConfigsNameGetFunc func(ctx context.Context, clusterId, name string) (command_line_arguments.ClusterConfigData, *net_http.Response, error)
 
 	lockClustersClusterIdBrokerConfigsNamePut sync.Mutex
-	ClustersClusterIdBrokerConfigsNamePutFunc func(ctx context.Context, clusterId, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsNamePutOpts) (*net_http.Response, error)
+	ClustersClusterIdBrokerConfigsNamePutFunc func(ctx context.Context, clusterId, name string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsNamePutOpts) (*net_http.Response, error)
 
 	lockClustersClusterIdBrokerConfigsalterPost sync.Mutex
-	ClustersClusterIdBrokerConfigsalterPostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsalterPostOpts) (*net_http.Response, error)
+	ClustersClusterIdBrokerConfigsalterPostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsalterPostOpts) (*net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdConfigsGet sync.Mutex
-	ClustersClusterIdBrokersBrokerIdConfigsGetFunc func(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerConfigDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdConfigsGetFunc func(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerConfigDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdConfigsNameDelete sync.Mutex
 	ClustersClusterIdBrokersBrokerIdConfigsNameDeleteFunc func(ctx context.Context, clusterId string, brokerId int32, name string) (*net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdConfigsNameGet sync.Mutex
-	ClustersClusterIdBrokersBrokerIdConfigsNameGetFunc func(ctx context.Context, clusterId string, brokerId int32, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerConfigData, *net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdConfigsNameGetFunc func(ctx context.Context, clusterId string, brokerId int32, name string) (command_line_arguments.BrokerConfigData, *net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdConfigsNamePut sync.Mutex
-	ClustersClusterIdBrokersBrokerIdConfigsNamePutFunc func(ctx context.Context, clusterId string, brokerId int32, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdConfigsNamePutFunc func(ctx context.Context, clusterId string, brokerId int32, name string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdConfigsalterPost sync.Mutex
-	ClustersClusterIdBrokersBrokerIdConfigsalterPostFunc func(ctx context.Context, clusterId string, brokerId int32, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdConfigsalterPostFunc func(ctx context.Context, clusterId string, brokerId int32, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameConfigsGet sync.Mutex
-	ClustersClusterIdTopicsTopicNameConfigsGetFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicConfigDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameConfigsGetFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicConfigDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameConfigsNameDelete sync.Mutex
 	ClustersClusterIdTopicsTopicNameConfigsNameDeleteFunc func(ctx context.Context, clusterId, topicName, name string) (*net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameConfigsNameGet sync.Mutex
-	ClustersClusterIdTopicsTopicNameConfigsNameGetFunc func(ctx context.Context, clusterId, topicName, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicConfigData, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameConfigsNameGetFunc func(ctx context.Context, clusterId, topicName, name string) (command_line_arguments.TopicConfigData, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameConfigsNamePut sync.Mutex
-	ClustersClusterIdTopicsTopicNameConfigsNamePutFunc func(ctx context.Context, clusterId, topicName, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameConfigsNamePutFunc func(ctx context.Context, clusterId, topicName, name string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameConfigsalterPost sync.Mutex
-	ClustersClusterIdTopicsTopicNameConfigsalterPostFunc func(ctx context.Context, clusterId, topicName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameConfigsalterPostFunc func(ctx context.Context, clusterId, topicName string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBrokerConfigsGet []struct {
@@ -78,12 +77,12 @@ type ConfigsApi struct {
 			Ctx               context.Context
 			ClusterId         string
 			Name              string
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsNamePutOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsNamePutOpts
 		}
 		ClustersClusterIdBrokerConfigsalterPost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsalterPostOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsalterPostOpts
 		}
 		ClustersClusterIdBrokersBrokerIdConfigsGet []struct {
 			Ctx       context.Context
@@ -107,13 +106,13 @@ type ConfigsApi struct {
 			ClusterId         string
 			BrokerId          int32
 			Name              string
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
 		}
 		ClustersClusterIdBrokersBrokerIdConfigsalterPost []struct {
 			Ctx               context.Context
 			ClusterId         string
 			BrokerId          int32
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
 		}
 		ClustersClusterIdTopicsTopicNameConfigsGet []struct {
 			Ctx       context.Context
@@ -137,19 +136,19 @@ type ConfigsApi struct {
 			ClusterId         string
 			TopicName         string
 			Name              string
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
 		}
 		ClustersClusterIdTopicsTopicNameConfigsalterPost []struct {
 			Ctx               context.Context
 			ClusterId         string
 			TopicName         string
-			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
+			LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
 		}
 	}
 }
 
 // ClustersClusterIdBrokerConfigsGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokerConfigsGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterConfigDataList, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokerConfigsGet(ctx context.Context, clusterId string) (command_line_arguments.ClusterConfigDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerConfigsGet.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsGet.Unlock()
 
@@ -234,7 +233,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNameDeleteCalls() []struct {
 }
 
 // ClustersClusterIdBrokerConfigsNameGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNameGet(ctx context.Context, clusterId, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterConfigData, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNameGet(ctx context.Context, clusterId, name string) (command_line_arguments.ClusterConfigData, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerConfigsNameGet.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsNameGet.Unlock()
 
@@ -278,7 +277,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNameGetCalls() []struct {
 }
 
 // ClustersClusterIdBrokerConfigsNamePut mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNamePut(ctx context.Context, clusterId, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsNamePutOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNamePut(ctx context.Context, clusterId, name string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsNamePutOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdBrokerConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsNamePut.Unlock()
 
@@ -290,7 +289,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNamePut(ctx context.Context, 
 		Ctx               context.Context
 		ClusterId         string
 		Name              string
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsNamePutOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsNamePutOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -316,7 +315,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNamePutCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	Name              string
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsNamePutOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsNamePutOpts
 } {
 	m.lockClustersClusterIdBrokerConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsNamePut.Unlock()
@@ -325,7 +324,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsNamePutCalls() []struct {
 }
 
 // ClustersClusterIdBrokerConfigsalterPost mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsalterPostOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsalterPostOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdBrokerConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsalterPost.Unlock()
 
@@ -336,7 +335,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPost(ctx context.Context
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsalterPostOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsalterPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -360,7 +359,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPostCalled() bool {
 func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerConfigsalterPostOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerConfigsalterPostOpts
 } {
 	m.lockClustersClusterIdBrokerConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdBrokerConfigsalterPost.Unlock()
@@ -369,7 +368,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokerConfigsalterPostCalls() []struct {
 }
 
 // ClustersClusterIdBrokersBrokerIdConfigsGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsGet(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerConfigDataList, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsGet(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerConfigDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsGet.Unlock()
 
@@ -460,7 +459,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNameDeleteCalls() []
 }
 
 // ClustersClusterIdBrokersBrokerIdConfigsNameGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx context.Context, clusterId string, brokerId int32, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerConfigData, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx context.Context, clusterId string, brokerId int32, name string) (command_line_arguments.BrokerConfigData, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsNameGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsNameGet.Unlock()
 
@@ -507,7 +506,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNameGetCalls() []str
 }
 
 // ClustersClusterIdBrokersBrokerIdConfigsNamePut mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx context.Context, clusterId string, brokerId int32, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx context.Context, clusterId string, brokerId int32, name string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsNamePut.Unlock()
 
@@ -520,7 +519,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx context.
 		ClusterId         string
 		BrokerId          int32
 		Name              string
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -548,7 +547,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNamePutCalls() []str
 	ClusterId         string
 	BrokerId          int32
 	Name              string
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts
 } {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsNamePut.Unlock()
@@ -557,7 +556,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsNamePutCalls() []str
 }
 
 // ClustersClusterIdBrokersBrokerIdConfigsalterPost mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx context.Context, clusterId string, brokerId int32, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx context.Context, clusterId string, brokerId int32, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsalterPost.Unlock()
 
@@ -569,7 +568,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx contex
 		Ctx               context.Context
 		ClusterId         string
 		BrokerId          int32
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -595,7 +594,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsalterPostCalls() []s
 	Ctx               context.Context
 	ClusterId         string
 	BrokerId          int32
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts
 } {
 	m.lockClustersClusterIdBrokersBrokerIdConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdConfigsalterPost.Unlock()
@@ -604,7 +603,7 @@ func (m *ConfigsApi) ClustersClusterIdBrokersBrokerIdConfigsalterPostCalls() []s
 }
 
 // ClustersClusterIdTopicsTopicNameConfigsGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsGet(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicConfigDataList, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsGet(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicConfigDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameConfigsGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsGet.Unlock()
 
@@ -695,7 +694,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNameDeleteCalls() []
 }
 
 // ClustersClusterIdTopicsTopicNameConfigsNameGet mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx context.Context, clusterId, topicName, name string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicConfigData, *net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx context.Context, clusterId, topicName, name string) (command_line_arguments.TopicConfigData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameConfigsNameGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsNameGet.Unlock()
 
@@ -742,7 +741,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNameGetCalls() []str
 }
 
 // ClustersClusterIdTopicsTopicNameConfigsNamePut mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx context.Context, clusterId, topicName, name string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx context.Context, clusterId, topicName, name string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsNamePut.Unlock()
 
@@ -755,7 +754,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx context.
 		ClusterId         string
 		TopicName         string
 		Name              string
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -783,7 +782,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNamePutCalls() []str
 	ClusterId         string
 	TopicName         string
 	Name              string
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsNamePutOpts
 } {
 	m.lockClustersClusterIdTopicsTopicNameConfigsNamePut.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsNamePut.Unlock()
@@ -792,7 +791,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsNamePutCalls() []str
 }
 
 // ClustersClusterIdTopicsTopicNameConfigsalterPost mocks base method by wrapping the associated func.
-func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx context.Context, clusterId, topicName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*net_http.Response, error) {
+func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx context.Context, clusterId, topicName string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsalterPost.Unlock()
 
@@ -804,7 +803,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx contex
 		Ctx               context.Context
 		ClusterId         string
 		TopicName         string
-		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
+		LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -830,7 +829,7 @@ func (m *ConfigsApi) ClustersClusterIdTopicsTopicNameConfigsalterPostCalls() []s
 	Ctx               context.Context
 	ClusterId         string
 	TopicName         string
-	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
+	LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameConfigsalterPostOpts
 } {
 	m.lockClustersClusterIdTopicsTopicNameConfigsalterPost.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameConfigsalterPost.Unlock()

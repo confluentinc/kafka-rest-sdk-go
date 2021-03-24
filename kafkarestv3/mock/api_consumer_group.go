@@ -5,32 +5,37 @@
 package mock
 
 import (
+	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
-
-	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ConsumerGroupApi is a mock of ConsumerGroupApi interface
 type ConsumerGroupApi struct {
 	lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet sync.Mutex
-	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentDataList, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerAssignmentDataList, *net_http.Response, error)
 
 	lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet sync.Mutex
-	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentData, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (command_line_arguments.ConsumerAssignmentData, *net_http.Response, error)
 
 	lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet sync.Mutex
-	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerData, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGetFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerData, *net_http.Response, error)
 
 	lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet sync.Mutex
-	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerDataList, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerDataList, *net_http.Response, error)
 
 	lockClustersClusterIdConsumerGroupsConsumerGroupIdGet sync.Mutex
-	ClustersClusterIdConsumerGroupsConsumerGroupIdGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupData, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsConsumerGroupIdGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupData, *net_http.Response, error)
+
+	lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet sync.Mutex
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupLagSummaryData, *net_http.Response, error)
+
+	lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet sync.Mutex
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerLagDataList, *net_http.Response, error)
 
 	lockClustersClusterIdConsumerGroupsGet sync.Mutex
-	ClustersClusterIdConsumerGroupsGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupDataList, *net_http.Response, error)
+	ClustersClusterIdConsumerGroupsGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.ConsumerGroupDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet []struct {
@@ -63,6 +68,16 @@ type ConsumerGroupApi struct {
 			ClusterId       string
 			ConsumerGroupId string
 		}
+		ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet []struct {
+			Ctx             context.Context
+			ClusterId       string
+			ConsumerGroupId string
+		}
+		ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet []struct {
+			Ctx             context.Context
+			ClusterId       string
+			ConsumerGroupId string
+		}
 		ClustersClusterIdConsumerGroupsGet []struct {
 			Ctx       context.Context
 			ClusterId string
@@ -71,7 +86,7 @@ type ConsumerGroupApi struct {
 }
 
 // ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentDataList, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerAssignmentDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet.Unlock()
 
@@ -118,7 +133,7 @@ func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsume
 }
 
 // ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentData, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (command_line_arguments.ConsumerAssignmentData, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet.Unlock()
 
@@ -171,7 +186,7 @@ func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsume
 }
 
 // ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerData, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerData, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet.Unlock()
 
@@ -218,7 +233,7 @@ func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsume
 }
 
 // ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerDataList, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet.Unlock()
 
@@ -262,7 +277,7 @@ func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdConsume
 }
 
 // ClustersClusterIdConsumerGroupsConsumerGroupIdGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupData, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupData, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdGet.Unlock()
 
@@ -305,8 +320,96 @@ func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdGetCall
 	return m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdGet
 }
 
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet mocks base method by wrapping the associated func.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupLagSummaryData, *net_http.Response, error) {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Unlock()
+
+	if m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetFunc == nil {
+		panic("mocker: ConsumerGroupApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetFunc is nil but ConsumerGroupApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet was called.")
+	}
+
+	call := struct {
+		Ctx             context.Context
+		ClusterId       string
+		ConsumerGroupId string
+	}{
+		Ctx:             ctx,
+		ClusterId:       clusterId,
+		ConsumerGroupId: consumerGroupId,
+	}
+
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet = append(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet, call)
+
+	return m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetFunc(ctx, clusterId, consumerGroupId)
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetCalled returns true if ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet was called at least once.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetCalled() bool {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Unlock()
+
+	return len(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet) > 0
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetCalls returns the calls made to ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGetCalls() []struct {
+	Ctx             context.Context
+	ClusterId       string
+	ConsumerGroupId string
+} {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Unlock()
+
+	return m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet mocks base method by wrapping the associated func.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerLagDataList, *net_http.Response, error) {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Unlock()
+
+	if m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetFunc == nil {
+		panic("mocker: ConsumerGroupApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetFunc is nil but ConsumerGroupApi.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet was called.")
+	}
+
+	call := struct {
+		Ctx             context.Context
+		ClusterId       string
+		ConsumerGroupId string
+	}{
+		Ctx:             ctx,
+		ClusterId:       clusterId,
+		ConsumerGroupId: consumerGroupId,
+	}
+
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet = append(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet, call)
+
+	return m.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetFunc(ctx, clusterId, consumerGroupId)
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetCalled returns true if ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet was called at least once.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetCalled() bool {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Unlock()
+
+	return len(m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet) > 0
+}
+
+// ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetCalls returns the calls made to ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGetCalls() []struct {
+	Ctx             context.Context
+	ClusterId       string
+	ConsumerGroupId string
+} {
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Lock()
+	defer m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Unlock()
+
+	return m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet
+}
+
 // ClustersClusterIdConsumerGroupsGet mocks base method by wrapping the associated func.
-func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupDataList, *net_http.Response, error) {
+func (m *ConsumerGroupApi) ClustersClusterIdConsumerGroupsGet(ctx context.Context, clusterId string) (command_line_arguments.ConsumerGroupDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdConsumerGroupsGet.Lock()
 	defer m.lockClustersClusterIdConsumerGroupsGet.Unlock()
 
@@ -363,6 +466,12 @@ func (m *ConsumerGroupApi) Reset() {
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdGet.Lock()
 	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdGet = nil
 	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdGet.Unlock()
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Lock()
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet = nil
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet.Unlock()
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Lock()
+	m.calls.ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet = nil
+	m.lockClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet.Unlock()
 	m.lockClustersClusterIdConsumerGroupsGet.Lock()
 	m.calls.ClustersClusterIdConsumerGroupsGet = nil
 	m.lockClustersClusterIdConsumerGroupsGet.Unlock()
