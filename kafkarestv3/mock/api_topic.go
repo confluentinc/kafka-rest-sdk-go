@@ -5,25 +5,26 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // TopicApi is a mock of TopicApi interface
 type TopicApi struct {
 	lockClustersClusterIdTopicsGet sync.Mutex
-	ClustersClusterIdTopicsGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.TopicDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsPost sync.Mutex
-	ClustersClusterIdTopicsPostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsPostOpts) (command_line_arguments.TopicData, *net_http.Response, error)
+	ClustersClusterIdTopicsPostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsPostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameDelete sync.Mutex
 	ClustersClusterIdTopicsTopicNameDeleteFunc func(ctx context.Context, clusterId, topicName string) (*net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNameGet sync.Mutex
-	ClustersClusterIdTopicsTopicNameGetFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicData, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameGetFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdTopicsGet []struct {
@@ -33,7 +34,7 @@ type TopicApi struct {
 		ClustersClusterIdTopicsPost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsPostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsPostOpts
 		}
 		ClustersClusterIdTopicsTopicNameDelete []struct {
 			Ctx       context.Context
@@ -49,7 +50,7 @@ type TopicApi struct {
 }
 
 // ClustersClusterIdTopicsGet mocks base method by wrapping the associated func.
-func (m *TopicApi) ClustersClusterIdTopicsGet(ctx context.Context, clusterId string) (command_line_arguments.TopicDataList, *net_http.Response, error) {
+func (m *TopicApi) ClustersClusterIdTopicsGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsGet.Lock()
 	defer m.lockClustersClusterIdTopicsGet.Unlock()
 
@@ -90,7 +91,7 @@ func (m *TopicApi) ClustersClusterIdTopicsGetCalls() []struct {
 }
 
 // ClustersClusterIdTopicsPost mocks base method by wrapping the associated func.
-func (m *TopicApi) ClustersClusterIdTopicsPost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsPostOpts) (command_line_arguments.TopicData, *net_http.Response, error) {
+func (m *TopicApi) ClustersClusterIdTopicsPost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsPostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsPost.Lock()
 	defer m.lockClustersClusterIdTopicsPost.Unlock()
 
@@ -101,7 +102,7 @@ func (m *TopicApi) ClustersClusterIdTopicsPost(ctx context.Context, clusterId st
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsPostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -125,7 +126,7 @@ func (m *TopicApi) ClustersClusterIdTopicsPostCalled() bool {
 func (m *TopicApi) ClustersClusterIdTopicsPostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsPostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsPostOpts
 } {
 	m.lockClustersClusterIdTopicsPost.Lock()
 	defer m.lockClustersClusterIdTopicsPost.Unlock()
@@ -178,7 +179,7 @@ func (m *TopicApi) ClustersClusterIdTopicsTopicNameDeleteCalls() []struct {
 }
 
 // ClustersClusterIdTopicsTopicNameGet mocks base method by wrapping the associated func.
-func (m *TopicApi) ClustersClusterIdTopicsTopicNameGet(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicData, *net_http.Response, error) {
+func (m *TopicApi) ClustersClusterIdTopicsTopicNameGet(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameGet.Unlock()
 

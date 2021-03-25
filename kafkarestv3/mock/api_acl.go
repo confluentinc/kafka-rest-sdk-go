@@ -5,44 +5,45 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ACLApi is a mock of ACLApi interface
 type ACLApi struct {
 	lockClustersClusterIdAclsDelete sync.Mutex
-	ClustersClusterIdAclsDeleteFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsDeleteOpts) (command_line_arguments.InlineResponse200, *net_http.Response, error)
+	ClustersClusterIdAclsDeleteFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsDeleteOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.InlineResponse200, *net_http.Response, error)
 
 	lockClustersClusterIdAclsGet sync.Mutex
-	ClustersClusterIdAclsGetFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsGetOpts) (command_line_arguments.AclDataList, *net_http.Response, error)
+	ClustersClusterIdAclsGetFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsGetOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AclDataList, *net_http.Response, error)
 
 	lockClustersClusterIdAclsPost sync.Mutex
-	ClustersClusterIdAclsPostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsPostOpts) (*net_http.Response, error)
+	ClustersClusterIdAclsPostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsPostOpts) (*net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdAclsDelete []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsDeleteOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsDeleteOpts
 		}
 		ClustersClusterIdAclsGet []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsGetOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsGetOpts
 		}
 		ClustersClusterIdAclsPost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsPostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsPostOpts
 		}
 	}
 }
 
 // ClustersClusterIdAclsDelete mocks base method by wrapping the associated func.
-func (m *ACLApi) ClustersClusterIdAclsDelete(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsDeleteOpts) (command_line_arguments.InlineResponse200, *net_http.Response, error) {
+func (m *ACLApi) ClustersClusterIdAclsDelete(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsDeleteOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.InlineResponse200, *net_http.Response, error) {
 	m.lockClustersClusterIdAclsDelete.Lock()
 	defer m.lockClustersClusterIdAclsDelete.Unlock()
 
@@ -53,7 +54,7 @@ func (m *ACLApi) ClustersClusterIdAclsDelete(ctx context.Context, clusterId stri
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsDeleteOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsDeleteOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -77,7 +78,7 @@ func (m *ACLApi) ClustersClusterIdAclsDeleteCalled() bool {
 func (m *ACLApi) ClustersClusterIdAclsDeleteCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsDeleteOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsDeleteOpts
 } {
 	m.lockClustersClusterIdAclsDelete.Lock()
 	defer m.lockClustersClusterIdAclsDelete.Unlock()
@@ -86,7 +87,7 @@ func (m *ACLApi) ClustersClusterIdAclsDeleteCalls() []struct {
 }
 
 // ClustersClusterIdAclsGet mocks base method by wrapping the associated func.
-func (m *ACLApi) ClustersClusterIdAclsGet(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsGetOpts) (command_line_arguments.AclDataList, *net_http.Response, error) {
+func (m *ACLApi) ClustersClusterIdAclsGet(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsGetOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AclDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdAclsGet.Lock()
 	defer m.lockClustersClusterIdAclsGet.Unlock()
 
@@ -97,7 +98,7 @@ func (m *ACLApi) ClustersClusterIdAclsGet(ctx context.Context, clusterId string,
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsGetOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsGetOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -121,7 +122,7 @@ func (m *ACLApi) ClustersClusterIdAclsGetCalled() bool {
 func (m *ACLApi) ClustersClusterIdAclsGetCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsGetOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsGetOpts
 } {
 	m.lockClustersClusterIdAclsGet.Lock()
 	defer m.lockClustersClusterIdAclsGet.Unlock()
@@ -130,7 +131,7 @@ func (m *ACLApi) ClustersClusterIdAclsGetCalls() []struct {
 }
 
 // ClustersClusterIdAclsPost mocks base method by wrapping the associated func.
-func (m *ACLApi) ClustersClusterIdAclsPost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdAclsPostOpts) (*net_http.Response, error) {
+func (m *ACLApi) ClustersClusterIdAclsPost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsPostOpts) (*net_http.Response, error) {
 	m.lockClustersClusterIdAclsPost.Lock()
 	defer m.lockClustersClusterIdAclsPost.Unlock()
 
@@ -141,7 +142,7 @@ func (m *ACLApi) ClustersClusterIdAclsPost(ctx context.Context, clusterId string
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsPostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -165,7 +166,7 @@ func (m *ACLApi) ClustersClusterIdAclsPostCalled() bool {
 func (m *ACLApi) ClustersClusterIdAclsPostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdAclsPostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdAclsPostOpts
 } {
 	m.lockClustersClusterIdAclsPost.Lock()
 	defer m.lockClustersClusterIdAclsPost.Unlock()
