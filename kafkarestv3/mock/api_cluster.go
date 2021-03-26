@@ -5,19 +5,20 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ClusterApi is a mock of ClusterApi interface
 type ClusterApi struct {
 	lockClustersClusterIdGet sync.Mutex
-	ClustersClusterIdGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.ClusterData, *net_http.Response, error)
+	ClustersClusterIdGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterData, *net_http.Response, error)
 
 	lockClustersGet sync.Mutex
-	ClustersGetFunc func(ctx context.Context) (command_line_arguments.ClusterDataList, *net_http.Response, error)
+	ClustersGetFunc func(ctx context.Context) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdGet []struct {
@@ -31,7 +32,7 @@ type ClusterApi struct {
 }
 
 // ClustersClusterIdGet mocks base method by wrapping the associated func.
-func (m *ClusterApi) ClustersClusterIdGet(ctx context.Context, clusterId string) (command_line_arguments.ClusterData, *net_http.Response, error) {
+func (m *ClusterApi) ClustersClusterIdGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterData, *net_http.Response, error) {
 	m.lockClustersClusterIdGet.Lock()
 	defer m.lockClustersClusterIdGet.Unlock()
 
@@ -72,7 +73,7 @@ func (m *ClusterApi) ClustersClusterIdGetCalls() []struct {
 }
 
 // ClustersGet mocks base method by wrapping the associated func.
-func (m *ClusterApi) ClustersGet(ctx context.Context) (command_line_arguments.ClusterDataList, *net_http.Response, error) {
+func (m *ClusterApi) ClustersGet(ctx context.Context) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterDataList, *net_http.Response, error) {
 	m.lockClustersGet.Lock()
 	defer m.lockClustersGet.Unlock()
 
