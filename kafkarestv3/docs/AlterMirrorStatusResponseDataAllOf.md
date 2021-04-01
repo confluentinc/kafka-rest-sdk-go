@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DestinationTopicName** | **string** |  | 
+**MirrorTopicName** | **string** |  | 
 **ErrorMessage** | Pointer to **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | 
 **MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | [optional] 

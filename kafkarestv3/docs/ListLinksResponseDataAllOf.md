@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterId** | **string** |  | 
+**SourceClusterId** | **string** |  | 
 **LinkName** | **string** |  | 
 **LinkId** | **string** |  | 
 **TopicsNames** | **[]string** |  | [optional] 

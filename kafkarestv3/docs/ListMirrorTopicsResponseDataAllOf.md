@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LinkName** | **string** |  | 
-**DestinationTopicName** | **string** |  | 
+**MirrorTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **NumPartitions** | **int32** |  | 
 **MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | 

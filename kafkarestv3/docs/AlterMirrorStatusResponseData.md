@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
-**DestinationTopicName** | **string** |  | 
+**MirrorTopicName** | **string** |  | 
 **ErrorMessage** | Pointer to **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | 
 **MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | [optional] 

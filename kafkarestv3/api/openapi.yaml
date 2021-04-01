@@ -2303,7 +2303,7 @@ paths:
                   metadata:
                     self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
                     resource_name: null
-                  cluster_id: src-cluster-id
+                  source_cluster_id: src-cluster-id
                   link_name: my-new-link-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                   topic_names:
@@ -2313,7 +2313,7 @@ paths:
                   metadata:
                     self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
                     resource_name: null
-                  cluster_id: src-cluster-id
+                  source_cluster_id: src-cluster-id
                   link_name: my-new-link-2
                   link_id: abced-f7d8-4844-a577-abcdefghijklmnp
                   topic_names:
@@ -2434,7 +2434,7 @@ paths:
                 metadata:
                   self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
                   resource_name: null
-                cluster_id: src-cluster-id
+                source_cluster_id: src-cluster-id
                 link_name: my-new-link-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 topic_names:
@@ -2717,7 +2717,7 @@ paths:
                     self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
                     resource_name: crn:///kafka=cluster-1
                   resource_name: crn:///kafka=cluster-1
-                  destination_topic_name: topic-1
+                  mirror_topic_name: topic-1
                   source_topic_name: topic-1
                   num_partitions: 3
                   link_name: link-1
@@ -2735,7 +2735,7 @@ paths:
                     self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
                     resource_name: crn:///kafka=cluster-1
                   resource_name: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   source_topic_name: topic-2
                   num_partitions: 3
                   link_name: link-1
@@ -2801,7 +2801,7 @@ paths:
                   metadata:
                     self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
                     resource_name: crn:///kafka=cluster-1
-                  destination_topic_name: topic-1
+                  mirror_topic_name: topic-1
                   source_topic_name: topic-1
                   link_name: link-1
                   num_partitions: 3
@@ -2818,7 +2818,7 @@ paths:
                   metadata:
                     self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-2
                     resource_name: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   source_topic_name: topic-2
                   link_name: link-1
                   num_partitions: 3
@@ -2869,7 +2869,7 @@ paths:
       summary: Create a mirror topic
       tags:
       - ClusterLinking
-  /clusters/{cluster_id}/links/{link_name}/mirrors/{destination_topic_name}:
+  /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name}:
     get:
       parameters:
       - description: The Kafka cluster ID.
@@ -2890,11 +2890,11 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Cluster Linking destination topic name
+      - description: Cluster Linking mirror topic name
         example: topic-1
         explode: false
         in: path
-        name: destination_topic_name
+        name: mirror_topic_name
         required: true
         schema:
           type: string
@@ -2909,7 +2909,7 @@ paths:
                   self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
                   resource_name: crn:///kafka=cluster-1
                 link_name: link-1
-                destination_topic_name: topic-1
+                mirror_topic_name: topic-1
                 num_partitions: 3
                 mirror_lags:
                 - partition: 0
@@ -2973,7 +2973,7 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-sb
+                  mirror_topic_name: topic-sb
                   error_code: null
                   error_message: null
                   mirror_lags:
@@ -2987,7 +2987,7 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   error_code: 400
                   error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
@@ -3050,14 +3050,14 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-sb
+                  mirror_topic_name: topic-sb
                   error_code: null
                   error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   error_code: 400
                   error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
@@ -3113,14 +3113,14 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-sb
+                  mirror_topic_name: topic-sb
                   error_code: null
                   error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   error_code: 400
                   error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
@@ -3176,14 +3176,14 @@ paths:
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-sb
+                  mirror_topic_name: topic-sb
                   error_code: null
                   error_message: null
                 - kind: AlterMirrorsData
                   metadata:
                     self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                     resource: crn:///kafka=cluster-1
-                  destination_topic_name: topic-2
+                  mirror_topic_name: topic-2
                   error_code: 400
                   error_message: Topic 'topic-2' has already stopped its mirror from
                     'my-new-link-1'
@@ -3391,12 +3391,12 @@ components:
       schema:
         $ref: '#/components/schemas/MirrorTopicStatus'
       style: form
-    DestinationTopicName:
-      description: Cluster Linking destination topic name
+    MirrorTopicName:
+      description: Cluster Linking mirror topic name
       example: topic-1
       explode: false
       in: path
-      name: destination_topic_name
+      name: mirror_topic_name
       required: true
       schema:
         type: string
@@ -3531,7 +3531,7 @@ components:
       content:
         application/json:
           example:
-            destination_topic_names:
+            mirror_topic_names:
             - topic-1
             - topic-2
             - topic-3
@@ -4579,7 +4579,7 @@ components:
               metadata:
                 self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
                 resource_name: null
-              cluster_id: src-cluster-id
+              source_cluster_id: src-cluster-id
               link_name: my-new-link-1
               link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
               topic_names:
@@ -4589,7 +4589,7 @@ components:
               metadata:
                 self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
                 resource_name: null
-              cluster_id: src-cluster-id
+              source_cluster_id: src-cluster-id
               link_name: my-new-link-2
               link_id: abced-f7d8-4844-a577-abcdefghijklmnp
               topic_names:
@@ -4606,7 +4606,7 @@ components:
             metadata:
               self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
               resource_name: null
-            cluster_id: src-cluster-id
+            source_cluster_id: src-cluster-id
             link_name: my-new-link-1
             link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
             topic_names:
@@ -4698,7 +4698,7 @@ components:
                 resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
               link_name: link-1
-              destination_topic_name: topic-1
+              mirror_topic_name: topic-1
               source_topic_name: topic-1
               num_partitions: 3
               mirror_lags:
@@ -4716,7 +4716,7 @@ components:
                 resource_name: crn:///kafka=cluster-1
               resource_name: crn:///kafka=cluster-1
               link_name: link-1
-              destination_topic_name: topic-2
+              mirror_topic_name: topic-2
               source_topic_name: topic-2
               num_partitions: 3
               mirror_lags:
@@ -4740,7 +4740,7 @@ components:
               self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
               resource_name: crn:///kafka=cluster-1
             link_name: link-1
-            destination_topic_name: topic-1
+            mirror_topic_name: topic-1
             source_topic_name: topic-1
             num_partitions: 3
             mirror_lags:
@@ -4768,14 +4768,14 @@ components:
               metadata:
                 self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
                 resource: crn:///kafka=cluster-1
-              destination_topic_name: topic-sb
+              mirror_topic_name: topic-sb
               error_code: null
               error_message: null
             - kind: AlterMirrorsData
               metadata:
                 self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
                 resource: crn:///kafka=cluster-1
-              destination_topic_name: topic-2
+              mirror_topic_name: topic-2
               error_code: 400
               error_message: Topic 'topic-2' has already stopped its mirror from 'my-new-link-1'
           schema:
@@ -5629,16 +5629,16 @@ components:
       type: object
     AlterMirrorsRequestData:
       example:
-        destination_topic_names:
-        - destination_topic_names
-        - destination_topic_names
+        mirror_topic_names:
+        - mirror_topic_names
+        - mirror_topic_names
       properties:
-        destination_topic_names:
+        mirror_topic_names:
           items:
             type: string
           type: array
       required:
-      - destination_topic_names
+      - mirror_topic_names
       type: object
     ListMirrorTopicsResponseData:
       allOf:
@@ -5674,7 +5674,7 @@ components:
       type: string
     AlterMirrorStatusResponseData_allOf:
       properties:
-        destination_topic_name:
+        mirror_topic_name:
           type: string
         error_message:
           nullable: true
@@ -5687,12 +5687,12 @@ components:
             $ref: '#/components/schemas/MirrorLag'
           type: array
       required:
-      - destination_topic_name
       - error_code
       - error_message
+      - mirror_topic_name
     ListLinksResponseData_allOf:
       properties:
-        cluster_id:
+        source_cluster_id:
           type: string
         link_name:
           type: string
@@ -5703,9 +5703,9 @@ components:
             type: string
           type: array
       required:
-      - cluster_id
       - link_id
       - link_name
+      - source_cluster_id
       - topic_names
     ListMirrorTopicsResponseDataList_allOf:
       properties:
@@ -5719,7 +5719,7 @@ components:
       properties:
         link_name:
           type: string
-        destination_topic_name:
+        mirror_topic_name:
           type: string
         source_topic_name:
           type: string
@@ -5734,9 +5734,9 @@ components:
         state_time_ms:
           type: integer
       required:
-      - destination_topic_name
       - link_name
       - mirror_lags
+      - mirror_topic_name
       - mirror_topic_status
       - num_partitions
       - source_topic_name

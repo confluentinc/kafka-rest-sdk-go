@@ -10,5 +10,5 @@
 package kafkarestv3
 // AlterMirrorsRequestData struct for AlterMirrorsRequestData
 type AlterMirrorsRequestData struct {
-	DestinationTopicNames []string `json:"destination_topic_names"`
+	MirrorTopicNames []string `json:"mirror_topic_names"`
 }

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
-**ClusterId** | **string** |  | 
+**SourceClusterId** | **string** |  | 
 **LinkName** | **string** |  | 
 **LinkId** | **string** |  | 
 **TopicsNames** | **[]string** |  | [optional] 

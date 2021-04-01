@@ -11,7 +11,7 @@ package kafkarestv3
 // ListMirrorTopicsResponseDataAllOf struct for ListMirrorTopicsResponseDataAllOf
 type ListMirrorTopicsResponseDataAllOf struct {
 	LinkName string `json:"link_name"`
-	DestinationTopicName string `json:"destination_topic_name"`
+	MirrorTopicName string `json:"mirror_topic_name"`
 	SourceTopicName string `json:"source_topic_name"`
 	NumPartitions int32 `json:"num_partitions"`
 	MirrorLags []MirrorLag `json:"mirror_lags"`

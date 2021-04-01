@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **LinkName** | **string** |  | 
-**DestinationTopicName** | **string** |  | 
+**MirrorTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **NumPartitions** | **int32** |  | 
 **MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | 
