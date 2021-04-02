@@ -2927,7 +2927,7 @@ paths:
       summary: Describe the mirror topic
       tags:
       - ClusterLinking
-  /clusters/{cluster_id}/links/{link_name}/mirrors/promote:
+  /clusters/{cluster_id}/links/{link_name}/mirrors:promote:
     post:
       parameters:
       - description: The Kafka cluster ID.
@@ -3004,7 +3004,7 @@ paths:
       summary: Promote the mirror topics
       tags:
       - ClusterLinking
-  /clusters/{cluster_id}/links/{link_name}/mirrors/failover:
+  /clusters/{cluster_id}/links/{link_name}/mirrors:failover:
     post:
       parameters:
       - description: The Kafka cluster ID.
@@ -3067,7 +3067,7 @@ paths:
       summary: Failover the mirror topics
       tags:
       - ClusterLinking
-  /clusters/{cluster_id}/links/{link_name}/mirrors/pause:
+  /clusters/{cluster_id}/links/{link_name}/mirrors:pause:
     post:
       parameters:
       - description: The Kafka cluster ID.
@@ -3130,7 +3130,7 @@ paths:
       summary: Pause the mirror topics
       tags:
       - ClusterLinking
-  /clusters/{cluster_id}/links/{link_name}/mirrors/resume:
+  /clusters/{cluster_id}/links/{link_name}/mirrors:resume:
     post:
       parameters:
       - description: The Kafka cluster ID.

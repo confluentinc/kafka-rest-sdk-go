@@ -12,13 +12,13 @@ Method | HTTP request | Description
 [**ClustersClusterIdLinksLinkNameConfigsalterPut**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameConfigsalterPut) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Link Configs
 [**ClustersClusterIdLinksLinkNameDelete**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameDelete) | **Delete** /clusters/{cluster_id}/links/{link_name} | Delete the cluster link
 [**ClustersClusterIdLinksLinkNameGet**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameGet) | **Get** /clusters/{cluster_id}/links/{link_name} | Describe the cluster link
-[**ClustersClusterIdLinksLinkNameMirrorsFailoverPost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsFailoverPost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/failover | Failover the mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsGet**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsGet) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name} | Describe the mirror topic
-[**ClustersClusterIdLinksLinkNameMirrorsPausePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPausePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/pause | Pause the mirror topics
 [**ClustersClusterIdLinksLinkNameMirrorsPost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
-[**ClustersClusterIdLinksLinkNameMirrorsPromotePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsPromotePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/promote | Promote the mirror topics
-[**ClustersClusterIdLinksLinkNameMirrorsResumePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsResumePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors/resume | Resume the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorsfailoverPost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsfailoverPost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorspausePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorspausePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorspromotePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorspromotePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
+[**ClustersClusterIdLinksLinkNameMirrorsresumePost**](ClusterLinkingApi.md#ClustersClusterIdLinksLinkNameMirrorsresumePost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:resume | Resume the mirror topics
 [**ClustersClusterIdLinksMirrorsGet**](ClusterLinkingApi.md#ClustersClusterIdLinksMirrorsGet) | **Get** /clusters/{cluster_id}/links/-/mirrors | List mirror topics
 [**ClustersClusterIdLinksPost**](ClusterLinkingApi.md#ClustersClusterIdLinksPost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 
@@ -317,52 +317,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdLinksLinkNameMirrorsFailoverPost
-
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsFailoverPost(ctx, clusterId, linkName, optional)
-
-Failover the mirror topics
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksLinkNameMirrorsFailoverPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsFailoverPostOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **validateOnly** | **optional.Bool**| Is validate-only or not. default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
-
-### Return type
-
-[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ClustersClusterIdLinksLinkNameMirrorsGet
 
 > ListMirrorTopicsResponseDataList ClustersClusterIdLinksLinkNameMirrorsGet(ctx, clusterId, linkName, optional)
@@ -444,52 +398,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdLinksLinkNameMirrorsPausePost
-
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPausePost(ctx, clusterId, linkName, optional)
-
-Pause the mirror topics
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksLinkNameMirrorsPausePostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsPausePostOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **validateOnly** | **optional.Bool**| Is validate-only or not. default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
-
-### Return type
-
-[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ClustersClusterIdLinksLinkNameMirrorsPost
 
 > ClustersClusterIdLinksLinkNameMirrorsPost(ctx, clusterId, linkName, optional)
@@ -537,11 +445,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdLinksLinkNameMirrorsPromotePost
+## ClustersClusterIdLinksLinkNameMirrorsfailoverPost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsPromotePost(ctx, clusterId, linkName, optional)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsfailoverPost(ctx, clusterId, linkName, optional)
 
-Promote the mirror topics
+Failover the mirror topics
 
 ### Required Parameters
 
@@ -551,11 +459,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksLinkNameMirrorsPromotePostOpts** | optional parameters | nil if no parameters
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsPromotePostOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts struct
 
 
 Name | Type | Description  | Notes
@@ -583,9 +491,101 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdLinksLinkNameMirrorsResumePost
+## ClustersClusterIdLinksLinkNameMirrorspausePost
 
-> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsResumePost(ctx, clusterId, linkName, optional)
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorspausePost(ctx, clusterId, linkName, optional)
+
+Pause the mirror topics
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorspausePostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorspausePostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| Is validate-only or not. default: false | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksLinkNameMirrorspromotePost
+
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorspromotePost(ctx, clusterId, linkName, optional)
+
+Promote the mirror topics
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorspromotePostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorspromotePostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| Is validate-only or not. default: false | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdLinksLinkNameMirrorsresumePost
+
+> AlterMirrorStatusResponseDataList ClustersClusterIdLinksLinkNameMirrorsresumePost(ctx, clusterId, linkName, optional)
 
 Resume the mirror topics
 
@@ -597,11 +597,11 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
- **optional** | ***ClustersClusterIdLinksLinkNameMirrorsResumePostOpts** | optional parameters | nil if no parameters
+ **optional** | ***ClustersClusterIdLinksLinkNameMirrorsresumePostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsResumePostOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdLinksLinkNameMirrorsresumePostOpts struct
 
 
 Name | Type | Description  | Notes
