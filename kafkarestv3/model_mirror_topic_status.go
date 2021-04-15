@@ -13,9 +13,9 @@ type MirrorTopicStatus string
 
 // List of MirrorTopicStatus
 const (
-	MIRRORTOPICSTATUS_ACTIVE MirrorTopicStatus = "active"
-	MIRRORTOPICSTATUS_FAILED MirrorTopicStatus = "failed"
-	MIRRORTOPICSTATUS_PAUSED MirrorTopicStatus = "paused"
-	MIRRORTOPICSTATUS_STOPPED MirrorTopicStatus = "stopped"
-	MIRRORTOPICSTATUS_PENDING_STOPPED MirrorTopicStatus = "pending_stopped"
+	MIRRORTOPICSTATUS_ACTIVE MirrorTopicStatus = "ACTIVE"
+	MIRRORTOPICSTATUS_FAILED MirrorTopicStatus = "FAILED"
+	MIRRORTOPICSTATUS_PAUSED MirrorTopicStatus = "PAUSED"
+	MIRRORTOPICSTATUS_STOPPED MirrorTopicStatus = "STOPPED"
+	MIRRORTOPICSTATUS_PENDING_STOPPED MirrorTopicStatus = "PENDING_STOPPED"
 )

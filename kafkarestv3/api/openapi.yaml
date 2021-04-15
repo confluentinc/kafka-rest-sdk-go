@@ -5666,11 +5666,11 @@ components:
       - data
     MirrorTopicStatus:
       enum:
-      - active
-      - failed
-      - paused
-      - stopped
-      - pending_stopped
+      - ACTIVE
+      - FAILED
+      - PAUSED
+      - STOPPED
+      - PENDING_STOPPED
       type: string
     AlterMirrorStatusResponseData_allOf:
       properties:
