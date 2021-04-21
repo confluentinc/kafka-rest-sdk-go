@@ -16,5 +16,5 @@ type ListMirrorTopicsResponseDataAllOf struct {
 	NumPartitions int32 `json:"num_partitions"`
 	MirrorLags []MirrorLag `json:"mirror_lags"`
 	MirrorStatus MirrorTopicStatus `json:"mirror_status"`
-	StateTimeMs int32 `json:"state_time_ms"`
+	StateTimeMs int64 `json:"state_time_ms"`
 }

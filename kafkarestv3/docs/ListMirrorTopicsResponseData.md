@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NumPartitions** | **int32** |  | 
 **MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | 
 **MirrorStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 
-**StateTimeMs** | **int32** |  | 
+**StateTimeMs** | **int64** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

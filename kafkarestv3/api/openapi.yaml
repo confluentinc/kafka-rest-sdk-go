@@ -2600,7 +2600,7 @@ paths:
                 - cosm
                 link_name: link-db-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-                topics:
+                topic_names:
                 - topic-db-1
                 - topic-db-2
               schema:
@@ -4676,7 +4676,7 @@ components:
             - cosm
             link_name: link-db-1
             link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-            topics:
+            topic_names:
             - topic-db-1
             - topic-db-2
           schema:
@@ -5698,7 +5698,7 @@ components:
           type: string
         link_id:
           type: string
-        topics_names:
+        topic_names:
           items:
             type: string
           type: array
@@ -5732,6 +5732,7 @@ components:
         mirror_status:
           $ref: '#/components/schemas/MirrorTopicStatus'
         state_time_ms:
+          format: int64
           type: integer
       required:
       - link_name
