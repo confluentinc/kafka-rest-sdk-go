@@ -40,6 +40,23 @@ Class | Method | HTTP request | Description
 *BrokerApi* | [**ClustersClusterIdBrokersGet**](docs/BrokerApi.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
 *ClusterApi* | [**ClustersClusterIdGet**](docs/ClusterApi.md#clustersclusteridget) | **Get** /clusters/{cluster_id} | Get Cluster
 *ClusterApi* | [**ClustersGet**](docs/ClusterApi.md#clustersget) | **Get** /clusters | List Clusters
+*ClusterLinkingApi* | [**ClustersClusterIdLinksGet**](docs/ClusterLinkingApi.md#clustersclusteridlinksget) | **Get** /clusters/{cluster_id}/links | List all cluster links in the given cluster
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameConfigsConfigNameDelete**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameconfigsconfignamedelete) | **Delete** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Reset the config under the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameConfigsConfigNameGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameconfigsconfignameget) | **Get** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Describe the config under the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameConfigsConfigNamePut**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameconfigsconfignameput) | **Put** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Alter the config under the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameConfigsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameconfigsget) | **Get** /clusters/{cluster_id}/links/{link_name}/configs | List all configs of the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameConfigsalterPut**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameconfigsalterput) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Link Configs
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameDelete**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamedelete) | **Delete** /clusters/{cluster_id}/links/{link_name} | Delete the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknameget) | **Get** /clusters/{cluster_id}/links/{link_name} | Describe the cluster link
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsget) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsmirrortopicnameget) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name} | Describe the mirror topic
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsfailoverPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsfailoverpost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorspausePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspausepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorspromotePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorspromotepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksLinkNameMirrorsresumePost**](docs/ClusterLinkingApi.md#clustersclusteridlinkslinknamemirrorsresumepost) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:resume | Resume the mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksMirrorsGet**](docs/ClusterLinkingApi.md#clustersclusteridlinksmirrorsget) | **Get** /clusters/{cluster_id}/links/-/mirrors | List mirror topics
+*ClusterLinkingApi* | [**ClustersClusterIdLinksPost**](docs/ClusterLinkingApi.md#clustersclusteridlinkspost) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsget) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameDelete**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnamedelete) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config
 *ConfigsApi* | [**ClustersClusterIdBrokerConfigsNameGet**](docs/ConfigsApi.md#clustersclusteridbrokerconfigsnameget) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Cluster Config
@@ -91,6 +108,11 @@ Class | Method | HTTP request | Description
  - [AclResourceType](docs/AclResourceType.md)
  - [AlterConfigBatchRequestData](docs/AlterConfigBatchRequestData.md)
  - [AlterConfigBatchRequestDataData](docs/AlterConfigBatchRequestDataData.md)
+ - [AlterMirrorStatusResponseData](docs/AlterMirrorStatusResponseData.md)
+ - [AlterMirrorStatusResponseDataAllOf](docs/AlterMirrorStatusResponseDataAllOf.md)
+ - [AlterMirrorStatusResponseDataList](docs/AlterMirrorStatusResponseDataList.md)
+ - [AlterMirrorStatusResponseDataListAllOf](docs/AlterMirrorStatusResponseDataListAllOf.md)
+ - [AlterMirrorsRequestData](docs/AlterMirrorsRequestData.md)
  - [BrokerConfigData](docs/BrokerConfigData.md)
  - [BrokerConfigDataAllOf](docs/BrokerConfigDataAllOf.md)
  - [BrokerConfigDataList](docs/BrokerConfigDataList.md)
@@ -130,10 +152,26 @@ Class | Method | HTTP request | Description
  - [ConsumerLagDataList](docs/ConsumerLagDataList.md)
  - [ConsumerLagDataListAllOf](docs/ConsumerLagDataListAllOf.md)
  - [CreateAclRequestData](docs/CreateAclRequestData.md)
+ - [CreateLinkRequestData](docs/CreateLinkRequestData.md)
+ - [CreateMirrorTopicRequestData](docs/CreateMirrorTopicRequestData.md)
  - [CreateTopicRequestData](docs/CreateTopicRequestData.md)
  - [CreateTopicRequestDataConfigs](docs/CreateTopicRequestDataConfigs.md)
  - [CreateTopicRequestDataReplicasAssignments](docs/CreateTopicRequestDataReplicasAssignments.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [ListLinkConfigsResponseData](docs/ListLinkConfigsResponseData.md)
+ - [ListLinkConfigsResponseDataAllOf](docs/ListLinkConfigsResponseDataAllOf.md)
+ - [ListLinkConfigsResponseDataList](docs/ListLinkConfigsResponseDataList.md)
+ - [ListLinkConfigsResponseDataListAllOf](docs/ListLinkConfigsResponseDataListAllOf.md)
+ - [ListLinksResponseData](docs/ListLinksResponseData.md)
+ - [ListLinksResponseDataAllOf](docs/ListLinksResponseDataAllOf.md)
+ - [ListLinksResponseDataList](docs/ListLinksResponseDataList.md)
+ - [ListLinksResponseDataListAllOf](docs/ListLinksResponseDataListAllOf.md)
+ - [ListMirrorTopicsResponseData](docs/ListMirrorTopicsResponseData.md)
+ - [ListMirrorTopicsResponseDataAllOf](docs/ListMirrorTopicsResponseDataAllOf.md)
+ - [ListMirrorTopicsResponseDataList](docs/ListMirrorTopicsResponseDataList.md)
+ - [ListMirrorTopicsResponseDataListAllOf](docs/ListMirrorTopicsResponseDataListAllOf.md)
+ - [MirrorLag](docs/MirrorLag.md)
+ - [MirrorTopicStatus](docs/MirrorTopicStatus.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)
  - [PartitionDataList](docs/PartitionDataList.md)
@@ -160,6 +198,7 @@ Class | Method | HTTP request | Description
  - [TopicDataList](docs/TopicDataList.md)
  - [TopicDataListAllOf](docs/TopicDataListAllOf.md)
  - [UpdateConfigRequestData](docs/UpdateConfigRequestData.md)
+ - [UpdateLinkConfigRequestData](docs/UpdateLinkConfigRequestData.md)
 
 
 ## Documentation For Authorization

@@ -2490,6 +2490,922 @@ paths:
       summary: Get Replica
       tags:
       - Replica
+  /clusters/{cluster_id}/links:
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkDataList
+                metadata:
+                  self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
+                  next: null
+                data:
+                - kind: KafkaLinkData
+                  metadata:
+                    self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
+                    resource_name: null
+                  source_cluster_id: src-cluster-id
+                  link_name: my-new-link-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                  topic_names:
+                  - topic-sb-1
+                  - topic-sb-2
+                - kind: KafkaLinkData
+                  metadata:
+                    self: http://localhost:58441/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
+                    resource_name: null
+                  source_cluster_id: src-cluster-id
+                  link_name: my-new-link-2
+                  link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+                  topic_names:
+                  - topic-db-1
+                  - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinksResponseDataList'
+          description: A list of link names and properties
+      summary: List all cluster links in the given cluster
+      tags:
+      - ClusterLinking
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: true
+        in: query
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: form
+      - description: 'To validate if the link can be created or not, but not to create
+          it. Default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: 'To synchronously validate that the source cluster ID is expected
+          and the dest cluster has the permission to read topics in the source cluster.
+          default: true'
+        example: false
+        explode: true
+        in: query
+        name: validate_link
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        $ref: '#/components/requestBodies/CreateLinkRequest'
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Create a cluster link
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}:
+    delete:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Delete the cluster link
+      tags:
+      - ClusterLinking
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkData
+                metadata:
+                  self: http://localhost:63699/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                  resource_name: null
+                source_cluster_id: src-cluster-id
+                link_name: my-new-link-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                topic_names:
+                - topic-db-1
+                - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinksResponseData'
+          description: Single link name and properties
+      summary: Describe the cluster link
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/configs:
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkData
+                metadata:
+                  self: http://localhost:56450/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
+                  next: null
+                data:
+                - kind: KafkaLinkConfigData
+                  metadata:
+                    self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                    resource_name: null
+                  name: consumer.offset.sync.ms
+                  value: "3825940"
+                  default: false
+                  cluster_id: cluster-1
+                  read_only: false
+                  sensitive: false
+                  source: DYNAMIC_CLUSTER_LINK_CONFIG
+                  synonyms:
+                  - cosm
+                  link_name: link-db-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                - kind: KafkaLinkConfigData
+                  metadata:
+                    self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                    resource_name: null
+                  name: acl.sync.ms
+                  value: "5000"
+                  default: false
+                  cluster_id: cluster-1
+                  read_only: false
+                  sensitive: false
+                  source: DYNAMIC_CLUSTER_LINK_CONFIG
+                  synonyms:
+                  - asm
+                  link_name: link-db-1
+                  link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+              schema:
+                $ref: '#/components/schemas/ListLinkConfigsResponseDataList'
+          description: Config name and value
+      summary: List all configs of the cluster link
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/configs/{config_name}:
+    delete:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Reset the config under the cluster link
+      tags:
+      - ClusterLinking
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLinkConfigData
+                metadata:
+                  self: http://localhost:56608/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                  resource_name: null
+                cluster_id: cluster-1
+                name: consumer.offset.sync.ms
+                value: "3825940"
+                default: false
+                read_only: false
+                sensitive: false
+                source: DYNAMIC_CLUSTER_LINK_CONFIG
+                synonyms:
+                - cosm
+                link_name: link-db-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                topic_names:
+                - topic-db-1
+                - topic-db-2
+              schema:
+                $ref: '#/components/schemas/ListLinkConfigsResponseData'
+          description: Config name and value
+      summary: Describe the config under the cluster link
+      tags:
+      - ClusterLinking
+    put:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link config name
+        example: consumer.offset.sync.enable
+        explode: false
+        in: path
+        name: config_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateLinkConfigRequest'
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Alter the config under the cluster link
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/configs:alter:
+    put:
+      description: Batch update configs of the cluster link.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AlterLinkConfigBatchRequest'
+      responses:
+        "204":
+          description: No Content
+      summary: Batch Alter Link Configs
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/-/mirrors:
+    get:
+      description: List all mirror topics in the cluster
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The status of the mirror topic. If not specified, all mirror
+          topics will be returned.
+        example: active
+        explode: true
+        in: query
+        name: mirror_status
+        required: false
+        schema:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaMirrorDataList
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                  next: null
+                data:
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
+                    resource_name: crn:///kafka=cluster-1
+                  resource_name: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-1
+                  source_topic_name: topic-1
+                  num_partitions: 3
+                  link_name: link-1
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_status: active
+                  state_time_ms: 1612550939300
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
+                    resource_name: crn:///kafka=cluster-1
+                  resource_name: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  source_topic_name: topic-2
+                  num_partitions: 3
+                  link_name: link-1
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_status: stopped
+                  state_time_ms: 1612551353640
+              schema:
+                $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
+          description: Metadata of mirror topics
+      summary: List mirror topics
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors:
+    get:
+      description: List all mirror topics under the link
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The status of the mirror topic. If not specified, all mirror
+          topics will be returned.
+        example: active
+        explode: true
+        in: query
+        name: mirror_status
+        required: false
+        schema:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaMirrorDataList
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                  next: null
+                data:
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+                    resource_name: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-1
+                  source_topic_name: topic-1
+                  link_name: link-1
+                  num_partitions: 3
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_status: active
+                  state_time_ms: 1612550939300
+                - kind: KafkaMirrorData
+                  metadata:
+                    self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-2
+                    resource_name: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  source_topic_name: topic-2
+                  link_name: link-1
+                  num_partitions: 3
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                  mirror_status: stopped
+                  state_time_ms: 1612551353640
+              schema:
+                $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
+          description: Metadata of mirror topics
+      summary: List mirror topics
+      tags:
+      - ClusterLinking
+    post:
+      description: Create a topic in the destination cluster mirroring a topic in
+        the source cluster
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CreateMirrorTopicRequest'
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Operation succeeded, no content in the response
+      summary: Create a mirror topic
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name}:
+    get:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cluster Linking mirror topic name
+        example: topic-1
+        explode: false
+        in: path
+        name: mirror_topic_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaMirrorData
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+                  resource_name: crn:///kafka=cluster-1
+                link_name: link-1
+                mirror_topic_name: topic-1
+                num_partitions: 3
+                mirror_lags:
+                - partition: 0
+                  lag: 0
+                - partition: 1
+                  lag: 10000
+                - partition: 2
+                  lag: 40000
+                source_topic_name: topic-1
+                mirror_status: active
+                state_time_ms: 1612550939300
+              schema:
+                $ref: '#/components/schemas/ListMirrorTopicsResponseData'
+          description: Metadata of the mirror topic
+      summary: Describe the mirror topic
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors:promote:
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaPromoteMirror
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/links/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                data:
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
+                    'my-new-link-1'
+                  mirror_lags:
+                  - partition: 0
+                    lag: 0
+                  - partition: 1
+                    lag: 10000
+                  - partition: 2
+                    lag: 40000
+              schema:
+                $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
+          description: Mirror status alternation result
+      summary: Promote the mirror topics
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors:failover:
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaPromoteMirror
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/links/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                data:
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
+                    'my-new-link-1'
+              schema:
+                $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
+          description: Mirror status alternation result
+      summary: Failover the mirror topics
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors:pause:
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaPromoteMirror
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/links/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                data:
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
+                    'my-new-link-1'
+              schema:
+                $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
+          description: Mirror status alternation result
+      summary: Pause the mirror topics
+      tags:
+      - ClusterLinking
+  /clusters/{cluster_id}/links/{link_name}/mirrors:resume:
+    post:
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The link name
+        example: link-sb1
+        explode: false
+        in: path
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'Is validate-only or not. default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        $ref: '#/components/requestBodies/AlterMirrorsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaPromoteMirror
+                metadata:
+                  self: http://localhost:9391/kafka/v3/clusters/cluster-1/links/link-1/mirrors
+                  resource_name: crn:///kafka=cluster-1
+                data:
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-sb
+                  error_code: null
+                  error_message: null
+                - kind: AlterMirrorsData
+                  metadata:
+                    self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
+                    resource: crn:///kafka=cluster-1
+                  mirror_topic_name: topic-2
+                  error_code: 400
+                  error_message: Topic 'topic-2' has already stopped its mirror from
+                    'my-new-link-1'
+              schema:
+                $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
+          description: Mirror status alternation result
+      summary: Resume the mirror topics
+      tags:
+      - ClusterLinking
 components:
   parameters:
     AclHost:
@@ -2625,6 +3541,79 @@ components:
       schema:
         type: string
       style: simple
+    ValidateOnly:
+      description: 'To validate if the link can be created or not, but not to create
+        it. Default: false'
+      example: false
+      explode: true
+      in: query
+      name: validate_only
+      required: false
+      schema:
+        type: boolean
+      style: form
+    ValidateLink:
+      description: 'To validate the dest cluster ID is expected and topics are readable.
+        default: true'
+      example: false
+      explode: true
+      in: query
+      name: validate_link
+      required: false
+      schema:
+        type: boolean
+      style: form
+    LinkName:
+      description: The link name
+      example: link-sb1
+      explode: false
+      in: path
+      name: link_name
+      required: true
+      schema:
+        type: string
+      style: simple
+    LinkNameQuery:
+      description: The link name
+      example: link-sb1
+      explode: true
+      in: query
+      name: link_name
+      required: true
+      schema:
+        type: string
+      style: form
+    LinkConfigName:
+      description: The link config name
+      example: consumer.offset.sync.enable
+      explode: false
+      in: path
+      name: config_name
+      required: true
+      schema:
+        type: string
+      style: simple
+    MirrorTopicStatus:
+      description: The status of the mirror topic. If not specified, all mirror topics
+        will be returned.
+      example: active
+      explode: true
+      in: query
+      name: mirror_status
+      required: false
+      schema:
+        $ref: '#/components/schemas/MirrorTopicStatus'
+      style: form
+    MirrorTopicName:
+      description: Cluster Linking mirror topic name
+      example: topic-1
+      explode: false
+      in: path
+      name: mirror_topic_name
+      required: true
+      schema:
+        type: string
+      style: simple
   requestBodies:
     AlterBrokerConfigBatchRequest:
       content:
@@ -2730,6 +3719,61 @@ components:
           schema:
             $ref: '#/components/schemas/UpdateConfigRequestData'
       description: The topic configuration parameter update request.
+    CreateLinkRequest:
+      content:
+        application/json:
+          example:
+            source_cluster_id: cluster-1
+            configs:
+            - name: acl.sync.enable
+              value: "false"
+            - name: consumer.offset.sync.ms
+              value: "30000"
+          schema:
+            $ref: '#/components/schemas/CreateLinkRequestData'
+      description: Create a cluster link
+    UpdateLinkConfigRequest:
+      content:
+        application/json:
+          example:
+            value: "300000"
+          schema:
+            $ref: '#/components/schemas/UpdateLinkConfigRequestData'
+      description: New cluster link config value
+    AlterLinkConfigBatchRequest:
+      content:
+        application/json:
+          example:
+            data:
+            - name: consumer.offset.sync.ms
+              operation: DELETE
+            - name: cluster.link.retry.timeout.ms
+              value: "285714"
+          schema:
+            $ref: '#/components/schemas/AlterConfigBatchRequestData'
+    CreateMirrorTopicRequest:
+      content:
+        application/json:
+          example:
+            source_topic_name: topic-1
+            configs:
+            - name: unclean.leader.election.enable
+              value: "true"
+            replication_factor: 1
+          schema:
+            $ref: '#/components/schemas/CreateMirrorTopicRequestData'
+      description: Name and configs of the topics mirroring from and mirroring to
+    AlterMirrorsRequest:
+      content:
+        application/json:
+          example:
+            mirror_topic_names:
+            - topic-1
+            - topic-2
+            - topic-3
+          schema:
+            $ref: '#/components/schemas/AlterMirrorsRequestData'
+      description: Name of the topics to apply the changes
   responses:
     CreateTopicResponse:
       content:
@@ -3869,6 +4913,225 @@ components:
           schema:
             $ref: '#/components/schemas/ReplicaDataList'
       description: The list of replicas.
+    NoContentResponse:
+      content:
+        application/json: {}
+      description: Operation succeeded, no content in the response
+    ListLinksResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkDataList
+            metadata:
+              self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links
+              next: null
+            data:
+            - kind: KafkaLinkData
+              metadata:
+                self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
+                resource_name: null
+              source_cluster_id: src-cluster-id
+              link_name: my-new-link-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+              topic_names:
+              - topic-sb-1
+              - topic-sb-2
+            - kind: KafkaLinkData
+              metadata:
+                self: http://localhost:58441/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
+                resource_name: null
+              source_cluster_id: src-cluster-id
+              link_name: my-new-link-2
+              link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+              topic_names:
+              - topic-db-1
+              - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinksResponseDataList'
+      description: A list of link names and properties
+    GetLinkResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkData
+            metadata:
+              self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+              resource_name: null
+            source_cluster_id: src-cluster-id
+            link_name: my-new-link-1
+            link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            topic_names:
+            - topic-db-1
+            - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinksResponseData'
+      description: Single link name and properties
+    ListLinkConfigsResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkConfigDataList
+            metadata:
+              self: http://localhost:56450/kafka/v3/clusters/v-0Ce-CkTyKQol9v46LaCQ/links/link-nb-1/configs
+              next: null
+            data:
+            - kind: KafkaLinkConfigData
+              metadata:
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                resource_name: null
+              cluster_id: 1Rh_4htxSuen7RYGvGmgNw
+              name: consumer.offset.sync.ms
+              value: "3825940"
+              default: false
+              read_only: false
+              sensitive: false
+              source: DYNAMIC_CLUSTER_LINK_CONFIG
+              synonyms:
+              - cosm
+              link_name: link-db-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            - kind: KafkaLinkConfigData
+              metadata:
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+                resource_name: null
+              cluster_id: 1Rh_4htxSuen7RYGvGmgNw
+              name: acl.sync.ms
+              value: "5000"
+              default: false
+              read_only: false
+              sensitive: false
+              source: DYNAMIC_CLUSTER_LINK_CONFIG
+              synonyms:
+              - asm
+              link_name: link-db-1
+              link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+          schema:
+            $ref: '#/components/schemas/ListLinkConfigsResponseDataList'
+      description: Config name and value
+    GetLinkConfigsResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaLinkConfigData
+            metadata:
+              self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/links/my-new-link-1
+              resource_name: null
+            cluster_id: 1Rh_4htxSuen7RYGvGmgNw
+            name: consumer.offset.sync.ms
+            value: "3825940"
+            default: false
+            read_only: false
+            sensitive: false
+            source: DYNAMIC_CLUSTER_LINK_CONFIG
+            synonyms:
+            - cosm
+            link_name: link-db-1
+            link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+            topic_names:
+            - topic-db-1
+            - topic-db-2
+          schema:
+            $ref: '#/components/schemas/ListLinkConfigsResponseData'
+      description: Config name and value
+    ListMirrorTopicsResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaMirrorDataList
+            metadata:
+              self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors
+              resource_name: crn:///kafka=cluster-1
+              next: null
+            data:
+            - kind: KafkaMirrorData
+              metadata:
+                self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-1
+                resource_name: crn:///kafka=cluster-1
+              resource_name: crn:///kafka=cluster-1
+              link_name: link-1
+              mirror_topic_name: topic-1
+              source_topic_name: topic-1
+              num_partitions: 3
+              mirror_lags:
+              - partition: 0
+                lag: 0
+              - partition: 1
+                lag: 10000
+              - partition: 2
+                lag: 40000
+              mirror_status: active
+              state_time_ms: 1612550939300
+            - kind: KafkaMirrorData
+              metadata:
+                self: http://localhost:63699/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/link-1/mirrors/topic-2
+                resource_name: crn:///kafka=cluster-1
+              resource_name: crn:///kafka=cluster-1
+              link_name: link-1
+              mirror_topic_name: topic-2
+              source_topic_name: topic-2
+              num_partitions: 3
+              mirror_lags:
+              - partition: 0
+                lag: 0
+              - partition: 1
+                lag: 10000
+              - partition: 2
+                lag: 40000
+              mirror_status: stopped
+              state_time_ms: 1612551353640
+          schema:
+            $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
+      description: Metadata of mirror topics
+    DescribeMirrorTopicResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaMirrorData
+            metadata:
+              self: http://localhost:9391/kafka/v3/clusters/cluster-1/link/link-1/mirrors/topic-1
+              resource_name: crn:///kafka=cluster-1
+            link_name: link-1
+            mirror_topic_name: topic-1
+            source_topic_name: topic-1
+            num_partitions: 3
+            mirror_lags:
+            - partition: 0
+              lag: 0
+            - partition: 1
+              lag: 10000
+            - partition: 2
+              lag: 40000
+            mirror_status: active
+            state_time_ms: 1612550939300
+          schema:
+            $ref: '#/components/schemas/ListMirrorTopicsResponseData'
+      description: Metadata of the mirror topic
+    AlterMirrorStatusResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaPromoteMirror
+            metadata:
+              self: http://localhost:9391/kafka/v3/clusters/cluster-1/links/link-1/mirrors
+              resource_name: crn:///kafka=cluster-1
+            data:
+            - kind: AlterMirrorsData
+              metadata:
+                self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-1
+                resource: crn:///kafka=cluster-1
+              mirror_topic_name: topic-sb
+              error_code: null
+              error_message: null
+            - kind: AlterMirrorsData
+              metadata:
+                self: http://localhost:51032/v3/clusters/cluster-1/links/my-new-link-1/mirrors/topic-2
+                resource: crn:///kafka=cluster-1
+              mirror_topic_name: topic-2
+              error_code: 400
+              error_message: Topic 'topic-2' has already stopped its mirror from 'my-new-link-1'
+          schema:
+            $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
+      description: Mirror status alternation result
   schemas:
     AbstractConfigData:
       allOf:
@@ -4727,3 +5990,242 @@ components:
           type: array
       required:
       - data
+    CreateLinkRequestData:
+      example:
+        configs:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        src_cluster_id: src_cluster_id
+      properties:
+        source_cluster_id:
+          type: string
+        configs:
+          items:
+            $ref: '#/components/schemas/CreateTopicRequestData_configs'
+          type: array
+      required:
+      - source_cluster_id
+      type: object
+    UpdateLinkConfigRequestData:
+      example:
+        value: value
+      properties:
+        value:
+          type: string
+      required:
+      - value
+      type: object
+    ListLinksResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ListLinksResponseData_allOf'
+    ListLinksResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ListLinksResponseDataList_allOf'
+    ListLinkConfigsResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ListLinkConfigsResponseData_allOf'
+    ListLinkConfigsResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ListLinkConfigsResponseDataList_allOf'
+    ListLinksResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListLinksResponseData'
+          type: array
+      required:
+      - data
+    ListLinkConfigsResponseData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        name:
+          type: string
+        value:
+          type: string
+        read_only:
+          type: boolean
+        sensitive:
+          type: boolean
+        source:
+          enum:
+          - DYNAMIC_CLUSTER_LINK_CONFIG
+          type: string
+        synonyms:
+          items:
+            type: string
+          type: array
+        link_name:
+          type: string
+      required:
+      - cluster_id
+      - default
+      - link_name
+      - name
+      - read_only
+      - sensitive
+      - source
+      - synonyms
+      - value
+    ListLinkConfigsResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListLinkConfigsResponseData'
+          type: array
+      required:
+      - data
+    CreateMirrorTopicRequestData:
+      example:
+        configs:
+        - '{}'
+        - '{}'
+        source_topic_name: source_topic_name
+        replication_factor: 0
+      properties:
+        source_topic_name:
+          type: string
+        replication_factor:
+          type: integer
+        configs:
+          items:
+            $ref: '#/components/schemas/CreateTopicRequestData_configs'
+          type: array
+      required:
+      - source_topic_name
+      type: object
+    AlterMirrorsRequestData:
+      example:
+        mirror_topic_names:
+        - mirror_topic_names
+        - mirror_topic_names
+      properties:
+        mirror_topic_names:
+          items:
+            type: string
+          type: array
+      required:
+      - mirror_topic_names
+      type: object
+    ListMirrorTopicsResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ListMirrorTopicsResponseData_allOf'
+    ListMirrorTopicsResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ListMirrorTopicsResponseDataList_allOf'
+    AlterMirrorStatusResponseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/AlterMirrorStatusResponseDataList_allOf'
+    AlterMirrorStatusResponseData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/AlterMirrorStatusResponseData_allOf'
+    AlterMirrorStatusResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/AlterMirrorStatusResponseData'
+          type: array
+      required:
+      - data
+    MirrorTopicStatus:
+      enum:
+      - ACTIVE
+      - FAILED
+      - PAUSED
+      - STOPPED
+      - PENDING_STOPPED
+      type: string
+    AlterMirrorStatusResponseData_allOf:
+      properties:
+        mirror_topic_name:
+          type: string
+        error_message:
+          nullable: true
+          type: string
+        error_code:
+          nullable: true
+          type: integer
+        mirror_lags:
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
+      required:
+      - error_code
+      - error_message
+      - mirror_topic_name
+    ListLinksResponseData_allOf:
+      properties:
+        source_cluster_id:
+          type: string
+        link_name:
+          type: string
+        link_id:
+          type: string
+        topic_names:
+          items:
+            type: string
+          type: array
+      required:
+      - link_id
+      - link_name
+      - source_cluster_id
+      - topic_names
+    ListMirrorTopicsResponseDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ListMirrorTopicsResponseData'
+          type: array
+      required:
+      - data
+    ListMirrorTopicsResponseData_allOf:
+      properties:
+        link_name:
+          type: string
+        mirror_topic_name:
+          type: string
+        source_topic_name:
+          type: string
+        num_partitions:
+          type: integer
+        mirror_lags:
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
+        mirror_status:
+          $ref: '#/components/schemas/MirrorTopicStatus'
+        state_time_ms:
+          format: int64
+          type: integer
+      required:
+      - link_name
+      - mirror_lags
+      - mirror_status
+      - mirror_topic_name
+      - num_partitions
+      - source_topic_name
+      - state_time_ms
+    MirrorLags:
+      items:
+        $ref: '#/components/schemas/MirrorLag'
+      type: array
+    MirrorLag:
+      properties:
+        partition:
+          type: integer
+        lag:
+          type: integer
+      required:
+      - lag
+      - partition
+      type: object
