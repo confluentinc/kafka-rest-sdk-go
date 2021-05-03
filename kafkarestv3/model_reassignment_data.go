@@ -8,15 +8,14 @@
  */
 
 package kafkarestv3
-
 // ReassignmentData struct for ReassignmentData
 type ReassignmentData struct {
-	Kind             string           `json:"kind"`
-	Metadata         ResourceMetadata `json:"metadata"`
-	ClusterId        string           `json:"cluster_id"`
-	TopicName        string           `json:"topic_name"`
-	PartitionId      int32            `json:"partition_id"`
-	AddingReplicas   []int32          `json:"adding_replicas"`
-	RemovingReplicas []int32          `json:"removing_replicas"`
-	Replicas         Relationship     `json:"replicas"`
+	Kind string `json:"kind"`
+	Metadata ResourceMetadata `json:"metadata"`
+	ClusterId string `json:"cluster_id"`
+	TopicName string `json:"topic_name"`
+	PartitionId int32 `json:"partition_id"`
+	AddingReplicas []int32 `json:"adding_replicas"`
+	RemovingReplicas []int32 `json:"removing_replicas"`
+	Replicas Relationship `json:"replicas"`
 }

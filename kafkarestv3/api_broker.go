@@ -24,40 +24,40 @@ var (
 
 type BrokerApi interface {
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdGet Get Broker
-	 *
-	 * Returns the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @return BrokerData
-	 */
-	ClustersClusterIdBrokersBrokerIdGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerData, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdGet Get Broker
+     *
+     * Returns the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @return BrokerData
+     */
+    ClustersClusterIdBrokersBrokerIdGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerData, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet Search Replicas by Broker
-	 *
-	 * Returns the list of replicas assigned to the specified broker.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @return ReplicaDataList
-	 */
-	ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(ctx _context.Context, clusterId string, brokerId int32) (ReplicaDataList, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet Search Replicas by Broker
+     *
+     * Returns the list of replicas assigned to the specified broker.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @return ReplicaDataList
+     */
+    ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(ctx _context.Context, clusterId string, brokerId int32) (ReplicaDataList, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersGet List Brokers
-	 *
-	 * Return a list of brokers that belong to the specified Kafka cluster.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @return BrokerDataList
-	 */
-	ClustersClusterIdBrokersGet(ctx _context.Context, clusterId string) (BrokerDataList, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersGet List Brokers
+     *
+     * Return a list of brokers that belong to the specified Kafka cluster.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @return BrokerDataList
+     */
+    ClustersClusterIdBrokersGet(ctx _context.Context, clusterId string) (BrokerDataList, *_nethttp.Response, error)
 }
 
 // BrokerApiService BrokerApi service
@@ -85,9 +85,9 @@ func (a *BrokerApiService) ClustersClusterIdBrokersBrokerIdGet(ctx _context.Cont
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -168,9 +168,9 @@ func (a *BrokerApiService) ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/partition-replicas"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -250,7 +250,7 @@ func (a *BrokerApiService) ClustersClusterIdBrokersGet(ctx _context.Context, clu
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

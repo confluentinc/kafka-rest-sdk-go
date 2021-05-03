@@ -8,15 +8,14 @@
  */
 
 package kafkarestv3
-
 // ConsumerData struct for ConsumerData
 type ConsumerData struct {
-	Kind            string           `json:"kind"`
-	Metadata        ResourceMetadata `json:"metadata"`
-	ClusterId       string           `json:"cluster_id"`
-	ConsumerGroupId string           `json:"consumer_group_id"`
-	ConsumerId      string           `json:"consumer_id"`
-	InstanceId      *string          `json:"instance_id,omitempty"`
-	ClientId        string           `json:"client_id"`
-	Assignments     Relationship     `json:"assignments"`
+	Kind string `json:"kind"`
+	Metadata ResourceMetadata `json:"metadata"`
+	ClusterId string `json:"cluster_id"`
+	ConsumerGroupId string `json:"consumer_group_id"`
+	ConsumerId string `json:"consumer_id"`
+	InstanceId *string `json:"instance_id,omitempty"`
+	ClientId string `json:"client_id"`
+	Assignments Relationship `json:"assignments"`
 }

@@ -11,11 +11,11 @@ package kafkarestv3
 
 import (
 	_context "context"
-	"github.com/antihax/optional"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,192 +25,192 @@ var (
 
 type ConfigsApi interface {
 
-	/*
-	 * ClustersClusterIdBrokerConfigsGet List Cluster Configs
-	 *
-	 * Returns a list of configuration parameters for the specified Kafka cluster.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @return ClusterConfigDataList
-	 */
-	ClustersClusterIdBrokerConfigsGet(ctx _context.Context, clusterId string) (ClusterConfigDataList, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokerConfigsGet List Cluster Configs
+     *
+     * Returns a list of configuration parameters for the specified Kafka cluster.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @return ClusterConfigDataList
+     */
+    ClustersClusterIdBrokerConfigsGet(ctx _context.Context, clusterId string) (ClusterConfigDataList, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokerConfigsNameDelete Reset Cluster Config
-	 *
-	 * Resets the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60; to its default value.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param name The configuration parameter name.
-	 */
-	ClustersClusterIdBrokerConfigsNameDelete(ctx _context.Context, clusterId string, name string) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokerConfigsNameDelete Reset Cluster Config
+     *
+     * Resets the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60; to its default value.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param name The configuration parameter name.
+     */
+    ClustersClusterIdBrokerConfigsNameDelete(ctx _context.Context, clusterId string, name string) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokerConfigsNameGet Get Cluster Config
-	 *
-	 * Returns the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param name The configuration parameter name.
-	 * @return ClusterConfigData
-	 */
-	ClustersClusterIdBrokerConfigsNameGet(ctx _context.Context, clusterId string, name string) (ClusterConfigData, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokerConfigsNameGet Get Cluster Config
+     *
+     * Returns the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param name The configuration parameter name.
+     * @return ClusterConfigData
+     */
+    ClustersClusterIdBrokerConfigsNameGet(ctx _context.Context, clusterId string, name string) (ClusterConfigData, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokerConfigsNamePut Update Cluster Config
-	 *
-	 * Updates the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param name The configuration parameter name.
-	 * @param optional nil or *ClustersClusterIdBrokerConfigsNamePutOpts - Optional Parameters:
-	 * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The cluster configuration parameter update request.
-	 */
-	ClustersClusterIdBrokerConfigsNamePut(ctx _context.Context, clusterId string, name string, localVarOptionals *ClustersClusterIdBrokerConfigsNamePutOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokerConfigsNamePut Update Cluster Config
+     *
+     * Updates the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param name The configuration parameter name.
+     * @param optional nil or *ClustersClusterIdBrokerConfigsNamePutOpts - Optional Parameters:
+     * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The cluster configuration parameter update request.
+     */
+    ClustersClusterIdBrokerConfigsNamePut(ctx _context.Context, clusterId string, name string, localVarOptionals *ClustersClusterIdBrokerConfigsNamePutOpts) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokerConfigsalterPost Batch Alter Cluster Configs
-	 *
-	 * Updates or deletes a set of Kafka cluster configuration parameters.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param optional nil or *ClustersClusterIdBrokerConfigsalterPostOpts - Optional Parameters:
-	 * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter cluster configuration parameter batch request.
-	 */
-	ClustersClusterIdBrokerConfigsalterPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokerConfigsalterPostOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokerConfigsalterPost Batch Alter Cluster Configs
+     *
+     * Updates or deletes a set of Kafka cluster configuration parameters.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param optional nil or *ClustersClusterIdBrokerConfigsalterPostOpts - Optional Parameters:
+     * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter cluster configuration parameter batch request.
+     */
+    ClustersClusterIdBrokerConfigsalterPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokerConfigsalterPostOpts) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdConfigsGet List Broker Configs
-	 *
-	 * Return the list of configuration parameters that belong to the specified Kafka broker.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @return BrokerConfigDataList
-	 */
-	ClustersClusterIdBrokersBrokerIdConfigsGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerConfigDataList, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdConfigsGet List Broker Configs
+     *
+     * Return the list of configuration parameters that belong to the specified Kafka broker.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @return BrokerConfigDataList
+     */
+    ClustersClusterIdBrokersBrokerIdConfigsGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerConfigDataList, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdConfigsNameDelete Reset Broker Config
-	 *
-	 * Resets the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60; to its default value.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @param name The configuration parameter name.
-	 */
-	ClustersClusterIdBrokersBrokerIdConfigsNameDelete(ctx _context.Context, clusterId string, brokerId int32, name string) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdConfigsNameDelete Reset Broker Config
+     *
+     * Resets the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60; to its default value.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @param name The configuration parameter name.
+     */
+    ClustersClusterIdBrokersBrokerIdConfigsNameDelete(ctx _context.Context, clusterId string, brokerId int32, name string) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdConfigsNameGet Get Broker Config
-	 *
-	 * Return the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @param name The configuration parameter name.
-	 * @return BrokerConfigData
-	 */
-	ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx _context.Context, clusterId string, brokerId int32, name string) (BrokerConfigData, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdConfigsNameGet Get Broker Config
+     *
+     * Return the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @param name The configuration parameter name.
+     * @return BrokerConfigData
+     */
+    ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx _context.Context, clusterId string, brokerId int32, name string) (BrokerConfigData, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdConfigsNamePut Update Broker Config
-	 *
-	 * Updates the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @param name The configuration parameter name.
-	 * @param optional nil or *ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts - Optional Parameters:
-	 * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The broker configuration parameter update request.
-	 */
-	ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx _context.Context, clusterId string, brokerId int32, name string, localVarOptionals *ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdConfigsNamePut Update Broker Config
+     *
+     * Updates the configuration parameter specified by &#x60;&#x60;name&#x60;&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @param name The configuration parameter name.
+     * @param optional nil or *ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts - Optional Parameters:
+     * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The broker configuration parameter update request.
+     */
+    ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx _context.Context, clusterId string, brokerId int32, name string, localVarOptionals *ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdBrokersBrokerIdConfigsalterPost Batch Alter Broker Configs
-	 *
-	 * Updates or deletes a set of broker configuration parameters.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param brokerId The broker ID.
-	 * @param optional nil or *ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts - Optional Parameters:
-	 * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter broker configuration parameter batch request.
-	 */
-	ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx _context.Context, clusterId string, brokerId int32, localVarOptionals *ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdBrokersBrokerIdConfigsalterPost Batch Alter Broker Configs
+     *
+     * Updates or deletes a set of broker configuration parameters.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param brokerId The broker ID.
+     * @param optional nil or *ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts - Optional Parameters:
+     * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter broker configuration parameter batch request.
+     */
+    ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx _context.Context, clusterId string, brokerId int32, localVarOptionals *ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdTopicsTopicNameConfigsGet List Topic Configs
-	 *
-	 * Return the list of configs that belong to the specified topic.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param topicName The topic name.
-	 * @return TopicConfigDataList
-	 */
-	ClustersClusterIdTopicsTopicNameConfigsGet(ctx _context.Context, clusterId string, topicName string) (TopicConfigDataList, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdTopicsTopicNameConfigsGet List Topic Configs
+     *
+     * Return the list of configs that belong to the specified topic.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param topicName The topic name.
+     * @return TopicConfigDataList
+     */
+    ClustersClusterIdTopicsTopicNameConfigsGet(ctx _context.Context, clusterId string, topicName string) (TopicConfigDataList, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdTopicsTopicNameConfigsNameDelete Reset Topic Config
-	 *
-	 * Resets the config with given &#x60;name&#x60; to its default value.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param topicName The topic name.
-	 * @param name The configuration parameter name.
-	 */
-	ClustersClusterIdTopicsTopicNameConfigsNameDelete(ctx _context.Context, clusterId string, topicName string, name string) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdTopicsTopicNameConfigsNameDelete Reset Topic Config
+     *
+     * Resets the config with given &#x60;name&#x60; to its default value.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param topicName The topic name.
+     * @param name The configuration parameter name.
+     */
+    ClustersClusterIdTopicsTopicNameConfigsNameDelete(ctx _context.Context, clusterId string, topicName string, name string) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdTopicsTopicNameConfigsNameGet Get Topic Config
-	 *
-	 * Return the config with the given &#x60;name&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param topicName The topic name.
-	 * @param name The configuration parameter name.
-	 * @return TopicConfigData
-	 */
-	ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx _context.Context, clusterId string, topicName string, name string) (TopicConfigData, *_nethttp.Response, error)
+    /*
+     * ClustersClusterIdTopicsTopicNameConfigsNameGet Get Topic Config
+     *
+     * Return the config with the given &#x60;name&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param topicName The topic name.
+     * @param name The configuration parameter name.
+     * @return TopicConfigData
+     */
+    ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx _context.Context, clusterId string, topicName string, name string) (TopicConfigData, *_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdTopicsTopicNameConfigsNamePut Update Topic Config
-	 *
-	 * Updates the config with given &#x60;name&#x60;.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param topicName The topic name.
-	 * @param name The configuration parameter name.
-	 * @param optional nil or *ClustersClusterIdTopicsTopicNameConfigsNamePutOpts - Optional Parameters:
-	 * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The topic configuration parameter update request.
-	 */
-	ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx _context.Context, clusterId string, topicName string, name string, localVarOptionals *ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdTopicsTopicNameConfigsNamePut Update Topic Config
+     *
+     * Updates the config with given &#x60;name&#x60;.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param topicName The topic name.
+     * @param name The configuration parameter name.
+     * @param optional nil or *ClustersClusterIdTopicsTopicNameConfigsNamePutOpts - Optional Parameters:
+     * @param "UpdateConfigRequestData" (optional.Interface of UpdateConfigRequestData) -  The topic configuration parameter update request.
+     */
+    ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx _context.Context, clusterId string, topicName string, name string, localVarOptionals *ClustersClusterIdTopicsTopicNameConfigsNamePutOpts) (*_nethttp.Response, error)
 
-	/*
-	 * ClustersClusterIdTopicsTopicNameConfigsalterPost Batch Alter Topic Configs
-	 *
-	 * Updates or deletes a set of topic configs.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param topicName The topic name.
-	 * @param optional nil or *ClustersClusterIdTopicsTopicNameConfigsalterPostOpts - Optional Parameters:
-	 * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter topic configuration parameter batch request.
-	 */
-	ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*_nethttp.Response, error)
+    /*
+     * ClustersClusterIdTopicsTopicNameConfigsalterPost Batch Alter Topic Configs
+     *
+     * Updates or deletes a set of topic configs.
+     *
+     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+     * @param clusterId The Kafka cluster ID.
+     * @param topicName The topic name.
+     * @param optional nil or *ClustersClusterIdTopicsTopicNameConfigsalterPostOpts - Optional Parameters:
+     * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -  The alter topic configuration parameter batch request.
+     */
+    ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameConfigsalterPostOpts) (*_nethttp.Response, error)
 }
 
 // ConfigsApiService ConfigsApi service
@@ -237,7 +237,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsGet(ctx _context.Conte
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/broker-configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -316,9 +316,9 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsNameDelete(ctx _contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/broker-configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -390,9 +390,9 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsNameGet(ctx _context.C
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/broker-configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -453,7 +453,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsNameGet(ctx _context.C
 
 // ClustersClusterIdBrokerConfigsNamePutOpts Optional parameters for the method 'ClustersClusterIdBrokerConfigsNamePut'
 type ClustersClusterIdBrokerConfigsNamePutOpts struct {
-	UpdateConfigRequestData optional.Interface
+    UpdateConfigRequestData optional.Interface
 }
 
 /*
@@ -478,9 +478,9 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsNamePut(ctx _context.C
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/broker-configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -541,7 +541,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsNamePut(ctx _context.C
 
 // ClustersClusterIdBrokerConfigsalterPostOpts Optional parameters for the method 'ClustersClusterIdBrokerConfigsalterPost'
 type ClustersClusterIdBrokerConfigsalterPostOpts struct {
-	AlterConfigBatchRequestData optional.Interface
+    AlterConfigBatchRequestData optional.Interface
 }
 
 /*
@@ -565,7 +565,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokerConfigsalterPost(ctx _context
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/broker-configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -646,9 +646,9 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsGet(ctx _cont
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -728,11 +728,11 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsNameDelete(ct
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -805,11 +805,11 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx _
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -870,7 +870,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsNameGet(ctx _
 
 // ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts Optional parameters for the method 'ClustersClusterIdBrokersBrokerIdConfigsNamePut'
 type ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts struct {
-	UpdateConfigRequestData optional.Interface
+    UpdateConfigRequestData optional.Interface
 }
 
 /*
@@ -896,11 +896,11 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx _
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -961,7 +961,7 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsNamePut(ctx _
 
 // ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts Optional parameters for the method 'ClustersClusterIdBrokersBrokerIdConfigsalterPost'
 type ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts struct {
-	AlterConfigBatchRequestData optional.Interface
+    AlterConfigBatchRequestData optional.Interface
 }
 
 /*
@@ -986,9 +986,9 @@ func (a *ConfigsApiService) ClustersClusterIdBrokersBrokerIdConfigsalterPost(ctx
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1069,9 +1069,9 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsGet(ctx _cont
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1151,11 +1151,11 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsNameDelete(ct
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1228,11 +1228,11 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx _
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1293,7 +1293,7 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsNameGet(ctx _
 
 // ClustersClusterIdTopicsTopicNameConfigsNamePutOpts Optional parameters for the method 'ClustersClusterIdTopicsTopicNameConfigsNamePut'
 type ClustersClusterIdTopicsTopicNameConfigsNamePutOpts struct {
-	UpdateConfigRequestData optional.Interface
+    UpdateConfigRequestData optional.Interface
 }
 
 /*
@@ -1319,11 +1319,11 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx _
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/configs/{name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", _neturl.QueryEscape(parameterToString(name, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1384,7 +1384,7 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsNamePut(ctx _
 
 // ClustersClusterIdTopicsTopicNameConfigsalterPostOpts Optional parameters for the method 'ClustersClusterIdTopicsTopicNameConfigsalterPost'
 type ClustersClusterIdTopicsTopicNameConfigsalterPostOpts struct {
-	AlterConfigBatchRequestData optional.Interface
+    AlterConfigBatchRequestData optional.Interface
 }
 
 /*
@@ -1409,9 +1409,9 @@ func (a *ConfigsApiService) ClustersClusterIdTopicsTopicNameConfigsalterPost(ctx
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

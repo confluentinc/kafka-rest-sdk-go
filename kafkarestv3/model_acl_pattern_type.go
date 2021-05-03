@@ -8,15 +8,14 @@
  */
 
 package kafkarestv3
-
 // AclPatternType the model 'AclPatternType'
 type AclPatternType string
 
 // List of AclPatternType
 const (
-	ACLPATTERNTYPE_UNKNOWN  AclPatternType = "UNKNOWN"
-	ACLPATTERNTYPE_ANY      AclPatternType = "ANY"
-	ACLPATTERNTYPE_MATCH    AclPatternType = "MATCH"
-	ACLPATTERNTYPE_LITERAL  AclPatternType = "LITERAL"
+	ACLPATTERNTYPE_UNKNOWN AclPatternType = "UNKNOWN"
+	ACLPATTERNTYPE_ANY AclPatternType = "ANY"
+	ACLPATTERNTYPE_MATCH AclPatternType = "MATCH"
+	ACLPATTERNTYPE_LITERAL AclPatternType = "LITERAL"
 	ACLPATTERNTYPE_PREFIXED AclPatternType = "PREFIXED"
 )

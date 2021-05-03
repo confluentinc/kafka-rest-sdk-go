@@ -8,16 +8,15 @@
  */
 
 package kafkarestv3
-
 // ConsumerAssignmentData struct for ConsumerAssignmentData
 type ConsumerAssignmentData struct {
-	Kind            string           `json:"kind"`
-	Metadata        ResourceMetadata `json:"metadata"`
-	ClusterId       string           `json:"cluster_id"`
-	ConsumerGroupId string           `json:"consumer_group_id"`
-	ConsumerId      string           `json:"consumer_id"`
-	TopicName       string           `json:"topic_name"`
-	PartitionId     int32            `json:"partition_id"`
-	Partition       Relationship     `json:"partition"`
-	Lag             Relationship     `json:"lag"`
+	Kind string `json:"kind"`
+	Metadata ResourceMetadata `json:"metadata"`
+	ClusterId string `json:"cluster_id"`
+	ConsumerGroupId string `json:"consumer_group_id"`
+	ConsumerId string `json:"consumer_id"`
+	TopicName string `json:"topic_name"`
+	PartitionId int32 `json:"partition_id"`
+	Partition Relationship `json:"partition"`
+	Lag Relationship `json:"lag"`
 }

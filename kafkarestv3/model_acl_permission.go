@@ -8,14 +8,13 @@
  */
 
 package kafkarestv3
-
 // AclPermission the model 'AclPermission'
 type AclPermission string
 
 // List of AclPermission
 const (
 	ACLPERMISSION_UNKNOWN AclPermission = "UNKNOWN"
-	ACLPERMISSION_ANY     AclPermission = "ANY"
-	ACLPERMISSION_DENY    AclPermission = "DENY"
-	ACLPERMISSION_ALLOW   AclPermission = "ALLOW"
+	ACLPERMISSION_ANY AclPermission = "ANY"
+	ACLPERMISSION_DENY AclPermission = "DENY"
+	ACLPERMISSION_ALLOW AclPermission = "ALLOW"
 )

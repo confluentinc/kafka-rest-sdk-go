@@ -6224,6 +6224,7 @@ components:
         partition:
           type: integer
         lag:
+          format: int64
           type: integer
       required:
       - lag

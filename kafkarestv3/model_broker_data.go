@@ -8,16 +8,15 @@
  */
 
 package kafkarestv3
-
 // BrokerData struct for BrokerData
 type BrokerData struct {
-	Kind              string           `json:"kind"`
-	Metadata          ResourceMetadata `json:"metadata"`
-	ClusterId         string           `json:"cluster_id"`
-	BrokerId          int32            `json:"broker_id"`
-	Host              *string          `json:"host,omitempty"`
-	Port              *int32           `json:"port,omitempty"`
-	Rack              *string          `json:"rack,omitempty"`
-	Configs           Relationship     `json:"configs"`
-	PartitionReplicas Relationship     `json:"partition_replicas"`
+	Kind string `json:"kind"`
+	Metadata ResourceMetadata `json:"metadata"`
+	ClusterId string `json:"cluster_id"`
+	BrokerId int32 `json:"broker_id"`
+	Host *string `json:"host,omitempty"`
+	Port *int32 `json:"port,omitempty"`
+	Rack *string `json:"rack,omitempty"`
+	Configs Relationship `json:"configs"`
+	PartitionReplicas Relationship `json:"partition_replicas"`
 }

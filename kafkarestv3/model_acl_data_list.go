@@ -8,10 +8,9 @@
  */
 
 package kafkarestv3
-
 // AclDataList struct for AclDataList
 type AclDataList struct {
-	Kind     string                     `json:"kind"`
+	Kind string `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data     []AclData                  `json:"data"`
+	Data []AclData `json:"data"`
 }

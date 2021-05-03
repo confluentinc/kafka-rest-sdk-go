@@ -8,7 +8,6 @@
  */
 
 package kafkarestv3
-
 // ConsumerAssignmentDataListAllOf struct for ConsumerAssignmentDataListAllOf
 type ConsumerAssignmentDataListAllOf struct {
 	Data []ConsumerAssignmentData `json:"data"`
