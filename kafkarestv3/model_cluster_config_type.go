@@ -8,7 +8,6 @@
  */
 
 package kafkarestv3
-
 // ClusterConfigType the model 'ClusterConfigType'
 type ClusterConfigType string
 

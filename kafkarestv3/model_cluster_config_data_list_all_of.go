@@ -8,7 +8,6 @@
  */
 
 package kafkarestv3
-
 // ClusterConfigDataListAllOf struct for ClusterConfigDataListAllOf
 type ClusterConfigDataListAllOf struct {
 	Data []ClusterConfigData `json:"data"`

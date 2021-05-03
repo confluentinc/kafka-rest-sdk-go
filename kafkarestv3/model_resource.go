@@ -8,9 +8,8 @@
  */
 
 package kafkarestv3
-
 // Resource struct for Resource
 type Resource struct {
-	Kind     string           `json:"kind"`
+	Kind string `json:"kind"`
 	Metadata ResourceMetadata `json:"metadata"`
 }

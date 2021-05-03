@@ -8,15 +8,14 @@
  */
 
 package kafkarestv3
-
 // AclDataAllOf struct for AclDataAllOf
 type AclDataAllOf struct {
-	ClusterId    string          `json:"cluster_id"`
+	ClusterId string `json:"cluster_id"`
 	ResourceType AclResourceType `json:"resource_type"`
-	ResourceName string          `json:"resource_name"`
-	PatternType  AclPatternType  `json:"pattern_type"`
-	Principal    string          `json:"principal"`
-	Host         string          `json:"host"`
-	Operation    AclOperation    `json:"operation"`
-	Permission   AclPermission   `json:"permission"`
+	ResourceName string `json:"resource_name"`
+	PatternType AclPatternType `json:"pattern_type"`
+	Principal string `json:"principal"`
+	Host string `json:"host"`
+	Operation AclOperation `json:"operation"`
+	Permission AclPermission `json:"permission"`
 }

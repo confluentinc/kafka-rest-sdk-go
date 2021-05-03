@@ -8,7 +8,6 @@
  */
 
 package kafkarestv3
-
 // BrokerConfigDataAllOf struct for BrokerConfigDataAllOf
 type BrokerConfigDataAllOf struct {
 	BrokerId int32 `json:"broker_id"`

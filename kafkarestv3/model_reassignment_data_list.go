@@ -8,10 +8,9 @@
  */
 
 package kafkarestv3
-
 // ReassignmentDataList struct for ReassignmentDataList
 type ReassignmentDataList struct {
-	Kind     string                     `json:"kind"`
+	Kind string `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data     []ReassignmentData         `json:"data"`
+	Data []ReassignmentData `json:"data"`
 }

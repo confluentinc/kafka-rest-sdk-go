@@ -8,14 +8,13 @@
  */
 
 package kafkarestv3
-
 // ConsumerAssignmentDataAllOf struct for ConsumerAssignmentDataAllOf
 type ConsumerAssignmentDataAllOf struct {
-	ClusterId       string       `json:"cluster_id"`
-	ConsumerGroupId string       `json:"consumer_group_id"`
-	ConsumerId      string       `json:"consumer_id"`
-	TopicName       string       `json:"topic_name"`
-	PartitionId     int32        `json:"partition_id"`
-	Partition       Relationship `json:"partition"`
-	Lag             Relationship `json:"lag"`
+	ClusterId string `json:"cluster_id"`
+	ConsumerGroupId string `json:"consumer_group_id"`
+	ConsumerId string `json:"consumer_id"`
+	TopicName string `json:"topic_name"`
+	PartitionId int32 `json:"partition_id"`
+	Partition Relationship `json:"partition"`
+	Lag Relationship `json:"lag"`
 }

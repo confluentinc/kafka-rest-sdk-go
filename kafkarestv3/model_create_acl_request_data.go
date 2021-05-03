@@ -8,14 +8,13 @@
  */
 
 package kafkarestv3
-
 // CreateAclRequestData struct for CreateAclRequestData
 type CreateAclRequestData struct {
 	ResourceType AclResourceType `json:"resource_type"`
-	ResourceName string          `json:"resource_name"`
-	PatternType  AclPatternType  `json:"pattern_type"`
-	Principal    string          `json:"principal"`
-	Host         string          `json:"host"`
-	Operation    AclOperation    `json:"operation"`
-	Permission   AclPermission   `json:"permission"`
+	ResourceName string `json:"resource_name"`
+	PatternType AclPatternType `json:"pattern_type"`
+	Principal string `json:"principal"`
+	Host string `json:"host"`
+	Operation AclOperation `json:"operation"`
+	Permission AclPermission `json:"permission"`
 }

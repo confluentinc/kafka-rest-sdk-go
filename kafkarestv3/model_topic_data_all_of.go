@@ -8,14 +8,13 @@
  */
 
 package kafkarestv3
-
 // TopicDataAllOf struct for TopicDataAllOf
 type TopicDataAllOf struct {
-	ClusterId              string       `json:"cluster_id"`
-	TopicName              string       `json:"topic_name"`
-	IsInternal             bool         `json:"is_internal"`
-	ReplicationFactor      int32        `json:"replication_factor"`
-	Partitions             Relationship `json:"partitions"`
-	Configs                Relationship `json:"configs"`
+	ClusterId string `json:"cluster_id"`
+	TopicName string `json:"topic_name"`
+	IsInternal bool `json:"is_internal"`
+	ReplicationFactor int32 `json:"replication_factor"`
+	Partitions Relationship `json:"partitions"`
+	Configs Relationship `json:"configs"`
 	PartitionReassignments Relationship `json:"partition_reassignments"`
 }

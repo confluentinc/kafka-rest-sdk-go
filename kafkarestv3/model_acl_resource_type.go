@@ -8,17 +8,16 @@
  */
 
 package kafkarestv3
-
 // AclResourceType the model 'AclResourceType'
 type AclResourceType string
 
 // List of AclResourceType
 const (
-	ACLRESOURCETYPE_UNKNOWN          AclResourceType = "UNKNOWN"
-	ACLRESOURCETYPE_ANY              AclResourceType = "ANY"
-	ACLRESOURCETYPE_TOPIC            AclResourceType = "TOPIC"
-	ACLRESOURCETYPE_GROUP            AclResourceType = "GROUP"
-	ACLRESOURCETYPE_CLUSTER          AclResourceType = "CLUSTER"
+	ACLRESOURCETYPE_UNKNOWN AclResourceType = "UNKNOWN"
+	ACLRESOURCETYPE_ANY AclResourceType = "ANY"
+	ACLRESOURCETYPE_TOPIC AclResourceType = "TOPIC"
+	ACLRESOURCETYPE_GROUP AclResourceType = "GROUP"
+	ACLRESOURCETYPE_CLUSTER AclResourceType = "CLUSTER"
 	ACLRESOURCETYPE_TRANSACTIONAL_ID AclResourceType = "TRANSACTIONAL_ID"
 	ACLRESOURCETYPE_DELEGATION_TOKEN AclResourceType = "DELEGATION_TOKEN"
 )
