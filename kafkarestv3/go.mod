@@ -1,4 +1,4 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID
+module github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3
 
 require (
 	github.com/antihax/optional v1.0.0
