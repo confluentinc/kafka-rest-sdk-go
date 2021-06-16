@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // InlineResponse200 struct for InlineResponse200
 type InlineResponse200 struct {
 	Data []AclData `json:"data"`

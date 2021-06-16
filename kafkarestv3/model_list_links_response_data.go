@@ -8,12 +8,13 @@
  */
 
 package kafkarestv3
+
 // ListLinksResponseData struct for ListLinksResponseData
 type ListLinksResponseData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	SourceClusterId string `json:"source_cluster_id"`
-	LinkName string `json:"link_name"`
-	LinkId string `json:"link_id"`
-	TopicNames []string `json:"topic_names"`
+	Kind            string           `json:"kind"`
+	Metadata        ResourceMetadata `json:"metadata"`
+	SourceClusterId string           `json:"source_cluster_id"`
+	LinkName        string           `json:"link_name"`
+	LinkId          string           `json:"link_id"`
+	TopicNames      []string         `json:"topic_names"`
 }

@@ -8,8 +8,9 @@
  */
 
 package kafkarestv3
+
 // Error struct for Error
 type Error struct {
-	ErrorCode int32 `json:"error_code"`
-	Message string `json:"message"`
+	ErrorCode int32  `json:"error_code"`
+	Message   string `json:"message"`
 }

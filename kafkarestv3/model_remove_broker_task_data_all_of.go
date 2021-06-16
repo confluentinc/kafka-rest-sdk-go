@@ -8,13 +8,14 @@
  */
 
 package kafkarestv3
+
 // RemoveBrokerTaskDataAllOf struct for RemoveBrokerTaskDataAllOf
 type RemoveBrokerTaskDataAllOf struct {
-	ClusterId string `json:"cluster_id"`
-	BrokerId int32 `json:"broker_id"`
+	ClusterId                   string                                `json:"cluster_id"`
+	BrokerId                    int32                                 `json:"broker_id"`
 	PartitionReassignmentStatus DeprecatedPartitionReassignmentStatus `json:"partition_reassignment_status"`
-	BrokerShutdownStatus DeprecatedBrokerShutdownStatus `json:"broker_shutdown_status"`
-	ErrorCode *int32 `json:"error_code,omitempty"`
-	ErrorMessage *string `json:"error_message,omitempty"`
-	Broker Relationship `json:"broker"`
+	BrokerShutdownStatus        DeprecatedBrokerShutdownStatus        `json:"broker_shutdown_status"`
+	ErrorCode                   *int32                                `json:"error_code,omitempty"`
+	ErrorMessage                *string                               `json:"error_message,omitempty"`
+	Broker                      Relationship                          `json:"broker"`
 }

@@ -8,13 +8,14 @@
  */
 
 package kafkarestv3
+
 // BrokerShutdownStatus the model 'BrokerShutdownStatus'
 type BrokerShutdownStatus string
 
 // List of BrokerShutdownStatus
 const (
-	BROKERSHUTDOWNSTATUS_ERROR BrokerShutdownStatus = "ERROR"
-	BROKERSHUTDOWNSTATUS_CANCELED BrokerShutdownStatus = "CANCELED"
-	BROKERSHUTDOWNSTATUS_PENDING BrokerShutdownStatus = "PENDING"
+	BROKERSHUTDOWNSTATUS_ERROR     BrokerShutdownStatus = "ERROR"
+	BROKERSHUTDOWNSTATUS_CANCELED  BrokerShutdownStatus = "CANCELED"
+	BROKERSHUTDOWNSTATUS_PENDING   BrokerShutdownStatus = "PENDING"
 	BROKERSHUTDOWNSTATUS_COMPLETED BrokerShutdownStatus = "COMPLETED"
 )

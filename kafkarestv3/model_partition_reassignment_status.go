@@ -8,14 +8,15 @@
  */
 
 package kafkarestv3
+
 // PartitionReassignmentStatus the model 'PartitionReassignmentStatus'
 type PartitionReassignmentStatus string
 
 // List of PartitionReassignmentStatus
 const (
-	PARTITIONREASSIGNMENTSTATUS_CANCELED PartitionReassignmentStatus = "CANCELED"
-	PARTITIONREASSIGNMENTSTATUS_ERROR PartitionReassignmentStatus = "ERROR"
-	PARTITIONREASSIGNMENTSTATUS_PENDING PartitionReassignmentStatus = "PENDING"
+	PARTITIONREASSIGNMENTSTATUS_CANCELED    PartitionReassignmentStatus = "CANCELED"
+	PARTITIONREASSIGNMENTSTATUS_ERROR       PartitionReassignmentStatus = "ERROR"
+	PARTITIONREASSIGNMENTSTATUS_PENDING     PartitionReassignmentStatus = "PENDING"
 	PARTITIONREASSIGNMENTSTATUS_IN_PROGRESS PartitionReassignmentStatus = "IN_PROGRESS"
-	PARTITIONREASSIGNMENTSTATUS_COMPLETED PartitionReassignmentStatus = "COMPLETED"
+	PARTITIONREASSIGNMENTSTATUS_COMPLETED   PartitionReassignmentStatus = "COMPLETED"
 )

@@ -8,8 +8,9 @@
  */
 
 package kafkarestv3
+
 // CreateTopicRequestDataConfigs struct for CreateTopicRequestDataConfigs
 type CreateTopicRequestDataConfigs struct {
-	Name string `json:"name"`
+	Name  string  `json:"name"`
 	Value *string `json:"value,omitempty"`
 }

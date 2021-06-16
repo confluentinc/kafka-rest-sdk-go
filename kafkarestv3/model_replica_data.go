@@ -8,15 +8,16 @@
  */
 
 package kafkarestv3
+
 // ReplicaData struct for ReplicaData
 type ReplicaData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	TopicName string `json:"topic_name"`
-	PartitionId int32 `json:"partition_id"`
-	BrokerId int32 `json:"broker_id"`
-	IsLeader bool `json:"is_leader"`
-	IsInSync bool `json:"is_in_sync"`
-	Broker Relationship `json:"broker"`
+	Kind        string           `json:"kind"`
+	Metadata    ResourceMetadata `json:"metadata"`
+	ClusterId   string           `json:"cluster_id"`
+	TopicName   string           `json:"topic_name"`
+	PartitionId int32            `json:"partition_id"`
+	BrokerId    int32            `json:"broker_id"`
+	IsLeader    bool             `json:"is_leader"`
+	IsInSync    bool             `json:"is_in_sync"`
+	Broker      Relationship     `json:"broker"`
 }

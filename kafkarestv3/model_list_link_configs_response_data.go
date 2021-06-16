@@ -8,16 +8,17 @@
  */
 
 package kafkarestv3
+
 // ListLinkConfigsResponseData struct for ListLinkConfigsResponseData
 type ListLinkConfigsResponseData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	Name string `json:"name"`
-	Value string `json:"value"`
-	ReadOnly bool `json:"read_only"`
-	Sensitive bool `json:"sensitive"`
-	Source string `json:"source"`
-	Synonyms []string `json:"synonyms"`
-	LinkName string `json:"link_name"`
+	Kind      string           `json:"kind"`
+	Metadata  ResourceMetadata `json:"metadata"`
+	ClusterId string           `json:"cluster_id"`
+	Name      string           `json:"name"`
+	Value     string           `json:"value"`
+	ReadOnly  bool             `json:"read_only"`
+	Sensitive bool             `json:"sensitive"`
+	Source    string           `json:"source"`
+	Synonyms  []string         `json:"synonyms"`
+	LinkName  string           `json:"link_name"`
 }

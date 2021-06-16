@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // ClusterConfigDataList struct for ClusterConfigDataList
 type ClusterConfigDataList struct {
-	Kind string `json:"kind"`
+	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []ClusterConfigData `json:"data"`
+	Data     []ClusterConfigData        `json:"data"`
 }

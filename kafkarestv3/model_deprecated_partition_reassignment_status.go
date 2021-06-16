@@ -8,14 +8,15 @@
  */
 
 package kafkarestv3
+
 // DeprecatedPartitionReassignmentStatus the model 'DeprecatedPartitionReassignmentStatus'
 type DeprecatedPartitionReassignmentStatus string
 
 // List of DeprecatedPartitionReassignmentStatus
 const (
-	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_CANCELED DeprecatedPartitionReassignmentStatus = "CANCELED"
-	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_FAILED DeprecatedPartitionReassignmentStatus = "FAILED"
-	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_PENDING DeprecatedPartitionReassignmentStatus = "PENDING"
+	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_CANCELED    DeprecatedPartitionReassignmentStatus = "CANCELED"
+	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_FAILED      DeprecatedPartitionReassignmentStatus = "FAILED"
+	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_PENDING     DeprecatedPartitionReassignmentStatus = "PENDING"
 	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_IN_PROGRESS DeprecatedPartitionReassignmentStatus = "IN_PROGRESS"
-	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_COMPLETE DeprecatedPartitionReassignmentStatus = "COMPLETE"
+	DEPRECATEDPARTITIONREASSIGNMENTSTATUS_COMPLETE    DeprecatedPartitionReassignmentStatus = "COMPLETE"
 )

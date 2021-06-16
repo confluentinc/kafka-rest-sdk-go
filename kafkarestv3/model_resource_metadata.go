@@ -8,8 +8,9 @@
  */
 
 package kafkarestv3
+
 // ResourceMetadata struct for ResourceMetadata
 type ResourceMetadata struct {
-	Self string `json:"self"`
+	Self         string  `json:"self"`
 	ResourceName *string `json:"resource_name,omitempty"`
 }

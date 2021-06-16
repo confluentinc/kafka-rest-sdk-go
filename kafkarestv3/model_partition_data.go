@@ -8,14 +8,15 @@
  */
 
 package kafkarestv3
+
 // PartitionData struct for PartitionData
 type PartitionData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"cluster_id"`
-	TopicName string `json:"topic_name"`
-	PartitionId int32 `json:"partition_id"`
-	Leader Relationship `json:"leader,omitempty"`
-	Replicas Relationship `json:"replicas"`
-	Reassignment Relationship `json:"reassignment"`
+	Kind         string           `json:"kind"`
+	Metadata     ResourceMetadata `json:"metadata"`
+	ClusterId    string           `json:"cluster_id"`
+	TopicName    string           `json:"topic_name"`
+	PartitionId  int32            `json:"partition_id"`
+	Leader       Relationship     `json:"leader,omitempty"`
+	Replicas     Relationship     `json:"replicas"`
+	Reassignment Relationship     `json:"reassignment"`
 }

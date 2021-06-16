@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // RemoveBrokerTaskDataListAllOf struct for RemoveBrokerTaskDataListAllOf
 type RemoveBrokerTaskDataListAllOf struct {
 	Data []RemoveBrokerTaskData `json:"data"`

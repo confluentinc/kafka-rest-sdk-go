@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // ListMirrorTopicsResponseDataList struct for ListMirrorTopicsResponseDataList
 type ListMirrorTopicsResponseDataList struct {
-	Kind string `json:"kind"`
-	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []ListMirrorTopicsResponseData `json:"data"`
+	Kind     string                         `json:"kind"`
+	Metadata ResourceCollectionMetadata     `json:"metadata"`
+	Data     []ListMirrorTopicsResponseData `json:"data"`
 }

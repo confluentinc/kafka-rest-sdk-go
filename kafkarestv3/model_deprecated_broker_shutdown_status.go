@@ -8,13 +8,14 @@
  */
 
 package kafkarestv3
+
 // DeprecatedBrokerShutdownStatus the model 'DeprecatedBrokerShutdownStatus'
 type DeprecatedBrokerShutdownStatus string
 
 // List of DeprecatedBrokerShutdownStatus
 const (
-	DEPRECATEDBROKERSHUTDOWNSTATUS_FAILED DeprecatedBrokerShutdownStatus = "FAILED"
+	DEPRECATEDBROKERSHUTDOWNSTATUS_FAILED   DeprecatedBrokerShutdownStatus = "FAILED"
 	DEPRECATEDBROKERSHUTDOWNSTATUS_CANCELED DeprecatedBrokerShutdownStatus = "CANCELED"
-	DEPRECATEDBROKERSHUTDOWNSTATUS_PENDING DeprecatedBrokerShutdownStatus = "PENDING"
+	DEPRECATEDBROKERSHUTDOWNSTATUS_PENDING  DeprecatedBrokerShutdownStatus = "PENDING"
 	DEPRECATEDBROKERSHUTDOWNSTATUS_COMPLETE DeprecatedBrokerShutdownStatus = "COMPLETE"
 )

@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // AlterMirrorStatusResponseDataListAllOf struct for AlterMirrorStatusResponseDataListAllOf
 type AlterMirrorStatusResponseDataListAllOf struct {
 	Data []AlterMirrorStatusResponseData `json:"data"`

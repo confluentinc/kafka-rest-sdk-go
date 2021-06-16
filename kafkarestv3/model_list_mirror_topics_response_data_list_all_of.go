@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // ListMirrorTopicsResponseDataListAllOf struct for ListMirrorTopicsResponseDataListAllOf
 type ListMirrorTopicsResponseDataListAllOf struct {
 	Data []ListMirrorTopicsResponseData `json:"data"`

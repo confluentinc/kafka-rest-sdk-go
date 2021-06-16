@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // BrokerConfigDataList struct for BrokerConfigDataList
 type BrokerConfigDataList struct {
-	Kind string `json:"kind"`
+	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []BrokerConfigData `json:"data"`
+	Data     []BrokerConfigData         `json:"data"`
 }

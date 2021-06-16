@@ -8,22 +8,23 @@
  */
 
 package kafkarestv3
+
 // ReplicaStatusData struct for ReplicaStatusData
 type ReplicaStatusData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	ClusterId string `json:"clusterId"`
-	TopicName string `json:"topicName"`
-	BrokerId int32 `json:"brokerId"`
-	PartitionId int32 `json:"partitionId"`
-	Leader bool `json:"leader"`
-	Observer bool `json:"observer"`
-	IsrEligible bool `json:"isrEligible"`
-	InIsr bool `json:"inIsr"`
-	CaughtUp bool `json:"caughtUp"`
-	LogStartOffset int32 `json:"logStartOffset"`
-	LogEndOffset int32 `json:"logEndOffset"`
-	LastCaughtUpTimeMs int32 `json:"lastCaughtUpTimeMs"`
-	LastFetchTimeMs int32 `json:"lastFetchTimeMs"`
-	LinkName string `json:"linkName,omitempty"`
+	Kind               string           `json:"kind"`
+	Metadata           ResourceMetadata `json:"metadata"`
+	ClusterId          string           `json:"clusterId"`
+	TopicName          string           `json:"topicName"`
+	BrokerId           int32            `json:"brokerId"`
+	PartitionId        int32            `json:"partitionId"`
+	Leader             bool             `json:"leader"`
+	Observer           bool             `json:"observer"`
+	IsrEligible        bool             `json:"isrEligible"`
+	InIsr              bool             `json:"inIsr"`
+	CaughtUp           bool             `json:"caughtUp"`
+	LogStartOffset     int32            `json:"logStartOffset"`
+	LogEndOffset       int32            `json:"logEndOffset"`
+	LastCaughtUpTimeMs int32            `json:"lastCaughtUpTimeMs"`
+	LastFetchTimeMs    int32            `json:"lastFetchTimeMs"`
+	LinkName           string           `json:"linkName,omitempty"`
 }

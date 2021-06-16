@@ -8,12 +8,13 @@
  */
 
 package kafkarestv3
+
 // AlterMirrorStatusResponseData struct for AlterMirrorStatusResponseData
 type AlterMirrorStatusResponseData struct {
-	Kind string `json:"kind"`
-	Metadata ResourceMetadata `json:"metadata"`
-	MirrorTopicName string `json:"mirror_topic_name"`
-	ErrorMessage *string `json:"error_message"`
-	ErrorCode *int32 `json:"error_code"`
-	MirrorLags []MirrorLag `json:"mirror_lags,omitempty"`
+	Kind            string           `json:"kind"`
+	Metadata        ResourceMetadata `json:"metadata"`
+	MirrorTopicName string           `json:"mirror_topic_name"`
+	ErrorMessage    *string          `json:"error_message"`
+	ErrorCode       *int32           `json:"error_code"`
+	MirrorLags      []MirrorLag      `json:"mirror_lags,omitempty"`
 }

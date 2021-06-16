@@ -8,11 +8,12 @@
  */
 
 package kafkarestv3
+
 // BrokerTaskType the model 'BrokerTaskType'
 type BrokerTaskType string
 
 // List of BrokerTaskType
 const (
-	BROKERTASKTYPE_ADD_BROKER BrokerTaskType = "add-broker"
+	BROKERTASKTYPE_ADD_BROKER    BrokerTaskType = "add-broker"
 	BROKERTASKTYPE_REMOVE_BROKER BrokerTaskType = "remove-broker"
 )
