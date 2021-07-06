@@ -11,11 +11,11 @@ package kafkarestv3
 
 import (
 	_context "context"
+	"github.com/antihax/optional"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,205 +25,205 @@ var (
 
 type ClusterLinkingApi interface {
 
-    /*
-     * ClustersClusterIdLinksGet List all cluster links in the given cluster
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return ListLinksResponseDataList
-     */
-    ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksGet List all cluster links in the given cluster
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return ListLinksResponseDataList
+	 */
+	ClustersClusterIdLinksGet(ctx _context.Context, clusterId string) (ListLinksResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNameDelete Reset the config under the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param configName The link config name
-     */
-    ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx _context.Context, clusterId string, linkName string, configName string) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameConfigsConfigNameDelete Reset the config under the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param configName The link config name
+	 */
+	ClustersClusterIdLinksLinkNameConfigsConfigNameDelete(ctx _context.Context, clusterId string, linkName string, configName string) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNameGet Describe the config under the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param configName The link config name
-     * @return ListLinkConfigsResponseData
-     */
-    ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx _context.Context, clusterId string, linkName string, configName string) (ListLinkConfigsResponseData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameConfigsConfigNameGet Describe the config under the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param configName The link config name
+	 * @return ListLinkConfigsResponseData
+	 */
+	ClustersClusterIdLinksLinkNameConfigsConfigNameGet(ctx _context.Context, clusterId string, linkName string, configName string) (ListLinkConfigsResponseData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsConfigNamePut Alter the config under the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param configName The link config name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts - Optional Parameters:
-     * @param "UpdateLinkConfigRequestData" (optional.Interface of UpdateLinkConfigRequestData) -  New cluster link config value
-     */
-    ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx _context.Context, clusterId string, linkName string, configName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameConfigsConfigNamePut Alter the config under the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param configName The link config name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts - Optional Parameters:
+	 * @param "UpdateLinkConfigRequestData" (optional.Interface of UpdateLinkConfigRequestData) -  New cluster link config value
+	 */
+	ClustersClusterIdLinksLinkNameConfigsConfigNamePut(ctx _context.Context, clusterId string, linkName string, configName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsGet List all configs of the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @return ListLinkConfigsResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameConfigsGet(ctx _context.Context, clusterId string, linkName string) (ListLinkConfigsResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameConfigsGet List all configs of the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @return ListLinkConfigsResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameConfigsGet(ctx _context.Context, clusterId string, linkName string) (ListLinkConfigsResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameConfigsalterPut Batch Alter Link Configs
-     *
-     * Batch update configs of the cluster link.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsalterPutOpts - Optional Parameters:
-     * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) - 
-     */
-    ClustersClusterIdLinksLinkNameConfigsalterPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPutOpts) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameConfigsalterPut Batch Alter Link Configs
+	 *
+	 * Batch update configs of the cluster link.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsalterPutOpts - Optional Parameters:
+	 * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -
+	 */
+	ClustersClusterIdLinksLinkNameConfigsalterPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPutOpts) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameDelete Delete the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     */
-    ClustersClusterIdLinksLinkNameDelete(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameDelete Delete the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 */
+	ClustersClusterIdLinksLinkNameDelete(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameGet Describe the cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @return ListLinksResponseData
-     */
-    ClustersClusterIdLinksLinkNameGet(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameGet Describe the cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @return ListLinksResponseData
+	 */
+	ClustersClusterIdLinksLinkNameGet(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorsGet List mirror topics
-     *
-     * List all mirror topics under the link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsGetOpts - Optional Parameters:
-     * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
-     * @return ListMirrorTopicsResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameMirrorsGet(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorsGet List mirror topics
+	 *
+	 * List all mirror topics under the link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsGetOpts - Optional Parameters:
+	 * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
+	 * @return ListMirrorTopicsResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameMirrorsGet(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet Describe the mirror topic
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param mirrorTopicName Cluster Linking mirror topic name
-     * @return ListMirrorTopicsResponseData
-     */
-    ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet Describe the mirror topic
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param mirrorTopicName Cluster Linking mirror topic name
+	 * @return ListMirrorTopicsResponseData
+	 */
+	ClustersClusterIdLinksLinkNameMirrorsMirrorTopicNameGet(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorsPost Create a mirror topic
-     *
-     * Create a topic in the destination cluster mirroring a topic in the source cluster
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsPostOpts - Optional Parameters:
-     * @param "CreateMirrorTopicRequestData" (optional.Interface of CreateMirrorTopicRequestData) -  Name and configs of the topics mirroring from and mirroring to
-     */
-    ClustersClusterIdLinksLinkNameMirrorsPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsPostOpts) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorsPost Create a mirror topic
+	 *
+	 * Create a topic in the destination cluster mirroring a topic in the source cluster
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsPostOpts - Optional Parameters:
+	 * @param "CreateMirrorTopicRequestData" (optional.Interface of CreateMirrorTopicRequestData) -  Name and configs of the topics mirroring from and mirroring to
+	 */
+	ClustersClusterIdLinksLinkNameMirrorsPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsPostOpts) (*_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorsfailoverPost Failover the mirror topics
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
-     * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
-     * @return AlterMirrorStatusResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameMirrorsfailoverPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorsfailoverPost Failover the mirror topics
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameMirrorsfailoverPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorspausePost Pause the mirror topics
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorspausePostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
-     * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
-     * @return AlterMirrorStatusResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameMirrorspausePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorspausePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorspausePost Pause the mirror topics
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorspausePostOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameMirrorspausePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorspausePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorspromotePost Promote the mirror topics
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorspromotePostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
-     * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
-     * @return AlterMirrorStatusResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameMirrorspromotePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorspromotePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorspromotePost Promote the mirror topics
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorspromotePostOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameMirrorspromotePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorspromotePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksLinkNameMirrorsresumePost Resume the mirror topics
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsresumePostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
-     * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
-     * @return AlterMirrorStatusResponseDataList
-     */
-    ClustersClusterIdLinksLinkNameMirrorsresumePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsresumePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksLinkNameMirrorsresumePost Resume the mirror topics
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksLinkNameMirrorsresumePostOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  Is validate-only or not. default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	ClustersClusterIdLinksLinkNameMirrorsresumePost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameMirrorsresumePostOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksMirrorsGet List mirror topics
-     *
-     * List all mirror topics in the cluster
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *ClustersClusterIdLinksMirrorsGetOpts - Optional Parameters:
-     * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
-     * @return ListMirrorTopicsResponseDataList
-     */
-    ClustersClusterIdLinksMirrorsGet(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdLinksMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksMirrorsGet List mirror topics
+	 *
+	 * List all mirror topics in the cluster
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdLinksMirrorsGetOpts - Optional Parameters:
+	 * @param "MirrorStatus" (optional.Interface of MirrorTopicStatus) -  The status of the mirror topic. If not specified, all mirror topics will be returned.
+	 * @return ListMirrorTopicsResponseDataList
+	 */
+	ClustersClusterIdLinksMirrorsGet(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdLinksMirrorsGetOpts) (ListMirrorTopicsResponseDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdLinksPost Create a cluster link
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param linkName The link name
-     * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
-     * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
-     * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
-     * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
-     */
-    ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdLinksPost Create a cluster link
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *ClustersClusterIdLinksPostOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+	 * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. default: true
+	 * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
+	 */
+	ClustersClusterIdLinksPost(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksPostOpts) (*_nethttp.Response, error)
 }
 
 // ClusterLinkingApiService ClusterLinkingApi service
@@ -248,7 +248,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksGet(ctx _context.Contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -326,11 +326,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -401,11 +401,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -466,7 +466,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 // ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameConfigsConfigNamePut'
 type ClustersClusterIdLinksLinkNameConfigsConfigNamePutOpts struct {
-    UpdateLinkConfigRequestData optional.Interface
+	UpdateLinkConfigRequestData optional.Interface
 }
 
 /*
@@ -490,11 +490,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -573,9 +573,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsGet(ctx 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -636,7 +636,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsGet(ctx 
 
 // ClustersClusterIdLinksLinkNameConfigsalterPutOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameConfigsalterPut'
 type ClustersClusterIdLinksLinkNameConfigsalterPutOpts struct {
-    AlterConfigBatchRequestData optional.Interface
+	AlterConfigBatchRequestData optional.Interface
 }
 
 /*
@@ -648,7 +648,7 @@ type ClustersClusterIdLinksLinkNameConfigsalterPutOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *ClustersClusterIdLinksLinkNameConfigsalterPutOpts - Optional Parameters:
- * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) - 
+ * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -
  */
 func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsalterPut(ctx _context.Context, clusterId string, linkName string, localVarOptionals *ClustersClusterIdLinksLinkNameConfigsalterPutOpts) (*_nethttp.Response, error) {
 	var (
@@ -661,9 +661,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsalterPut
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -740,9 +740,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameDelete(ctx _con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -812,9 +812,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameGet(ctx _contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -875,7 +875,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameGet(ctx _contex
 
 // ClustersClusterIdLinksLinkNameMirrorsGetOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsGet'
 type ClustersClusterIdLinksLinkNameMirrorsGetOpts struct {
-    MirrorStatus optional.Interface
+	MirrorStatus optional.Interface
 }
 
 /*
@@ -902,9 +902,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsGet(ctx 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -987,11 +987,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsMirrorTo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"mirror_topic_name"+"}", _neturl.QueryEscape(parameterToString(mirrorTopicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"mirror_topic_name"+"}", _neturl.QueryEscape(parameterToString(mirrorTopicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1052,7 +1052,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsMirrorTo
 
 // ClustersClusterIdLinksLinkNameMirrorsPostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsPost'
 type ClustersClusterIdLinksLinkNameMirrorsPostOpts struct {
-    CreateMirrorTopicRequestData optional.Interface
+	CreateMirrorTopicRequestData optional.Interface
 }
 
 /*
@@ -1077,9 +1077,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsPost(ctx
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1140,8 +1140,8 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsPost(ctx
 
 // ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsfailoverPost'
 type ClustersClusterIdLinksLinkNameMirrorsfailoverPostOpts struct {
-    ValidateOnly optional.Bool
-    AlterMirrorsRequestData optional.Interface
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
 }
 
 /*
@@ -1167,9 +1167,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsfailover
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:failover"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1242,8 +1242,8 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsfailover
 
 // ClustersClusterIdLinksLinkNameMirrorspausePostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorspausePost'
 type ClustersClusterIdLinksLinkNameMirrorspausePostOpts struct {
-    ValidateOnly optional.Bool
-    AlterMirrorsRequestData optional.Interface
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
 }
 
 /*
@@ -1269,9 +1269,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspausePos
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:pause"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1344,8 +1344,8 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspausePos
 
 // ClustersClusterIdLinksLinkNameMirrorspromotePostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorspromotePost'
 type ClustersClusterIdLinksLinkNameMirrorspromotePostOpts struct {
-    ValidateOnly optional.Bool
-    AlterMirrorsRequestData optional.Interface
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
 }
 
 /*
@@ -1371,9 +1371,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspromoteP
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:promote"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1446,8 +1446,8 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspromoteP
 
 // ClustersClusterIdLinksLinkNameMirrorsresumePostOpts Optional parameters for the method 'ClustersClusterIdLinksLinkNameMirrorsresumePost'
 type ClustersClusterIdLinksLinkNameMirrorsresumePostOpts struct {
-    ValidateOnly optional.Bool
-    AlterMirrorsRequestData optional.Interface
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
 }
 
 /*
@@ -1473,9 +1473,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsresumePo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:resume"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1548,7 +1548,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsresumePo
 
 // ClustersClusterIdLinksMirrorsGetOpts Optional parameters for the method 'ClustersClusterIdLinksMirrorsGet'
 type ClustersClusterIdLinksMirrorsGetOpts struct {
-    MirrorStatus optional.Interface
+	MirrorStatus optional.Interface
 }
 
 /*
@@ -1574,7 +1574,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksMirrorsGet(ctx _context
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/-/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1638,9 +1638,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksMirrorsGet(ctx _context
 
 // ClustersClusterIdLinksPostOpts Optional parameters for the method 'ClustersClusterIdLinksPost'
 type ClustersClusterIdLinksPostOpts struct {
-    ValidateOnly optional.Bool
-    ValidateLink optional.Bool
-    CreateLinkRequestData optional.Interface
+	ValidateOnly          optional.Bool
+	ValidateLink          optional.Bool
+	CreateLinkRequestData optional.Interface
 }
 
 /*
@@ -1665,7 +1665,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksPost(ctx _context.Conte
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

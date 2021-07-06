@@ -24,53 +24,53 @@ var (
 
 type BrokerTaskApi interface {
 
-    /*
-     * ClustersClusterIdBrokersBrokerIdTasksGet List Broker Tasks of a specific Broker
-     *
-     * Returns a list of all broker tasks for broker specified with &#x60;&#x60;broker_id&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param brokerId The Kafka broker ID.
-     * @return BrokerTaskDataList
-     */
-    ClustersClusterIdBrokersBrokerIdTasksGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerTaskDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBrokersBrokerIdTasksGet List Broker Tasks of a specific Broker
+	 *
+	 * Returns a list of all broker tasks for broker specified with &#x60;&#x60;broker_id&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param brokerId The Kafka broker ID.
+	 * @return BrokerTaskDataList
+	 */
+	ClustersClusterIdBrokersBrokerIdTasksGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerTaskDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet Get single Broker Task.
-     *
-     * Returns a single Broker Task specified with &#x60;&#x60;task_type&#x60;&#x60; for broker specified with &#x60;&#x60;broker_id&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param brokerId The Kafka broker ID.
-     * @param taskType The Kafka broker task type.
-     * @return BrokerTaskData
-     */
-    ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(ctx _context.Context, clusterId string, brokerId int32, taskType BrokerTaskType) (BrokerTaskData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet Get single Broker Task.
+	 *
+	 * Returns a single Broker Task specified with &#x60;&#x60;task_type&#x60;&#x60; for broker specified with &#x60;&#x60;broker_id&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param brokerId The Kafka broker ID.
+	 * @param taskType The Kafka broker task type.
+	 * @return BrokerTaskData
+	 */
+	ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(ctx _context.Context, clusterId string, brokerId int32, taskType BrokerTaskType) (BrokerTaskData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdBrokersTasksGet List Broker Tasks
-     *
-     * Returns a list of all tasks for all brokers in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return BrokerTaskDataList
-     */
-    ClustersClusterIdBrokersTasksGet(ctx _context.Context, clusterId string) (BrokerTaskDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBrokersTasksGet List Broker Tasks
+	 *
+	 * Returns a list of all tasks for all brokers in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return BrokerTaskDataList
+	 */
+	ClustersClusterIdBrokersTasksGet(ctx _context.Context, clusterId string) (BrokerTaskDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdBrokersTasksTaskTypeGet List Broker Tasks of a specific TaskType
-     *
-     * Returns a list of all broker tasks of specified &#x60;&#x60;task_type&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param taskType The Kafka broker task type.
-     * @return BrokerTaskDataList
-     */
-    ClustersClusterIdBrokersTasksTaskTypeGet(ctx _context.Context, clusterId string, taskType BrokerTaskType) (BrokerTaskDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBrokersTasksTaskTypeGet List Broker Tasks of a specific TaskType
+	 *
+	 * Returns a list of all broker tasks of specified &#x60;&#x60;task_type&#x60;&#x60; in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param taskType The Kafka broker task type.
+	 * @return BrokerTaskDataList
+	 */
+	ClustersClusterIdBrokersTasksTaskTypeGet(ctx _context.Context, clusterId string, taskType BrokerTaskType) (BrokerTaskDataList, *_nethttp.Response, error)
 }
 
 // BrokerTaskApiService BrokerTaskApi service
@@ -98,9 +98,9 @@ func (a *BrokerTaskApiService) ClustersClusterIdBrokersBrokerIdTasksGet(ctx _con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/tasks"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -182,11 +182,11 @@ func (a *BrokerTaskApiService) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}/tasks/{task_type}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"task_type"+"}", _neturl.QueryEscape(parameterToString(taskType, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_type"+"}", _neturl.QueryEscape(parameterToString(taskType, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -266,7 +266,7 @@ func (a *BrokerTaskApiService) ClustersClusterIdBrokersTasksGet(ctx _context.Con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/-/tasks"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -347,9 +347,9 @@ func (a *BrokerTaskApiService) ClustersClusterIdBrokersTasksTaskTypeGet(ctx _con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/-/tasks/{task_type}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"task_type"+"}", _neturl.QueryEscape(parameterToString(taskType, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"task_type"+"}", _neturl.QueryEscape(parameterToString(taskType, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

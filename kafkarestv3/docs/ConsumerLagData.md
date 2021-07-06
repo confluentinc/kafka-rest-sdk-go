@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **ConsumerGroupId** | **string** |  | 
 **TopicName** | **string** |  | 
 **PartitionId** | **int32** |  | 
-**CurrentOffset** | **int32** |  | 
-**LogEndOffset** | **int32** |  | 
-**Lag** | **int32** |  | 
+**CurrentOffset** | **int64** |  | 
+**LogEndOffset** | **int64** |  | 
+**Lag** | **int64** |  | 
 **ConsumerId** | **string** |  | 
 **InstanceId** | Pointer to **string** |  | [optional] 
 **ClientId** | **string** |  | 

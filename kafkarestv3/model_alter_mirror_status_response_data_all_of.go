@@ -8,10 +8,11 @@
  */
 
 package kafkarestv3
+
 // AlterMirrorStatusResponseDataAllOf struct for AlterMirrorStatusResponseDataAllOf
 type AlterMirrorStatusResponseDataAllOf struct {
-	MirrorTopicName string `json:"mirror_topic_name"`
-	ErrorMessage *string `json:"error_message"`
-	ErrorCode *int32 `json:"error_code"`
-	MirrorLags []MirrorLag `json:"mirror_lags,omitempty"`
+	MirrorTopicName string      `json:"mirror_topic_name"`
+	ErrorMessage    *string     `json:"error_message"`
+	ErrorCode       *int32      `json:"error_code"`
+	MirrorLags      []MirrorLag `json:"mirror_lags,omitempty"`
 }

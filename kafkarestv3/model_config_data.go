@@ -8,8 +8,9 @@
  */
 
 package kafkarestv3
+
 // ConfigData struct for ConfigData
 type ConfigData struct {
-	Name string `json:"name"`
+	Name  string  `json:"name"`
 	Value *string `json:"value"`
 }

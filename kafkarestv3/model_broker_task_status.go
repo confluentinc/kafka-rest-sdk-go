@@ -8,12 +8,13 @@
  */
 
 package kafkarestv3
+
 // BrokerTaskStatus the model 'BrokerTaskStatus'
 type BrokerTaskStatus string
 
 // List of BrokerTaskStatus
 const (
-	BROKERTASKSTATUS_FAILED BrokerTaskStatus = "FAILED"
+	BROKERTASKSTATUS_FAILED      BrokerTaskStatus = "FAILED"
 	BROKERTASKSTATUS_IN_PROGRESS BrokerTaskStatus = "IN_PROGRESS"
-	BROKERTASKSTATUS_SUCCESS BrokerTaskStatus = "SUCCESS"
+	BROKERTASKSTATUS_SUCCESS     BrokerTaskStatus = "SUCCESS"
 )

@@ -8,16 +8,17 @@
  */
 
 package kafkarestv3
+
 // BalancerStatus the model 'BalancerStatus'
 type BalancerStatus string
 
 // List of BalancerStatus
 const (
 	BALANCERSTATUS_BOOTSTRAPPING BalancerStatus = "BOOTSTRAPPING"
-	BALANCERSTATUS_STARTING BalancerStatus = "STARTING"
-	BALANCERSTATUS_ENABLED BalancerStatus = "ENABLED"
-	BALANCERSTATUS_ERROR BalancerStatus = "ERROR"
-	BALANCERSTATUS_DISABLED BalancerStatus = "DISABLED"
-	BALANCERSTATUS_FAILOVER BalancerStatus = "FAILOVER"
-	BALANCERSTATUS_LOAD_FAILURE BalancerStatus = "LOAD_FAILURE"
+	BALANCERSTATUS_STARTING      BalancerStatus = "STARTING"
+	BALANCERSTATUS_ENABLED       BalancerStatus = "ENABLED"
+	BALANCERSTATUS_ERROR         BalancerStatus = "ERROR"
+	BALANCERSTATUS_DISABLED      BalancerStatus = "DISABLED"
+	BALANCERSTATUS_FAILOVER      BalancerStatus = "FAILOVER"
+	BALANCERSTATUS_LOAD_FAILURE  BalancerStatus = "LOAD_FAILURE"
 )

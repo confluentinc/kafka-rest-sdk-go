@@ -8,8 +8,9 @@
  */
 
 package kafkarestv3
+
 // CreateTopicRequestDataReplicasAssignments struct for CreateTopicRequestDataReplicasAssignments
 type CreateTopicRequestDataReplicasAssignments struct {
-	PartitionId int32 `json:"partition_id"`
-	BrokerIds []int32 `json:"broker_ids"`
+	PartitionId int32   `json:"partition_id"`
+	BrokerIds   []int32 `json:"broker_ids"`
 }

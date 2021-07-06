@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // UpdateLinkConfigRequestData struct for UpdateLinkConfigRequestData
 type UpdateLinkConfigRequestData struct {
 	Value string `json:"value"`

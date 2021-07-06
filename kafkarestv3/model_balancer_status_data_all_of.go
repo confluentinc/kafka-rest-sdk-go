@@ -8,12 +8,13 @@
  */
 
 package kafkarestv3
+
 // BalancerStatusDataAllOf struct for BalancerStatusDataAllOf
 type BalancerStatusDataAllOf struct {
-	ClusterId string `json:"cluster_id"`
-	Status BalancerStatus `json:"status"`
-	ErrorCode *int32 `json:"error_code,omitempty"`
-	ErrorMessage *string `json:"error_message,omitempty"`
-	AnyUnevenLoad Relationship `json:"any_uneven_load"`
-	BrokerTasks Relationship `json:"broker_tasks"`
+	ClusterId     string         `json:"cluster_id"`
+	Status        BalancerStatus `json:"status"`
+	ErrorCode     *int32         `json:"error_code,omitempty"`
+	ErrorMessage  *string        `json:"error_message,omitempty"`
+	AnyUnevenLoad Relationship   `json:"any_uneven_load"`
+	BrokerTasks   Relationship   `json:"broker_tasks"`
 }

@@ -24,105 +24,105 @@ var (
 
 type ConsumerGroupApi interface {
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet List Consumer Assignments
-     *
-     * Returns a list of partition assignments for the specified consumer.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @param consumerId The consumer ID.
-     * @return ConsumerAssignmentDataList
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string) (ConsumerAssignmentDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet List Consumer Assignments
+	 *
+	 * Returns a list of partition assignments for the specified consumer.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @param consumerId The consumer ID.
+	 * @return ConsumerAssignmentDataList
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string) (ConsumerAssignmentDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet Get Consumer Assignment
-     *
-     * Returns information about the assignment for the specified consumer to the specified partition.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @param consumerId The consumer ID.
-     * @param topicName The topic name.
-     * @param partitionId The partition ID.
-     * @return ConsumerAssignmentData
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string, topicName string, partitionId int32) (ConsumerAssignmentData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet Get Consumer Assignment
+	 *
+	 * Returns information about the assignment for the specified consumer to the specified partition.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @param consumerId The consumer ID.
+	 * @param topicName The topic name.
+	 * @param partitionId The partition ID.
+	 * @return ConsumerAssignmentData
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdAssignmentsTopicNamePartitionsPartitionIdGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string, topicName string, partitionId int32) (ConsumerAssignmentData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet Get Consumer
-     *
-     * Returns the consumer specified by the &#x60;&#x60;consumer_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @param consumerId The consumer ID.
-     * @return ConsumerData
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string) (ConsumerData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet Get Consumer
+	 *
+	 * Returns the consumer specified by the &#x60;&#x60;consumer_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @param consumerId The consumer ID.
+	 * @return ConsumerData
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersConsumerIdGet(ctx _context.Context, clusterId string, consumerGroupId string, consumerId string) (ConsumerData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet List Consumers
-     *
-     * Returns a list of consumers that belong to the specified consumer group.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @return ConsumerDataList
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet List Consumers
+	 *
+	 * Returns a list of consumers that belong to the specified consumer group.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerDataList
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdConsumersGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdGet Get Consumer Group
-     *
-     * Returns the consumer group specified by the &#x60;&#x60;consumer_group_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @return ConsumerGroupData
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdGet Get Consumer Group
+	 *
+	 * Returns the consumer group specified by the &#x60;&#x60;consumer_group_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerGroupData
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
-     *
-     * Returns the max and total lag of the consumers belonging to the specified consumer group.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @return ConsumerGroupLagSummaryData
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet Get Consumer Group Lag Summary.
+	 *
+	 * Returns the max and total lag of the consumers belonging to the specified consumer group.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerGroupLagSummaryData
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagSummaryGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerGroupLagSummaryData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet List Consumer Lags
-     *
-     * Returns a list of consumer lags of the consumers belonging to the specified consumer group.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param consumerGroupId The consumer group ID.
-     * @return ConsumerLagDataList
-     */
-    ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerLagDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet List Consumer Lags
+	 *
+	 * Returns a list of consumer lags of the consumers belonging to the specified consumer group.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param consumerGroupId The consumer group ID.
+	 * @return ConsumerLagDataList
+	 */
+	ClustersClusterIdConsumerGroupsConsumerGroupIdLagsGet(ctx _context.Context, clusterId string, consumerGroupId string) (ConsumerLagDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdConsumerGroupsGet List Consumer Groups
-     *
-     * Returns the list of consumer groups that belong to the specified Kafka cluster.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return ConsumerGroupDataList
-     */
-    ClustersClusterIdConsumerGroupsGet(ctx _context.Context, clusterId string) (ConsumerGroupDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdConsumerGroupsGet List Consumer Groups
+	 *
+	 * Returns the list of consumer groups that belong to the specified Kafka cluster.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return ConsumerGroupDataList
+	 */
+	ClustersClusterIdConsumerGroupsGet(ctx _context.Context, clusterId string) (ConsumerGroupDataList, *_nethttp.Response, error)
 }
 
 // ConsumerGroupApiService ConsumerGroupApi service
@@ -151,11 +151,11 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -239,15 +239,15 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments/{topic_name}/partitions/{partition_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -329,11 +329,11 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -414,9 +414,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -497,9 +497,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -580,9 +580,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -663,9 +663,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -745,7 +745,7 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsGet(ctx _contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

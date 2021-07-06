@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // BrokerTaskDataListAllOf struct for BrokerTaskDataListAllOf
 type BrokerTaskDataListAllOf struct {
 	Data []BrokerTaskData `json:"data"`

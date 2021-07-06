@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // AlterConfigBatchRequestDataData struct for AlterConfigBatchRequestDataData
 type AlterConfigBatchRequestDataData struct {
-	Name string `json:"name"`
-	Value *string `json:"value,omitempty"`
+	Name      string  `json:"name"`
+	Value     *string `json:"value,omitempty"`
 	Operation *string `json:"operation,omitempty"`
 }

@@ -24,28 +24,28 @@ var (
 
 type RemoveBrokerTaskApi interface {
 
-    /*
-     * ClustersClusterIdRemoveBrokerTasksBrokerIdGet Get Remove Broker Task
-     *
-     * Return the remove broker task for the specified &#x60;&#x60;broker_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param brokerId The Kafka broker ID.
-     * @return RemoveBrokerTaskData
-     */
-    ClustersClusterIdRemoveBrokerTasksBrokerIdGet(ctx _context.Context, clusterId string, brokerId int32) (RemoveBrokerTaskData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdRemoveBrokerTasksBrokerIdGet Get Remove Broker Task
+	 *
+	 * Return the remove broker task for the specified &#x60;&#x60;broker_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param brokerId The Kafka broker ID.
+	 * @return RemoveBrokerTaskData
+	 */
+	ClustersClusterIdRemoveBrokerTasksBrokerIdGet(ctx _context.Context, clusterId string, brokerId int32) (RemoveBrokerTaskData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdRemoveBrokerTasksGet List Remove Broker Tasks
-     *
-     * Returns a list of remove-broker-tasks for the specified Kafka cluster. &#x60;&#x60;/remove-broker-tasks&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;/tasks&#x60;&#x60; API instead.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return RemoveBrokerTaskDataList
-     */
-    ClustersClusterIdRemoveBrokerTasksGet(ctx _context.Context, clusterId string) (RemoveBrokerTaskDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdRemoveBrokerTasksGet List Remove Broker Tasks
+	 *
+	 * Returns a list of remove-broker-tasks for the specified Kafka cluster. &#x60;&#x60;/remove-broker-tasks&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;/tasks&#x60;&#x60; API instead.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return RemoveBrokerTaskDataList
+	 */
+	ClustersClusterIdRemoveBrokerTasksGet(ctx _context.Context, clusterId string) (RemoveBrokerTaskDataList, *_nethttp.Response, error)
 }
 
 // RemoveBrokerTaskApiService RemoveBrokerTaskApi service
@@ -73,9 +73,9 @@ func (a *RemoveBrokerTaskApiService) ClustersClusterIdRemoveBrokerTasksBrokerIdG
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/remove-broker-tasks/{broker_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.QueryEscape(parameterToString(brokerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -155,7 +155,7 @@ func (a *RemoveBrokerTaskApiService) ClustersClusterIdRemoveBrokerTasksGet(ctx _
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/remove-broker-tasks"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

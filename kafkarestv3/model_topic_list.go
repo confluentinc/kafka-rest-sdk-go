@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // TopicList struct for TopicList
 type TopicList struct {
 	Topics []string `json:"topics"`

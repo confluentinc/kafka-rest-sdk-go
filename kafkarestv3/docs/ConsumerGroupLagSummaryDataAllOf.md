@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **MaxLagClientId** | **string** |  | 
 **MaxLagTopicName** | **string** |  | 
 **MaxLagPartitionId** | **int32** |  | 
-**MaxLag** | **int32** |  | 
-**TotalLag** | **int32** |  | 
+**MaxLag** | **int64** |  | 
+**TotalLag** | **int64** |  | 
 **MaxLagConsumer** | [**Relationship**](Relationship.md) |  | 
 **MaxLagPartition** | [**Relationship**](Relationship.md) |  | 
 

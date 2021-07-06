@@ -24,27 +24,27 @@ var (
 
 type BalancerStatusApi interface {
 
-    /*
-     * ClustersClusterIdBalancerAnyUnevenLoadGet Get AnyUnevenLoad status
-     *
-     * Returns status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return AnyUnevenLoadData
-     */
-    ClustersClusterIdBalancerAnyUnevenLoadGet(ctx _context.Context, clusterId string) (AnyUnevenLoadData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBalancerAnyUnevenLoadGet Get AnyUnevenLoad status
+	 *
+	 * Returns status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return AnyUnevenLoadData
+	 */
+	ClustersClusterIdBalancerAnyUnevenLoadGet(ctx _context.Context, clusterId string) (AnyUnevenLoadData, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdBalancerGet Get status of the balancer
-     *
-     * Returns status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @return BalancerStatusData
-     */
-    ClustersClusterIdBalancerGet(ctx _context.Context, clusterId string) (BalancerStatusData, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdBalancerGet Get status of the balancer
+	 *
+	 * Returns status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @return BalancerStatusData
+	 */
+	ClustersClusterIdBalancerGet(ctx _context.Context, clusterId string) (BalancerStatusData, *_nethttp.Response, error)
 }
 
 // BalancerStatusApiService BalancerStatusApi service
@@ -71,7 +71,7 @@ func (a *BalancerStatusApiService) ClustersClusterIdBalancerAnyUnevenLoadGet(ctx
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/balancer/any-uneven-load"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -160,7 +160,7 @@ func (a *BalancerStatusApiService) ClustersClusterIdBalancerGet(ctx _context.Con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/balancer"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

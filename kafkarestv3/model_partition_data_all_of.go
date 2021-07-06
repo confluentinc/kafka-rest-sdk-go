@@ -8,12 +8,13 @@
  */
 
 package kafkarestv3
+
 // PartitionDataAllOf struct for PartitionDataAllOf
 type PartitionDataAllOf struct {
-	ClusterId string `json:"cluster_id"`
-	TopicName string `json:"topic_name"`
-	PartitionId int32 `json:"partition_id"`
-	Leader Relationship `json:"leader,omitempty"`
-	Replicas Relationship `json:"replicas"`
+	ClusterId    string       `json:"cluster_id"`
+	TopicName    string       `json:"topic_name"`
+	PartitionId  int32        `json:"partition_id"`
+	Leader       Relationship `json:"leader,omitempty"`
+	Replicas     Relationship `json:"replicas"`
 	Reassignment Relationship `json:"reassignment"`
 }

@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // ListLinksResponseDataListAllOf struct for ListLinksResponseDataListAllOf
 type ListLinksResponseDataListAllOf struct {
 	Data []ListLinksResponseData `json:"data"`

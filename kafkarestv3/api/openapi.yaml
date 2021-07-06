@@ -1469,7 +1469,7 @@ paths:
                   partition:
                     related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1
                   lag:
-                    related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1/lags/consumer-group-1
+                    related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-1/partitions/1
                 - kind: KafkaConsumerAssignment
                   metadata:
                     self: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/consumers/consumer-1/assignments/topic-2/partitions/2
@@ -1482,7 +1482,7 @@ paths:
                   partition:
                     related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-2/partitions/2
                   lag:
-                    related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-2/partitions/2/lags/consumer-groups-1
+                    related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-2/partitions/2
                 - kind: KafkaConsumerAssignment
                   metadata:
                     self: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/consumers/consumer-1/assignments/topic-3/partitions/3
@@ -1495,7 +1495,7 @@ paths:
                   partition:
                     related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-3/partitions/3
                   lag:
-                    related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-3/partitions/3/lags/consumer-groups-1
+                    related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-3/partitions/3
               schema:
                 $ref: '#/components/schemas/ConsumerAssignmentDataList'
           description: The list of consumer group assignments.
@@ -1569,7 +1569,7 @@ paths:
                 partition:
                   related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1
                 lag:
-                  related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1/lags/consumer-group-1
+                  related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-1/partitions/1
               schema:
                 $ref: '#/components/schemas/ConsumerAssignmentData'
           description: The consumer group assignment.
@@ -3939,7 +3939,7 @@ components:
             partition:
               related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1
             lag:
-              related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1/lags/consumer-group-1
+              related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-1/partitions/1
           schema:
             $ref: '#/components/schemas/ConsumerAssignmentData'
       description: The consumer group assignment.
@@ -4389,7 +4389,7 @@ components:
               partition:
                 related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1
               lag:
-                related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-1/partitions/1/lags/consumer-group-1
+                related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-1/partitions/1
             - kind: KafkaConsumerAssignment
               metadata:
                 self: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/consumers/consumer-1/assignments/topic-2/partitions/2
@@ -4402,7 +4402,7 @@ components:
               partition:
                 related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-2/partitions/2
               lag:
-                related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-2/partitions/2/lags/consumer-groups-1
+                related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-2/partitions/2
             - kind: KafkaConsumerAssignment
               metadata:
                 self: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/consumers/consumer-1/assignments/topic-3/partitions/3
@@ -4415,7 +4415,7 @@ components:
               partition:
                 related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-3/partitions/3
               lag:
-                related: http://localhost:9391/v3/clusters/cluster-1/topics/topic-3/partitions/3/lags/consumer-groups-1
+                related: http://localhost:9391/v3/clusters/cluster-1/consumer-groups/consumer-group-1/lags/topic-3/partitions/3
           schema:
             $ref: '#/components/schemas/ConsumerAssignmentDataList'
       description: The list of consumer group assignments.
@@ -5785,10 +5785,13 @@ components:
         partition_id:
           type: integer
         current_offset:
+          format: int64
           type: integer
         log_end_offset:
+          format: int64
           type: integer
         lag:
+          format: int64
           type: integer
         consumer_id:
           type: string
@@ -5833,8 +5836,10 @@ components:
         max_lag_partition_id:
           type: integer
         max_lag:
+          format: int64
           type: integer
         total_lag:
+          format: int64
           type: integer
         max_lag_consumer:
           $ref: '#/components/schemas/Relationship'

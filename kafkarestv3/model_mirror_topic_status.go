@@ -8,14 +8,15 @@
  */
 
 package kafkarestv3
+
 // MirrorTopicStatus the model 'MirrorTopicStatus'
 type MirrorTopicStatus string
 
 // List of MirrorTopicStatus
 const (
-	MIRRORTOPICSTATUS_ACTIVE MirrorTopicStatus = "ACTIVE"
-	MIRRORTOPICSTATUS_FAILED MirrorTopicStatus = "FAILED"
-	MIRRORTOPICSTATUS_PAUSED MirrorTopicStatus = "PAUSED"
-	MIRRORTOPICSTATUS_STOPPED MirrorTopicStatus = "STOPPED"
+	MIRRORTOPICSTATUS_ACTIVE          MirrorTopicStatus = "ACTIVE"
+	MIRRORTOPICSTATUS_FAILED          MirrorTopicStatus = "FAILED"
+	MIRRORTOPICSTATUS_PAUSED          MirrorTopicStatus = "PAUSED"
+	MIRRORTOPICSTATUS_STOPPED         MirrorTopicStatus = "STOPPED"
 	MIRRORTOPICSTATUS_PENDING_STOPPED MirrorTopicStatus = "PENDING_STOPPED"
 )

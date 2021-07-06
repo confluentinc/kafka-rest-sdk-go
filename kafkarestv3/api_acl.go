@@ -11,11 +11,11 @@ package kafkarestv3
 
 import (
 	_context "context"
+	"github.com/antihax/optional"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
 	"strings"
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -25,55 +25,55 @@ var (
 
 type ACLApi interface {
 
-    /*
-     * ClustersClusterIdAclsDelete Delete ACLs
-     *
-     * Deletes the list of ACLs that matches the search criteria.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *ClustersClusterIdAclsDeleteOpts - Optional Parameters:
-     * @param "ResourceType" (optional.Interface of AclResourceType) -  The ACL resource type.
-     * @param "ResourceName" (optional.String) -  The ACL resource name.
-     * @param "PatternType" (optional.Interface of AclPatternType) -  The ACL pattern type.
-     * @param "Principal" (optional.String) -  The ACL principal.
-     * @param "Host" (optional.String) -  The ACL host.
-     * @param "Operation" (optional.Interface of AclOperation) -  The ACL operation.
-     * @param "Permission" (optional.Interface of AclPermission) -  The ACL permission.
-     * @return InlineResponse200
-     */
-    ClustersClusterIdAclsDelete(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsDeleteOpts) (InlineResponse200, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdAclsDelete Delete ACLs
+	 *
+	 * Deletes the list of ACLs that matches the search criteria.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdAclsDeleteOpts - Optional Parameters:
+	 * @param "ResourceType" (optional.Interface of AclResourceType) -  The ACL resource type.
+	 * @param "ResourceName" (optional.String) -  The ACL resource name.
+	 * @param "PatternType" (optional.Interface of AclPatternType) -  The ACL pattern type.
+	 * @param "Principal" (optional.String) -  The ACL principal.
+	 * @param "Host" (optional.String) -  The ACL host.
+	 * @param "Operation" (optional.Interface of AclOperation) -  The ACL operation.
+	 * @param "Permission" (optional.Interface of AclPermission) -  The ACL permission.
+	 * @return InlineResponse200
+	 */
+	ClustersClusterIdAclsDelete(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsDeleteOpts) (InlineResponse200, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdAclsGet Search ACLs
-     *
-     * Returns a list of ACLs that match the search criteria.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *ClustersClusterIdAclsGetOpts - Optional Parameters:
-     * @param "ResourceType" (optional.Interface of AclResourceType) -  The ACL resource type.
-     * @param "ResourceName" (optional.String) -  The ACL resource name.
-     * @param "PatternType" (optional.Interface of AclPatternType) -  The ACL pattern type.
-     * @param "Principal" (optional.String) -  The ACL principal.
-     * @param "Host" (optional.String) -  The ACL host.
-     * @param "Operation" (optional.Interface of AclOperation) -  The ACL operation.
-     * @param "Permission" (optional.Interface of AclPermission) -  The ACL permission.
-     * @return AclDataList
-     */
-    ClustersClusterIdAclsGet(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsGetOpts) (AclDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdAclsGet Search ACLs
+	 *
+	 * Returns a list of ACLs that match the search criteria.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdAclsGetOpts - Optional Parameters:
+	 * @param "ResourceType" (optional.Interface of AclResourceType) -  The ACL resource type.
+	 * @param "ResourceName" (optional.String) -  The ACL resource name.
+	 * @param "PatternType" (optional.Interface of AclPatternType) -  The ACL pattern type.
+	 * @param "Principal" (optional.String) -  The ACL principal.
+	 * @param "Host" (optional.String) -  The ACL host.
+	 * @param "Operation" (optional.Interface of AclOperation) -  The ACL operation.
+	 * @param "Permission" (optional.Interface of AclPermission) -  The ACL permission.
+	 * @return AclDataList
+	 */
+	ClustersClusterIdAclsGet(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsGetOpts) (AclDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdAclsPost Create ACLs
-     *
-     * Creates an ACL.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param optional nil or *ClustersClusterIdAclsPostOpts - Optional Parameters:
-     * @param "CreateAclRequestData" (optional.Interface of CreateAclRequestData) -  The ACL creation request.
-     */
-    ClustersClusterIdAclsPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsPostOpts) (*_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdAclsPost Create ACLs
+	 *
+	 * Creates an ACL.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdAclsPostOpts - Optional Parameters:
+	 * @param "CreateAclRequestData" (optional.Interface of CreateAclRequestData) -  The ACL creation request.
+	 */
+	ClustersClusterIdAclsPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdAclsPostOpts) (*_nethttp.Response, error)
 }
 
 // ACLApiService ACLApi service
@@ -81,13 +81,13 @@ type ACLApiService service
 
 // ClustersClusterIdAclsDeleteOpts Optional parameters for the method 'ClustersClusterIdAclsDelete'
 type ClustersClusterIdAclsDeleteOpts struct {
-    ResourceType optional.Interface
-    ResourceName optional.String
-    PatternType optional.Interface
-    Principal optional.String
-    Host optional.String
-    Operation optional.Interface
-    Permission optional.Interface
+	ResourceType optional.Interface
+	ResourceName optional.String
+	PatternType  optional.Interface
+	Principal    optional.String
+	Host         optional.String
+	Operation    optional.Interface
+	Permission   optional.Interface
 }
 
 /*
@@ -119,7 +119,7 @@ func (a *ACLApiService) ClustersClusterIdAclsDelete(ctx _context.Context, cluste
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/acls"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -201,13 +201,13 @@ func (a *ACLApiService) ClustersClusterIdAclsDelete(ctx _context.Context, cluste
 
 // ClustersClusterIdAclsGetOpts Optional parameters for the method 'ClustersClusterIdAclsGet'
 type ClustersClusterIdAclsGetOpts struct {
-    ResourceType optional.Interface
-    ResourceName optional.String
-    PatternType optional.Interface
-    Principal optional.String
-    Host optional.String
-    Operation optional.Interface
-    Permission optional.Interface
+	ResourceType optional.Interface
+	ResourceName optional.String
+	PatternType  optional.Interface
+	Principal    optional.String
+	Host         optional.String
+	Operation    optional.Interface
+	Permission   optional.Interface
 }
 
 /*
@@ -239,7 +239,7 @@ func (a *ACLApiService) ClustersClusterIdAclsGet(ctx _context.Context, clusterId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/acls"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -321,7 +321,7 @@ func (a *ACLApiService) ClustersClusterIdAclsGet(ctx _context.Context, clusterId
 
 // ClustersClusterIdAclsPostOpts Optional parameters for the method 'ClustersClusterIdAclsPost'
 type ClustersClusterIdAclsPostOpts struct {
-    CreateAclRequestData optional.Interface
+	CreateAclRequestData optional.Interface
 }
 
 /*
@@ -345,7 +345,7 @@ func (a *ACLApiService) ClustersClusterIdAclsPost(ctx _context.Context, clusterI
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/acls"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

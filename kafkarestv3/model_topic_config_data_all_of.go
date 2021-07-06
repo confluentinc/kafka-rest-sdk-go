@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // TopicConfigDataAllOf struct for TopicConfigDataAllOf
 type TopicConfigDataAllOf struct {
 	TopicName string `json:"topic_name"`

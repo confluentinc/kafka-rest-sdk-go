@@ -24,30 +24,30 @@ var (
 
 type ReplicaStatusApi interface {
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet List Partition Replica Statuses.
-     *
-     * Return the all the replica statuses for the specified &#x60;&#x60;topic_name&#x60;&#x60; and &#x60;&#x60;partition_id&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @param partitionId The partition ID.
-     * @return ReplicaStatusDataList
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (ReplicaStatusDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet List Partition Replica Statuses.
+	 *
+	 * Return the all the replica statuses for the specified &#x60;&#x60;topic_name&#x60;&#x60; and &#x60;&#x60;partition_id&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @param partitionId The partition ID.
+	 * @return ReplicaStatusDataList
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet(ctx _context.Context, clusterId string, topicName string, partitionId int32) (ReplicaStatusDataList, *_nethttp.Response, error)
 
-    /*
-     * ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet List All Partition Replica Statuses.
-     *
-     * Return the all the replica statuses for the specified &#x60;&#x60;topic_name&#x60;&#x60;.
-     *
-     * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-     * @param clusterId The Kafka cluster ID.
-     * @param topicName The topic name.
-     * @return ReplicaStatusDataList
-     */
-    ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet(ctx _context.Context, clusterId string, topicName string) (ReplicaStatusDataList, *_nethttp.Response, error)
+	/*
+	 * ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet List All Partition Replica Statuses.
+	 *
+	 * Return the all the replica statuses for the specified &#x60;&#x60;topic_name&#x60;&#x60;.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param topicName The topic name.
+	 * @return ReplicaStatusDataList
+	 */
+	ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet(ctx _context.Context, clusterId string, topicName string) (ReplicaStatusDataList, *_nethttp.Response, error)
 }
 
 // ReplicaStatusApiService ReplicaStatusApi service
@@ -76,11 +76,11 @@ func (a *ReplicaStatusApiService) ClustersClusterIdTopicsTopicNamePartitionsPart
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -161,9 +161,9 @@ func (a *ReplicaStatusApiService) ClustersClusterIdTopicsTopicNamePartitionsRepl
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")) , -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

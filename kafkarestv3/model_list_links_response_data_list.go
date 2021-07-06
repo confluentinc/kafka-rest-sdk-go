@@ -8,9 +8,10 @@
  */
 
 package kafkarestv3
+
 // ListLinksResponseDataList struct for ListLinksResponseDataList
 type ListLinksResponseDataList struct {
-	Kind string `json:"kind"`
+	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data []ListLinksResponseData `json:"data"`
+	Data     []ListLinksResponseData    `json:"data"`
 }

@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // AlterConfigBatchRequestData struct for AlterConfigBatchRequestData
 type AlterConfigBatchRequestData struct {
 	Data []AlterConfigBatchRequestDataData `json:"data"`

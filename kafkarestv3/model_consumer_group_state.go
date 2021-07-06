@@ -8,15 +8,16 @@
  */
 
 package kafkarestv3
+
 // ConsumerGroupState the model 'ConsumerGroupState'
 type ConsumerGroupState string
 
 // List of ConsumerGroupState
 const (
-	CONSUMERGROUPSTATE_UNKNOWN ConsumerGroupState = "UNKNOWN"
-	CONSUMERGROUPSTATE_PREPARING_REBALANCE ConsumerGroupState = "PREPARING_REBALANCE"
+	CONSUMERGROUPSTATE_UNKNOWN              ConsumerGroupState = "UNKNOWN"
+	CONSUMERGROUPSTATE_PREPARING_REBALANCE  ConsumerGroupState = "PREPARING_REBALANCE"
 	CONSUMERGROUPSTATE_COMPLETING_REBALANCE ConsumerGroupState = "COMPLETING_REBALANCE"
-	CONSUMERGROUPSTATE_STABLE ConsumerGroupState = "STABLE"
-	CONSUMERGROUPSTATE_DEAD ConsumerGroupState = "DEAD"
-	CONSUMERGROUPSTATE_EMPTY ConsumerGroupState = "EMPTY"
+	CONSUMERGROUPSTATE_STABLE               ConsumerGroupState = "STABLE"
+	CONSUMERGROUPSTATE_DEAD                 ConsumerGroupState = "DEAD"
+	CONSUMERGROUPSTATE_EMPTY                ConsumerGroupState = "EMPTY"
 )

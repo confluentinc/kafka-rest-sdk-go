@@ -8,6 +8,7 @@
  */
 
 package kafkarestv3
+
 // ReplicaDataListAllOf struct for ReplicaDataListAllOf
 type ReplicaDataListAllOf struct {
 	Data []ReplicaData `json:"data"`
