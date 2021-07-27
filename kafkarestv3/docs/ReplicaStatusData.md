@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **TopicName** | **string** |  | 
 **BrokerId** | **int32** |  | 
 **PartitionId** | **int32** |  | 
-**Leader** | **bool** |  | 
-**Observer** | **bool** |  | 
-**IsrEligible** | **bool** |  | 
-**InIsr** | **bool** |  | 
-**CaughtUp** | **bool** |  | 
+**IsLeader** | **bool** |  | 
+**IsObserver** | **bool** |  | 
+**IsIsrEligible** | **bool** |  | 
+**IsInIsr** | **bool** |  | 
+**IsCaughtUp** | **bool** |  | 
 **LogStartOffset** | **int32** |  | 
 **LogEndOffset** | **int32** |  | 
 **LastCaughtUpTimeMs** | **int32** |  | 

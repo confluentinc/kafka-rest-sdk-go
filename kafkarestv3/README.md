@@ -89,6 +89,8 @@ Class | Method | HTTP request | Description
 *ReplicaApi* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/ReplicaApi.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *ReplicaApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet**](docs/ReplicaApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasbrokeridget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas/{broker_id} | Get Replica
 *ReplicaApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet**](docs/ReplicaApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas | List Replicas
+*ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status | List Partition Replica Statuses.
+*ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status | List All Partition Replica Statuses.
 *TopicApi* | [**ClustersClusterIdTopicsGet**](docs/TopicApi.md#clustersclusteridtopicsget) | **Get** /clusters/{cluster_id}/topics | List Topics
 *TopicApi* | [**ClustersClusterIdTopicsPost**](docs/TopicApi.md#clustersclusteridtopicspost) | **Post** /clusters/{cluster_id}/topics | Create Topic
 *TopicApi* | [**ClustersClusterIdTopicsTopicNameDelete**](docs/TopicApi.md#clustersclusteridtopicstopicnamedelete) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
@@ -185,6 +187,10 @@ Class | Method | HTTP request | Description
  - [ReplicaDataAllOf](docs/ReplicaDataAllOf.md)
  - [ReplicaDataList](docs/ReplicaDataList.md)
  - [ReplicaDataListAllOf](docs/ReplicaDataListAllOf.md)
+ - [ReplicaStatusData](docs/ReplicaStatusData.md)
+ - [ReplicaStatusDataAllOf](docs/ReplicaStatusDataAllOf.md)
+ - [ReplicaStatusDataList](docs/ReplicaStatusDataList.md)
+ - [ReplicaStatusDataListAllOf](docs/ReplicaStatusDataListAllOf.md)
  - [Resource](docs/Resource.md)
  - [ResourceCollection](docs/ResourceCollection.md)
  - [ResourceCollectionMetadata](docs/ResourceCollectionMetadata.md)

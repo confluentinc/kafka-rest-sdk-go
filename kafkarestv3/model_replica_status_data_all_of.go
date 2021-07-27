@@ -15,11 +15,11 @@ type ReplicaStatusDataAllOf struct {
 	TopicName          string `json:"topic_name"`
 	BrokerId           int32  `json:"broker_id"`
 	PartitionId        int32  `json:"partition_id"`
-	Leader             bool   `json:"is_leader"`
-	Observer           bool   `json:"is_observer"`
-	IsrEligible        bool   `json:"is_isr_eligible"`
-	InIsr              bool   `json:"is_in_isr"`
-	CaughtUp           bool   `json:"is_caught_up"`
+	IsLeader           bool   `json:"is_leader"`
+	IsObserver         bool   `json:"is_observer"`
+	IsIsrEligible      bool   `json:"is_isr_eligible"`
+	IsInIsr            bool   `json:"is_in_isr"`
+	IsCaughtUp         bool   `json:"is_caught_up"`
 	LogStartOffset     int32  `json:"log_start_offset"`
 	LogEndOffset       int32  `json:"log_end_offset"`
 	LastCaughtUpTimeMs int32  `json:"last_caught_up_time_ms"`

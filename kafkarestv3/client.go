@@ -64,6 +64,8 @@ type APIClient struct {
 
 	ReplicaApi ReplicaApi
 
+	ReplicaStatusApi ReplicaStatusApi
+
 	TopicApi TopicApi
 }
 
@@ -91,6 +93,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConsumerGroupApi = (*ConsumerGroupApiService)(&c.common)
 	c.PartitionApi = (*PartitionApiService)(&c.common)
 	c.ReplicaApi = (*ReplicaApiService)(&c.common)
+	c.ReplicaStatusApi = (*ReplicaStatusApiService)(&c.common)
 	c.TopicApi = (*TopicApiService)(&c.common)
 
 	return c
