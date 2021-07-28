@@ -3406,6 +3406,34 @@ paths:
       summary: Resume the mirror topics
       tags:
       - ClusterLinking
+  /clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status:
+    parameters:
+      - $ref: '#/components/parameters/ClusterId'
+      - $ref: '#/components/parameters/TopicName'
+
+    get:
+      summary: 'List All Partition Replica Statuses.'
+      description: 'Return the all the replica statuses for the specified ``topic_name``.'
+      tags:
+        - ReplicaStatus
+      responses:
+        '200':
+          $ref: '#/components/responses/ListReplicaStatusResponse'
+
+  /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status:
+    parameters:
+      - $ref: '#/components/parameters/ClusterId'
+      - $ref: '#/components/parameters/TopicName'
+      - $ref: '#/components/parameters/PartitionId'
+
+    get:
+      summary: 'List Partition Replica Statuses.'
+      description: 'Return the all the replica statuses for the specified ``topic_name`` and ``partition_id``.'
+      tags:
+        - ReplicaStatus
+      responses:
+        '200':
+          $ref: '#/components/responses/ListReplicaStatusResponse'
 components:
   parameters:
     AclHost:
@@ -3775,6 +3803,52 @@ components:
             $ref: '#/components/schemas/AlterMirrorsRequestData'
       description: Name of the topics to apply the changes
   responses:
+    ListReplicaStatusResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaReplicaStatusList
+            metadata:
+              self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/topics/topic_1/partitions/0/replica-status
+              resource_name: null
+            data:
+            - kind: KafkaReplicaStatus
+              metadata:
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/topics/topic-1/partitions/0/brokers/1/replica-status
+              cluster_id: cluster-1
+              topic_name: topic-1
+              broker_id: 1
+              partition_id: 0
+              is_leader: true
+              is_observer: false
+              is_isr_eligible: true
+              is_in_isr: true
+              is_caught_up: true
+              log_start_offset: 0
+              log_end_offset: 0
+              last_caught_up_time_ms: 100
+              last_fetch_time_ms: 200
+              link_name: test-link
+            - kind: KafkaReplicaStatus
+              metadata:
+                self: http://localhost:56608/kafka/v3/clusters/1Rh_4htxSuen7RYGvGmgNw/topics/topic-1/partitions/0/brokers/2/replica-status
+              cluster_id: cluster-1
+              topic_name: topic-1
+              broker_id: 2
+              partition_id: 0
+              is_leader: false
+              is_observer: false
+              is_isr_eligible: true
+              is_in_isr: true
+              is_caught_up: true
+              log_start_offset: 0
+              log_end_offset: 0
+              last_caught_up_time_ms: 100
+              last_fetch_time_ms: 200
+              link_name: test-link
+          schema:
+            $ref: '#/components/schemas/ReplicaStatusDataList'
+      description: The list of Replica Statuses.
     CreateTopicResponse:
       content:
         application/json:
@@ -5133,6 +5207,14 @@ components:
             $ref: '#/components/schemas/AlterMirrorStatusResponseDataList'
       description: Mirror status alternation result
   schemas:
+    ReplicaStatusData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ReplicaStatusData_allOf'
+    ReplicaStatusDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ReplicaStatusDataList_allOf'
     AbstractConfigData:
       allOf:
       - $ref: '#/components/schemas/Resource'
@@ -6235,3 +6317,55 @@ components:
       - lag
       - partition
       type: object
+    ReplicaStatusData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        topic_name:
+          type: string
+        broker_id:
+          type: integer
+        partition_id:
+          type: integer
+        is_leader:
+          type: boolean
+        is_observer:
+          type: boolean
+        is_isr_eligible:
+          type: boolean
+        is_in_isr:
+          type: boolean
+        is_caught_up:
+          type: boolean
+        log_start_offset:
+          type: integer
+        log_end_offset:
+          type: integer
+        last_caught_up_time_ms:
+          type: integer
+        last_fetch_time_ms:
+          type: integer
+        link_name:
+          type: string
+      required:
+      - broker_id
+      - cluster_id
+      - is_caught_up
+      - is_in_isr
+      - is_isr_eligible
+      - is_leader
+      - is_observer
+      - last_caught_up_time_ms
+      - last_fetch_time_ms
+      - log_end_offset
+      - log_start_offset
+      - partition_id
+      - topic_name
+    ReplicaStatusDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReplicaStatusData'
+          type: array
+      required:
+      - data

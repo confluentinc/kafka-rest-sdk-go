@@ -11,18 +11,18 @@ package kafkarestv3
 
 // ReplicaStatusDataAllOf struct for ReplicaStatusDataAllOf
 type ReplicaStatusDataAllOf struct {
-	ClusterId          string `json:"clusterId"`
-	TopicName          string `json:"topicName"`
-	BrokerId           int32  `json:"brokerId"`
-	PartitionId        int32  `json:"partitionId"`
-	Leader             bool   `json:"leader"`
-	Observer           bool   `json:"observer"`
-	IsrEligible        bool   `json:"isrEligible"`
-	InIsr              bool   `json:"inIsr"`
-	CaughtUp           bool   `json:"caughtUp"`
-	LogStartOffset     int32  `json:"logStartOffset"`
-	LogEndOffset       int32  `json:"logEndOffset"`
-	LastCaughtUpTimeMs int32  `json:"lastCaughtUpTimeMs"`
-	LastFetchTimeMs    int32  `json:"lastFetchTimeMs"`
-	LinkName           string `json:"linkName,omitempty"`
+	ClusterId          string `json:"cluster_id"`
+	TopicName          string `json:"topic_name"`
+	BrokerId           int32  `json:"broker_id"`
+	PartitionId        int32  `json:"partition_id"`
+	IsLeader           bool   `json:"is_leader"`
+	IsObserver         bool   `json:"is_observer"`
+	IsIsrEligible      bool   `json:"is_isr_eligible"`
+	IsInIsr            bool   `json:"is_in_isr"`
+	IsCaughtUp         bool   `json:"is_caught_up"`
+	LogStartOffset     int32  `json:"log_start_offset"`
+	LogEndOffset       int32  `json:"log_end_offset"`
+	LastCaughtUpTimeMs int32  `json:"last_caught_up_time_ms"`
+	LastFetchTimeMs    int32  `json:"last_fetch_time_ms"`
+	LinkName           string `json:"link_name,omitempty"`
 }
