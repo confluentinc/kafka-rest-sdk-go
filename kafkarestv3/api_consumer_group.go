@@ -151,11 +151,11 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.PathEscape(parameterToString(consumerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -239,15 +239,15 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments/{topic_name}/partitions/{partition_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.PathEscape(parameterToString(consumerId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.QueryEscape(parameterToString(topicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic_name"+"}", _neturl.PathEscape(parameterToString(topicName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.QueryEscape(parameterToString(partitionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"partition_id"+"}", _neturl.PathEscape(parameterToString(partitionId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -329,11 +329,11 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.QueryEscape(parameterToString(consumerId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_id"+"}", _neturl.PathEscape(parameterToString(consumerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -414,9 +414,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -497,9 +497,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -580,9 +580,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -663,9 +663,9 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsConsumerGroupId
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.QueryEscape(parameterToString(consumerGroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"consumer_group_id"+"}", _neturl.PathEscape(parameterToString(consumerGroupId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -745,7 +745,7 @@ func (a *ConsumerGroupApiService) ClustersClusterIdConsumerGroupsGet(ctx _contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/consumer-groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}

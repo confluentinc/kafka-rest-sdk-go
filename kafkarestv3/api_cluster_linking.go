@@ -248,7 +248,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksGet(ctx _context.Contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -326,11 +326,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.PathEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -401,11 +401,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.PathEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -490,11 +490,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsConfigNa
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs/{config_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.QueryEscape(parameterToString(configName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"config_name"+"}", _neturl.PathEscape(parameterToString(configName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -573,9 +573,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsGet(ctx 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -661,9 +661,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameConfigsalterPut
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/configs:alter"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -740,9 +740,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameDelete(ctx _con
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -812,9 +812,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameGet(ctx _contex
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -902,9 +902,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsGet(ctx 
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -987,11 +987,11 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsMirrorTo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"mirror_topic_name"+"}", _neturl.QueryEscape(parameterToString(mirrorTopicName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"mirror_topic_name"+"}", _neturl.PathEscape(parameterToString(mirrorTopicName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1077,9 +1077,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsPost(ctx
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1167,9 +1167,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsfailover
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:failover"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1269,9 +1269,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspausePos
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:pause"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1371,9 +1371,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorspromoteP
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:promote"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1473,9 +1473,9 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksLinkNameMirrorsresumePo
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:resume"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.QueryEscape(parameterToString(linkName, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1574,7 +1574,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksMirrorsGet(ctx _context
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/-/mirrors"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -1665,7 +1665,7 @@ func (a *ClusterLinkingApiService) ClustersClusterIdLinksPost(ctx _context.Conte
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.QueryEscape(parameterToString(clusterId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
