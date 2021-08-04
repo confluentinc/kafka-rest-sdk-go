@@ -22,9 +22,9 @@ type ReplicaStatusData struct {
 	IsIsrEligible      bool             `json:"is_isr_eligible"`
 	IsInIsr            bool             `json:"is_in_isr"`
 	IsCaughtUp         bool             `json:"is_caught_up"`
-	LogStartOffset     int32            `json:"log_start_offset"`
-	LogEndOffset       int32            `json:"log_end_offset"`
-	LastCaughtUpTimeMs int32            `json:"last_caught_up_time_ms"`
-	LastFetchTimeMs    int32            `json:"last_fetch_time_ms"`
+	LogStartOffset     int64            `json:"log_start_offset"`
+	LogEndOffset       int64            `json:"log_end_offset"`
+	LastCaughtUpTimeMs int64            `json:"last_caught_up_time_ms"`
+	LastFetchTimeMs    int64            `json:"last_fetch_time_ms"`
 	LinkName           string           `json:"link_name,omitempty"`
 }

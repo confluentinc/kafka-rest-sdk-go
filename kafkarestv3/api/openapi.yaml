@@ -6498,12 +6498,16 @@ components:
         is_caught_up:
           type: boolean
         log_start_offset:
+          format: int64
           type: integer
         log_end_offset:
+          format: int64
           type: integer
         last_caught_up_time_ms:
+          format: int64
           type: integer
         last_fetch_time_ms:
+          format: int64
           type: integer
         link_name:
           type: string
