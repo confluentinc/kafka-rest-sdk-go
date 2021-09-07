@@ -4,6 +4,10 @@ This repo holds the generated go sdks for [kafka-rest](https://github.com/conflu
 
 See Makefile to see how to update a version of the kafka-rest sdk.
 
+## Compatibility
+
+There are *NO compatibility guarantees* for this repository. It is in direct support of the [Terraform Provider for Confluent Cloud](https://github.com/confluentinc/terraform-provider-confluentcloud/), so branches will be compatible with that repo.
+
 ## How to generate/update the sdk
 See Makefile:
 
