@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get Remove Broker Task
 
-Return the remove broker task for the specified ``broker_id``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the remove broker task for the specified ``broker_id``.
 
 ### Required Parameters
 
@@ -37,7 +37,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -50,7 +50,7 @@ No authorization required
 
 List Remove Broker Tasks
 
-Returns a list of remove-broker-tasks for the specified Kafka cluster. ``/remove-broker-tasks`` is deprecated and may be removed in a future release. Use the new ``/tasks`` API instead.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a list of remove-broker-tasks for the specified Kafka cluster. ``/remove-broker-tasks`` is deprecated and may be removed in a future release. Use the new ``/tasks`` API instead.
 
 ### Required Parameters
 
@@ -71,7 +71,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

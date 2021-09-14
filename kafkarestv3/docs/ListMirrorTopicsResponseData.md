@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **MirrorTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **NumPartitions** | **int32** |  | 
-**MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | 
-**MirrorStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 
-**StateTimeMs** | **int64** |  | 
+**MirrorLags** | [**MirrorLags**](MirrorLags.md) |  | 
+**MirrorTopicStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 
+**StateTimeMs** | **int32** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
