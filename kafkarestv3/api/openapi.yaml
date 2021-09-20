@@ -653,6 +653,28 @@ paths:
       summary: Get Broker
       tags:
       - Broker
+    delete:
+      parameters:
+        - $ref: '#/components/parameters/ShouldShutdown'
+      summary: Delete Broker
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+        Deletes the broker that is specified by ``broker_id``.
+      tags:
+        - Broker
+      responses:
+        '202':
+          $ref: '#/components/responses/GetBrokerRemovalResponse'
+        '400':
+          $ref: '#/components/responses/BadBrokerOrBalancerRequestErrorResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedErrorResponse'
+        '404':
+          $ref: '#/components/responses/BrokerNotFoundErrorResponse'
+        '429':
+          $ref: '#/components/responses/TooManyRequestsErrorResponse'
+        5XX:
+          $ref: '#/components/responses/ServerErrorResponse'
   /clusters/{cluster_id}/brokers/{broker_id}/configs:
     get:
       description: Return the list of configuration parameters that belong to the
@@ -3789,6 +3811,14 @@ components:
       schema:
         type: string
       style: simple
+    ShouldShutdown:
+      name: should_shutdown
+      description: 'To shutdown the broker or not, Default: true'
+      in: query
+      required: false
+      schema:
+        type: boolean
+      example: true
   requestBodies:
     AlterBrokerConfigBatchRequest:
       content:
@@ -3950,6 +3980,98 @@ components:
             $ref: '#/components/schemas/AlterMirrorsRequestData'
       description: Name of the topics to apply the changes
   responses:
+    GetBrokerRemovalResponse:
+      description: The single broker removal response
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BrokerRemovalData'
+          example:
+            kind: KafkaBrokerRemoval
+            metadata:
+              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/brokers/1
+              resource_name: crn:///kafka=cluster-1/broker=1/
+            cluster_id: cluster-1
+            broker_id: 1
+            broker_task:
+              related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/brokers/1
+            broker:
+              related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/brokers/1
+    BadBrokerOrBalancerRequestErrorResponse:
+      description: Bad broker or balancer request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            IllegalBrokerRemoval:
+              value:
+                error_code: 400
+                message: 'Cannot remove broker 1 as there are partitions with replication
+                  factor equal to 1 on the broker. One such partition: test_topic_parition_0.'
+            BalancerOffline:
+              value:
+                error_code: 400
+                message: The Confluent Balancer component is disabled or not started
+                  yet.
+    BrokerNotFoundErrorResponse:
+      description: Broker not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error_code: 404
+            message: 'Broker not found. Broker: 1 not found in the cluster: cluster-1'
+    TooManyRequestsErrorResponse:
+      description: Indicates that a rate limit threshold has been reached, and the
+        client should retry again later.
+      content:
+        text/html:
+          schema:
+            type: string
+          example:
+            description: A sample response from Jetty's DoSFilter.
+            value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+              <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP ERROR
+              429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+              </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+              <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+              </tr> </table> </body> </html>
+    UnauthorizedErrorResponse:
+      description: Indicates a client authentication error. Kafka authentication failures
+        will contain error code 40101 in the response body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            kafka_authentication_failed:
+              description: Thrown when using Basic authentication with wrong Kafka
+                credentials.
+              value:
+                error_code: 40101
+                message: Authentication failed
+    ServerErrorResponse:
+      description: A server-side problem that might not be addressable from the client
+        side. Retriable Kafka errors will contain error code 50003 in the response
+        body.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            generic_internal_server_error:
+              description: Thrown for generic HTTP 500 errors.
+              value:
+                error_code: 500
+                message: Internal Server Error
+            produce_v3_missing_schema:
+              description: Thrown when the specified schema cannot be fetched from
+                Schema Registry.
+              value:
+                error_code: 50002
+                message: Error when fetching latest schema version. subject = my-topic
     ListReplicaStatusResponse:
       content:
         application/json:
