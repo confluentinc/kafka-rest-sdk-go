@@ -1,6 +1,6 @@
 INIT_DIR=../kafka-rest-sdk-go/
 GENERATOR_DIR=../openapi-generator
-OPENAPI_SPEC_DIR=../kafka-rest-sdk-go/kafkarestv3/api/openapi.yaml
+OPENAPI_SPEC_DIR=../ce-kakfa-rest/api/v3/consolidated-openapi.yaml
 SDK_OUTPUT_DIR=../kafka-rest-sdk-go/kafkarestv3
 
 
