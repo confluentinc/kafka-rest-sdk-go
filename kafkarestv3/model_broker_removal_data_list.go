@@ -10,9 +10,9 @@
 
 package kafkarestv3
 
-// BrokerTaskDataList struct for BrokerTaskDataList
-type BrokerTaskDataList struct {
+// BrokerRemovalDataList struct for BrokerRemovalDataList
+type BrokerRemovalDataList struct {
 	Kind     string                     `json:"kind"`
 	Metadata ResourceCollectionMetadata `json:"metadata"`
-	Data     []BrokerTaskData           `json:"data"`
+	Data     []BrokerRemovalData        `json:"data"`
 }

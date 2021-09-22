@@ -66,6 +66,8 @@ type APIClient struct {
 
 	BrokerApi BrokerApi
 
+	BrokerTaskApi BrokerTaskApi
+
 	ClusterApi ClusterApi
 
 	ClusterLinkingApi ClusterLinkingApi
@@ -101,6 +103,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ACLApi = (*ACLApiService)(&c.common)
 	c.BrokerApi = (*BrokerApiService)(&c.common)
+	c.BrokerTaskApi = (*BrokerTaskApiService)(&c.common)
 	c.ClusterApi = (*ClusterApiService)(&c.common)
 	c.ClusterLinkingApi = (*ClusterLinkingApiService)(&c.common)
 	c.ConfigsApi = (*ConfigsApiService)(&c.common)

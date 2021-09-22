@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **BrokerId** | **int32** |  | 
 **TaskType** | [**BrokerTaskType**](BrokerTaskType.md) |  | 
-**TaskStatus** | [**BrokerTaskStatus**](BrokerTaskStatus.md) |  | 
+**TaskStatus** | **string** |  | 
+**ShutdownScheduled** | Pointer to **bool** |  | [optional] 
 **SubTaskStatuses** | **map[string]string** |  | 
 **CreatedAt** | [**time.Time**](time.Time.md) | The date and time at which this task was created. | [readonly] 
 **UpdatedAt** | [**time.Time**](time.Time.md) | The date and time at which this task was last updated. | [readonly] 
