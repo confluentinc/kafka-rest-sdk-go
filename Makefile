@@ -36,4 +36,3 @@ gen-mock:
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_partition.go --pkg mock $(SDK_OUTPUT_DIR)/api_partition.go PartitionApi
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_replica.go --pkg mock $(SDK_OUTPUT_DIR)/api_replica.go ReplicaApi
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_topic.go --pkg mock $(SDK_OUTPUT_DIR)/api_topic.go TopicApi
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_cluster_linking.go --pkg mock $(SDK_OUTPUT_DIR)/api_cluster_linking.go ClusterLinkingApi
