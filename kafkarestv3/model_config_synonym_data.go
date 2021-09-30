@@ -26,7 +26,7 @@ package kafkarestv3
 
 // ConfigSynonymData struct for ConfigSynonymData
 type ConfigSynonymData struct {
-	Name   string  `json:"name"`
-	Value  *string `json:"value,omitempty"`
-	Source string  `json:"source"`
+	Name   string       `json:"name"`
+	Value  *string      `json:"value,omitempty"`
+	Source ConfigSource `json:"source"`
 }
