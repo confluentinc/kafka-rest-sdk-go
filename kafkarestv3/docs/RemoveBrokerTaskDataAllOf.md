@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
 **BrokerId** | **int32** |  | 
+**ShutdownScheduled** | **bool** |  | 
+**BrokerReplicaExclusionStatus** | [**BrokerReplicaExclusionStatus**](BrokerReplicaExclusionStatus.md) |  | 
 **PartitionReassignmentStatus** | [**DeprecatedPartitionReassignmentStatus**](DeprecatedPartitionReassignmentStatus.md) |  | 
 **BrokerShutdownStatus** | [**DeprecatedBrokerShutdownStatus**](DeprecatedBrokerShutdownStatus.md) |  | 
 **ErrorCode** | Pointer to **int32** |  | [optional] 

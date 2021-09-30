@@ -4,45 +4,9 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](ReplicaApi.md#ClustersClusterIdBrokersBrokerIdPartitionReplicasGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet**](ReplicaApi.md#ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas/{broker_id} | Get Replica
 [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet**](ReplicaApi.md#ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas | List Replicas
 
-
-
-## ClustersClusterIdBrokersBrokerIdPartitionReplicasGet
-
-> ReplicaDataList ClustersClusterIdBrokersBrokerIdPartitionReplicasGet(ctx, clusterId, brokerId)
-
-Search Replicas by Broker
-
-Returns the list of replicas assigned to the specified broker.
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The broker ID. | 
-
-### Return type
-
-[**ReplicaDataList**](ReplicaDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet
@@ -51,7 +15,7 @@ No authorization required
 
 Get Replica
 
-Returns the replica for the specified partition assigned to the specified broker.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the replica for the specified partition assigned to the specified broker.
 
 ### Required Parameters
 
@@ -62,7 +26,7 @@ Name | Type | Description  | Notes
 **clusterId** | **string**| The Kafka cluster ID. | 
 **topicName** | **string**| The topic name. | 
 **partitionId** | **int32**| The partition ID. | 
-**brokerId** | **int32**| The broker ID. | 
+**brokerId** | **int32**| The Kafka broker ID. | 
 
 ### Return type
 
@@ -75,7 +39,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -88,7 +52,7 @@ No authorization required
 
 List Replicas
 
-Returns the list of replicas for the specified partition.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the list of replicas for the specified partition.
 
 ### Required Parameters
 
@@ -111,7 +75,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

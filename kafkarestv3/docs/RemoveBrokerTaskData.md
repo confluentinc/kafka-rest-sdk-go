@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **BrokerId** | **int32** |  | 
+**ShutdownScheduled** | **bool** |  | 
+**BrokerReplicaExclusionStatus** | [**BrokerReplicaExclusionStatus**](BrokerReplicaExclusionStatus.md) |  | 
 **PartitionReassignmentStatus** | [**DeprecatedPartitionReassignmentStatus**](DeprecatedPartitionReassignmentStatus.md) |  | 
 **BrokerShutdownStatus** | [**DeprecatedBrokerShutdownStatus**](DeprecatedBrokerShutdownStatus.md) |  | 
 **ErrorCode** | Pointer to **int32** |  | [optional] 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **TopicName** | **string** |  | 
 **IsInternal** | **bool** |  | 
 **ReplicationFactor** | **int32** |  | 
+**PartitionsCount** | **int32** |  | 
 **Partitions** | [**Relationship**](Relationship.md) |  | 
 **Configs** | [**Relationship**](Relationship.md) |  | 
 **PartitionReassignments** | [**Relationship**](Relationship.md) |  | 
