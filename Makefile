@@ -22,8 +22,14 @@ gen:
 		-i $(OPENAPI_SPEC_DIR) \
 		-g go \
 		-o $(SDK_OUTPUT_DIR) \
-  		-p enumClassPrefix=true,packageName=kafkarestv3,generateInterfaces=true
-	cd $(INIT_DIR) && gofmt -w .
+		--generate-alias-as-model \
+		--enable-post-process-file \
+		--git-user-id confluentinc \
+		--git-repo-id kafka-rest-sdk-go/kafkarestv3cp \
+		-p enumClassPrefix=true,packageName=kafkarestv3cp,generateInterfaces=true
+	cd $(INIT_DIR) && cd "kafkarestv3cp"
+	find . -type f -name "*.go" -print0 | xargs -0 sed -i '' -e 's/== 5XX/>= 500/g'
+	gofmt -w .
 	echo "Remember to git restore kafkarestv3/go.mod"
 
 .PHONY: gen-mock
