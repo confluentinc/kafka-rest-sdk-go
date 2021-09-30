@@ -25,9 +25,9 @@ gen:
 		--generate-alias-as-model \
 		--enable-post-process-file \
 		--git-user-id confluentinc \
-		--git-repo-id kafka-rest-sdk-go/kafkarestv3cp \
-		-p enumClassPrefix=true,packageName=kafkarestv3cp,generateInterfaces=true
-	cd $(INIT_DIR) && cd "kafkarestv3cp"
+		--git-repo-id kafka-rest-sdk-go/kafkarestv3 \
+		-p enumClassPrefix=true,packageName=kafkarestv3,generateInterfaces=true
+	cd $(INIT_DIR) && cd "kafkarestv3"
 	find . -type f -name "*.go" -print0 | xargs -0 sed -i '' -e 's/== 5XX/>= 500/g'
 	gofmt -w .
 	echo "Remember to git restore kafkarestv3/go.mod"
