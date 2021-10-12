@@ -5,25 +5,26 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // BrokerReplicaExclusionApi is a mock of BrokerReplicaExclusionApi interface
 type BrokerReplicaExclusionApi struct {
 	lockClustersClusterIdBrokerReplicaExclusionsBrokerIdGet sync.Mutex
-	ClustersClusterIdBrokerReplicaExclusionsBrokerIdGetFunc func(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerReplicaExclusionData, *net_http.Response, error)
+	ClustersClusterIdBrokerReplicaExclusionsBrokerIdGetFunc func(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerReplicaExclusionData, *net_http.Response, error)
 
 	lockClustersClusterIdBrokerReplicaExclusionsGet sync.Mutex
-	ClustersClusterIdBrokerReplicaExclusionsGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.BrokerReplicaExclusionDataList, *net_http.Response, error)
+	ClustersClusterIdBrokerReplicaExclusionsGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerReplicaExclusionDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokerReplicaExclusionscreatePost sync.Mutex
-	ClustersClusterIdBrokerReplicaExclusionscreatePostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts) (command_line_arguments.AlterBrokerReplicaExclusionDataList, *net_http.Response, error)
+	ClustersClusterIdBrokerReplicaExclusionscreatePostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterBrokerReplicaExclusionDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokerReplicaExclusionsdeletePost sync.Mutex
-	ClustersClusterIdBrokerReplicaExclusionsdeletePostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts) (command_line_arguments.AlterBrokerReplicaExclusionDataList, *net_http.Response, error)
+	ClustersClusterIdBrokerReplicaExclusionsdeletePostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterBrokerReplicaExclusionDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet []struct {
@@ -38,18 +39,18 @@ type BrokerReplicaExclusionApi struct {
 		ClustersClusterIdBrokerReplicaExclusionscreatePost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
 		}
 		ClustersClusterIdBrokerReplicaExclusionsdeletePost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
 		}
 	}
 }
 
 // ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet mocks base method by wrapping the associated func.
-func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerReplicaExclusionData, *net_http.Response, error) {
+func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerReplicaExclusionData, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerReplicaExclusionsBrokerIdGet.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionsBrokerIdGet.Unlock()
 
@@ -93,7 +94,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsBrok
 }
 
 // ClustersClusterIdBrokerReplicaExclusionsGet mocks base method by wrapping the associated func.
-func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsGet(ctx context.Context, clusterId string) (command_line_arguments.BrokerReplicaExclusionDataList, *net_http.Response, error) {
+func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerReplicaExclusionDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerReplicaExclusionsGet.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionsGet.Unlock()
 
@@ -134,7 +135,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsGetC
 }
 
 // ClustersClusterIdBrokerReplicaExclusionscreatePost mocks base method by wrapping the associated func.
-func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscreatePost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts) (command_line_arguments.AlterBrokerReplicaExclusionDataList, *net_http.Response, error) {
+func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscreatePost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterBrokerReplicaExclusionDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerReplicaExclusionscreatePost.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionscreatePost.Unlock()
 
@@ -145,7 +146,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscrea
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -169,7 +170,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscrea
 func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscreatePostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionscreatePostOpts
 } {
 	m.lockClustersClusterIdBrokerReplicaExclusionscreatePost.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionscreatePost.Unlock()
@@ -178,7 +179,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionscrea
 }
 
 // ClustersClusterIdBrokerReplicaExclusionsdeletePost mocks base method by wrapping the associated func.
-func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsdeletePost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts) (command_line_arguments.AlterBrokerReplicaExclusionDataList, *net_http.Response, error) {
+func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsdeletePost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterBrokerReplicaExclusionDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokerReplicaExclusionsdeletePost.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionsdeletePost.Unlock()
 
@@ -189,7 +190,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsdele
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -213,7 +214,7 @@ func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsdele
 func (m *BrokerReplicaExclusionApi) ClustersClusterIdBrokerReplicaExclusionsdeletePostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokerReplicaExclusionsdeletePostOpts
 } {
 	m.lockClustersClusterIdBrokerReplicaExclusionsdeletePost.Lock()
 	defer m.lockClustersClusterIdBrokerReplicaExclusionsdeletePost.Unlock()

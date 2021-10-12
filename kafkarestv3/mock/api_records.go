@@ -5,29 +5,30 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // RecordsApi is a mock of RecordsApi interface
 type RecordsApi struct {
 	lockClustersClusterIdTopicsTopicNameRecordsPost sync.Mutex
-	ClustersClusterIdTopicsTopicNameRecordsPostFunc func(ctx context.Context, clusterId, topicName string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameRecordsPostOpts) (command_line_arguments.ProduceResponse, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNameRecordsPostFunc func(ctx context.Context, clusterId, topicName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameRecordsPostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ProduceResponse, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdTopicsTopicNameRecordsPost []struct {
 			Ctx               context.Context
 			ClusterId         string
 			TopicName         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameRecordsPostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameRecordsPostOpts
 		}
 	}
 }
 
 // ClustersClusterIdTopicsTopicNameRecordsPost mocks base method by wrapping the associated func.
-func (m *RecordsApi) ClustersClusterIdTopicsTopicNameRecordsPost(ctx context.Context, clusterId, topicName string, localVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameRecordsPostOpts) (command_line_arguments.ProduceResponse, *net_http.Response, error) {
+func (m *RecordsApi) ClustersClusterIdTopicsTopicNameRecordsPost(ctx context.Context, clusterId, topicName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameRecordsPostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ProduceResponse, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNameRecordsPost.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameRecordsPost.Unlock()
 
@@ -39,7 +40,7 @@ func (m *RecordsApi) ClustersClusterIdTopicsTopicNameRecordsPost(ctx context.Con
 		Ctx               context.Context
 		ClusterId         string
 		TopicName         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameRecordsPostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameRecordsPostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -65,7 +66,7 @@ func (m *RecordsApi) ClustersClusterIdTopicsTopicNameRecordsPostCalls() []struct
 	Ctx               context.Context
 	ClusterId         string
 	TopicName         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdTopicsTopicNameRecordsPostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdTopicsTopicNameRecordsPostOpts
 } {
 	m.lockClustersClusterIdTopicsTopicNameRecordsPost.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNameRecordsPost.Unlock()

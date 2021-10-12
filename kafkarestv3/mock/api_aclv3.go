@@ -5,44 +5,45 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ACLV3Api is a mock of ACLV3Api interface
 type ACLV3Api struct {
 	lockCreateKafkaAcls sync.Mutex
-	CreateKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaAclsOpts) (*net_http.Response, error)
+	CreateKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaAclsOpts) (*net_http.Response, error)
 
 	lockDeleteKafkaAcls sync.Mutex
-	DeleteKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.DeleteKafkaAclsOpts) (command_line_arguments.InlineResponse200, *net_http.Response, error)
+	DeleteKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaAclsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.InlineResponse200, *net_http.Response, error)
 
 	lockGetKafkaAcls sync.Mutex
-	GetKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.GetKafkaAclsOpts) (command_line_arguments.AclDataList, *net_http.Response, error)
+	GetKafkaAclsFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.GetKafkaAclsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AclDataList, *net_http.Response, error)
 
 	calls struct {
 		CreateKafkaAcls []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.CreateKafkaAclsOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaAclsOpts
 		}
 		DeleteKafkaAcls []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.DeleteKafkaAclsOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaAclsOpts
 		}
 		GetKafkaAcls []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.GetKafkaAclsOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.GetKafkaAclsOpts
 		}
 	}
 }
 
 // CreateKafkaAcls mocks base method by wrapping the associated func.
-func (m *ACLV3Api) CreateKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaAclsOpts) (*net_http.Response, error) {
+func (m *ACLV3Api) CreateKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaAclsOpts) (*net_http.Response, error) {
 	m.lockCreateKafkaAcls.Lock()
 	defer m.lockCreateKafkaAcls.Unlock()
 
@@ -53,7 +54,7 @@ func (m *ACLV3Api) CreateKafkaAcls(ctx context.Context, clusterId string, localV
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.CreateKafkaAclsOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaAclsOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -77,7 +78,7 @@ func (m *ACLV3Api) CreateKafkaAclsCalled() bool {
 func (m *ACLV3Api) CreateKafkaAclsCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.CreateKafkaAclsOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaAclsOpts
 } {
 	m.lockCreateKafkaAcls.Lock()
 	defer m.lockCreateKafkaAcls.Unlock()
@@ -86,7 +87,7 @@ func (m *ACLV3Api) CreateKafkaAclsCalls() []struct {
 }
 
 // DeleteKafkaAcls mocks base method by wrapping the associated func.
-func (m *ACLV3Api) DeleteKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.DeleteKafkaAclsOpts) (command_line_arguments.InlineResponse200, *net_http.Response, error) {
+func (m *ACLV3Api) DeleteKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaAclsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.InlineResponse200, *net_http.Response, error) {
 	m.lockDeleteKafkaAcls.Lock()
 	defer m.lockDeleteKafkaAcls.Unlock()
 
@@ -97,7 +98,7 @@ func (m *ACLV3Api) DeleteKafkaAcls(ctx context.Context, clusterId string, localV
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.DeleteKafkaAclsOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaAclsOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -121,7 +122,7 @@ func (m *ACLV3Api) DeleteKafkaAclsCalled() bool {
 func (m *ACLV3Api) DeleteKafkaAclsCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.DeleteKafkaAclsOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaAclsOpts
 } {
 	m.lockDeleteKafkaAcls.Lock()
 	defer m.lockDeleteKafkaAcls.Unlock()
@@ -130,7 +131,7 @@ func (m *ACLV3Api) DeleteKafkaAclsCalls() []struct {
 }
 
 // GetKafkaAcls mocks base method by wrapping the associated func.
-func (m *ACLV3Api) GetKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.GetKafkaAclsOpts) (command_line_arguments.AclDataList, *net_http.Response, error) {
+func (m *ACLV3Api) GetKafkaAcls(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.GetKafkaAclsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AclDataList, *net_http.Response, error) {
 	m.lockGetKafkaAcls.Lock()
 	defer m.lockGetKafkaAcls.Unlock()
 
@@ -141,7 +142,7 @@ func (m *ACLV3Api) GetKafkaAcls(ctx context.Context, clusterId string, localVarO
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.GetKafkaAclsOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.GetKafkaAclsOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -165,7 +166,7 @@ func (m *ACLV3Api) GetKafkaAclsCalled() bool {
 func (m *ACLV3Api) GetKafkaAclsCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.GetKafkaAclsOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.GetKafkaAclsOpts
 } {
 	m.lockGetKafkaAcls.Lock()
 	defer m.lockGetKafkaAcls.Unlock()

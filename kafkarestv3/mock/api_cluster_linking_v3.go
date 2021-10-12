@@ -5,19 +5,20 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ClusterLinkingV3Api is a mock of ClusterLinkingV3Api interface
 type ClusterLinkingV3Api struct {
 	lockCreateKafkaLink sync.Mutex
-	CreateKafkaLinkFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaLinkOpts) (*net_http.Response, error)
+	CreateKafkaLinkFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error)
 
 	lockCreateKafkaMirrorTopic sync.Mutex
-	CreateKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.CreateKafkaMirrorTopicOpts) (*net_http.Response, error)
+	CreateKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts) (*net_http.Response, error)
 
 	lockDeleteKafkaLink sync.Mutex
 	DeleteKafkaLinkFunc func(ctx context.Context, clusterId, linkName string) (*net_http.Response, error)
@@ -26,55 +27,55 @@ type ClusterLinkingV3Api struct {
 	DeleteKafkaLinkConfigFunc func(ctx context.Context, clusterId, linkName, configName string) (*net_http.Response, error)
 
 	lockGetKafkaLink sync.Mutex
-	GetKafkaLinkFunc func(ctx context.Context, clusterId, linkName string) (command_line_arguments.ListLinksResponseData, *net_http.Response, error)
+	GetKafkaLinkFunc func(ctx context.Context, clusterId, linkName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinksResponseData, *net_http.Response, error)
 
 	lockGetKafkaLinkConfigs sync.Mutex
-	GetKafkaLinkConfigsFunc func(ctx context.Context, clusterId, linkName, configName string) (command_line_arguments.ListLinkConfigsResponseData, *net_http.Response, error)
+	GetKafkaLinkConfigsFunc func(ctx context.Context, clusterId, linkName, configName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinkConfigsResponseData, *net_http.Response, error)
 
 	lockListKafkaLinkConfigs sync.Mutex
-	ListKafkaLinkConfigsFunc func(ctx context.Context, clusterId, linkName string) (command_line_arguments.ListLinkConfigsResponseDataList, *net_http.Response, error)
+	ListKafkaLinkConfigsFunc func(ctx context.Context, clusterId, linkName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinkConfigsResponseDataList, *net_http.Response, error)
 
 	lockListKafkaLinks sync.Mutex
-	ListKafkaLinksFunc func(ctx context.Context, clusterId string) (command_line_arguments.ListLinksResponseDataList, *net_http.Response, error)
+	ListKafkaLinksFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinksResponseDataList, *net_http.Response, error)
 
 	lockListKafkaMirrorTopics sync.Mutex
-	ListKafkaMirrorTopicsFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ListKafkaMirrorTopicsOpts) (command_line_arguments.ListMirrorTopicsResponseDataList, *net_http.Response, error)
+	ListKafkaMirrorTopicsFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseDataList, *net_http.Response, error)
 
 	lockListKafkaMirrorTopicsUnderLink sync.Mutex
-	ListKafkaMirrorTopicsUnderLinkFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.ListKafkaMirrorTopicsUnderLinkOpts) (command_line_arguments.ListMirrorTopicsResponseDataList, *net_http.Response, error)
+	ListKafkaMirrorTopicsUnderLinkFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsUnderLinkOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseDataList, *net_http.Response, error)
 
 	lockReadKafkaMirrorTopic sync.Mutex
-	ReadKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName, mirrorTopicName string) (command_line_arguments.ListMirrorTopicsResponseData, *net_http.Response, error)
+	ReadKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName, mirrorTopicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseData, *net_http.Response, error)
 
 	lockUpdateKafkaLinkConfig sync.Mutex
-	UpdateKafkaLinkConfigFunc func(ctx context.Context, clusterId, linkName, configName string, localVarOptionals *command_line_arguments.UpdateKafkaLinkConfigOpts) (*net_http.Response, error)
+	UpdateKafkaLinkConfigFunc func(ctx context.Context, clusterId, linkName, configName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigOpts) (*net_http.Response, error)
 
 	lockUpdateKafkaLinkConfigBatch sync.Mutex
-	UpdateKafkaLinkConfigBatchFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaLinkConfigBatchOpts) (*net_http.Response, error)
+	UpdateKafkaLinkConfigBatchFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigBatchOpts) (*net_http.Response, error)
 
 	lockUpdateKafkaMirrorTopicsFailover sync.Mutex
-	UpdateKafkaMirrorTopicsFailoverFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsFailoverOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error)
+	UpdateKafkaMirrorTopicsFailoverFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsFailoverOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error)
 
 	lockUpdateKafkaMirrorTopicsPause sync.Mutex
-	UpdateKafkaMirrorTopicsPauseFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPauseOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error)
+	UpdateKafkaMirrorTopicsPauseFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPauseOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error)
 
 	lockUpdateKafkaMirrorTopicsPromote sync.Mutex
-	UpdateKafkaMirrorTopicsPromoteFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPromoteOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error)
+	UpdateKafkaMirrorTopicsPromoteFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPromoteOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error)
 
 	lockUpdateKafkaMirrorTopicsResume sync.Mutex
-	UpdateKafkaMirrorTopicsResumeFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsResumeOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error)
+	UpdateKafkaMirrorTopicsResumeFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsResumeOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error)
 
 	calls struct {
 		CreateKafkaLink []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.CreateKafkaLinkOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 		}
 		CreateKafkaMirrorTopic []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.CreateKafkaMirrorTopicOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts
 		}
 		DeleteKafkaLink []struct {
 			Ctx       context.Context
@@ -110,13 +111,13 @@ type ClusterLinkingV3Api struct {
 		ListKafkaMirrorTopics []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsOpts
 		}
 		ListKafkaMirrorTopicsUnderLink []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsUnderLinkOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsUnderLinkOpts
 		}
 		ReadKafkaMirrorTopic []struct {
 			Ctx             context.Context
@@ -129,43 +130,43 @@ type ClusterLinkingV3Api struct {
 			ClusterId         string
 			LinkName          string
 			ConfigName        string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigOpts
 		}
 		UpdateKafkaLinkConfigBatch []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigBatchOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigBatchOpts
 		}
 		UpdateKafkaMirrorTopicsFailover []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsFailoverOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsFailoverOpts
 		}
 		UpdateKafkaMirrorTopicsPause []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPauseOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPauseOpts
 		}
 		UpdateKafkaMirrorTopicsPromote []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPromoteOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPromoteOpts
 		}
 		UpdateKafkaMirrorTopicsResume []struct {
 			Ctx               context.Context
 			ClusterId         string
 			LinkName          string
-			LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsResumeOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsResumeOpts
 		}
 	}
 }
 
 // CreateKafkaLink mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaLinkOpts) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error) {
 	m.lockCreateKafkaLink.Lock()
 	defer m.lockCreateKafkaLink.Unlock()
 
@@ -176,7 +177,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId str
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.CreateKafkaLinkOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -200,7 +201,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaLinkCalled() bool {
 func (m *ClusterLinkingV3Api) CreateKafkaLinkCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.CreateKafkaLinkOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 } {
 	m.lockCreateKafkaLink.Lock()
 	defer m.lockCreateKafkaLink.Unlock()
@@ -209,7 +210,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaLinkCalls() []struct {
 }
 
 // CreateKafkaMirrorTopic mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) CreateKafkaMirrorTopic(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.CreateKafkaMirrorTopicOpts) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) CreateKafkaMirrorTopic(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts) (*net_http.Response, error) {
 	m.lockCreateKafkaMirrorTopic.Lock()
 	defer m.lockCreateKafkaMirrorTopic.Unlock()
 
@@ -221,7 +222,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaMirrorTopic(ctx context.Context, cluste
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.CreateKafkaMirrorTopicOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -247,7 +248,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaMirrorTopicCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.CreateKafkaMirrorTopicOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts
 } {
 	m.lockCreateKafkaMirrorTopic.Lock()
 	defer m.lockCreateKafkaMirrorTopic.Unlock()
@@ -347,7 +348,7 @@ func (m *ClusterLinkingV3Api) DeleteKafkaLinkConfigCalls() []struct {
 }
 
 // GetKafkaLink mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) GetKafkaLink(ctx context.Context, clusterId, linkName string) (command_line_arguments.ListLinksResponseData, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) GetKafkaLink(ctx context.Context, clusterId, linkName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinksResponseData, *net_http.Response, error) {
 	m.lockGetKafkaLink.Lock()
 	defer m.lockGetKafkaLink.Unlock()
 
@@ -391,7 +392,7 @@ func (m *ClusterLinkingV3Api) GetKafkaLinkCalls() []struct {
 }
 
 // GetKafkaLinkConfigs mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) GetKafkaLinkConfigs(ctx context.Context, clusterId, linkName, configName string) (command_line_arguments.ListLinkConfigsResponseData, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) GetKafkaLinkConfigs(ctx context.Context, clusterId, linkName, configName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinkConfigsResponseData, *net_http.Response, error) {
 	m.lockGetKafkaLinkConfigs.Lock()
 	defer m.lockGetKafkaLinkConfigs.Unlock()
 
@@ -438,7 +439,7 @@ func (m *ClusterLinkingV3Api) GetKafkaLinkConfigsCalls() []struct {
 }
 
 // ListKafkaLinkConfigs mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) ListKafkaLinkConfigs(ctx context.Context, clusterId, linkName string) (command_line_arguments.ListLinkConfigsResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) ListKafkaLinkConfigs(ctx context.Context, clusterId, linkName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinkConfigsResponseDataList, *net_http.Response, error) {
 	m.lockListKafkaLinkConfigs.Lock()
 	defer m.lockListKafkaLinkConfigs.Unlock()
 
@@ -482,7 +483,7 @@ func (m *ClusterLinkingV3Api) ListKafkaLinkConfigsCalls() []struct {
 }
 
 // ListKafkaLinks mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) ListKafkaLinks(ctx context.Context, clusterId string) (command_line_arguments.ListLinksResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) ListKafkaLinks(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListLinksResponseDataList, *net_http.Response, error) {
 	m.lockListKafkaLinks.Lock()
 	defer m.lockListKafkaLinks.Unlock()
 
@@ -523,7 +524,7 @@ func (m *ClusterLinkingV3Api) ListKafkaLinksCalls() []struct {
 }
 
 // ListKafkaMirrorTopics mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) ListKafkaMirrorTopics(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ListKafkaMirrorTopicsOpts) (command_line_arguments.ListMirrorTopicsResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) ListKafkaMirrorTopics(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseDataList, *net_http.Response, error) {
 	m.lockListKafkaMirrorTopics.Lock()
 	defer m.lockListKafkaMirrorTopics.Unlock()
 
@@ -534,7 +535,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopics(ctx context.Context, cluster
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -558,7 +559,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsCalled() bool {
 func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsOpts
 } {
 	m.lockListKafkaMirrorTopics.Lock()
 	defer m.lockListKafkaMirrorTopics.Unlock()
@@ -567,7 +568,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsCalls() []struct {
 }
 
 // ListKafkaMirrorTopicsUnderLink mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsUnderLink(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.ListKafkaMirrorTopicsUnderLinkOpts) (command_line_arguments.ListMirrorTopicsResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsUnderLink(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsUnderLinkOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseDataList, *net_http.Response, error) {
 	m.lockListKafkaMirrorTopicsUnderLink.Lock()
 	defer m.lockListKafkaMirrorTopicsUnderLink.Unlock()
 
@@ -579,7 +580,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsUnderLink(ctx context.Context
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsUnderLinkOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsUnderLinkOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -605,7 +606,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsUnderLinkCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.ListKafkaMirrorTopicsUnderLinkOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListKafkaMirrorTopicsUnderLinkOpts
 } {
 	m.lockListKafkaMirrorTopicsUnderLink.Lock()
 	defer m.lockListKafkaMirrorTopicsUnderLink.Unlock()
@@ -614,7 +615,7 @@ func (m *ClusterLinkingV3Api) ListKafkaMirrorTopicsUnderLinkCalls() []struct {
 }
 
 // ReadKafkaMirrorTopic mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) ReadKafkaMirrorTopic(ctx context.Context, clusterId, linkName, mirrorTopicName string) (command_line_arguments.ListMirrorTopicsResponseData, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) ReadKafkaMirrorTopic(ctx context.Context, clusterId, linkName, mirrorTopicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ListMirrorTopicsResponseData, *net_http.Response, error) {
 	m.lockReadKafkaMirrorTopic.Lock()
 	defer m.lockReadKafkaMirrorTopic.Unlock()
 
@@ -661,7 +662,7 @@ func (m *ClusterLinkingV3Api) ReadKafkaMirrorTopicCalls() []struct {
 }
 
 // UpdateKafkaLinkConfig mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfig(ctx context.Context, clusterId, linkName, configName string, localVarOptionals *command_line_arguments.UpdateKafkaLinkConfigOpts) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfig(ctx context.Context, clusterId, linkName, configName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigOpts) (*net_http.Response, error) {
 	m.lockUpdateKafkaLinkConfig.Lock()
 	defer m.lockUpdateKafkaLinkConfig.Unlock()
 
@@ -674,7 +675,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfig(ctx context.Context, cluster
 		ClusterId         string
 		LinkName          string
 		ConfigName        string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -702,7 +703,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigCalls() []struct {
 	ClusterId         string
 	LinkName          string
 	ConfigName        string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigOpts
 } {
 	m.lockUpdateKafkaLinkConfig.Lock()
 	defer m.lockUpdateKafkaLinkConfig.Unlock()
@@ -711,7 +712,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigCalls() []struct {
 }
 
 // UpdateKafkaLinkConfigBatch mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigBatch(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaLinkConfigBatchOpts) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigBatch(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigBatchOpts) (*net_http.Response, error) {
 	m.lockUpdateKafkaLinkConfigBatch.Lock()
 	defer m.lockUpdateKafkaLinkConfigBatch.Unlock()
 
@@ -723,7 +724,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigBatch(ctx context.Context, cl
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigBatchOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigBatchOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -749,7 +750,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigBatchCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaLinkConfigBatchOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaLinkConfigBatchOpts
 } {
 	m.lockUpdateKafkaLinkConfigBatch.Lock()
 	defer m.lockUpdateKafkaLinkConfigBatch.Unlock()
@@ -758,7 +759,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaLinkConfigBatchCalls() []struct {
 }
 
 // UpdateKafkaMirrorTopicsFailover mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsFailover(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsFailoverOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsFailover(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsFailoverOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
 	m.lockUpdateKafkaMirrorTopicsFailover.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsFailover.Unlock()
 
@@ -770,7 +771,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsFailover(ctx context.Contex
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsFailoverOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsFailoverOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -796,7 +797,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsFailoverCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsFailoverOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsFailoverOpts
 } {
 	m.lockUpdateKafkaMirrorTopicsFailover.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsFailover.Unlock()
@@ -805,7 +806,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsFailoverCalls() []struct {
 }
 
 // UpdateKafkaMirrorTopicsPause mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPause(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPauseOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPause(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPauseOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
 	m.lockUpdateKafkaMirrorTopicsPause.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsPause.Unlock()
 
@@ -817,7 +818,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPause(ctx context.Context, 
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPauseOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPauseOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -843,7 +844,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPauseCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPauseOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPauseOpts
 } {
 	m.lockUpdateKafkaMirrorTopicsPause.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsPause.Unlock()
@@ -852,7 +853,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPauseCalls() []struct {
 }
 
 // UpdateKafkaMirrorTopicsPromote mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPromote(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPromoteOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPromote(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPromoteOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
 	m.lockUpdateKafkaMirrorTopicsPromote.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsPromote.Unlock()
 
@@ -864,7 +865,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPromote(ctx context.Context
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPromoteOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPromoteOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -890,7 +891,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPromoteCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsPromoteOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsPromoteOpts
 } {
 	m.lockUpdateKafkaMirrorTopicsPromote.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsPromote.Unlock()
@@ -899,7 +900,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsPromoteCalls() []struct {
 }
 
 // UpdateKafkaMirrorTopicsResume mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsResume(ctx context.Context, clusterId, linkName string, localVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsResumeOpts) (command_line_arguments.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
+func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsResume(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsResumeOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AlterMirrorStatusResponseDataList, *net_http.Response, error) {
 	m.lockUpdateKafkaMirrorTopicsResume.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsResume.Unlock()
 
@@ -911,7 +912,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsResume(ctx context.Context,
 		Ctx               context.Context
 		ClusterId         string
 		LinkName          string
-		LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsResumeOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsResumeOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -937,7 +938,7 @@ func (m *ClusterLinkingV3Api) UpdateKafkaMirrorTopicsResumeCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
 	LinkName          string
-	LocalVarOptionals *command_line_arguments.UpdateKafkaMirrorTopicsResumeOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.UpdateKafkaMirrorTopicsResumeOpts
 } {
 	m.lockUpdateKafkaMirrorTopicsResume.Lock()
 	defer m.lockUpdateKafkaMirrorTopicsResume.Unlock()

@@ -5,28 +5,29 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // BrokerApi is a mock of BrokerApi interface
 type BrokerApi struct {
 	lockClustersClusterIdBrokersdeletePost sync.Mutex
-	ClustersClusterIdBrokersdeletePostFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersdeletePostOpts) (command_line_arguments.BrokerRemovalDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersdeletePostFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersdeletePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerRemovalDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBrokersdeletePost []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersdeletePostOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersdeletePostOpts
 		}
 	}
 }
 
 // ClustersClusterIdBrokersdeletePost mocks base method by wrapping the associated func.
-func (m *BrokerApi) ClustersClusterIdBrokersdeletePost(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.ClustersClusterIdBrokersdeletePostOpts) (command_line_arguments.BrokerRemovalDataList, *net_http.Response, error) {
+func (m *BrokerApi) ClustersClusterIdBrokersdeletePost(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersdeletePostOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerRemovalDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersdeletePost.Lock()
 	defer m.lockClustersClusterIdBrokersdeletePost.Unlock()
 
@@ -37,7 +38,7 @@ func (m *BrokerApi) ClustersClusterIdBrokersdeletePost(ctx context.Context, clus
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersdeletePostOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersdeletePostOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -61,7 +62,7 @@ func (m *BrokerApi) ClustersClusterIdBrokersdeletePostCalled() bool {
 func (m *BrokerApi) ClustersClusterIdBrokersdeletePostCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.ClustersClusterIdBrokersdeletePostOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClustersClusterIdBrokersdeletePostOpts
 } {
 	m.lockClustersClusterIdBrokersdeletePost.Lock()
 	defer m.lockClustersClusterIdBrokersdeletePost.Unlock()

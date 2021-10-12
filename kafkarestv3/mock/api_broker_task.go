@@ -5,25 +5,26 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // BrokerTaskApi is a mock of BrokerTaskApi interface
 type BrokerTaskApi struct {
 	lockClustersClusterIdBrokersBrokerIdTasksGet sync.Mutex
-	ClustersClusterIdBrokersBrokerIdTasksGetFunc func(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdTasksGetFunc func(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokersBrokerIdTasksTaskTypeGet sync.Mutex
-	ClustersClusterIdBrokersBrokerIdTasksTaskTypeGetFunc func(ctx context.Context, clusterId string, brokerId int32, taskType command_line_arguments.BrokerTaskType) (command_line_arguments.BrokerTaskData, *net_http.Response, error)
+	ClustersClusterIdBrokersBrokerIdTasksTaskTypeGetFunc func(ctx context.Context, clusterId string, brokerId int32, taskType github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskData, *net_http.Response, error)
 
 	lockClustersClusterIdBrokersTasksGet sync.Mutex
-	ClustersClusterIdBrokersTasksGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersTasksGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error)
 
 	lockClustersClusterIdBrokersTasksTaskTypeGet sync.Mutex
-	ClustersClusterIdBrokersTasksTaskTypeGetFunc func(ctx context.Context, clusterId string, taskType command_line_arguments.BrokerTaskType) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error)
+	ClustersClusterIdBrokersTasksTaskTypeGetFunc func(ctx context.Context, clusterId string, taskType github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBrokersBrokerIdTasksGet []struct {
@@ -35,7 +36,7 @@ type BrokerTaskApi struct {
 			Ctx       context.Context
 			ClusterId string
 			BrokerId  int32
-			TaskType  command_line_arguments.BrokerTaskType
+			TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 		}
 		ClustersClusterIdBrokersTasksGet []struct {
 			Ctx       context.Context
@@ -44,13 +45,13 @@ type BrokerTaskApi struct {
 		ClustersClusterIdBrokersTasksTaskTypeGet []struct {
 			Ctx       context.Context
 			ClusterId string
-			TaskType  command_line_arguments.BrokerTaskType
+			TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 		}
 	}
 }
 
 // ClustersClusterIdBrokersBrokerIdTasksGet mocks base method by wrapping the associated func.
-func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksGet(ctx context.Context, clusterId string, brokerId int32) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error) {
+func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksGet(ctx context.Context, clusterId string, brokerId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdTasksGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdTasksGet.Unlock()
 
@@ -94,7 +95,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksGetCalls() []struct
 }
 
 // ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet mocks base method by wrapping the associated func.
-func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(ctx context.Context, clusterId string, brokerId int32, taskType command_line_arguments.BrokerTaskType) (command_line_arguments.BrokerTaskData, *net_http.Response, error) {
+func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(ctx context.Context, clusterId string, brokerId int32, taskType github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskData, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersBrokerIdTasksTaskTypeGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdTasksTaskTypeGet.Unlock()
 
@@ -106,7 +107,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet(ctx con
 		Ctx       context.Context
 		ClusterId string
 		BrokerId  int32
-		TaskType  command_line_arguments.BrokerTaskType
+		TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 	}{
 		Ctx:       ctx,
 		ClusterId: clusterId,
@@ -132,7 +133,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGetCalls() 
 	Ctx       context.Context
 	ClusterId string
 	BrokerId  int32
-	TaskType  command_line_arguments.BrokerTaskType
+	TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 } {
 	m.lockClustersClusterIdBrokersBrokerIdTasksTaskTypeGet.Lock()
 	defer m.lockClustersClusterIdBrokersBrokerIdTasksTaskTypeGet.Unlock()
@@ -141,7 +142,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersBrokerIdTasksTaskTypeGetCalls() 
 }
 
 // ClustersClusterIdBrokersTasksGet mocks base method by wrapping the associated func.
-func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksGet(ctx context.Context, clusterId string) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error) {
+func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersTasksGet.Lock()
 	defer m.lockClustersClusterIdBrokersTasksGet.Unlock()
 
@@ -182,7 +183,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksGetCalls() []struct {
 }
 
 // ClustersClusterIdBrokersTasksTaskTypeGet mocks base method by wrapping the associated func.
-func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksTaskTypeGet(ctx context.Context, clusterId string, taskType command_line_arguments.BrokerTaskType) (command_line_arguments.BrokerTaskDataList, *net_http.Response, error) {
+func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksTaskTypeGet(ctx context.Context, clusterId string, taskType github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdBrokersTasksTaskTypeGet.Lock()
 	defer m.lockClustersClusterIdBrokersTasksTaskTypeGet.Unlock()
 
@@ -193,7 +194,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksTaskTypeGet(ctx context.Con
 	call := struct {
 		Ctx       context.Context
 		ClusterId string
-		TaskType  command_line_arguments.BrokerTaskType
+		TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 	}{
 		Ctx:       ctx,
 		ClusterId: clusterId,
@@ -217,7 +218,7 @@ func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksTaskTypeGetCalled() bool {
 func (m *BrokerTaskApi) ClustersClusterIdBrokersTasksTaskTypeGetCalls() []struct {
 	Ctx       context.Context
 	ClusterId string
-	TaskType  command_line_arguments.BrokerTaskType
+	TaskType  github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BrokerTaskType
 } {
 	m.lockClustersClusterIdBrokersTasksTaskTypeGet.Lock()
 	defer m.lockClustersClusterIdBrokersTasksTaskTypeGet.Unlock()

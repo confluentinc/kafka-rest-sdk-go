@@ -5,31 +5,32 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // TopicV3Api is a mock of TopicV3Api interface
 type TopicV3Api struct {
 	lockCreateKafkaTopic sync.Mutex
-	CreateKafkaTopicFunc func(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaTopicOpts) (command_line_arguments.TopicData, *net_http.Response, error)
+	CreateKafkaTopicFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaTopicOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error)
 
 	lockDeleteKafkaTopic sync.Mutex
 	DeleteKafkaTopicFunc func(ctx context.Context, clusterId, topicName string) (*net_http.Response, error)
 
 	lockGetKafkaTopic sync.Mutex
-	GetKafkaTopicFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicData, *net_http.Response, error)
+	GetKafkaTopicFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error)
 
 	lockListKafkaTopics sync.Mutex
-	ListKafkaTopicsFunc func(ctx context.Context, clusterId string) (command_line_arguments.TopicDataList, *net_http.Response, error)
+	ListKafkaTopicsFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicDataList, *net_http.Response, error)
 
 	calls struct {
 		CreateKafkaTopic []struct {
 			Ctx               context.Context
 			ClusterId         string
-			LocalVarOptionals *command_line_arguments.CreateKafkaTopicOpts
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaTopicOpts
 		}
 		DeleteKafkaTopic []struct {
 			Ctx       context.Context
@@ -49,7 +50,7 @@ type TopicV3Api struct {
 }
 
 // CreateKafkaTopic mocks base method by wrapping the associated func.
-func (m *TopicV3Api) CreateKafkaTopic(ctx context.Context, clusterId string, localVarOptionals *command_line_arguments.CreateKafkaTopicOpts) (command_line_arguments.TopicData, *net_http.Response, error) {
+func (m *TopicV3Api) CreateKafkaTopic(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaTopicOpts) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error) {
 	m.lockCreateKafkaTopic.Lock()
 	defer m.lockCreateKafkaTopic.Unlock()
 
@@ -60,7 +61,7 @@ func (m *TopicV3Api) CreateKafkaTopic(ctx context.Context, clusterId string, loc
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
-		LocalVarOptionals *command_line_arguments.CreateKafkaTopicOpts
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaTopicOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
@@ -84,7 +85,7 @@ func (m *TopicV3Api) CreateKafkaTopicCalled() bool {
 func (m *TopicV3Api) CreateKafkaTopicCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
-	LocalVarOptionals *command_line_arguments.CreateKafkaTopicOpts
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaTopicOpts
 } {
 	m.lockCreateKafkaTopic.Lock()
 	defer m.lockCreateKafkaTopic.Unlock()
@@ -137,7 +138,7 @@ func (m *TopicV3Api) DeleteKafkaTopicCalls() []struct {
 }
 
 // GetKafkaTopic mocks base method by wrapping the associated func.
-func (m *TopicV3Api) GetKafkaTopic(ctx context.Context, clusterId, topicName string) (command_line_arguments.TopicData, *net_http.Response, error) {
+func (m *TopicV3Api) GetKafkaTopic(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicData, *net_http.Response, error) {
 	m.lockGetKafkaTopic.Lock()
 	defer m.lockGetKafkaTopic.Unlock()
 
@@ -181,7 +182,7 @@ func (m *TopicV3Api) GetKafkaTopicCalls() []struct {
 }
 
 // ListKafkaTopics mocks base method by wrapping the associated func.
-func (m *TopicV3Api) ListKafkaTopics(ctx context.Context, clusterId string) (command_line_arguments.TopicDataList, *net_http.Response, error) {
+func (m *TopicV3Api) ListKafkaTopics(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.TopicDataList, *net_http.Response, error) {
 	m.lockListKafkaTopics.Lock()
 	defer m.lockListKafkaTopics.Unlock()
 

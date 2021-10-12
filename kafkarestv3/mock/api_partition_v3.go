@@ -5,22 +5,23 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // PartitionV3Api is a mock of PartitionV3Api interface
 type PartitionV3Api struct {
 	lockGetKafkaConsumerLag sync.Mutex
-	GetKafkaConsumerLagFunc func(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (command_line_arguments.ConsumerLagData, *net_http.Response, error)
+	GetKafkaConsumerLagFunc func(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerLagData, *net_http.Response, error)
 
 	lockGetKafkaPartition sync.Mutex
-	GetKafkaPartitionFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.PartitionData, *net_http.Response, error)
+	GetKafkaPartitionFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionData, *net_http.Response, error)
 
 	lockListKafkaPartitions sync.Mutex
-	ListKafkaPartitionsFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.PartitionDataList, *net_http.Response, error)
+	ListKafkaPartitionsFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionDataList, *net_http.Response, error)
 
 	calls struct {
 		GetKafkaConsumerLag []struct {
@@ -45,7 +46,7 @@ type PartitionV3Api struct {
 }
 
 // GetKafkaConsumerLag mocks base method by wrapping the associated func.
-func (m *PartitionV3Api) GetKafkaConsumerLag(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (command_line_arguments.ConsumerLagData, *net_http.Response, error) {
+func (m *PartitionV3Api) GetKafkaConsumerLag(ctx context.Context, clusterId, consumerGroupId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerLagData, *net_http.Response, error) {
 	m.lockGetKafkaConsumerLag.Lock()
 	defer m.lockGetKafkaConsumerLag.Unlock()
 
@@ -95,7 +96,7 @@ func (m *PartitionV3Api) GetKafkaConsumerLagCalls() []struct {
 }
 
 // GetKafkaPartition mocks base method by wrapping the associated func.
-func (m *PartitionV3Api) GetKafkaPartition(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.PartitionData, *net_http.Response, error) {
+func (m *PartitionV3Api) GetKafkaPartition(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionData, *net_http.Response, error) {
 	m.lockGetKafkaPartition.Lock()
 	defer m.lockGetKafkaPartition.Unlock()
 
@@ -142,7 +143,7 @@ func (m *PartitionV3Api) GetKafkaPartitionCalls() []struct {
 }
 
 // ListKafkaPartitions mocks base method by wrapping the associated func.
-func (m *PartitionV3Api) ListKafkaPartitions(ctx context.Context, clusterId, topicName string) (command_line_arguments.PartitionDataList, *net_http.Response, error) {
+func (m *PartitionV3Api) ListKafkaPartitions(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.PartitionDataList, *net_http.Response, error) {
 	m.lockListKafkaPartitions.Lock()
 	defer m.lockListKafkaPartitions.Unlock()
 

@@ -5,22 +5,23 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ReplicaStatusApi is a mock of ReplicaStatusApi interface
 type ReplicaStatusApi struct {
 	lockClustersClusterIdTopicsPartitionsReplicaStatusGet sync.Mutex
-	ClustersClusterIdTopicsPartitionsReplicaStatusGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsPartitionsReplicaStatusGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGetFunc func(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error)
 
 	lockClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet sync.Mutex
-	ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGetFunc func(ctx context.Context, clusterId, topicName string) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error)
+	ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGetFunc func(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdTopicsPartitionsReplicaStatusGet []struct {
@@ -42,7 +43,7 @@ type ReplicaStatusApi struct {
 }
 
 // ClustersClusterIdTopicsPartitionsReplicaStatusGet mocks base method by wrapping the associated func.
-func (m *ReplicaStatusApi) ClustersClusterIdTopicsPartitionsReplicaStatusGet(ctx context.Context, clusterId string) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error) {
+func (m *ReplicaStatusApi) ClustersClusterIdTopicsPartitionsReplicaStatusGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsPartitionsReplicaStatusGet.Lock()
 	defer m.lockClustersClusterIdTopicsPartitionsReplicaStatusGet.Unlock()
 
@@ -83,7 +84,7 @@ func (m *ReplicaStatusApi) ClustersClusterIdTopicsPartitionsReplicaStatusGetCall
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet mocks base method by wrapping the associated func.
-func (m *ReplicaStatusApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet(ctx context.Context, clusterId, topicName string, partitionId int32) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error) {
+func (m *ReplicaStatusApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet(ctx context.Context, clusterId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet.Unlock()
 
@@ -130,7 +131,7 @@ func (m *ReplicaStatusApi) ClustersClusterIdTopicsTopicNamePartitionsPartitionId
 }
 
 // ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet mocks base method by wrapping the associated func.
-func (m *ReplicaStatusApi) ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet(ctx context.Context, clusterId, topicName string) (command_line_arguments.ReplicaStatusDataList, *net_http.Response, error) {
+func (m *ReplicaStatusApi) ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet(ctx context.Context, clusterId, topicName string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ReplicaStatusDataList, *net_http.Response, error) {
 	m.lockClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet.Lock()
 	defer m.lockClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet.Unlock()
 

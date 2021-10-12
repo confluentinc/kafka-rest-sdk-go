@@ -5,37 +5,38 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ConsumerGroupV3Api is a mock of ConsumerGroupV3Api interface
 type ConsumerGroupV3Api struct {
 	lockGetKafkaConsumer sync.Mutex
-	GetKafkaConsumerFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerData, *net_http.Response, error)
+	GetKafkaConsumerFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerData, *net_http.Response, error)
 
 	lockGetKafkaConsumerAssignment sync.Mutex
-	GetKafkaConsumerAssignmentFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (command_line_arguments.ConsumerAssignmentData, *net_http.Response, error)
+	GetKafkaConsumerAssignmentFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentData, *net_http.Response, error)
 
 	lockGetKafkaConsumerGroup sync.Mutex
-	GetKafkaConsumerGroupFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupData, *net_http.Response, error)
+	GetKafkaConsumerGroupFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupData, *net_http.Response, error)
 
 	lockGetKafkaConsumerGroupLagSummary sync.Mutex
-	GetKafkaConsumerGroupLagSummaryFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupLagSummaryData, *net_http.Response, error)
+	GetKafkaConsumerGroupLagSummaryFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupLagSummaryData, *net_http.Response, error)
 
 	lockListKafkaConsumerAssignment sync.Mutex
-	ListKafkaConsumerAssignmentFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerAssignmentDataList, *net_http.Response, error)
+	ListKafkaConsumerAssignmentFunc func(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentDataList, *net_http.Response, error)
 
 	lockListKafkaConsumerGroups sync.Mutex
-	ListKafkaConsumerGroupsFunc func(ctx context.Context, clusterId string) (command_line_arguments.ConsumerGroupDataList, *net_http.Response, error)
+	ListKafkaConsumerGroupsFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupDataList, *net_http.Response, error)
 
 	lockListKafkaConsumerLags sync.Mutex
-	ListKafkaConsumerLagsFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerLagDataList, *net_http.Response, error)
+	ListKafkaConsumerLagsFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerLagDataList, *net_http.Response, error)
 
 	lockListKafkaConsumers sync.Mutex
-	ListKafkaConsumersFunc func(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerDataList, *net_http.Response, error)
+	ListKafkaConsumersFunc func(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerDataList, *net_http.Response, error)
 
 	calls struct {
 		GetKafkaConsumer []struct {
@@ -86,7 +87,7 @@ type ConsumerGroupV3Api struct {
 }
 
 // GetKafkaConsumer mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) GetKafkaConsumer(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerData, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) GetKafkaConsumer(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerData, *net_http.Response, error) {
 	m.lockGetKafkaConsumer.Lock()
 	defer m.lockGetKafkaConsumer.Unlock()
 
@@ -133,7 +134,7 @@ func (m *ConsumerGroupV3Api) GetKafkaConsumerCalls() []struct {
 }
 
 // GetKafkaConsumerAssignment mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) GetKafkaConsumerAssignment(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (command_line_arguments.ConsumerAssignmentData, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) GetKafkaConsumerAssignment(ctx context.Context, clusterId, consumerGroupId, consumerId, topicName string, partitionId int32) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentData, *net_http.Response, error) {
 	m.lockGetKafkaConsumerAssignment.Lock()
 	defer m.lockGetKafkaConsumerAssignment.Unlock()
 
@@ -186,7 +187,7 @@ func (m *ConsumerGroupV3Api) GetKafkaConsumerAssignmentCalls() []struct {
 }
 
 // GetKafkaConsumerGroup mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) GetKafkaConsumerGroup(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupData, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) GetKafkaConsumerGroup(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupData, *net_http.Response, error) {
 	m.lockGetKafkaConsumerGroup.Lock()
 	defer m.lockGetKafkaConsumerGroup.Unlock()
 
@@ -230,7 +231,7 @@ func (m *ConsumerGroupV3Api) GetKafkaConsumerGroupCalls() []struct {
 }
 
 // GetKafkaConsumerGroupLagSummary mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) GetKafkaConsumerGroupLagSummary(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerGroupLagSummaryData, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) GetKafkaConsumerGroupLagSummary(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupLagSummaryData, *net_http.Response, error) {
 	m.lockGetKafkaConsumerGroupLagSummary.Lock()
 	defer m.lockGetKafkaConsumerGroupLagSummary.Unlock()
 
@@ -274,7 +275,7 @@ func (m *ConsumerGroupV3Api) GetKafkaConsumerGroupLagSummaryCalls() []struct {
 }
 
 // ListKafkaConsumerAssignment mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) ListKafkaConsumerAssignment(ctx context.Context, clusterId, consumerGroupId, consumerId string) (command_line_arguments.ConsumerAssignmentDataList, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) ListKafkaConsumerAssignment(ctx context.Context, clusterId, consumerGroupId, consumerId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerAssignmentDataList, *net_http.Response, error) {
 	m.lockListKafkaConsumerAssignment.Lock()
 	defer m.lockListKafkaConsumerAssignment.Unlock()
 
@@ -321,7 +322,7 @@ func (m *ConsumerGroupV3Api) ListKafkaConsumerAssignmentCalls() []struct {
 }
 
 // ListKafkaConsumerGroups mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) ListKafkaConsumerGroups(ctx context.Context, clusterId string) (command_line_arguments.ConsumerGroupDataList, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) ListKafkaConsumerGroups(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerGroupDataList, *net_http.Response, error) {
 	m.lockListKafkaConsumerGroups.Lock()
 	defer m.lockListKafkaConsumerGroups.Unlock()
 
@@ -362,7 +363,7 @@ func (m *ConsumerGroupV3Api) ListKafkaConsumerGroupsCalls() []struct {
 }
 
 // ListKafkaConsumerLags mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) ListKafkaConsumerLags(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerLagDataList, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) ListKafkaConsumerLags(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerLagDataList, *net_http.Response, error) {
 	m.lockListKafkaConsumerLags.Lock()
 	defer m.lockListKafkaConsumerLags.Unlock()
 
@@ -406,7 +407,7 @@ func (m *ConsumerGroupV3Api) ListKafkaConsumerLagsCalls() []struct {
 }
 
 // ListKafkaConsumers mocks base method by wrapping the associated func.
-func (m *ConsumerGroupV3Api) ListKafkaConsumers(ctx context.Context, clusterId, consumerGroupId string) (command_line_arguments.ConsumerDataList, *net_http.Response, error) {
+func (m *ConsumerGroupV3Api) ListKafkaConsumers(ctx context.Context, clusterId, consumerGroupId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ConsumerDataList, *net_http.Response, error) {
 	m.lockListKafkaConsumers.Lock()
 	defer m.lockListKafkaConsumers.Unlock()
 

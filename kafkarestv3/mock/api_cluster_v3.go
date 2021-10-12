@@ -5,19 +5,20 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // ClusterV3Api is a mock of ClusterV3Api interface
 type ClusterV3Api struct {
 	lockClustersGet sync.Mutex
-	ClustersGetFunc func(ctx context.Context) (command_line_arguments.ClusterDataList, *net_http.Response, error)
+	ClustersGetFunc func(ctx context.Context) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterDataList, *net_http.Response, error)
 
 	lockGetKafkaCluster sync.Mutex
-	GetKafkaClusterFunc func(ctx context.Context, clusterId string) (command_line_arguments.ClusterData, *net_http.Response, error)
+	GetKafkaClusterFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterData, *net_http.Response, error)
 
 	calls struct {
 		ClustersGet []struct {
@@ -31,7 +32,7 @@ type ClusterV3Api struct {
 }
 
 // ClustersGet mocks base method by wrapping the associated func.
-func (m *ClusterV3Api) ClustersGet(ctx context.Context) (command_line_arguments.ClusterDataList, *net_http.Response, error) {
+func (m *ClusterV3Api) ClustersGet(ctx context.Context) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterDataList, *net_http.Response, error) {
 	m.lockClustersGet.Lock()
 	defer m.lockClustersGet.Unlock()
 
@@ -69,7 +70,7 @@ func (m *ClusterV3Api) ClustersGetCalls() []struct {
 }
 
 // GetKafkaCluster mocks base method by wrapping the associated func.
-func (m *ClusterV3Api) GetKafkaCluster(ctx context.Context, clusterId string) (command_line_arguments.ClusterData, *net_http.Response, error) {
+func (m *ClusterV3Api) GetKafkaCluster(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.ClusterData, *net_http.Response, error) {
 	m.lockGetKafkaCluster.Lock()
 	defer m.lockGetKafkaCluster.Unlock()
 

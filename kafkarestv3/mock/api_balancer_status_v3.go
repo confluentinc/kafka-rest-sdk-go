@@ -5,19 +5,20 @@
 package mock
 
 import (
-	command_line_arguments "command-line-arguments"
 	context "context"
 	net_http "net/http"
 	sync "sync"
+
+	github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3 "github.com/confluentinc/kafka-rest-sdk-go/kafkarestv3"
 )
 
 // BalancerStatusV3Api is a mock of BalancerStatusV3Api interface
 type BalancerStatusV3Api struct {
 	lockClustersClusterIdBalancerAnyUnevenLoadGet sync.Mutex
-	ClustersClusterIdBalancerAnyUnevenLoadGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.AnyUnevenLoadData, *net_http.Response, error)
+	ClustersClusterIdBalancerAnyUnevenLoadGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AnyUnevenLoadData, *net_http.Response, error)
 
 	lockClustersClusterIdBalancerGet sync.Mutex
-	ClustersClusterIdBalancerGetFunc func(ctx context.Context, clusterId string) (command_line_arguments.BalancerStatusData, *net_http.Response, error)
+	ClustersClusterIdBalancerGetFunc func(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BalancerStatusData, *net_http.Response, error)
 
 	calls struct {
 		ClustersClusterIdBalancerAnyUnevenLoadGet []struct {
@@ -32,7 +33,7 @@ type BalancerStatusV3Api struct {
 }
 
 // ClustersClusterIdBalancerAnyUnevenLoadGet mocks base method by wrapping the associated func.
-func (m *BalancerStatusV3Api) ClustersClusterIdBalancerAnyUnevenLoadGet(ctx context.Context, clusterId string) (command_line_arguments.AnyUnevenLoadData, *net_http.Response, error) {
+func (m *BalancerStatusV3Api) ClustersClusterIdBalancerAnyUnevenLoadGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.AnyUnevenLoadData, *net_http.Response, error) {
 	m.lockClustersClusterIdBalancerAnyUnevenLoadGet.Lock()
 	defer m.lockClustersClusterIdBalancerAnyUnevenLoadGet.Unlock()
 
@@ -73,7 +74,7 @@ func (m *BalancerStatusV3Api) ClustersClusterIdBalancerAnyUnevenLoadGetCalls() [
 }
 
 // ClustersClusterIdBalancerGet mocks base method by wrapping the associated func.
-func (m *BalancerStatusV3Api) ClustersClusterIdBalancerGet(ctx context.Context, clusterId string) (command_line_arguments.BalancerStatusData, *net_http.Response, error) {
+func (m *BalancerStatusV3Api) ClustersClusterIdBalancerGet(ctx context.Context, clusterId string) (github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.BalancerStatusData, *net_http.Response, error) {
 	m.lockClustersClusterIdBalancerGet.Lock()
 	defer m.lockClustersClusterIdBalancerGet.Unlock()
 
