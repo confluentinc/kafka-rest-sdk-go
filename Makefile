@@ -34,11 +34,21 @@ gen:
 
 .PHONY: gen-mock
 gen-mock:
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_acl.go --pkg mock $(SDK_OUTPUT_DIR)/api_acl.go ACLApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_aclv3.go --pkg mock $(SDK_OUTPUT_DIR)/api_aclv3.go ACLV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_balancer_status_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_balancer_status_v3.go BalancerStatusV3Api
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_broker.go --pkg mock $(SDK_OUTPUT_DIR)/api_broker.go BrokerApi
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_cluster.go --pkg mock $(SDK_OUTPUT_DIR)/api_cluster.go ClusterApi
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_configs.go --pkg mock $(SDK_OUTPUT_DIR)/api_configs.go ConfigsApi
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_consumer_group.go --pkg mock $(SDK_OUTPUT_DIR)/api_consumer_group.go ConsumerGroupApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_broker_replica_exclusion.go --pkg mock $(SDK_OUTPUT_DIR)/api_broker_replica_exclusion.go BrokerReplicaExclusionApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_broker_task.go --pkg mock $(SDK_OUTPUT_DIR)/api_broker_task.go BrokerTaskApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_broker_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_broker_v3.go BrokerV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_cluster_linking_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_cluster_linking_v3.go ClusterLinkingV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_cluster_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_cluster_v3.go ClusterV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_configs_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_configs_v3.go ConfigsV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_consumer_group_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_consumer_group_v3.go ConsumerGroupV3Api
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_partition.go --pkg mock $(SDK_OUTPUT_DIR)/api_partition.go PartitionApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_partition_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_partition_v3.go PartitionV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_records.go --pkg mock $(SDK_OUTPUT_DIR)/api_records.go RecordsApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_remove_broker_task.go --pkg mock $(SDK_OUTPUT_DIR)/api_remove_broker_task.go RemoveBrokerTaskApi
 	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_replica.go --pkg mock $(SDK_OUTPUT_DIR)/api_replica.go ReplicaApi
-	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_topic.go --pkg mock $(SDK_OUTPUT_DIR)/api_topic.go TopicApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_replica_status.go --pkg mock $(SDK_OUTPUT_DIR)/api_replica_status.go ReplicaStatusApi
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_replica_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_replica_v3.go ReplicaV3Api
+	mocker --prefix "" --dst $(SDK_OUTPUT_DIR)/mock/api_topic_v3.go --pkg mock $(SDK_OUTPUT_DIR)/api_topic_v3.go TopicV3Api
