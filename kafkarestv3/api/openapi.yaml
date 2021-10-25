@@ -10186,7 +10186,7 @@ paths:
       tags:
       - Cluster Linking (v3)
   /clusters/{cluster_id}/links/{link_name}/configs:alter:
-    post:
+    put:
       description: |-
         [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
