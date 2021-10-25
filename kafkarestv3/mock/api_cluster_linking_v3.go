@@ -15,7 +15,7 @@ import (
 // ClusterLinkingV3Api is a mock of ClusterLinkingV3Api interface
 type ClusterLinkingV3Api struct {
 	lockCreateKafkaLink sync.Mutex
-	CreateKafkaLinkFunc func(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error)
+	CreateKafkaLinkFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error)
 
 	lockCreateKafkaMirrorTopic sync.Mutex
 	CreateKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts) (*net_http.Response, error)
@@ -69,6 +69,7 @@ type ClusterLinkingV3Api struct {
 		CreateKafkaLink []struct {
 			Ctx               context.Context
 			ClusterId         string
+			LinkName          string
 			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 		}
 		CreateKafkaMirrorTopic []struct {
@@ -166,7 +167,7 @@ type ClusterLinkingV3Api struct {
 }
 
 // CreateKafkaLink mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts) (*net_http.Response, error) {
 	m.lockCreateKafkaLink.Lock()
 	defer m.lockCreateKafkaLink.Unlock()
 
@@ -177,16 +178,18 @@ func (m *ClusterLinkingV3Api) CreateKafkaLink(ctx context.Context, clusterId str
 	call := struct {
 		Ctx               context.Context
 		ClusterId         string
+		LinkName          string
 		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 	}{
 		Ctx:               ctx,
 		ClusterId:         clusterId,
+		LinkName:          linkName,
 		LocalVarOptionals: localVarOptionals,
 	}
 
 	m.calls.CreateKafkaLink = append(m.calls.CreateKafkaLink, call)
 
-	return m.CreateKafkaLinkFunc(ctx, clusterId, localVarOptionals)
+	return m.CreateKafkaLinkFunc(ctx, clusterId, linkName, localVarOptionals)
 }
 
 // CreateKafkaLinkCalled returns true if CreateKafkaLink was called at least once.
@@ -201,6 +204,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaLinkCalled() bool {
 func (m *ClusterLinkingV3Api) CreateKafkaLinkCalls() []struct {
 	Ctx               context.Context
 	ClusterId         string
+	LinkName          string
 	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaLinkOpts
 } {
 	m.lockCreateKafkaLink.Lock()

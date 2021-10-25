@@ -22,7 +22,6 @@ gen:
 		-i $(OPENAPI_SPEC_DIR) \
 		-g go \
 		-o $(SDK_OUTPUT_DIR) \
-		--generate-alias-as-model \
 		--enable-post-process-file \
 		--git-user-id confluentinc \
 		--git-repo-id kafka-rest-sdk-go/kafkarestv3 \

@@ -226,7 +226,6 @@ Class | Method | HTTP request | Description
  - [ListMirrorTopicsResponseDataList](docs/ListMirrorTopicsResponseDataList.md)
  - [ListMirrorTopicsResponseDataListAllOf](docs/ListMirrorTopicsResponseDataListAllOf.md)
  - [MirrorLag](docs/MirrorLag.md)
- - [MirrorLags](docs/MirrorLags.md)
  - [MirrorTopicStatus](docs/MirrorTopicStatus.md)
  - [PartitionData](docs/PartitionData.md)
  - [PartitionDataAllOf](docs/PartitionDataAllOf.md)

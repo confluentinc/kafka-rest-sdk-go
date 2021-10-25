@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## CreateKafkaLink
 
-> CreateKafkaLink(ctx, clusterId, optional)
+> CreateKafkaLink(ctx, clusterId, linkName, optional)
 
 Create a cluster link
 
@@ -39,6 +39,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The Kafka cluster link name. | 
  **optional** | ***CreateKafkaLinkOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -48,6 +49,7 @@ Optional parameters are passed through a pointer to a CreateKafkaLinkOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
 

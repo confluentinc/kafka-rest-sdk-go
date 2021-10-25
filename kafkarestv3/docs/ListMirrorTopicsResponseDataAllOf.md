@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **MirrorTopicName** | **string** |  | 
 **SourceTopicName** | **string** |  | 
 **NumPartitions** | **int32** |  | 
-**MirrorLags** | [**MirrorLags**](MirrorLags.md) |  | 
+**MirrorLags** | [**[]MirrorLag**](MirrorLag.md) |  | 
 **MirrorTopicStatus** | [**MirrorTopicStatus**](MirrorTopicStatus.md) |  | 
 **StateTimeMs** | **int32** |  | 
 

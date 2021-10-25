@@ -9124,6 +9124,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: The Kafka cluster link name.
+        example: link-name-1
+        explode: true
+        in: query
+        name: link_name
+        required: true
+        schema:
+          type: string
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/CreateLinkRequest'
       responses:
@@ -12280,6 +12289,16 @@ components:
       required: false
       schema:
         type: boolean
+      style: form
+    ClusterLinkName:
+      description: The Kafka cluster link name.
+      example: link-name-1
+      explode: true
+      in: query
+      name: link_name
+      required: true
+      schema:
+        type: string
       style: form
     LinkName:
       description: The link name
@@ -16458,7 +16477,9 @@ components:
         num_partitions:
           type: integer
         mirror_lags:
-          $ref: '#/components/schemas/MirrorLags'
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
         mirror_topic_status:
           $ref: '#/components/schemas/MirrorTopicStatus'
         state_time_ms:
@@ -16490,7 +16511,9 @@ components:
           nullable: true
           type: integer
         mirror_lags:
-          $ref: '#/components/schemas/MirrorLags'
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
       required:
       - error_code
       - error_message

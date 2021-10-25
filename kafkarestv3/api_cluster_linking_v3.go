@@ -47,10 +47,11 @@ type ClusterLinkingV3Api interface {
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The Kafka cluster link name.
 	 * @param optional nil or *CreateKafkaLinkOpts - Optional Parameters:
 	 * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
 	 */
-	CreateKafkaLink(ctx _context.Context, clusterId string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error)
+	CreateKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error)
 
 	/*
 	 * CreateKafkaMirrorTopic Create a mirror topic
@@ -279,10 +280,11 @@ type CreateKafkaLinkOpts struct {
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
+ * @param linkName The Kafka cluster link name.
  * @param optional nil or *CreateKafkaLinkOpts - Optional Parameters:
  * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
  */
-func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clusterId string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error) {
+func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -299,6 +301,7 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clust
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	localVarQueryParams.Add("link_name", parameterToString(linkName, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

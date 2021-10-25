@@ -32,7 +32,7 @@ type ListMirrorTopicsResponseData struct {
 	MirrorTopicName   string            `json:"mirror_topic_name"`
 	SourceTopicName   string            `json:"source_topic_name"`
 	NumPartitions     int32             `json:"num_partitions"`
-	MirrorLags        MirrorLags        `json:"mirror_lags"`
+	MirrorLags        []MirrorLag       `json:"mirror_lags"`
 	MirrorTopicStatus MirrorTopicStatus `json:"mirror_topic_status"`
 	StateTimeMs       int32             `json:"state_time_ms"`
 }
