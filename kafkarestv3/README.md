@@ -63,7 +63,7 @@ Class | Method | HTTP request | Description
 *ClusterLinkingV3Api* | [**ListKafkaMirrorTopicsUnderLink**](docs/ClusterLinkingV3Api.md#listkafkamirrortopicsunderlink) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
 *ClusterLinkingV3Api* | [**ReadKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#readkafkamirrortopic) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name} | Describe the mirror topic
 *ClusterLinkingV3Api* | [**UpdateKafkaLinkConfig**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfig) | **Put** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Alter the config under the cluster link
-*ClusterLinkingV3Api* | [**UpdateKafkaLinkConfigBatch**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfigbatch) | **Post** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
+*ClusterLinkingV3Api* | [**UpdateKafkaLinkConfigBatch**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfigbatch) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsFailover**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsfailover) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPause**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspause) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPromote**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspromote) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
