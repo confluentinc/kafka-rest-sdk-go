@@ -31,5 +31,5 @@ type AlterMirrorStatusResponseData struct {
 	MirrorTopicName string           `json:"mirror_topic_name"`
 	ErrorMessage    *string          `json:"error_message"`
 	ErrorCode       *int32           `json:"error_code"`
-	MirrorLags      MirrorLags       `json:"mirror_lags"`
+	MirrorLags      []MirrorLag      `json:"mirror_lags"`
 }

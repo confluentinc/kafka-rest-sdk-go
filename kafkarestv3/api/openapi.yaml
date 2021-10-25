@@ -16477,7 +16477,9 @@ components:
         num_partitions:
           type: integer
         mirror_lags:
-          $ref: '#/components/schemas/MirrorLags'
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
         mirror_topic_status:
           $ref: '#/components/schemas/MirrorTopicStatus'
         state_time_ms:
@@ -16509,7 +16511,9 @@ components:
           nullable: true
           type: integer
         mirror_lags:
-          $ref: '#/components/schemas/MirrorLags'
+          items:
+            $ref: '#/components/schemas/MirrorLag'
+          type: array
       required:
       - error_code
       - error_message
