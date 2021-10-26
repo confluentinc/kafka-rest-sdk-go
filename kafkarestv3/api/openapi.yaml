@@ -10368,7 +10368,7 @@ paths:
                   - partition: 2
                     lag: 40000
                     last_source_fetch_offset: 12030
-                  mirror_topic_status: active
+                  mirror_status: ACTIVE
                   state_time_ms: 1612550939300
                 - kind: KafkaMirrorData
                   metadata:
@@ -10389,7 +10389,7 @@ paths:
                   - partition: 2
                     lag: 40000
                     last_source_fetch_offset: 12030
-                  mirror_topic_status: stopped
+                  mirror_status: STOPPED
                   state_time_ms: 1612551353640
               schema:
                 $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
@@ -10654,7 +10654,7 @@ paths:
                   - partition: 2
                     lag: 40000
                     last_source_fetch_offset: 12030
-                  mirror_topic_status: active
+                  mirror_status: ACTIVE
                   state_time_ms: 1612550939300
                 - kind: KafkaMirrorData
                   metadata:
@@ -10675,7 +10675,7 @@ paths:
                   - partition: 2
                     lag: 40000
                     last_source_fetch_offset: 12030
-                  mirror_topic_status: stopped
+                  mirror_status: STOPPED
                   state_time_ms: 1612551353640
               schema:
                 $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
@@ -10821,7 +10821,7 @@ paths:
                 - partition: 2
                   lag: 40000
                   last_source_fetch_offset: 12030
-                mirror_topic_status: active
+                mirror_status: ACTIVE
                 state_time_ms: 1612550939300
               schema:
                 $ref: '#/components/schemas/ListMirrorTopicsResponseData'
@@ -14535,7 +14535,7 @@ components:
               - partition: 2
                 lag: 40000
                 last_source_fetch_offset: 12030
-              mirror_topic_status: active
+              mirror_status: ACTIVE
               state_time_ms: 1612550939300
             - kind: KafkaMirrorData
               metadata:
@@ -14556,7 +14556,7 @@ components:
               - partition: 2
                 lag: 40000
                 last_source_fetch_offset: 12030
-              mirror_topic_status: stopped
+              mirror_status: STOPPED
               state_time_ms: 1612551353640
           schema:
             $ref: '#/components/schemas/ListMirrorTopicsResponseDataList'
@@ -14583,7 +14583,7 @@ components:
             - partition: 2
               lag: 40000
               last_source_fetch_offset: 12030
-            mirror_topic_status: active
+            mirror_status: ACTIVE
             state_time_ms: 1612550939300
           schema:
             $ref: '#/components/schemas/ListMirrorTopicsResponseData'
@@ -15487,11 +15487,11 @@ components:
       type: object
     MirrorTopicStatus:
       enum:
-      - active
-      - failed
-      - paused
-      - stopped
-      - pending_stopped
+      - ACTIVE
+      - FAILED
+      - PAUSED
+      - STOPPED
+      - PENDING_STOPPED
       type: string
     TopicList:
       example:
@@ -16480,15 +16480,16 @@ components:
           items:
             $ref: '#/components/schemas/MirrorLag'
           type: array
-        mirror_topic_status:
+        mirror_status:
           $ref: '#/components/schemas/MirrorTopicStatus'
         state_time_ms:
+          format: int64
           type: integer
       required:
       - link_name
       - mirror_lags
+      - mirror_status
       - mirror_topic_name
-      - mirror_topic_status
       - num_partitions
       - source_topic_name
       - state_time_ms
