@@ -12561,12 +12561,24 @@ components:
     CreateMirrorTopicRequest:
       content:
         application/json:
-          example:
-            source_topic_name: topic-1
-            configs:
-            - name: unclean.leader.election.enable
-              value: "true"
-            replication_factor: 1
+          examples:
+            generic_example:
+              description: Generic example of creating a mirror topic
+              value:
+                source_topic_name: topic-1
+                configs:
+                  - name: unclean.leader.election.enable
+                    value: "true"
+                replication_factor: 1
+            example_with_mirror_topic_name:
+              description: Example using optional mirror_topic_name flag
+              value:
+                source_topic_name: topic-1
+                mirror_topic_name: link1_topic-1
+                configs:
+                  - name: unclean.leader.election.enable
+                    value: "true"
+                replication_factor: 3
           schema:
             $ref: '#/components/schemas/CreateMirrorTopicRequestData'
       description: Name and configs of the topics mirroring from and mirroring to
