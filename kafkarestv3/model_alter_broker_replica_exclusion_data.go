@@ -30,7 +30,7 @@ type AlterBrokerReplicaExclusionData struct {
 	Metadata     ResourceMetadata `json:"metadata"`
 	ClusterId    string           `json:"cluster_id"`
 	BrokerId     int32            `json:"broker_id"`
-	Exclusion    ExclusionOp      `json:"exclusion"`
+	Exclusion    string           `json:"exclusion"`
 	Reason       string           `json:"reason"`
 	ErrorCode    *int32           `json:"error_code,omitempty"`
 	ErrorMessage *string          `json:"error_message,omitempty"`

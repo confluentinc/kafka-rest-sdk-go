@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
-**Status** | [**BalancerStatus**](BalancerStatus.md) |  | 
+**Status** | **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 **AnyUnevenLoad** | [**Relationship**](Relationship.md) |  | 

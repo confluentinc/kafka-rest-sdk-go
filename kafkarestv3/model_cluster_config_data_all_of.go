@@ -26,5 +26,5 @@ package kafkarestv3
 
 // ClusterConfigDataAllOf struct for ClusterConfigDataAllOf
 type ClusterConfigDataAllOf struct {
-	ConfigType ClusterConfigType `json:"config_type"`
+	ConfigType string `json:"config_type"`
 }

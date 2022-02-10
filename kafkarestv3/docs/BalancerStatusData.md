@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
-**Status** | [**BalancerStatus**](BalancerStatus.md) |  | 
+**Status** | **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 **AnyUnevenLoad** | [**Relationship**](Relationship.md) |  | 

@@ -29,7 +29,7 @@ type BalancerStatusData struct {
 	Kind          string           `json:"kind"`
 	Metadata      ResourceMetadata `json:"metadata"`
 	ClusterId     string           `json:"cluster_id"`
-	Status        BalancerStatus   `json:"status"`
+	Status        string           `json:"status"`
 	ErrorCode     *int32           `json:"error_code,omitempty"`
 	ErrorMessage  *string          `json:"error_message,omitempty"`
 	AnyUnevenLoad Relationship     `json:"any_uneven_load"`

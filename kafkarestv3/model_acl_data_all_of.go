@@ -29,9 +29,9 @@ type AclDataAllOf struct {
 	ClusterId    string          `json:"cluster_id"`
 	ResourceType AclResourceType `json:"resource_type"`
 	ResourceName string          `json:"resource_name"`
-	PatternType  AclPatternType  `json:"pattern_type"`
+	PatternType  string          `json:"pattern_type"`
 	Principal    string          `json:"principal"`
 	Host         string          `json:"host"`
-	Operation    AclOperation    `json:"operation"`
-	Permission   AclPermission   `json:"permission"`
+	Operation    string          `json:"operation"`
+	Permission   string          `json:"permission"`
 }

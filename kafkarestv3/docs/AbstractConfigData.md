@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IsDefault** | **bool** |  | 
 **IsReadOnly** | **bool** |  | 
 **IsSensitive** | **bool** |  | 
-**Source** | [**ConfigSource**](ConfigSource.md) |  | 
+**Source** | **string** |  | 
 **Synonyms** | [**[]ConfigSynonymData**](ConfigSynonymData.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -26,6 +26,7 @@ package kafkarestv3
 
 // CreateLinkRequestData struct for CreateLinkRequestData
 type CreateLinkRequestData struct {
-	SourceClusterId string       `json:"source_cluster_id"`
-	Configs         []ConfigData `json:"configs,omitempty"`
+	SourceClusterId      string       `json:"source_cluster_id,omitempty"`
+	DestinationClusterId string       `json:"destination_cluster_id,omitempty"`
+	Configs              []ConfigData `json:"configs,omitempty"`
 }

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Kind** | **string** |  | 
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
-**Status** | [**AnyUnevenLoadStatus**](AnyUnevenLoadStatus.md) |  | 
-**PreviousStatus** | [**AnyUnevenLoadStatus**](AnyUnevenLoadStatus.md) |  | 
+**Status** | **string** |  | 
+**PreviousStatus** | **string** |  | 
 **StatusUpdatedAt** | [**time.Time**](time.Time.md) | The date and time at which this task was created. | [readonly] 
 **PreviousStatusUpdatedAt** | [**time.Time**](time.Time.md) | The date and time at which this task was created. | [readonly] 
 **ErrorCode** | Pointer to **int32** |  | [optional] 

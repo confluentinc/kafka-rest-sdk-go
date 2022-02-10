@@ -47,8 +47,10 @@ type ClusterLinkingV3Api interface {
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
-	 * @param linkName The Kafka cluster link name.
+	 * @param linkName The link name
 	 * @param optional nil or *CreateKafkaLinkOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+	 * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. Default: true
 	 * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
 	 */
 	CreateKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error)
@@ -74,8 +76,11 @@ type ClusterLinkingV3Api interface {
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
+	 * @param optional nil or *DeleteKafkaLinkOpts - Optional Parameters:
+	 * @param "Force" (optional.Bool) -  Force the action. Default: false
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 */
-	DeleteKafkaLink(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error)
+	DeleteKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *DeleteKafkaLinkOpts) (*_nethttp.Response, error)
 
 	/*
 	 * DeleteKafkaLinkConfig Reset the given config to default value
@@ -92,7 +97,7 @@ type ClusterLinkingV3Api interface {
 	/*
 	 * GetKafkaLink Describe the cluster link
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#x60;&#x60;link_id&#x60;&#x60; in &#x60;&#x60;ListLinksResponseData&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;cluster_link_id&#x60;&#x60; instead.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -129,7 +134,7 @@ type ClusterLinkingV3Api interface {
 	/*
 	 * ListKafkaLinks List all cluster links in the dest cluster
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#x60;&#x60;link_id&#x60;&#x60; in &#x60;&#x60;ListLinksResponseData&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;cluster_link_id&#x60;&#x60; instead.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -200,6 +205,7 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param optional nil or *UpdateKafkaLinkConfigBatchOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -
 	 */
 	UpdateKafkaLinkConfigBatch(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaLinkConfigBatchOpts) (*_nethttp.Response, error)
@@ -213,7 +219,7 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param optional nil or *UpdateKafkaMirrorTopicsFailoverOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
 	 * @return AlterMirrorStatusResponseDataList
 	 */
@@ -228,7 +234,7 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param optional nil or *UpdateKafkaMirrorTopicsPauseOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
 	 * @return AlterMirrorStatusResponseDataList
 	 */
@@ -243,7 +249,7 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param optional nil or *UpdateKafkaMirrorTopicsPromoteOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
 	 * @return AlterMirrorStatusResponseDataList
 	 */
@@ -258,7 +264,7 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param optional nil or *UpdateKafkaMirrorTopicsResumeOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
 	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
 	 * @return AlterMirrorStatusResponseDataList
 	 */
@@ -270,6 +276,8 @@ type ClusterLinkingV3ApiService service
 
 // CreateKafkaLinkOpts Optional parameters for the method 'CreateKafkaLink'
 type CreateKafkaLinkOpts struct {
+	ValidateOnly          optional.Bool
+	ValidateLink          optional.Bool
 	CreateLinkRequestData optional.Interface
 }
 
@@ -280,8 +288,10 @@ type CreateKafkaLinkOpts struct {
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @param linkName The Kafka cluster link name.
+ * @param linkName The link name
  * @param optional nil or *CreateKafkaLinkOpts - Optional Parameters:
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+ * @param "ValidateLink" (optional.Bool) -  To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. Default: true
  * @param "CreateLinkRequestData" (optional.Interface of CreateLinkRequestData) -  Create a cluster link
  */
 func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *CreateKafkaLinkOpts) (*_nethttp.Response, error) {
@@ -302,6 +312,12 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clust
 	localVarFormParams := _neturl.Values{}
 
 	localVarQueryParams.Add("link_name", parameterToString(linkName, ""))
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ValidateLink.IsSet() {
+		localVarQueryParams.Add("validate_link", parameterToString(localVarOptionals.ValidateLink.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -521,6 +537,12 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaMirrorTopic(ctx _context.Context
 	return localVarHTTPResponse, nil
 }
 
+// DeleteKafkaLinkOpts Optional parameters for the method 'DeleteKafkaLink'
+type DeleteKafkaLinkOpts struct {
+	Force        optional.Bool
+	ValidateOnly optional.Bool
+}
+
 /*
  * DeleteKafkaLink Delete the cluster link
  *
@@ -529,8 +551,11 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaMirrorTopic(ctx _context.Context
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
+ * @param optional nil or *DeleteKafkaLinkOpts - Optional Parameters:
+ * @param "Force" (optional.Bool) -  Force the action. Default: false
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  */
-func (a *ClusterLinkingV3ApiService) DeleteKafkaLink(ctx _context.Context, clusterId string, linkName string) (*_nethttp.Response, error) {
+func (a *ClusterLinkingV3ApiService) DeleteKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *DeleteKafkaLinkOpts) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -549,6 +574,12 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLink(ctx _context.Context, clust
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.Force.IsSet() {
+		localVarQueryParams.Add("force", parameterToString(localVarOptionals.Force.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -749,7 +780,7 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLinkConfig(ctx _context.Context,
 /*
  * GetKafkaLink Describe the cluster link
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#x60;&#x60;link_id&#x60;&#x60; in &#x60;&#x60;ListLinksResponseData&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;cluster_link_id&#x60;&#x60; instead.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -1118,7 +1149,7 @@ func (a *ClusterLinkingV3ApiService) ListKafkaLinkConfigs(ctx _context.Context, 
 /*
  * ListKafkaLinks List all cluster links in the dest cluster
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#x60;&#x60;link_id&#x60;&#x60; in &#x60;&#x60;ListLinksResponseData&#x60;&#x60; is deprecated and may be removed in a future release. Use the new &#x60;&#x60;cluster_link_id&#x60;&#x60; instead.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -1752,6 +1783,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfig(ctx _context.Context,
 
 // UpdateKafkaLinkConfigBatchOpts Optional parameters for the method 'UpdateKafkaLinkConfigBatch'
 type UpdateKafkaLinkConfigBatchOpts struct {
+	ValidateOnly                optional.Bool
 	AlterConfigBatchRequestData optional.Interface
 }
 
@@ -1764,6 +1796,7 @@ type UpdateKafkaLinkConfigBatchOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *UpdateKafkaLinkConfigBatchOpts - Optional Parameters:
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  * @param "AlterConfigBatchRequestData" (optional.Interface of AlterConfigBatchRequestData) -
  */
 func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfigBatch(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaLinkConfigBatchOpts) (*_nethttp.Response, error) {
@@ -1785,6 +1818,9 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfigBatch(ctx _context.Con
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1892,7 +1928,7 @@ type UpdateKafkaMirrorTopicsFailoverOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *UpdateKafkaMirrorTopicsFailoverOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
  * @return AlterMirrorStatusResponseDataList
  */
@@ -2035,7 +2071,7 @@ type UpdateKafkaMirrorTopicsPauseOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *UpdateKafkaMirrorTopicsPauseOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
  * @return AlterMirrorStatusResponseDataList
  */
@@ -2178,7 +2214,7 @@ type UpdateKafkaMirrorTopicsPromoteOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *UpdateKafkaMirrorTopicsPromoteOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
  * @return AlterMirrorStatusResponseDataList
  */
@@ -2321,7 +2357,7 @@ type UpdateKafkaMirrorTopicsResumeOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param optional nil or *UpdateKafkaMirrorTopicsResumeOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate if the link can be created or not, but not to create it. Default: false
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
  * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Name of the topics to apply the changes
  * @return AlterMirrorStatusResponseDataList
  */

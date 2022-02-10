@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SourceTopicName** | **string** |  | 
+**MirrorTopicName** | **string** |  | [optional] 
 **ReplicationFactor** | **int32** |  | [optional] 
 **Configs** | [**[]ConfigData**](ConfigData.md) |  | [optional] 
-**MirrorTopicName** | **string** |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
