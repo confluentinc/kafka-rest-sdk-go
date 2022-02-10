@@ -21,7 +21,7 @@ type ClusterLinkingV3Api struct {
 	CreateKafkaMirrorTopicFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts) (*net_http.Response, error)
 
 	lockDeleteKafkaLink sync.Mutex
-	DeleteKafkaLinkFunc func(ctx context.Context, clusterId, linkName string) (*net_http.Response, error)
+	DeleteKafkaLinkFunc func(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaLinkOpts) (*net_http.Response, error)
 
 	lockDeleteKafkaLinkConfig sync.Mutex
 	DeleteKafkaLinkConfigFunc func(ctx context.Context, clusterId, linkName, configName string) (*net_http.Response, error)
@@ -79,9 +79,10 @@ type ClusterLinkingV3Api struct {
 			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.CreateKafkaMirrorTopicOpts
 		}
 		DeleteKafkaLink []struct {
-			Ctx       context.Context
-			ClusterId string
-			LinkName  string
+			Ctx               context.Context
+			ClusterId         string
+			LinkName          string
+			LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaLinkOpts
 		}
 		DeleteKafkaLinkConfig []struct {
 			Ctx        context.Context
@@ -261,7 +262,7 @@ func (m *ClusterLinkingV3Api) CreateKafkaMirrorTopicCalls() []struct {
 }
 
 // DeleteKafkaLink mocks base method by wrapping the associated func.
-func (m *ClusterLinkingV3Api) DeleteKafkaLink(ctx context.Context, clusterId, linkName string) (*net_http.Response, error) {
+func (m *ClusterLinkingV3Api) DeleteKafkaLink(ctx context.Context, clusterId, linkName string, localVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaLinkOpts) (*net_http.Response, error) {
 	m.lockDeleteKafkaLink.Lock()
 	defer m.lockDeleteKafkaLink.Unlock()
 
@@ -270,18 +271,20 @@ func (m *ClusterLinkingV3Api) DeleteKafkaLink(ctx context.Context, clusterId, li
 	}
 
 	call := struct {
-		Ctx       context.Context
-		ClusterId string
-		LinkName  string
+		Ctx               context.Context
+		ClusterId         string
+		LinkName          string
+		LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaLinkOpts
 	}{
-		Ctx:       ctx,
-		ClusterId: clusterId,
-		LinkName:  linkName,
+		Ctx:               ctx,
+		ClusterId:         clusterId,
+		LinkName:          linkName,
+		LocalVarOptionals: localVarOptionals,
 	}
 
 	m.calls.DeleteKafkaLink = append(m.calls.DeleteKafkaLink, call)
 
-	return m.DeleteKafkaLinkFunc(ctx, clusterId, linkName)
+	return m.DeleteKafkaLinkFunc(ctx, clusterId, linkName, localVarOptionals)
 }
 
 // DeleteKafkaLinkCalled returns true if DeleteKafkaLink was called at least once.
@@ -294,9 +297,10 @@ func (m *ClusterLinkingV3Api) DeleteKafkaLinkCalled() bool {
 
 // DeleteKafkaLinkCalls returns the calls made to DeleteKafkaLink.
 func (m *ClusterLinkingV3Api) DeleteKafkaLinkCalls() []struct {
-	Ctx       context.Context
-	ClusterId string
-	LinkName  string
+	Ctx               context.Context
+	ClusterId         string
+	LinkName          string
+	LocalVarOptionals *github_com_confluentinc_kafka_rest_sdk_go_kafkarestv3.DeleteKafkaLinkOpts
 } {
 	m.lockDeleteKafkaLink.Lock()
 	defer m.lockDeleteKafkaLink.Unlock()
