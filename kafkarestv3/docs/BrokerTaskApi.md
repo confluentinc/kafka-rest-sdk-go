@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 List Broker Tasks of a specific Broker
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a list of all broker tasks for broker specified with ``broker_id`` in the cluster specified with ``cluster_id``.
+Returns a list of all broker tasks for broker specified with ``broker_id`` in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 
 ### Return type
 
@@ -39,7 +39,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -52,7 +52,7 @@ No authorization required
 
 Get single Broker Task.
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a single Broker Task specified with ``task_type`` for broker specified with ``broker_id`` in the cluster specified with ``cluster_id``.
+Returns a single Broker Task specified with ``task_type`` for broker specified with ``broker_id`` in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 **taskType** | [**BrokerTaskType**](.md)| The Kafka broker task type. | 
 
 ### Return type
@@ -75,7 +75,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -88,7 +88,7 @@ No authorization required
 
 List Broker Tasks
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a list of all tasks for all brokers in the cluster specified with ``cluster_id``.
+Returns a list of all tasks for all brokers in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -109,7 +109,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -122,7 +122,7 @@ No authorization required
 
 List Broker Tasks of a specific TaskType
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a list of all broker tasks of specified ``task_type`` in the cluster specified with ``cluster_id``.
+Returns a list of all broker tasks of specified ``task_type`` in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -144,7 +144,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
