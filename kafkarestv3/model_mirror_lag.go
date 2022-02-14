@@ -27,6 +27,6 @@ package kafkarestv3
 // MirrorLag struct for MirrorLag
 type MirrorLag struct {
 	Partition             int32 `json:"partition"`
-	Lag                   int32 `json:"lag"`
+	Lag                   int64 `json:"lag"`
 	LastSourceFetchOffset int64 `json:"last_source_fetch_offset"`
 }

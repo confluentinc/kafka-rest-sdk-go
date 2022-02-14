@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**linkName** | **string**| The Kafka cluster link name. | 
+**linkName** | **string**| The link name | 
  **optional** | ***CreateKafkaLinkOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -51,6 +51,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
+ **validateLink** | **optional.Bool**| To synchronously validate that the source cluster ID is expected and the dest cluster has the permission to read topics in the source cluster. Default: true | 
  **createLinkRequestData** | [**optional.Interface of CreateLinkRequestData**](CreateLinkRequestData.md)| Create a cluster link | 
 
 ### Return type
@@ -120,7 +122,7 @@ No authorization required
 
 ## DeleteKafkaLink
 
-> DeleteKafkaLink(ctx, clusterId, linkName)
+> DeleteKafkaLink(ctx, clusterId, linkName, optional)
 
 Delete the cluster link
 
@@ -134,6 +136,19 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **linkName** | **string**| The link name | 
+ **optional** | ***DeleteKafkaLinkOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a DeleteKafkaLinkOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **force** | **optional.Bool**| Force the action. Default: false | 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
 
 ### Return type
 
@@ -195,7 +210,7 @@ No authorization required
 
 Describe the cluster link
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  ``link_id`` in ``ListLinksResponseData`` is deprecated and may be removed in a future release. Use the new ``cluster_link_id`` instead.
 
 ### Required Parameters
 
@@ -301,7 +316,7 @@ No authorization required
 
 List all cluster links in the dest cluster
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  ``link_id`` in ``ListLinksResponseData`` is deprecated and may be removed in a future release. Use the new ``cluster_link_id`` instead.
 
 ### Required Parameters
 
@@ -533,6 +548,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
  **alterConfigBatchRequestData** | [**optional.Interface of AlterConfigBatchRequestData**](AlterConfigBatchRequestData.md)|  | 
 
 ### Return type
@@ -580,7 +596,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **validateOnly** | **optional.Bool**| To validate if the link can be created or not, but not to create it. Default: false | 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
  **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
@@ -628,7 +644,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **validateOnly** | **optional.Bool**| To validate if the link can be created or not, but not to create it. Default: false | 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
  **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
@@ -676,7 +692,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **validateOnly** | **optional.Bool**| To validate if the link can be created or not, but not to create it. Default: false | 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
  **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type
@@ -724,7 +740,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **validateOnly** | **optional.Bool**| To validate if the link can be created or not, but not to create it. Default: false | 
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
  **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
 
 ### Return type

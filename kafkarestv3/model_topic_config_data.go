@@ -34,7 +34,7 @@ type TopicConfigData struct {
 	IsDefault   bool                `json:"is_default"`
 	IsReadOnly  bool                `json:"is_read_only"`
 	IsSensitive bool                `json:"is_sensitive"`
-	Source      ConfigSource        `json:"source"`
+	Source      string              `json:"source"`
 	Synonyms    []ConfigSynonymData `json:"synonyms"`
 	TopicName   string              `json:"topic_name"`
 }

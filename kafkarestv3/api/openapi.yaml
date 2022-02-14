@@ -8980,7 +8980,10 @@ paths:
       - RemoveBrokerTask
   /clusters/{cluster_id}/links:
     get:
-      description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        ``link_id`` in ``ListLinksResponseData`` is deprecated and may be removed in a future release. Use the new ``cluster_link_id`` instead.
       operationId: listKafkaLinks
       parameters:
       - description: The Kafka cluster ID.
@@ -9007,8 +9010,10 @@ paths:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
                     resource_name: null
                   source_cluster_id: src-cluster-id
+                  destination_cluster_id: null
                   link_name: my-new-link-1
                   link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                  cluster_link_id: eEBkTffYSESld6EO898x3w
                   topic_names:
                   - topic-sb-1
                   - topic-sb-2
@@ -9017,11 +9022,23 @@ paths:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
                     resource_name: null
                   source_cluster_id: src-cluster-id
+                  destination_cluster_id: null
                   link_name: my-new-link-2
-                  link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+                  link_id: f749116e-f847-4bd2-b1f6-5c4e518a0678
+                  cluster_link_id: 90kRbvhHS9Kx9lxOUYoGeA
                   topic_names:
                   - topic-db-1
                   - topic-db-2
+                - kind: KafkaLinkData
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-3
+                    resource_name: null
+                  source_cluster_id: null
+                  destination_cluster_id: dest-cluster-id
+                  link_name: my-new-link-3
+                  link_id: 9cd1711e-a4ef-4390-a35e-dfd758d97a82
+                  cluster_link_id: nNFxHqTvQ5CjXt_XWNl6gg
+                  topic_names: null
               schema:
                 $ref: '#/components/schemas/ListLinksResponseDataList'
           description: A list of link names and properties
@@ -9124,14 +9141,35 @@ paths:
         schema:
           type: string
         style: simple
-      - description: The Kafka cluster link name.
-        example: link-name-1
+      - description: The link name
+        example: link-sb1
         explode: true
         in: query
         name: link_name
         required: true
         schema:
           type: string
+        style: form
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: 'To synchronously validate that the source cluster ID is expected
+          and the dest cluster has the permission to read topics in the source cluster.
+          Default: true'
+        example: false
+        explode: true
+        in: query
+        name: validate_link
+        required: false
+        schema:
+          type: boolean
         style: form
       requestBody:
         $ref: '#/components/requestBodies/CreateLinkRequest'
@@ -9247,6 +9285,25 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'Force the action. Default: false'
+        example: false
+        explode: true
+        in: query
+        name: force
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           description: Operation succeeded, no content in the response
@@ -9337,7 +9394,10 @@ paths:
       tags:
       - Cluster Linking (v3)
     get:
-      description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        ``link_id`` in ``ListLinksResponseData`` is deprecated and may be removed in a future release. Use the new ``cluster_link_id`` instead.
       operationId: getKafkaLink
       parameters:
       - description: The Kafka cluster ID.
@@ -9362,17 +9422,35 @@ paths:
         "200":
           content:
             application/json:
-              example:
-                kind: KafkaLinkData
-                metadata:
-                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
-                  resource_name: null
-                source_cluster_id: src-cluster-id
-                link_name: my-new-link-1
-                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-                topic_names:
-                - topic-db-1
-                - topic-db-2
+              examples:
+                link_at_destination_cluster:
+                  description: Link at destination cluster
+                  value:
+                    kind: KafkaLinkData
+                    metadata:
+                      self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                    resource_name: null
+                    source_cluster_id: src-cluster-id
+                    destination_cluster_id: null
+                    link_name: my-new-link-1
+                    link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                    cluster_link_id: eEBkTffYSESld6EO898x3w
+                    topic_names:
+                    - topic-db-1
+                    - topic-db-2
+                link_at_source_cluster:
+                  description: Link at source cluster
+                  value:
+                    kind: KafkaLinkData
+                    metadata:
+                      self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                    resource_name: null
+                    source_cluster_id: null
+                    destination_cluster_id: dst-cluster-id
+                    link_name: my-new-link-1
+                    link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                    cluster_link_id: eEBkTffYSESld6EO898x3w
+                    topic_names: null
               schema:
                 $ref: '#/components/schemas/ListLinksResponseData'
           description: Single link name and properties
@@ -10211,6 +10289,16 @@ paths:
         schema:
           type: string
         style: simple
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
+        example: false
+        explode: true
+        in: query
+        name: validate_only
+        required: false
+        schema:
+          type: boolean
+        style: form
       requestBody:
         $ref: '#/components/requestBodies/AlterLinkConfigBatchRequest'
       responses:
@@ -10935,8 +11023,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: 'To validate if the link can be created or not, but not to create
-          it. Default: false'
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
         example: false
         explode: true
         in: query
@@ -11104,8 +11192,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: 'To validate if the link can be created or not, but not to create
-          it. Default: false'
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
         example: false
         explode: true
         in: query
@@ -11273,8 +11361,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: 'To validate if the link can be created or not, but not to create
-          it. Default: false'
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
         example: false
         explode: true
         in: query
@@ -11442,8 +11530,8 @@ paths:
         schema:
           type: string
         style: simple
-      - description: 'To validate if the link can be created or not, but not to create
-          it. Default: false'
+      - description: 'To validate the action can be performed successfully or not.
+          Default: false'
         example: false
         explode: true
         in: query
@@ -12268,8 +12356,8 @@ components:
         type: boolean
       style: form
     ValidateOnly:
-      description: 'To validate if the link can be created or not, but not to create
-        it. Default: false'
+      description: 'To validate the action can be performed successfully or not. Default:
+        false'
       example: false
       explode: true
       in: query
@@ -12281,7 +12369,7 @@ components:
     ValidateLink:
       description: 'To synchronously validate that the source cluster ID is expected
         and the dest cluster has the permission to read topics in the source cluster.
-        default: true'
+        Default: true'
       example: false
       explode: true
       in: query
@@ -12290,15 +12378,15 @@ components:
       schema:
         type: boolean
       style: form
-    ClusterLinkName:
-      description: The Kafka cluster link name.
-      example: link-name-1
+    Force:
+      description: 'Force the action. Default: false'
+      example: false
       explode: true
       in: query
-      name: link_name
-      required: true
+      name: force
+      required: false
       schema:
-        type: string
+        type: boolean
       style: form
     LinkName:
       description: The link name
@@ -12341,6 +12429,16 @@ components:
       schema:
         type: string
       style: simple
+    QueryParamLinkName:
+      description: The link name
+      example: link-sb1
+      explode: true
+      in: query
+      name: link_name
+      required: true
+      schema:
+        type: string
+      style: form
   requestBodies:
     AlterBrokerConfigBatchRequest:
       content:
@@ -12382,9 +12480,6 @@ components:
       content:
         application/json:
           example:
-            kind: KafkaAcl
-            metadata:
-              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/acls?resource_type=CLUSTER&resource_name=kafka-cluster&pattern_type=LITERAL&principal=bob&host=*&operation=DESCRIBE&permission=DENY
             resource_type: CLUSTER
             resource_name: kafka-cluster
             pattern_type: LITERAL
@@ -12529,13 +12624,40 @@ components:
     CreateLinkRequest:
       content:
         application/json:
-          example:
-            source_cluster_id: cluster-1
-            configs:
-            - name: acl.sync.enable
-              value: "false"
-            - name: consumer.offset.sync.ms
-              value: "30000"
+          examples:
+            destination_initiated_link:
+              description: Create a destination initiated cluster link
+              value:
+                source_cluster_id: cluster-1
+                configs:
+                - name: bootstrap.servers
+                  value: cluster-1-bootstrap-server
+                - name: acl.sync.enable
+                  value: "false"
+                - name: consumer.offset.sync.ms
+                  value: "30000"
+            source_initiated_link_at_source_cluster:
+              description: Create a source initiated cluster link at source cluster
+              value:
+                destination_cluster_id: cluster-2
+                configs:
+                - name: boostrap.servers
+                  value: cluster-2-bootstrap-server
+                - name: link.mode
+                  value: SOURCE
+            source_initiated_link_at_destination_cluster:
+              description: Create a source initiated cluster link at destination cluster
+              value:
+                source_cluster_id: cluster-1
+                configs:
+                - name: boostrap.servers
+                  value: cluster-1-bootstrap-server
+                - name: link.mode
+                  value: DESTINATION
+                - name: connection.mode
+                  value: INBOUND
+                - name: acl.sync.enable
+                  value: "false"
           schema:
             $ref: '#/components/schemas/CreateLinkRequestData'
       description: Create a cluster link
@@ -12567,8 +12689,8 @@ components:
               value:
                 source_topic_name: topic-1
                 configs:
-                  - name: unclean.leader.election.enable
-                    value: "true"
+                - name: unclean.leader.election.enable
+                  value: "true"
                 replication_factor: 1
             example_with_mirror_topic_name:
               description: Example using optional mirror_topic_name flag
@@ -12576,8 +12698,8 @@ components:
                 source_topic_name: topic-1
                 mirror_topic_name: link1_topic-1
                 configs:
-                  - name: unclean.leader.election.enable
-                    value: "true"
+                - name: unclean.leader.election.enable
+                  value: "true"
                 replication_factor: 3
           schema:
             $ref: '#/components/schemas/CreateMirrorTopicRequestData'
@@ -14416,8 +14538,10 @@ components:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-1
                 resource_name: null
               source_cluster_id: src-cluster-id
+              destination_cluster_id: null
               link_name: my-new-link-1
               link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+              cluster_link_id: eEBkTffYSESld6EO898x3w
               topic_names:
               - topic-sb-1
               - topic-sb-2
@@ -14426,28 +14550,58 @@ components:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-2
                 resource_name: null
               source_cluster_id: src-cluster-id
+              destination_cluster_id: null
               link_name: my-new-link-2
-              link_id: abced-f7d8-4844-a577-abcdefghijklmnp
+              link_id: f749116e-f847-4bd2-b1f6-5c4e518a0678
+              cluster_link_id: 90kRbvhHS9Kx9lxOUYoGeA
               topic_names:
               - topic-db-1
               - topic-db-2
+            - kind: KafkaLinkData
+              metadata:
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/CIL-69l7S1CwoVNAhoQLug/links/my-new-link-3
+                resource_name: null
+              source_cluster_id: null
+              destination_cluster_id: dest-cluster-id
+              link_name: my-new-link-3
+              link_id: 9cd1711e-a4ef-4390-a35e-dfd758d97a82
+              cluster_link_id: nNFxHqTvQ5CjXt_XWNl6gg
+              topic_names: null
           schema:
             $ref: '#/components/schemas/ListLinksResponseDataList'
       description: A list of link names and properties
     GetLinkResponse:
       content:
         application/json:
-          example:
-            kind: KafkaLinkData
-            metadata:
-              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
-              resource_name: null
-            source_cluster_id: src-cluster-id
-            link_name: my-new-link-1
-            link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
-            topic_names:
-            - topic-db-1
-            - topic-db-2
+          examples:
+            link_at_destination_cluster:
+              description: Link at destination cluster
+              value:
+                kind: KafkaLinkData
+                metadata:
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                resource_name: null
+                source_cluster_id: src-cluster-id
+                destination_cluster_id: null
+                link_name: my-new-link-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                cluster_link_id: eEBkTffYSESld6EO898x3w
+                topic_names:
+                - topic-db-1
+                - topic-db-2
+            link_at_source_cluster:
+              description: Link at source cluster
+              value:
+                kind: KafkaLinkData
+                metadata:
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/Fds7TcT9TTqEXsoRLEKMcQ/links/my-new-link-1
+                resource_name: null
+                source_cluster_id: null
+                destination_cluster_id: dst-cluster-id
+                link_name: my-new-link-1
+                link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
+                cluster_link_id: eEBkTffYSESld6EO898x3w
+                topic_names: null
           schema:
             $ref: '#/components/schemas/ListLinksResponseData'
       description: Single link name and properties
@@ -14768,7 +14922,8 @@ components:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/inline_response_200'
     AclOperation:
-      enum:
+      type: string
+      x-extensible-enum:
       - UNKNOWN
       - ANY
       - ALL
@@ -14782,22 +14937,21 @@ components:
       - DESCRIBE_CONFIGS
       - ALTER_CONFIGS
       - IDEMPOTENT_WRITE
-      type: string
     AclPatternType:
-      enum:
+      type: string
+      x-extensible-enum:
       - UNKNOWN
       - ANY
       - MATCH
       - LITERAL
       - PREFIXED
-      type: string
     AclPermission:
-      enum:
+      type: string
+      x-extensible-enum:
       - UNKNOWN
       - ANY
       - DENY
       - ALLOW
-      type: string
     AclResourceType:
       enum:
       - UNKNOWN
@@ -14813,10 +14967,10 @@ components:
         data:
         - name: name
           value: value
-          operation: SET
+          operation: operation
         - name: name
           value: value
-          operation: SET
+          operation: operation
       properties:
         data:
           items:
@@ -14852,9 +15006,9 @@ components:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/ClusterConfigDataList_allOf'
     ClusterConfigType:
-      enum:
-      - BROKER
       type: string
+      x-extensible-enum:
+      - BROKER
     ClusterData:
       allOf:
       - $ref: '#/components/schemas/Resource'
@@ -14866,23 +15020,51 @@ components:
     CreateAclRequestData:
       example:
         principal: principal
+        pattern_type: pattern_type
         host: host
+        permission: permission
         resource_name: resource_name
+        operation: operation
       properties:
         resource_type:
           $ref: '#/components/schemas/AclResourceType'
         resource_name:
           type: string
         pattern_type:
-          $ref: '#/components/schemas/AclPatternType'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - MATCH
+          - LITERAL
+          - PREFIXED
         principal:
           type: string
         host:
           type: string
         operation:
-          $ref: '#/components/schemas/AclOperation'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - ALL
+          - READ
+          - WRITE
+          - CREATE
+          - DELETE
+          - ALTER
+          - DESCRIBE
+          - CLUSTER_ACTION
+          - DESCRIBE_CONFIGS
+          - ALTER_CONFIGS
+          - IDEMPOTENT_WRITE
         permission:
-          $ref: '#/components/schemas/AclPermission'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - DENY
+          - ALLOW
       required:
       - host
       - operation
@@ -14930,7 +15112,8 @@ components:
       - topic_name
       type: object
     ConfigSource:
-      enum:
+      type: string
+      x-extensible-enum:
       - DYNAMIC_CLUSTER_LINK_CONFIG
       - DYNAMIC_TOPIC_CONFIG
       - DYNAMIC_BROKER_LOGGER_CONFIG
@@ -14939,7 +15122,6 @@ components:
       - STATIC_BROKER_CONFIG
       - DEFAULT_CONFIG
       - UNKNOWN
-      type: string
     ConfigSynonymData:
       properties:
         name:
@@ -14948,7 +15130,16 @@ components:
           nullable: true
           type: string
         source:
-          $ref: '#/components/schemas/ConfigSource'
+          type: string
+          x-extensible-enum:
+          - DYNAMIC_CLUSTER_LINK_CONFIG
+          - DYNAMIC_TOPIC_CONFIG
+          - DYNAMIC_BROKER_LOGGER_CONFIG
+          - DYNAMIC_BROKER_CONFIG
+          - DYNAMIC_DEFAULT_BROKER_CONFIG
+          - STATIC_BROKER_CONFIG
+          - DEFAULT_CONFIG
+          - UNKNOWN
       required:
       - name
       - source
@@ -14978,14 +15169,14 @@ components:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/ConsumerGroupDataList_allOf'
     ConsumerGroupState:
-      enum:
+      type: string
+      x-extensible-enum:
       - UNKNOWN
       - PREPARING_REBALANCE
       - COMPLETING_REBALANCE
       - STABLE
       - DEAD
       - EMPTY
-      type: string
     ConsumerLagData:
       allOf:
       - $ref: '#/components/schemas/Resource'
@@ -15029,13 +15220,13 @@ components:
           size: 1
           subject: subject
           schema_id: 5
-          type: BINARY
+          type: type
         key:
           schema_version: 5
           size: 1
           subject: subject
           schema_id: 5
-          type: BINARY
+          type: type
         timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         cluster_id:
@@ -15066,20 +15257,20 @@ components:
         size: 1
         subject: subject
         schema_id: 5
-        type: BINARY
+        type: type
       nullable: true
       properties:
         size:
           type: integer
         type:
-          enum:
+          nullable: true
+          type: string
+          x-extensible-enum:
           - BINARY
           - JSON
           - AVRO
           - JSONSCHEMA
           - PROTOBUF
-          nullable: true
-          type: string
         subject:
           nullable: true
           type: string
@@ -15102,20 +15293,20 @@ components:
           value: value
         value:
           schema_version: 1
-          subject_name_strategy: TOPIC_NAME
+          subject_name_strategy: subject_name_strategy
           data: ""
           subject: subject
           raw_schema: raw_schema
           schema_id: 6
-          type: BINARY
+          type: type
         key:
           schema_version: 1
-          subject_name_strategy: TOPIC_NAME
+          subject_name_strategy: subject_name_strategy
           data: ""
           subject: subject
           raw_schema: raw_schema
           schema_id: 6
-          type: BINARY
+          type: type
         timestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         partition_id:
@@ -15137,32 +15328,32 @@ components:
     ProduceRequestData:
       example:
         schema_version: 1
-        subject_name_strategy: TOPIC_NAME
+        subject_name_strategy: subject_name_strategy
         data: ""
         subject: subject
         raw_schema: raw_schema
         schema_id: 6
-        type: BINARY
+        type: type
       nullable: true
       properties:
         type:
-          enum:
+          type: string
+          x-extensible-enum:
           - BINARY
           - JSON
           - AVRO
           - JSONSCHEMA
           - PROTOBUF
-          type: string
         subject:
           nullable: true
           type: string
         subject_name_strategy:
-          enum:
+          nullable: true
+          type: string
+          x-extensible-enum:
           - TOPIC_NAME
           - RECORD_NAME
           - TOPIC_RECORD_NAME
-          nullable: true
-          type: string
         schema_id:
           nullable: true
           type: integer
@@ -15380,16 +15571,17 @@ components:
           value: value
         - name: name
           value: value
+        destination_cluster_id: destination_cluster_id
         source_cluster_id: source_cluster_id
       properties:
         source_cluster_id:
+          type: string
+        destination_cluster_id:
           type: string
         configs:
           items:
             $ref: '#/components/schemas/ConfigData'
           type: array
-      required:
-      - source_cluster_id
       type: object
     UpdateLinkConfigRequestData:
       example:
@@ -15425,8 +15617,11 @@ components:
           value: value
         source_topic_name: source_topic_name
         replication_factor: 0
+        mirror_topic_name: mirror_topic_name
       properties:
         source_topic_name:
+          type: string
+        mirror_topic_name:
           type: string
         replication_factor:
           type: integer
@@ -15488,6 +15683,7 @@ components:
         partition:
           type: integer
         lag:
+          format: int64
           type: integer
         last_source_fetch_offset:
           format: int64
@@ -15520,7 +15716,8 @@ components:
       - topics
       type: object
     AnyUnevenLoadStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - STARTING
       - BALANCING
       - BALANCED
@@ -15528,9 +15725,9 @@ components:
       - DISABLED
       - ABORTED
       - UNKNOWN
-      type: string
     BalancerStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - BOOTSTRAPPING
       - STARTING
       - ENABLED
@@ -15539,27 +15736,27 @@ components:
       - FAILOVER
       - LOAD_FAILURE
       - UNKNOWN
-      type: string
     BrokerTaskType:
       enum:
       - add-broker
       - remove-broker
       type: string
     BrokerTaskStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - FAILED
       - IN_PROGRESS
       - SUCCESS
       - UNKNOWN
-      type: string
     ExclusionOp:
-      enum:
+      type: string
+      x-extensible-enum:
       - SET
       - DELETE
       - UNKNOWN
-      type: string
     BrokerReplicaExclusionStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - PENDING
       - IN_PROGRESS
       - EXCLUDED
@@ -15568,40 +15765,39 @@ components:
       - CANCELED
       - COMPLETED
       - UNKNOWN
-      type: string
     PartitionReassignmentStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - CANCELED
       - ERROR
       - PENDING
       - IN_PROGRESS
       - COMPLETED
       - UNKNOWN
-      type: string
     BrokerShutdownStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - ERROR
       - CANCELED
       - PENDING
       - IN_PROGRESS
       - COMPLETED
       - UNKNOWN
-      type: string
     DeprecatedPartitionReassignmentStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - CANCELED
       - FAILED
       - PENDING
       - IN_PROGRESS
       - COMPLETE
-      type: string
     DeprecatedBrokerShutdownStatus:
-      enum:
+      type: string
+      x-extensible-enum:
       - FAILED
       - CANCELED
       - PENDING
       - COMPLETE
-      type: string
     inline_response_200:
       example:
         data:
@@ -15630,7 +15826,16 @@ components:
         is_sensitive:
           type: boolean
         source:
-          $ref: '#/components/schemas/ConfigSource'
+          type: string
+          x-extensible-enum:
+          - DYNAMIC_CLUSTER_LINK_CONFIG
+          - DYNAMIC_TOPIC_CONFIG
+          - DYNAMIC_BROKER_LOGGER_CONFIG
+          - DYNAMIC_BROKER_CONFIG
+          - DYNAMIC_DEFAULT_BROKER_CONFIG
+          - STATIC_BROKER_CONFIG
+          - DEFAULT_CONFIG
+          - UNKNOWN
         synonyms:
           items:
             $ref: '#/components/schemas/ConfigSynonymData'
@@ -15652,15 +15857,40 @@ components:
         resource_name:
           type: string
         pattern_type:
-          $ref: '#/components/schemas/AclPatternType'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - MATCH
+          - LITERAL
+          - PREFIXED
         principal:
           type: string
         host:
           type: string
         operation:
-          $ref: '#/components/schemas/AclOperation'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - ALL
+          - READ
+          - WRITE
+          - CREATE
+          - DELETE
+          - ALTER
+          - DESCRIBE
+          - CLUSTER_ACTION
+          - DESCRIBE_CONFIGS
+          - ALTER_CONFIGS
+          - IDEMPOTENT_WRITE
         permission:
-          $ref: '#/components/schemas/AclPermission'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - ANY
+          - DENY
+          - ALLOW
       required:
       - cluster_id
       - host
@@ -15674,7 +15904,7 @@ components:
       example:
         name: name
         value: value
-        operation: SET
+        operation: operation
       properties:
         name:
           type: string
@@ -15682,11 +15912,11 @@ components:
           nullable: true
           type: string
         operation:
-          enum:
-          - SET
-          - DELETE
           nullable: true
           type: string
+          x-extensible-enum:
+          - SET
+          - DELETE
       required:
       - name
     BrokerConfigData_allOf:
@@ -15738,7 +15968,9 @@ components:
     ClusterConfigData_allOf:
       properties:
         config_type:
-          $ref: '#/components/schemas/ClusterConfigType'
+          type: string
+          x-extensible-enum:
+          - BROKER
       required:
       - config_type
     ClusterConfigDataList_allOf:
@@ -15883,7 +16115,14 @@ components:
         partition_assignor:
           type: string
         state:
-          $ref: '#/components/schemas/ConsumerGroupState'
+          type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - PREPARING_REBALANCE
+          - COMPLETING_REBALANCE
+          - STABLE
+          - DEAD
+          - EMPTY
         coordinator:
           $ref: '#/components/schemas/Relationship'
         consumer:
@@ -16192,9 +16431,25 @@ components:
         cluster_id:
           type: string
         status:
-          $ref: '#/components/schemas/AnyUnevenLoadStatus'
+          type: string
+          x-extensible-enum:
+          - STARTING
+          - BALANCING
+          - BALANCED
+          - BALANCING_FAILED
+          - DISABLED
+          - ABORTED
+          - UNKNOWN
         previous_status:
-          $ref: '#/components/schemas/AnyUnevenLoadStatus'
+          type: string
+          x-extensible-enum:
+          - STARTING
+          - BALANCING
+          - BALANCED
+          - BALANCING_FAILED
+          - DISABLED
+          - ABORTED
+          - UNKNOWN
         status_updated_at:
           description: The date and time at which this task was created.
           example: 2019-10-12T07:20:50Z
@@ -16227,7 +16482,16 @@ components:
         cluster_id:
           type: string
         status:
-          $ref: '#/components/schemas/BalancerStatus'
+          type: string
+          x-extensible-enum:
+          - BOOTSTRAPPING
+          - STARTING
+          - ENABLED
+          - ERROR
+          - DISABLED
+          - FAILOVER
+          - LOAD_FAILURE
+          - UNKNOWN
         error_code:
           nullable: true
           type: integer
@@ -16275,7 +16539,12 @@ components:
         task_type:
           $ref: '#/components/schemas/BrokerTaskType'
         task_status:
-          $ref: '#/components/schemas/BrokerTaskStatus'
+          type: string
+          x-extensible-enum:
+          - FAILED
+          - IN_PROGRESS
+          - SUCCESS
+          - UNKNOWN
         shutdown_scheduled:
           nullable: true
           type: boolean
@@ -16350,7 +16619,11 @@ components:
         broker_id:
           type: integer
         exclusion:
-          $ref: '#/components/schemas/ExclusionOp'
+          type: string
+          x-extensible-enum:
+          - SET
+          - DELETE
+          - UNKNOWN
         reason:
           type: string
         error_code:
@@ -16384,11 +16657,31 @@ components:
         shutdown_scheduled:
           type: boolean
         broker_replica_exclusion_status:
-          $ref: '#/components/schemas/BrokerReplicaExclusionStatus'
+          type: string
+          x-extensible-enum:
+          - PENDING
+          - IN_PROGRESS
+          - EXCLUDED
+          - REMOVING
+          - ERROR
+          - CANCELED
+          - COMPLETED
+          - UNKNOWN
         partition_reassignment_status:
-          $ref: '#/components/schemas/DeprecatedPartitionReassignmentStatus'
+          type: string
+          x-extensible-enum:
+          - CANCELED
+          - FAILED
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETE
         broker_shutdown_status:
-          $ref: '#/components/schemas/DeprecatedBrokerShutdownStatus'
+          type: string
+          x-extensible-enum:
+          - FAILED
+          - CANCELED
+          - PENDING
+          - COMPLETE
         error_code:
           nullable: true
           type: integer
@@ -16416,19 +16709,26 @@ components:
     ListLinksResponseData_allOf:
       properties:
         source_cluster_id:
+          nullable: true
+          type: string
+        destination_cluster_id:
+          nullable: true
           type: string
         link_name:
           type: string
         link_id:
+          deprecated: true
+          type: string
+        cluster_link_id:
           type: string
         topics_names:
           items:
             type: string
           type: array
       required:
+      - cluster_link_id
       - link_id
       - link_name
-      - source_cluster_id
       - topic_names
     ListLinksResponseDataList_allOf:
       properties:
@@ -16451,9 +16751,9 @@ components:
         sensitive:
           type: boolean
         source:
-          enum:
-          - DYNAMIC_CLUSTER_LINK_CONFIG
           type: string
+          x-extensible-enum:
+          - DYNAMIC_CLUSTER_LINK_CONFIG
         synonyms:
           items:
             type: string

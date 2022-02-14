@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ResourceType** | [**AclResourceType**](AclResourceType.md) |  | 
 **ResourceName** | **string** |  | 
-**PatternType** | [**AclPatternType**](AclPatternType.md) |  | 
+**PatternType** | **string** |  | 
 **Principal** | **string** |  | 
 **Host** | **string** |  | 
-**Operation** | [**AclOperation**](AclOperation.md) |  | 
-**Permission** | [**AclPermission**](AclPermission.md) |  | 
+**Operation** | **string** |  | 
+**Permission** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

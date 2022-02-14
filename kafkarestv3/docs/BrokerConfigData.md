@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IsDefault** | **bool** |  | 
 **IsReadOnly** | **bool** |  | 
 **IsSensitive** | **bool** |  | 
-**Source** | [**ConfigSource**](ConfigSource.md) |  | 
+**Source** | **string** |  | 
 **Synonyms** | [**[]ConfigSynonymData**](ConfigSynonymData.md) |  | 
 **BrokerId** | **int32** |  | 
 

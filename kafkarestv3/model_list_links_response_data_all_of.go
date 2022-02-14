@@ -26,8 +26,10 @@ package kafkarestv3
 
 // ListLinksResponseDataAllOf struct for ListLinksResponseDataAllOf
 type ListLinksResponseDataAllOf struct {
-	SourceClusterId string   `json:"source_cluster_id"`
-	LinkName        string   `json:"link_name"`
-	LinkId          string   `json:"link_id"`
-	TopicsNames     []string `json:"topics_names,omitempty"`
+	SourceClusterId      *string  `json:"source_cluster_id,omitempty"`
+	DestinationClusterId *string  `json:"destination_cluster_id,omitempty"`
+	LinkName             string   `json:"link_name"`
+	LinkId               string   `json:"link_id"`
+	ClusterLinkId        string   `json:"cluster_link_id"`
+	TopicsNames          []string `json:"topics_names,omitempty"`
 }
