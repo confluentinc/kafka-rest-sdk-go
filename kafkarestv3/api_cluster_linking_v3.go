@@ -1801,7 +1801,7 @@ type UpdateKafkaLinkConfigBatchOpts struct {
  */
 func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfigBatch(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaLinkConfigBatchOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
