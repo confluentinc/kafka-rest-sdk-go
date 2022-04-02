@@ -1,10 +1,10 @@
-# \RecordsApi
+# \RecordsV3Api
 
 All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdTopicsTopicNameRecordsPost**](RecordsApi.md#ClustersClusterIdTopicsTopicNameRecordsPost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
+[**ClustersClusterIdTopicsTopicNameRecordsPost**](RecordsV3Api.md#ClustersClusterIdTopicsTopicNameRecordsPost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Produce records to the given topic.
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each             record produced. This API can be used in streaming mode by setting \"Transfer-Encoding:             chunked\" header. For as long as the connection is kept open, the server will             keep accepting records. For each record sent to the server, the server will             asynchronously send back a delivery report, in the same order. Records are             streamed to and from the server as Concatenated JSON. Errors are reported per             record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
+[![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \"Transfer-Encoding: chunked\" header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
 
 ### Required Parameters
 
@@ -48,7 +48,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

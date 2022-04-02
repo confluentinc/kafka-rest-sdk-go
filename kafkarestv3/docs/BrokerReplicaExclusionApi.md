@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Get a Broker Replica Exclusions.
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a Broker Replica Exclusions in the cluster specified with ``cluster_id`` and broker specified with ``broker_id``.
+Returns a Broker Replica Exclusions in the cluster specified with ``cluster_id`` and broker specified with ``broker_id``.
 
 ### Required Parameters
 
@@ -26,7 +26,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 
 ### Return type
 
@@ -39,7 +39,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -52,7 +52,7 @@ No authorization required
 
 Get all Broker Replica Exclusions.
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns all Broker Replica Exclusions in the cluster specified with ``cluster_id``.
+Returns all Broker Replica Exclusions in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -73,7 +73,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -86,7 +86,7 @@ No authorization required
 
 Create Broker Replica Exclusions
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Create Broker Replica Exclusions for brokers in the cluster specified with ``cluster_id``.
+Create Broker Replica Exclusions for brokers in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -118,7 +118,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -131,7 +131,7 @@ No authorization required
 
 Delete Broker Replica Exclusions
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Delete Broker Replica Exclusions for brokers in the cluster specified with ``cluster_id``.
+Delete Broker Replica Exclusions for brokers in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -163,7 +163,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

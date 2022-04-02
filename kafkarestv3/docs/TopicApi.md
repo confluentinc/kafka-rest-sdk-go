@@ -1,23 +1,23 @@
-# \TopicV3Api
+# \TopicApi
 
 All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateKafkaTopic**](TopicV3Api.md#CreateKafkaTopic) | **Post** /clusters/{cluster_id}/topics | Create Topic
-[**DeleteKafkaTopic**](TopicV3Api.md#DeleteKafkaTopic) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
-[**GetKafkaTopic**](TopicV3Api.md#GetKafkaTopic) | **Get** /clusters/{cluster_id}/topics/{topic_name} | Get Topic
-[**ListKafkaTopics**](TopicV3Api.md#ListKafkaTopics) | **Get** /clusters/{cluster_id}/topics | List Topics
+[**ClustersClusterIdTopicsGet**](TopicApi.md#ClustersClusterIdTopicsGet) | **Get** /clusters/{cluster_id}/topics | List Topics
+[**ClustersClusterIdTopicsPost**](TopicApi.md#ClustersClusterIdTopicsPost) | **Post** /clusters/{cluster_id}/topics | Create Topic
+[**ClustersClusterIdTopicsTopicNameDelete**](TopicApi.md#ClustersClusterIdTopicsTopicNameDelete) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
+[**ClustersClusterIdTopicsTopicNameGet**](TopicApi.md#ClustersClusterIdTopicsTopicNameGet) | **Get** /clusters/{cluster_id}/topics/{topic_name} | Get Topic
 
 
 
-## CreateKafkaTopic
+## ClustersClusterIdTopicsGet
 
-> TopicData CreateKafkaTopic(ctx, clusterId, optional)
+> TopicDataList ClustersClusterIdTopicsGet(ctx, clusterId)
 
-Create Topic
+List Topics
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Creates a topic.
+Returns the list of topics that belong to the specified Kafka cluster.
 
 ### Required Parameters
 
@@ -26,11 +26,45 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***CreateKafkaTopicOpts** | optional parameters | nil if no parameters
+
+### Return type
+
+[**TopicDataList**](TopicDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClustersClusterIdTopicsPost
+
+> TopicData ClustersClusterIdTopicsPost(ctx, clusterId, optional)
+
+Create Topic
+
+Creates a topic.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+ **optional** | ***ClustersClusterIdTopicsPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a CreateKafkaTopicOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdTopicsPostOpts struct
 
 
 Name | Type | Description  | Notes
@@ -49,20 +83,20 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## DeleteKafkaTopic
+## ClustersClusterIdTopicsTopicNameDelete
 
-> DeleteKafkaTopic(ctx, clusterId, topicName)
+> ClustersClusterIdTopicsTopicNameDelete(ctx, clusterId, topicName)
 
 Delete Topic
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Deletes the topic with the given `topic_name`.
+Deletes the topic with the given `topic_name`.
 
 ### Required Parameters
 
@@ -84,20 +118,20 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
 
-## GetKafkaTopic
+## ClustersClusterIdTopicsTopicNameGet
 
-> TopicData GetKafkaTopic(ctx, clusterId, topicName)
+> TopicData ClustersClusterIdTopicsTopicNameGet(ctx, clusterId, topicName)
 
 Get Topic
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the topic with the given `topic_name`.
+Returns the topic with the given `topic_name`.
 
 ### Required Parameters
 
@@ -119,41 +153,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListKafkaTopics
-
-> TopicDataList ListKafkaTopics(ctx, clusterId)
-
-List Topics
-
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the list of topics that belong to the specified Kafka cluster.
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-
-### Return type
-
-[**TopicDataList**](TopicDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

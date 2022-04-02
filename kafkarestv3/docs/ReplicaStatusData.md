@@ -10,15 +10,15 @@ Name | Type | Description | Notes
 **TopicName** | **string** |  | 
 **BrokerId** | **int32** |  | 
 **PartitionId** | **int32** |  | 
-**IsLeader** | **bool** |  | 
-**IsObserver** | **bool** |  | 
-**IsIsrEligible** | **bool** |  | 
-**IsInIsr** | **bool** |  | 
-**IsCaughtUp** | **bool** |  | 
-**LogStartOffset** | **int64** |  | 
-**LogEndOffset** | **int64** |  | 
-**LastCaughtUpTimeMs** | **int64** |  | 
-**LastFetchTimeMs** | **int64** |  | 
+**Leader** | **bool** |  | 
+**Observer** | **bool** |  | 
+**IsrEligible** | **bool** |  | 
+**InIsr** | **bool** |  | 
+**CaughtUp** | **bool** |  | 
+**LogStartOffset** | **int32** |  | 
+**LogEndOffset** | **int32** |  | 
+**LastCaughtUpTimeMs** | **int32** |  | 
+**LastFetchTimeMs** | **int32** |  | 
 **LinkName** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SourceTopicName** | **string** |  | 
-**MirrorTopicName** | **string** |  | [optional] 
 **ReplicationFactor** | **int32** |  | [optional] 
 **Configs** | [**[]ConfigData**](ConfigData.md) |  | [optional] 
 

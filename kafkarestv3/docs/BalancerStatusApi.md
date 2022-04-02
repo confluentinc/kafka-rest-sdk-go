@@ -1,11 +1,11 @@
-# \BalancerStatusV3Api
+# \BalancerStatusApi
 
 All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdBalancerAnyUnevenLoadGet**](BalancerStatusV3Api.md#ClustersClusterIdBalancerAnyUnevenLoadGet) | **Get** /clusters/{cluster_id}/balancer/any-uneven-load | Get AnyUnevenLoad status
-[**ClustersClusterIdBalancerGet**](BalancerStatusV3Api.md#ClustersClusterIdBalancerGet) | **Get** /clusters/{cluster_id}/balancer | Get status of the balancer
+[**ClustersClusterIdBalancerAnyUnevenLoadGet**](BalancerStatusApi.md#ClustersClusterIdBalancerAnyUnevenLoadGet) | **Get** /clusters/{cluster_id}/balancer/any-uneven-load | Get AnyUnevenLoad status
+[**ClustersClusterIdBalancerGet**](BalancerStatusApi.md#ClustersClusterIdBalancerGet) | **Get** /clusters/{cluster_id}/balancer | Get status of the balancer
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get AnyUnevenLoad status
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns status of the AnyUnevenLoad for the cluster specified by ``cluster_id``.
+Returns status of the AnyUnevenLoad for the cluster specified by ``cluster_id``.
 
 ### Required Parameters
 
@@ -36,7 +36,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -49,7 +49,7 @@ No authorization required
 
 Get status of the balancer
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  'Returns status about the balancer component for the cluster specified with ``cluster_id``.'
+Returns status about the balancer component for the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -70,7 +70,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
