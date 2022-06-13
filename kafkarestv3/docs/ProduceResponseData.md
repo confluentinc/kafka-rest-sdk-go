@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Size** | **int32** |  | 
+**Size** | **int64** |  | 
 **Type** | Pointer to **string** |  | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **SchemaId** | Pointer to **int32** |  | [optional] 
