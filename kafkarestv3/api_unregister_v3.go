@@ -12,7 +12,6 @@ package kafkarestv3
 
 import (
 	_context "context"
-	"github.com/antihax/optional"
 	_ioutil "io/ioutil"
 	_nethttp "net/http"
 	_neturl "net/url"
@@ -24,67 +23,56 @@ var (
 	_ _context.Context
 )
 
-type BrokerApi interface {
+type UnregisterV3Api interface {
 
 	/*
-	 * ClustersClusterIdBrokersdeletePost Delete several brokers
+	 * ClustersClusterIdBrokersBrokerIdunregisterPost Unregister a Broker
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 * Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
-	 * @param optional nil or *ClustersClusterIdBrokersdeletePostOpts - Optional Parameters:
-	 * @param "ShouldShutdown" (optional.Bool) -  To shutdown the broker or not, Default: true
-	 * @param "RemoveBrokersRequestData" (optional.Interface of RemoveBrokersRequestData) -  Broker ids to remove
-	 * @return BrokerRemovalDataList
+	 * @param brokerId The Kafka broker ID.
+	 * @return UnregisterBrokerData
 	 */
-	ClustersClusterIdBrokersdeletePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokersdeletePostOpts) (BrokerRemovalDataList, *_nethttp.Response, error)
+	ClustersClusterIdBrokersBrokerIdunregisterPost(ctx _context.Context, clusterId string, brokerId int32) (UnregisterBrokerData, *_nethttp.Response, error)
 }
 
-// BrokerApiService BrokerApi service
-type BrokerApiService service
-
-// ClustersClusterIdBrokersdeletePostOpts Optional parameters for the method 'ClustersClusterIdBrokersdeletePost'
-type ClustersClusterIdBrokersdeletePostOpts struct {
-	ShouldShutdown           optional.Bool
-	RemoveBrokersRequestData optional.Interface
-}
+// UnregisterV3ApiService UnregisterV3Api service
+type UnregisterV3ApiService service
 
 /*
- * ClustersClusterIdBrokersdeletePost Delete several brokers
+ * ClustersClusterIdBrokersBrokerIdunregisterPost Unregister a Broker
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ * Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @param optional nil or *ClustersClusterIdBrokersdeletePostOpts - Optional Parameters:
- * @param "ShouldShutdown" (optional.Bool) -  To shutdown the broker or not, Default: true
- * @param "RemoveBrokersRequestData" (optional.Interface of RemoveBrokersRequestData) -  Broker ids to remove
- * @return BrokerRemovalDataList
+ * @param brokerId The Kafka broker ID.
+ * @return UnregisterBrokerData
  */
-func (a *BrokerApiService) ClustersClusterIdBrokersdeletePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokersdeletePostOpts) (BrokerRemovalDataList, *_nethttp.Response, error) {
+func (a *UnregisterV3ApiService) ClustersClusterIdBrokersBrokerIdunregisterPost(ctx _context.Context, clusterId string, brokerId int32) (UnregisterBrokerData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  BrokerRemovalDataList
+		localVarReturnValue  UnregisterBrokerData
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers:delete"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers/{broker_id}:unregister"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"broker_id"+"}", _neturl.PathEscape(parameterToString(brokerId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.ShouldShutdown.IsSet() {
-		localVarQueryParams.Add("should_shutdown", parameterToString(localVarOptionals.ShouldShutdown.Value(), ""))
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -93,22 +81,13 @@ func (a *BrokerApiService) ClustersClusterIdBrokersdeletePost(ctx _context.Conte
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.RemoveBrokersRequestData.IsSet() {
-		localVarOptionalRemoveBrokersRequestData, localVarOptionalRemoveBrokersRequestDataok := localVarOptionals.RemoveBrokersRequestData.Value().(RemoveBrokersRequestData)
-		if !localVarOptionalRemoveBrokersRequestDataok {
-			return localVarReturnValue, nil, reportError("removeBrokersRequestData should be RemoveBrokersRequestData")
-		}
-		localVarPostBody = &localVarOptionalRemoveBrokersRequestData
-	}
-
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -141,6 +120,16 @@ func (a *BrokerApiService) ClustersClusterIdBrokersdeletePost(ctx _context.Conte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
