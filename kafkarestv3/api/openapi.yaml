@@ -116,6 +116,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -246,6 +253,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -436,6 +450,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -628,6 +649,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -735,6 +763,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -890,6 +925,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -998,6 +1040,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1114,6 +1163,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1252,6 +1308,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1368,6 +1431,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1520,6 +1590,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1782,6 +1859,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -1935,6 +2019,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2097,6 +2188,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2213,6 +2311,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2336,6 +2441,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2482,6 +2594,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2606,6 +2725,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2766,6 +2892,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -2929,6 +3062,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3064,6 +3204,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3223,6 +3370,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3361,6 +3515,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3531,6 +3692,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3685,6 +3853,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -3827,6 +4002,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4000,6 +4182,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4161,6 +4350,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4322,6 +4518,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4449,6 +4652,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4564,6 +4774,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4723,6 +4940,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -4911,6 +5135,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5053,6 +5284,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5202,6 +5440,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5374,6 +5619,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5524,6 +5776,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5713,6 +5972,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -5880,6 +6146,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6062,6 +6335,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6253,6 +6533,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6420,6 +6707,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6614,6 +6908,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6788,6 +7089,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -6968,6 +7276,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -7039,15 +7354,15 @@ paths:
   /clusters/{cluster_id}/topics/{topic_name}/records:
     post:
       description: |-
-        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+        [![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
         Produce records to the given topic, returning delivery reports for each
-                    record produced. This API can be used in streaming mode by setting "Transfer-Encoding:
-                    chunked" header. For as long as the connection is kept open, the server will
-                    keep accepting records. For each record sent to the server, the server will
-                    asynchronously send back a delivery report, in the same order. Records are
-                    streamed to and from the server as Concatenated JSON. Errors are reported per
-                    record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
+        record produced. This API can be used in streaming mode by setting "Transfer-Encoding:
+        chunked" header. For as long as the connection is kept open, the server will
+        keep accepting records. For each record sent to the server, the server will
+        asynchronously send back a delivery report, in the same order. Records are
+        streamed to and from the server as Concatenated JSON. Errors are reported per
+        record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
       parameters:
       - description: The Kafka cluster ID.
         example: cluster-1
@@ -7108,6 +7423,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -7175,7 +7497,7 @@ paths:
             response body.
       summary: Produce records to the given topic.
       tags:
-      - Records
+      - Records (v3)
   /clusters/{cluster_id}/balancer:
     get:
       description: |-
@@ -7231,6 +7553,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -7618,6 +7947,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -7776,6 +8112,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -7931,6 +8274,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8076,6 +8426,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8209,6 +8566,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8337,6 +8701,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8595,6 +8966,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8776,6 +9154,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8910,6 +9295,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -8978,6 +9370,157 @@ paths:
       summary: Get Remove Broker Task
       tags:
       - RemoveBrokerTask
+  /clusters/{cluster_id}/brokers/{broker_id}:unregister:
+    post:
+      description: |-
+        Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode.
+        If run against a cluster running with ZooKeeper, a 400 response with
+        an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The Kafka broker ID.
+        example: 1
+        explode: false
+        in: path
+        name: broker_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              example:
+                cluster_id: cluster-1
+                broker_id: 1
+              schema:
+                $ref: '#/components/schemas/UnregisterBrokerData'
+          description: A broker unregistration.
+        "400":
+          content:
+            application/json:
+              examples:
+                create_topic_already_exists:
+                  description: Thrown when trying to create a topic with a name already
+                    used by an existing topic.
+                  value:
+                    error_code: 40002
+                    message: Topic 'my-topic' already exists.
+                produce_message_badly_escaped:
+                  description: Thrown when using unescaped single quotes within a
+                    single-quote-delimited record.
+                  value:
+                    error_code: 400
+                    message: |-
+                      Unexpected character ('k' (code 107)): was expecting double-quote to start field name
+                       at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              example:
+                description: Thrown when trying to create a topic and passing a string
+                  for the replication factor.
+                value: 'Cannot deserialize value of type `java.lang.Integer` from
+                  String "all": not a valid Integer value\n at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream);
+                  line: 1, column: 53] (through reference chain: io.confluent.kafkarest.entities.v3.CreateTopicRequest["partitions_count"])'
+              schema:
+                type: string
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure. Usually
+            serves application/json content, although in some cases simple text/plain
+            content can be returned.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "403":
+          content:
+            application/json:
+              examples:
+                kafka_authorization_failed:
+                  description: Thrown when the caller is not authorized to perform
+                    the underlying operation.
+                  value:
+                    error_code: 40301
+                    message: Authorization failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authorization error. Kafka authorization
+            failures will contain error code 40301 in the response body.
+        "404":
+          content:
+            application/json:
+              example:
+                error_code: 404102
+                message: The given broker ID was not registered in the cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The given broker ID was not registered in the cluster.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Unregister a Broker
+      tags:
+      - Unregister (v3)
   /clusters/{cluster_id}/links:
     get:
       description: |-
@@ -9060,6 +9603,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9194,6 +9744,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9325,6 +9882,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9472,6 +10036,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9632,6 +10203,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9809,6 +10387,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -9930,6 +10515,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10073,6 +10665,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10195,6 +10794,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10268,7 +10874,7 @@ paths:
       description: |-
         [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
-        Batch Alter Link Configs
+        Batch Alter Cluster Link Configs
       operationId: updateKafkaLinkConfigBatch
       parameters:
       - description: The Kafka cluster ID.
@@ -10322,6 +10928,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10387,7 +11000,7 @@ paths:
           description: A server-side problem that might not be addressable from the
             client side. Retriable Kafka errors will contain error code 50003 in the
             response body.
-      summary: Batch Alter Topic Configs
+      summary: Batch Alter Cluster Link Configs
       tags:
       - Cluster Linking (v3)
   /clusters/{cluster_id}/links/{link_name}/mirrors:
@@ -10418,7 +11031,7 @@ paths:
         style: simple
       - description: The status of the mirror topic. If not specified, all mirror
           topics will be returned.
-        example: active
+        example: ACTIVE
         explode: true
         in: query
         name: mirror_status
@@ -10500,6 +11113,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10617,6 +11237,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10704,7 +11331,7 @@ paths:
         style: simple
       - description: The status of the mirror topic. If not specified, all mirror
           topics will be returned.
-        example: active
+        example: ACTIVE
         explode: true
         in: query
         name: mirror_status
@@ -10786,6 +11413,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -10932,6 +11566,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11101,6 +11742,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11270,6 +11918,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11439,6 +12094,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11608,6 +12270,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11757,6 +12426,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -11915,6 +12591,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -12107,6 +12790,13 @@ paths:
                     message: |-
                       Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                        at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
               schema:
                 $ref: '#/components/schemas/Error'
             text/plain:
@@ -12411,7 +13101,7 @@ components:
     MirrorTopicStatus:
       description: The status of the mirror topic. If not specified, all mirror topics
         will be returned.
-      example: active
+      example: ACTIVE
       explode: true
       in: query
       name: mirror_status
@@ -13920,6 +14610,13 @@ components:
                 message: |-
                   Unexpected character ('k' (code 107)): was expecting double-quote to start field name
                    at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream); line: 1, column: 3]
+            unsupported_version_exception:
+              description: Thrown when the version of this API is not supported in
+                the underlying Kafka cluster.
+              value:
+                error_code: 40035
+                message: The version of this API is not supported in the underlying
+                  Kafka cluster.
           schema:
             $ref: '#/components/schemas/Error'
         text/plain:
@@ -13949,6 +14646,20 @@ components:
             $ref: '#/components/schemas/Error'
       description: Indicates a client authentication error. Kafka authentication failures
         will contain error code 40101 in the response body.
+    AuthorizationFailedErrorResponse:
+      content:
+        application/json:
+          examples:
+            kafka_authorization_failed:
+              description: Thrown when the caller is not authorized to perform the
+                underlying operation.
+              value:
+                error_code: 40301
+                message: Authorization failed
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Indicates a client authorization error. Kafka authorization failures
+        will contain error code 40301 in the response body.
     NotFoundErrorResponse:
       content:
         application/json:
@@ -14458,6 +15169,15 @@ components:
           schema:
             $ref: '#/components/schemas/AlterBrokerReplicaExclusionDataList'
       description: The list of alter broker replica exclusions.
+    UnregisterBrokerResponse:
+      content:
+        application/json:
+          example:
+            cluster_id: cluster-1
+            broker_id: 1
+          schema:
+            $ref: '#/components/schemas/UnregisterBrokerData'
+      description: A broker unregistration.
     GetRemoveBrokerTaskResponse:
       content:
         application/json:
@@ -14826,6 +15546,15 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
       description: Balancer offline
+    BrokerIdNotRegisteredErrorResponse:
+      content:
+        application/json:
+          example:
+            error_code: 404102
+            message: The given broker ID was not registered in the cluster.
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: The given broker ID was not registered in the cluster.
     BrokerNotFoundErrorResponse:
       content:
         application/json:
@@ -15261,6 +15990,7 @@ components:
       nullable: true
       properties:
         size:
+          format: int64
           type: integer
         type:
           nullable: true
@@ -15293,18 +16023,18 @@ components:
           value: value
         value:
           schema_version: 1
+          schema: schema
           subject_name_strategy: subject_name_strategy
           data: ""
           subject: subject
-          raw_schema: raw_schema
           schema_id: 6
           type: type
         key:
           schema_version: 1
+          schema: schema
           subject_name_strategy: subject_name_strategy
           data: ""
           subject: subject
-          raw_schema: raw_schema
           schema_id: 6
           type: type
         timestamp: 2000-01-23T04:56:07.000+00:00
@@ -15328,10 +16058,10 @@ components:
     ProduceRequestData:
       example:
         schema_version: 1
+        schema: schema
         subject_name_strategy: subject_name_strategy
         data: ""
         subject: subject
-        raw_schema: raw_schema
         schema_id: 6
         type: type
       nullable: true
@@ -15360,7 +16090,7 @@ components:
         schema_version:
           nullable: true
           type: integer
-        raw_schema:
+        schema:
           nullable: true
           type: string
         data:
@@ -15543,6 +16273,19 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/AlterBrokerReplicaExclusionDataList_allOf'
+    UnregisterBrokerData:
+      example:
+        cluster_id: cluster_id
+        broker_id: 0
+      properties:
+        cluster_id:
+          type: string
+        broker_id:
+          type: integer
+      required:
+      - broker_id
+      - cluster_id
+      type: object
     RemoveBrokerTaskData:
       allOf:
       - $ref: '#/components/schemas/Resource'

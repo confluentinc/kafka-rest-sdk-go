@@ -1,17 +1,3 @@
-// Copyright 2021 Confluent Inc. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 /*
  * REST Admin API
  *
@@ -38,12 +24,12 @@ var (
 	_ _context.Context
 )
 
-type RecordsApi interface {
+type RecordsV3Api interface {
 
 	/*
 	 * ClustersClusterIdTopicsTopicNameRecordsPost Produce records to the given topic.
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each             record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding:             chunked\&quot; header. For as long as the connection is kept open, the server will             keep accepting records. For each record sent to the server, the server will             asynchronously send back a delivery report, in the same order. Records are             streamed to and from the server as Concatenated JSON. Errors are reported per             record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
+	 * [![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -55,8 +41,8 @@ type RecordsApi interface {
 	ClustersClusterIdTopicsTopicNameRecordsPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameRecordsPostOpts) (ProduceResponse, *_nethttp.Response, error)
 }
 
-// RecordsApiService RecordsApi service
-type RecordsApiService service
+// RecordsV3ApiService RecordsV3Api service
+type RecordsV3ApiService service
 
 // ClustersClusterIdTopicsTopicNameRecordsPostOpts Optional parameters for the method 'ClustersClusterIdTopicsTopicNameRecordsPost'
 type ClustersClusterIdTopicsTopicNameRecordsPostOpts struct {
@@ -66,7 +52,7 @@ type ClustersClusterIdTopicsTopicNameRecordsPostOpts struct {
 /*
  * ClustersClusterIdTopicsTopicNameRecordsPost Produce records to the given topic.
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each             record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding:             chunked\&quot; header. For as long as the connection is kept open, the server will             keep accepting records. For each record sent to the server, the server will             asynchronously send back a delivery report, in the same order. Records are             streamed to and from the server as Concatenated JSON. Errors are reported per             record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
+ * [![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -75,7 +61,7 @@ type ClustersClusterIdTopicsTopicNameRecordsPostOpts struct {
  * @param "ProduceRequest" (optional.Interface of ProduceRequest) -  A single record to be produced to Kafka. To produce multiple records on the same connection, simply concatenate all the records, e.g.: {\"partition_id\":1}{\"partition_id\":2}. Delivery reports will be concatenated on the same order as the records are sent. See examples for the options available.
  * @return ProduceResponse
  */
-func (a *RecordsApiService) ClustersClusterIdTopicsTopicNameRecordsPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameRecordsPostOpts) (ProduceResponse, *_nethttp.Response, error) {
+func (a *RecordsV3ApiService) ClustersClusterIdTopicsTopicNameRecordsPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameRecordsPostOpts) (ProduceResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}

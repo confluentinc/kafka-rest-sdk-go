@@ -1,17 +1,3 @@
-// Copyright 2021 Confluent Inc. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 /*
  * REST Admin API
  *
@@ -87,7 +73,7 @@ type APIClient struct {
 
 	PartitionV3Api PartitionV3Api
 
-	RecordsApi RecordsApi
+	RecordsV3Api RecordsV3Api
 
 	RemoveBrokerTaskApi RemoveBrokerTaskApi
 
@@ -98,6 +84,8 @@ type APIClient struct {
 	ReplicaV3Api ReplicaV3Api
 
 	TopicV3Api TopicV3Api
+
+	UnregisterV3Api UnregisterV3Api
 }
 
 type service struct {
@@ -128,12 +116,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConsumerGroupV3Api = (*ConsumerGroupV3ApiService)(&c.common)
 	c.PartitionApi = (*PartitionApiService)(&c.common)
 	c.PartitionV3Api = (*PartitionV3ApiService)(&c.common)
-	c.RecordsApi = (*RecordsApiService)(&c.common)
+	c.RecordsV3Api = (*RecordsV3ApiService)(&c.common)
 	c.RemoveBrokerTaskApi = (*RemoveBrokerTaskApiService)(&c.common)
 	c.ReplicaApi = (*ReplicaApiService)(&c.common)
 	c.ReplicaStatusApi = (*ReplicaStatusApiService)(&c.common)
 	c.ReplicaV3Api = (*ReplicaV3ApiService)(&c.common)
 	c.TopicV3Api = (*TopicV3ApiService)(&c.common)
+	c.UnregisterV3Api = (*UnregisterV3ApiService)(&c.common)
 
 	return c
 }
