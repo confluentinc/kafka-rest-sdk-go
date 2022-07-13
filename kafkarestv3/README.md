@@ -63,7 +63,7 @@ Class | Method | HTTP request | Description
 *ClusterLinkingV3Api* | [**ListKafkaMirrorTopicsUnderLink**](docs/ClusterLinkingV3Api.md#listkafkamirrortopicsunderlink) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors | List mirror topics
 *ClusterLinkingV3Api* | [**ReadKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#readkafkamirrortopic) | **Get** /clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name} | Describe the mirror topic
 *ClusterLinkingV3Api* | [**UpdateKafkaLinkConfig**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfig) | **Put** /clusters/{cluster_id}/links/{link_name}/configs/{config_name} | Alter the config under the cluster link
-*ClusterLinkingV3Api* | [**UpdateKafkaLinkConfigBatch**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfigbatch) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Topic Configs
+*ClusterLinkingV3Api* | [**UpdateKafkaLinkConfigBatch**](docs/ClusterLinkingV3Api.md#updatekafkalinkconfigbatch) | **Put** /clusters/{cluster_id}/links/{link_name}/configs:alter | Batch Alter Cluster Link Configs
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsFailover**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsfailover) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPause**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspause) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPromote**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspromote) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *PartitionV3Api* | [**GetKafkaConsumerLag**](docs/PartitionV3Api.md#getkafkaconsumerlag) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags/{topic_name}/partitions/{partition_id} | Get Consumer Lag
 *PartitionV3Api* | [**GetKafkaPartition**](docs/PartitionV3Api.md#getkafkapartition) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id} | Get Partition
 *PartitionV3Api* | [**ListKafkaPartitions**](docs/PartitionV3Api.md#listkafkapartitions) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions | List Partitions
-*RecordsApi* | [**ClustersClusterIdTopicsTopicNameRecordsPost**](docs/RecordsApi.md#clustersclusteridtopicstopicnamerecordspost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
+*RecordsV3Api* | [**ClustersClusterIdTopicsTopicNameRecordsPost**](docs/RecordsV3Api.md#clustersclusteridtopicstopicnamerecordspost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
 *RemoveBrokerTaskApi* | [**ClustersClusterIdRemoveBrokerTasksBrokerIdGet**](docs/RemoveBrokerTaskApi.md#clustersclusteridremovebrokertasksbrokeridget) | **Get** /clusters/{cluster_id}/remove-broker-tasks/{broker_id} | Get Remove Broker Task
 *RemoveBrokerTaskApi* | [**ClustersClusterIdRemoveBrokerTasksGet**](docs/RemoveBrokerTaskApi.md#clustersclusteridremovebrokertasksget) | **Get** /clusters/{cluster_id}/remove-broker-tasks | List Remove Broker Tasks
 *ReplicaApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet**](docs/ReplicaApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasbrokeridget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas/{broker_id} | Get Replica
@@ -115,6 +115,7 @@ Class | Method | HTTP request | Description
 *TopicV3Api* | [**DeleteKafkaTopic**](docs/TopicV3Api.md#deletekafkatopic) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
 *TopicV3Api* | [**GetKafkaTopic**](docs/TopicV3Api.md#getkafkatopic) | **Get** /clusters/{cluster_id}/topics/{topic_name} | Get Topic
 *TopicV3Api* | [**ListKafkaTopics**](docs/TopicV3Api.md#listkafkatopics) | **Get** /clusters/{cluster_id}/topics | List Topics
+*UnregisterV3Api* | [**ClustersClusterIdBrokersBrokerIdunregisterPost**](docs/UnregisterV3Api.md#clustersclusteridbrokersbrokeridunregisterpost) | **Post** /clusters/{cluster_id}/brokers/{broker_id}:unregister | Unregister a Broker
 
 
 ## Documentation For Models
@@ -253,6 +254,7 @@ Class | Method | HTTP request | Description
  - [TopicDataList](docs/TopicDataList.md)
  - [TopicDataListAllOf](docs/TopicDataListAllOf.md)
  - [TopicList](docs/TopicList.md)
+ - [UnregisterBrokerData](docs/UnregisterBrokerData.md)
  - [UpdateConfigRequestData](docs/UpdateConfigRequestData.md)
  - [UpdateLinkConfigRequestData](docs/UpdateLinkConfigRequestData.md)
 
