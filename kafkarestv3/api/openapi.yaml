@@ -17468,8 +17468,14 @@ components:
           items:
             type: string
           type: array
+        link_error:
+          type: string
+        link_error_message:
+          type: string
       required:
       - cluster_link_id
+      - link_error
+      - link_error_message
       - link_id
       - link_name
       - topic_names

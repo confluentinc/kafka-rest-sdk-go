@@ -20,4 +20,6 @@ type ListLinksResponseData struct {
 	LinkId               string           `json:"link_id"`
 	ClusterLinkId        string           `json:"cluster_link_id"`
 	TopicsNames          []string         `json:"topics_names,omitempty"`
+	LinkError            string           `json:"link_error"`
+	LinkErrorMessage     string           `json:"link_error_message"`
 }
