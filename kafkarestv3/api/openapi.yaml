@@ -17470,6 +17470,13 @@ components:
           type: array
         link_error:
           type: string
+          x-extensible-enum:
+          - UNKNOWN
+          - NO_ERROR
+          - AUTHENTICATION_ERROR
+          - UNRESOLVABLE_BOOTSTRAP_ERROR
+          - INVALID_BOOTSTRAP_INTERNAL_ENDPOINT_ERROR
+          - BOOTSTRAP_TCP_CONNECTION_FAILED_ERROR
         link_error_message:
           type: string
       required:
