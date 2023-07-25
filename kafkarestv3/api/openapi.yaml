@@ -9581,7 +9581,7 @@ paths:
                   link_name: my-new-link-3
                   link_id: 9cd1711e-a4ef-4390-a35e-dfd758d97a82
                   cluster_link_id: nNFxHqTvQ5CjXt_XWNl6gg
-                  topic_names: null
+                  topic_names: []
               schema:
                 $ref: '#/components/schemas/ListLinksResponseDataList'
           description: A list of link names and properties
@@ -10014,7 +10014,7 @@ paths:
                     link_name: my-new-link-1
                     link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                     cluster_link_id: eEBkTffYSESld6EO898x3w
-                    topic_names: null
+                    topic_names: []
               schema:
                 $ref: '#/components/schemas/ListLinksResponseData'
           description: Single link name and properties
@@ -15286,7 +15286,7 @@ components:
               link_name: my-new-link-3
               link_id: 9cd1711e-a4ef-4390-a35e-dfd758d97a82
               cluster_link_id: nNFxHqTvQ5CjXt_XWNl6gg
-              topic_names: null
+              topic_names: []
           schema:
             $ref: '#/components/schemas/ListLinksResponseDataList'
       description: A list of link names and properties
@@ -15321,7 +15321,7 @@ components:
                 link_name: my-new-link-1
                 link_id: 7840644d-f7d8-4844-a577-a10ef3df31df
                 cluster_link_id: eEBkTffYSESld6EO898x3w
-                topic_names: null
+                topic_names: []
           schema:
             $ref: '#/components/schemas/ListLinksResponseData'
       description: Single link name and properties
@@ -17464,7 +17464,7 @@ components:
           type: string
         cluster_link_id:
           type: string
-        topics_names:
+        topic_names:
           items:
             type: string
           type: array
