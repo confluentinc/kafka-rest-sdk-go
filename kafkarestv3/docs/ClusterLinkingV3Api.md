@@ -20,6 +20,8 @@ Method | HTTP request | Description
 [**UpdateKafkaMirrorTopicsFailover**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsFailover) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
 [**UpdateKafkaMirrorTopicsPause**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsPause) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
 [**UpdateKafkaMirrorTopicsPromote**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsPromote) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
+[**UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-pause-remote-mirror | Promote the local mirror topic and Pause the remote mirror topic
+[**UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-start-remote-mirror | Promote the local mirror topic and start the remote mirror topic
 [**UpdateKafkaMirrorTopicsResume**](ClusterLinkingV3Api.md#UpdateKafkaMirrorTopicsResume) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:resume | Resume the mirror topics
 
 
@@ -597,7 +599,7 @@ Name | Type | Description  | Notes
 
 
  **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
 
 ### Return type
 
@@ -645,7 +647,7 @@ Name | Type | Description  | Notes
 
 
  **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
 
 ### Return type
 
@@ -693,7 +695,103 @@ Name | Type | Description  | Notes
 
 
  **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/plain, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror
+
+> AlterMirrorStatusResponseDataList UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror(ctx, clusterId, linkName, optional)
+
+Promote the local mirror topic and Pause the remote mirror topic
+
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
+
+### Return type
+
+[**AlterMirrorStatusResponseDataList**](AlterMirrorStatusResponseDataList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/plain, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror
+
+> AlterMirrorStatusResponseDataList UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror(ctx, clusterId, linkName, optional)
+
+Promote the local mirror topic and start the remote mirror topic
+
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**linkName** | **string**| The link name | 
+ **optional** | ***UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
 
 ### Return type
 
@@ -741,7 +839,7 @@ Name | Type | Description  | Notes
 
 
  **validateOnly** | **optional.Bool**| To validate the action can be performed successfully or not. Default: false | 
- **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Name of the topics to apply the changes | 
+ **alterMirrorsRequestData** | [**optional.Interface of AlterMirrorsRequestData**](AlterMirrorsRequestData.md)| Mirror topics to be altered. | 
 
 ### Return type
 
