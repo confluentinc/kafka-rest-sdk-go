@@ -29,7 +29,7 @@ type ClusterLinkingV3Api interface {
 	/*
 	 * CreateKafkaLink Create a cluster link
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cluster link creation requires source cluster security configurations in the configs JSON section of the data request payload.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -88,9 +88,11 @@ type ClusterLinkingV3Api interface {
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
+	 * @param optional nil or *GetKafkaLinkOpts - Optional Parameters:
+	 * @param "IncludeTasks" (optional.Bool) -  Whether to include cluster linking tasks in the response. Default: false
 	 * @return ListLinksResponseData
 	 */
-	GetKafkaLink(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error)
+	GetKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *GetKafkaLinkOpts) (ListLinksResponseData, *_nethttp.Response, error)
 
 	/*
 	 * GetKafkaLinkConfigs Describe the config under the cluster link
@@ -164,9 +166,11 @@ type ClusterLinkingV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param linkName The link name
 	 * @param mirrorTopicName Cluster Linking mirror topic name
+	 * @param optional nil or *ReadKafkaMirrorTopicOpts - Optional Parameters:
+	 * @param "IncludeStateTransitionErrors" (optional.Bool) -  Whether to include mirror state transition errors in the response. Default: false
 	 * @return ListMirrorTopicsResponseData
 	 */
-	ReadKafkaMirrorTopic(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error)
+	ReadKafkaMirrorTopic(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string, localVarOptionals *ReadKafkaMirrorTopicOpts) (ListMirrorTopicsResponseData, *_nethttp.Response, error)
 
 	/*
 	 * UpdateKafkaLinkConfig Alter the config under the cluster link
@@ -242,36 +246,6 @@ type ClusterLinkingV3Api interface {
 	UpdateKafkaMirrorTopicsPromote(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsPromoteOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 
 	/*
-	 * UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror Promote the local mirror topic and Pause the remote mirror topic
-	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param linkName The link name
-	 * @param optional nil or *UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
-	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
-	 * @return AlterMirrorStatusResponseDataList
-	 */
-	UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
-
-	/*
-	 * UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror Promote the local mirror topic and start the remote mirror topic
-	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param linkName The link name
-	 * @param optional nil or *UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts - Optional Parameters:
-	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
-	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
-	 * @return AlterMirrorStatusResponseDataList
-	 */
-	UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
-
-	/*
 	 * UpdateKafkaMirrorTopicsResume Resume the mirror topics
 	 *
 	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
@@ -285,6 +259,36 @@ type ClusterLinkingV3Api interface {
 	 * @return AlterMirrorStatusResponseDataList
 	 */
 	UpdateKafkaMirrorTopicsResume(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsResumeOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+
+	/*
+	 * UpdateKafkaMirrorTopicsReverseAndPauseMirror Reverse local mirror topic and pause the remote mirror topic
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	UpdateKafkaMirrorTopicsReverseAndPauseMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
+
+	/*
+	 * UpdateKafkaMirrorTopicsReverseAndStarMirror Reverse local mirror topic and start the remote mirror topic
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param linkName The link name
+	 * @param optional nil or *UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts - Optional Parameters:
+	 * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+	 * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
+	 * @return AlterMirrorStatusResponseDataList
+	 */
+	UpdateKafkaMirrorTopicsReverseAndStarMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error)
 }
 
 // ClusterLinkingV3ApiService ClusterLinkingV3Api service
@@ -300,7 +304,7 @@ type CreateKafkaLinkOpts struct {
 /*
  * CreateKafkaLink Create a cluster link
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cluster link creation requires source cluster security configurations in the configs JSON section of the data request payload.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -344,7 +348,7 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaLink(ctx _context.Context, clust
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -471,7 +475,7 @@ func (a *ClusterLinkingV3ApiService) CreateKafkaMirrorTopic(ctx _context.Context
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -606,7 +610,7 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLink(ctx _context.Context, clust
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -720,7 +724,7 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLinkConfig(ctx _context.Context,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -793,6 +797,11 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLinkConfig(ctx _context.Context,
 	return localVarHTTPResponse, nil
 }
 
+// GetKafkaLinkOpts Optional parameters for the method 'GetKafkaLink'
+type GetKafkaLinkOpts struct {
+	IncludeTasks optional.Bool
+}
+
 /*
  * GetKafkaLink Describe the cluster link
  *
@@ -801,9 +810,11 @@ func (a *ClusterLinkingV3ApiService) DeleteKafkaLinkConfig(ctx _context.Context,
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
+ * @param optional nil or *GetKafkaLinkOpts - Optional Parameters:
+ * @param "IncludeTasks" (optional.Bool) -  Whether to include cluster linking tasks in the response. Default: false
  * @return ListLinksResponseData
  */
-func (a *ClusterLinkingV3ApiService) GetKafkaLink(ctx _context.Context, clusterId string, linkName string) (ListLinksResponseData, *_nethttp.Response, error) {
+func (a *ClusterLinkingV3ApiService) GetKafkaLink(ctx _context.Context, clusterId string, linkName string, localVarOptionals *GetKafkaLinkOpts) (ListLinksResponseData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -823,6 +834,9 @@ func (a *ClusterLinkingV3ApiService) GetKafkaLink(ctx _context.Context, clusterI
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.IncludeTasks.IsSet() {
+		localVarQueryParams.Add("include_tasks", parameterToString(localVarOptionals.IncludeTasks.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -833,7 +847,7 @@ func (a *ClusterLinkingV3ApiService) GetKafkaLink(ctx _context.Context, clusterI
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -958,7 +972,7 @@ func (a *ClusterLinkingV3ApiService) GetKafkaLinkConfigs(ctx _context.Context, c
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1080,7 +1094,7 @@ func (a *ClusterLinkingV3ApiService) ListKafkaLinkConfigs(ctx _context.Context, 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1199,7 +1213,7 @@ func (a *ClusterLinkingV3ApiService) ListKafkaLinks(ctx _context.Context, cluste
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1328,7 +1342,7 @@ func (a *ClusterLinkingV3ApiService) ListKafkaMirrorTopics(ctx _context.Context,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1460,7 +1474,7 @@ func (a *ClusterLinkingV3ApiService) ListKafkaMirrorTopicsUnderLink(ctx _context
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1542,6 +1556,11 @@ func (a *ClusterLinkingV3ApiService) ListKafkaMirrorTopicsUnderLink(ctx _context
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+// ReadKafkaMirrorTopicOpts Optional parameters for the method 'ReadKafkaMirrorTopic'
+type ReadKafkaMirrorTopicOpts struct {
+	IncludeStateTransitionErrors optional.Bool
+}
+
 /*
  * ReadKafkaMirrorTopic Describe the mirror topic
  *
@@ -1551,9 +1570,11 @@ func (a *ClusterLinkingV3ApiService) ListKafkaMirrorTopicsUnderLink(ctx _context
  * @param clusterId The Kafka cluster ID.
  * @param linkName The link name
  * @param mirrorTopicName Cluster Linking mirror topic name
+ * @param optional nil or *ReadKafkaMirrorTopicOpts - Optional Parameters:
+ * @param "IncludeStateTransitionErrors" (optional.Bool) -  Whether to include mirror state transition errors in the response. Default: false
  * @return ListMirrorTopicsResponseData
  */
-func (a *ClusterLinkingV3ApiService) ReadKafkaMirrorTopic(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string) (ListMirrorTopicsResponseData, *_nethttp.Response, error) {
+func (a *ClusterLinkingV3ApiService) ReadKafkaMirrorTopic(ctx _context.Context, clusterId string, linkName string, mirrorTopicName string, localVarOptionals *ReadKafkaMirrorTopicOpts) (ListMirrorTopicsResponseData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1575,6 +1596,9 @@ func (a *ClusterLinkingV3ApiService) ReadKafkaMirrorTopic(ctx _context.Context, 
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.IncludeStateTransitionErrors.IsSet() {
+		localVarQueryParams.Add("include_state_transition_errors", parameterToString(localVarOptionals.IncludeStateTransitionErrors.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1585,7 +1609,7 @@ func (a *ClusterLinkingV3ApiService) ReadKafkaMirrorTopic(ctx _context.Context, 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1715,7 +1739,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfig(ctx _context.Context,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1847,7 +1871,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaLinkConfigBatch(ctx _context.Con
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1981,7 +2005,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsFailover(ctx _contex
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2124,7 +2148,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsPause(ctx _context.C
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2267,293 +2291,7 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsPromote(ctx _context
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.AlterMirrorsRequestData.IsSet() {
-		localVarOptionalAlterMirrorsRequestData, localVarOptionalAlterMirrorsRequestDataok := localVarOptionals.AlterMirrorsRequestData.Value().(AlterMirrorsRequestData)
-		if !localVarOptionalAlterMirrorsRequestDataok {
-			return localVarReturnValue, nil, reportError("alterMirrorsRequestData should be AlterMirrorsRequestData")
-		}
-		localVarPostBody = &localVarOptionalAlterMirrorsRequestData
-	}
-
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode >= 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts Optional parameters for the method 'UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror'
-type UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts struct {
-	ValidateOnly            optional.Bool
-	AlterMirrorsRequestData optional.Interface
-}
-
-/*
- * UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror Promote the local mirror topic and Pause the remote mirror topic
- *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param optional nil or *UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
- * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
- * @return AlterMirrorStatusResponseDataList
- */
-func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AlterMirrorStatusResponseDataList
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-pause-remote-mirror"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
-		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	if localVarOptionals != nil && localVarOptionals.AlterMirrorsRequestData.IsSet() {
-		localVarOptionalAlterMirrorsRequestData, localVarOptionalAlterMirrorsRequestDataok := localVarOptionals.AlterMirrorsRequestData.Value().(AlterMirrorsRequestData)
-		if !localVarOptionalAlterMirrorsRequestDataok {
-			return localVarReturnValue, nil, reportError("alterMirrorsRequestData should be AlterMirrorsRequestData")
-		}
-		localVarPostBody = &localVarOptionalAlterMirrorsRequestData
-	}
-
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode >= 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts Optional parameters for the method 'UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror'
-type UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts struct {
-	ValidateOnly            optional.Bool
-	AlterMirrorsRequestData optional.Interface
-}
-
-/*
- * UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror Promote the local mirror topic and start the remote mirror topic
- *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @param linkName The link name
- * @param optional nil or *UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts - Optional Parameters:
- * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
- * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
- * @return AlterMirrorStatusResponseDataList
- */
-func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  AlterMirrorStatusResponseDataList
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-start-remote-mirror"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
-
-	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
-		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2696,7 +2434,293 @@ func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsResume(ctx _context.
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.AlterMirrorsRequestData.IsSet() {
+		localVarOptionalAlterMirrorsRequestData, localVarOptionalAlterMirrorsRequestDataok := localVarOptionals.AlterMirrorsRequestData.Value().(AlterMirrorsRequestData)
+		if !localVarOptionalAlterMirrorsRequestDataok {
+			return localVarReturnValue, nil, reportError("alterMirrorsRequestData should be AlterMirrorsRequestData")
+		}
+		localVarPostBody = &localVarOptionalAlterMirrorsRequestData
+	}
+
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode >= 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts Optional parameters for the method 'UpdateKafkaMirrorTopicsReverseAndPauseMirror'
+type UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts struct {
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
+}
+
+/*
+ * UpdateKafkaMirrorTopicsReverseAndPauseMirror Reverse local mirror topic and pause the remote mirror topic
+ *
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param optional nil or *UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts - Optional Parameters:
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+ * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
+ * @return AlterMirrorStatusResponseDataList
+ */
+func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsReverseAndPauseMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsReverseAndPauseMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:reverse-and-pause-mirror"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.AlterMirrorsRequestData.IsSet() {
+		localVarOptionalAlterMirrorsRequestData, localVarOptionalAlterMirrorsRequestDataok := localVarOptionals.AlterMirrorsRequestData.Value().(AlterMirrorsRequestData)
+		if !localVarOptionalAlterMirrorsRequestDataok {
+			return localVarReturnValue, nil, reportError("alterMirrorsRequestData should be AlterMirrorsRequestData")
+		}
+		localVarPostBody = &localVarOptionalAlterMirrorsRequestData
+	}
+
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode >= 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts Optional parameters for the method 'UpdateKafkaMirrorTopicsReverseAndStarMirror'
+type UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts struct {
+	ValidateOnly            optional.Bool
+	AlterMirrorsRequestData optional.Interface
+}
+
+/*
+ * UpdateKafkaMirrorTopicsReverseAndStarMirror Reverse local mirror topic and start the remote mirror topic
+ *
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param linkName The link name
+ * @param optional nil or *UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts - Optional Parameters:
+ * @param "ValidateOnly" (optional.Bool) -  To validate the action can be performed successfully or not. Default: false
+ * @param "AlterMirrorsRequestData" (optional.Interface of AlterMirrorsRequestData) -  Mirror topics to be altered.
+ * @return AlterMirrorStatusResponseDataList
+ */
+func (a *ClusterLinkingV3ApiService) UpdateKafkaMirrorTopicsReverseAndStarMirror(ctx _context.Context, clusterId string, linkName string, localVarOptionals *UpdateKafkaMirrorTopicsReverseAndStarMirrorOpts) (AlterMirrorStatusResponseDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  AlterMirrorStatusResponseDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/links/{link_name}/mirrors:reverse-and-start-mirror"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
+	localVarPath = strings.Replace(localVarPath, "{"+"link_name"+"}", _neturl.PathEscape(parameterToString(linkName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.ValidateOnly.IsSet() {
+		localVarQueryParams.Add("validate_only", parameterToString(localVarOptionals.ValidateOnly.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

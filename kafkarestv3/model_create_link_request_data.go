@@ -14,5 +14,7 @@ package kafkarestv3
 type CreateLinkRequestData struct {
 	SourceClusterId      string       `json:"source_cluster_id,omitempty"`
 	DestinationClusterId string       `json:"destination_cluster_id,omitempty"`
+	RemoteClusterId      string       `json:"remote_cluster_id,omitempty"`
+	ClusterLinkId        string       `json:"cluster_link_id,omitempty"`
 	Configs              []ConfigData `json:"configs,omitempty"`
 }

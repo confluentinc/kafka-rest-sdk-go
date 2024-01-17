@@ -12,5 +12,8 @@ package kafkarestv3
 
 // AlterMirrorsRequestData struct for AlterMirrorsRequestData
 type AlterMirrorsRequestData struct {
-	MirrorTopicNames []string `json:"mirror_topic_names"`
+	// The mirror topics specified as a list of topic names.
+	MirrorTopicNames []string `json:"mirror_topic_names,omitempty"`
+	// The mirror topics specified as a pattern.
+	MirrorTopicNamePattern string `json:"mirror_topic_name_pattern,omitempty"`
 }
