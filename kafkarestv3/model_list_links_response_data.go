@@ -16,8 +16,13 @@ type ListLinksResponseData struct {
 	Metadata             ResourceMetadata `json:"metadata"`
 	SourceClusterId      *string          `json:"source_cluster_id,omitempty"`
 	DestinationClusterId *string          `json:"destination_cluster_id,omitempty"`
+	RemoteClusterId      *string          `json:"remote_cluster_id,omitempty"`
 	LinkName             string           `json:"link_name"`
-	LinkId               string           `json:"link_id"`
+	LinkId               string           `json:"link_id,omitempty"`
 	ClusterLinkId        string           `json:"cluster_link_id"`
 	TopicNames           []string         `json:"topic_names"`
+	LinkError            string           `json:"link_error,omitempty"`
+	LinkErrorMessage     *string          `json:"link_error_message,omitempty"`
+	LinkState            string           `json:"link_state,omitempty"`
+	Tasks                *[]LinkTask      `json:"tasks,omitempty"`
 }
