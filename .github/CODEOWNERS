@@ -1,0 +1,4 @@
+# SECOPS-8282: Generated from teams with admin/pull permissions to confluentinc/kafka-rest-sdk-go:
+*	@confluentinc/cli
+*	@confluentinc/clients
+*	@confluentinc/kafka-core
