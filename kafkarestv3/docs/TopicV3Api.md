@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteKafkaTopic**](TopicV3Api.md#DeleteKafkaTopic) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
 [**GetKafkaTopic**](TopicV3Api.md#GetKafkaTopic) | **Get** /clusters/{cluster_id}/topics/{topic_name} | Get Topic
 [**ListKafkaTopics**](TopicV3Api.md#ListKafkaTopics) | **Get** /clusters/{cluster_id}/topics | List Topics
+[**UpdatePartitionCountKafkaTopic**](TopicV3Api.md#UpdatePartitionCountKafkaTopic) | **Patch** /clusters/{cluster_id}/topics/{topic_name} | Update Partition Count
 
 
 
@@ -17,7 +18,7 @@ Method | HTTP request | Description
 
 Create Topic
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Creates a topic.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Create a topic. Also supports a dry-run mode that only validates whether the topic creation would succeed if the ``validate_only`` request property is explicitly specified and set to true.
 
 ### Required Parameters
 
@@ -49,7 +50,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -62,7 +63,7 @@ No authorization required
 
 Delete Topic
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Deletes the topic with the given `topic_name`.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Delete the topic with the given `topic_name`.
 
 ### Required Parameters
 
@@ -84,7 +85,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -93,11 +94,11 @@ No authorization required
 
 ## GetKafkaTopic
 
-> TopicData GetKafkaTopic(ctx, clusterId, topicName)
+> TopicData GetKafkaTopic(ctx, clusterId, topicName, optional)
 
 Get Topic
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the topic with the given `topic_name`.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the topic with the given `topic_name`.
 
 ### Required Parameters
 
@@ -107,6 +108,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **topicName** | **string**| The topic name. | 
+ **optional** | ***GetKafkaTopicOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a GetKafkaTopicOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeAuthorizedOperations** | **optional.Bool**| Specify if authorized operations should be included in the response. | 
 
 ### Return type
 
@@ -119,7 +132,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -132,7 +145,7 @@ No authorization required
 
 List Topics
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the list of topics that belong to the specified Kafka cluster.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of topics that belong to the specified Kafka cluster.
 
 ### Required Parameters
 
@@ -153,7 +166,54 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePartitionCountKafkaTopic
+
+> TopicData UpdatePartitionCountKafkaTopic(ctx, clusterId, topicName, optional)
+
+Update Partition Count
+
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Increase the number of partitions for a topic.  
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**topicName** | **string**| The topic name. | 
+ **optional** | ***UpdatePartitionCountKafkaTopicOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a UpdatePartitionCountKafkaTopicOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **updatePartitionCountRequestData** | [**optional.Interface of UpdatePartitionCountRequestData**](UpdatePartitionCountRequestData.md)| The number of partitions to increase the partition count to. | 
+
+### Return type
+
+[**TopicData**](TopicData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

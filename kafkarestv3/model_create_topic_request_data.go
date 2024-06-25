@@ -12,9 +12,10 @@ package kafkarestv3
 
 // CreateTopicRequestData struct for CreateTopicRequestData
 type CreateTopicRequestData struct {
-	TopicName           string                                      `json:"topic_name"`
-	PartitionsCount     int32                                       `json:"partitions_count,omitempty"`
-	ReplicationFactor   int32                                       `json:"replication_factor,omitempty"`
-	ReplicasAssignments []CreateTopicRequestDataReplicasAssignments `json:"replicas_assignments,omitempty"`
-	Configs             []CreateTopicRequestDataConfigs             `json:"configs,omitempty"`
+	TopicName           string                          `json:"topic_name"`
+	PartitionsCount     int32                           `json:"partitions_count,omitempty"`
+	ReplicationFactor   int32                           `json:"replication_factor,omitempty"`
+	ReplicasAssignments map[string][]int32              `json:"replicas_assignments,omitempty"`
+	Configs             []CreateTopicRequestDataConfigs `json:"configs,omitempty"`
+	ValidateOnly        bool                            `json:"validate_only,omitempty"`
 }

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Unregister a Broker
 
-Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
+Unregister a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
 
 ### Required Parameters
 
@@ -36,7 +36,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

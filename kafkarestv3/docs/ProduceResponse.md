@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterId** | **string** |  | 
-**TopicName** | **string** |  | 
-**PartitionId** | **int32** |  | 
-**Offset** | **int32** |  | 
+**ErrorCode** | **int32** |  | 
+**Message** | **string** |  | [optional] 
+**ClusterId** | **string** |  | [optional] 
+**TopicName** | **string** |  | [optional] 
+**PartitionId** | **int32** |  | [optional] 
+**Offset** | **int64** |  | [optional] 
 **Timestamp** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
 **Key** | Pointer to [**ProduceResponseData**](ProduceResponseData.md) |  | [optional] 
 **Value** | Pointer to [**ProduceResponseData**](ProduceResponseData.md) |  | [optional] 

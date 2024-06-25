@@ -28,7 +28,7 @@ type UnregisterV3Api interface {
 	/*
 	 * ClustersClusterIdBrokersBrokerIdunregisterPost Unregister a Broker
 	 *
-	 * Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
+	 * Unregister a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -44,7 +44,7 @@ type UnregisterV3ApiService service
 /*
  * ClustersClusterIdBrokersBrokerIdunregisterPost Unregister a Broker
  *
- * Unregisters a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
+ * Unregister a broker from the cluster. This API is only supported for Kafka clusters running in KRaft mode. If run against a cluster running with ZooKeeper, a 400 response with an unsupported version error code will be returned (see BadRequestErrorResponse for more detail).
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -81,7 +81,7 @@ func (a *UnregisterV3ApiService) ClustersClusterIdBrokersBrokerIdunregisterPost(
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

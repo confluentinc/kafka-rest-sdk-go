@@ -53,13 +53,13 @@ type APIClient struct {
 
 	BalancerStatusV3Api BalancerStatusV3Api
 
-	BrokerApi BrokerApi
+	BrokerReplicaExclusionV3Api BrokerReplicaExclusionV3Api
 
-	BrokerReplicaExclusionApi BrokerReplicaExclusionApi
-
-	BrokerTaskApi BrokerTaskApi
+	BrokerTaskV3Api BrokerTaskV3Api
 
 	BrokerV3Api BrokerV3Api
+
+	CellV3Api CellV3Api
 
 	ClusterLinkingV3Api ClusterLinkingV3Api
 
@@ -69,17 +69,13 @@ type APIClient struct {
 
 	ConsumerGroupV3Api ConsumerGroupV3Api
 
-	PartitionApi PartitionApi
-
 	PartitionV3Api PartitionV3Api
 
 	RecordsV3Api RecordsV3Api
 
-	RemoveBrokerTaskApi RemoveBrokerTaskApi
+	RemoveBrokerTaskV3Api RemoveBrokerTaskV3Api
 
-	ReplicaApi ReplicaApi
-
-	ReplicaStatusApi ReplicaStatusApi
+	ReplicaStatusV3Api ReplicaStatusV3Api
 
 	ReplicaV3Api ReplicaV3Api
 
@@ -106,20 +102,18 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.ACLV3Api = (*ACLV3ApiService)(&c.common)
 	c.BalancerStatusV3Api = (*BalancerStatusV3ApiService)(&c.common)
-	c.BrokerApi = (*BrokerApiService)(&c.common)
-	c.BrokerReplicaExclusionApi = (*BrokerReplicaExclusionApiService)(&c.common)
-	c.BrokerTaskApi = (*BrokerTaskApiService)(&c.common)
+	c.BrokerReplicaExclusionV3Api = (*BrokerReplicaExclusionV3ApiService)(&c.common)
+	c.BrokerTaskV3Api = (*BrokerTaskV3ApiService)(&c.common)
 	c.BrokerV3Api = (*BrokerV3ApiService)(&c.common)
+	c.CellV3Api = (*CellV3ApiService)(&c.common)
 	c.ClusterLinkingV3Api = (*ClusterLinkingV3ApiService)(&c.common)
 	c.ClusterV3Api = (*ClusterV3ApiService)(&c.common)
 	c.ConfigsV3Api = (*ConfigsV3ApiService)(&c.common)
 	c.ConsumerGroupV3Api = (*ConsumerGroupV3ApiService)(&c.common)
-	c.PartitionApi = (*PartitionApiService)(&c.common)
 	c.PartitionV3Api = (*PartitionV3ApiService)(&c.common)
 	c.RecordsV3Api = (*RecordsV3ApiService)(&c.common)
-	c.RemoveBrokerTaskApi = (*RemoveBrokerTaskApiService)(&c.common)
-	c.ReplicaApi = (*ReplicaApiService)(&c.common)
-	c.ReplicaStatusApi = (*ReplicaStatusApiService)(&c.common)
+	c.RemoveBrokerTaskV3Api = (*RemoveBrokerTaskV3ApiService)(&c.common)
+	c.ReplicaStatusV3Api = (*ReplicaStatusV3ApiService)(&c.common)
 	c.ReplicaV3Api = (*ReplicaV3ApiService)(&c.common)
 	c.TopicV3Api = (*TopicV3ApiService)(&c.common)
 	c.UnregisterV3Api = (*UnregisterV3ApiService)(&c.common)

@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get AnyUnevenLoad status
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns status of the AnyUnevenLoad for the cluster specified by ``cluster_id``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return status of the AnyUnevenLoad for the cluster specified by ``cluster_id``.
 
 ### Required Parameters
 
@@ -49,7 +49,7 @@ No authorization required
 
 Get status of the balancer
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  'Returns status about the balancer component for the cluster specified with ``cluster_id``.'
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  'Return status about the balancer component for the cluster specified with ``cluster_id``.'
 
 ### Required Parameters
 
@@ -70,7 +70,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

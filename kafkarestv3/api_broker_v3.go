@@ -29,7 +29,7 @@ type BrokerV3Api interface {
 	/*
 	 * ClustersClusterIdBrokersBrokerIdDelete Delete Broker
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Deletes the broker that is specified by &#x60;&#x60;broker_id&#x60;&#x60;.
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Delete the broker that is specified by &#x60;&#x60;broker_id&#x60;&#x60;.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -43,7 +43,7 @@ type BrokerV3Api interface {
 	/*
 	 * ClustersClusterIdBrokersBrokerIdGet Get Broker
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -53,9 +53,9 @@ type BrokerV3Api interface {
 	ClustersClusterIdBrokersBrokerIdGet(ctx _context.Context, clusterId string, brokerId int32) (BrokerData, *_nethttp.Response, error)
 
 	/*
-	 * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet Search Replicas by Broker
+	 * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet List Replicas by Broker
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the list of replicas assigned to the specified broker.
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of replicas assigned to the specified broker.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -74,6 +74,20 @@ type BrokerV3Api interface {
 	 * @return BrokerDataList
 	 */
 	ClustersClusterIdBrokersGet(ctx _context.Context, clusterId string) (BrokerDataList, *_nethttp.Response, error)
+
+	/*
+	 * ClustersClusterIdBrokersdeletePost Delete several brokers
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ClustersClusterIdBrokersdeletePostOpts - Optional Parameters:
+	 * @param "ShouldShutdown" (optional.Bool) -  To shutdown the broker or not, Default: true
+	 * @param "RemoveBrokersRequestData" (optional.Interface of RemoveBrokersRequestData) -  Broker ids to remove
+	 * @return BrokerRemovalDataList
+	 */
+	ClustersClusterIdBrokersdeletePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokersdeletePostOpts) (BrokerRemovalDataList, *_nethttp.Response, error)
 }
 
 // BrokerV3ApiService BrokerV3Api service
@@ -87,7 +101,7 @@ type ClustersClusterIdBrokersBrokerIdDeleteOpts struct {
 /*
  * ClustersClusterIdBrokersBrokerIdDelete Delete Broker
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Deletes the broker that is specified by &#x60;&#x60;broker_id&#x60;&#x60;.
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Delete the broker that is specified by &#x60;&#x60;broker_id&#x60;&#x60;.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -224,7 +238,7 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdDelete(ctx _context
 /*
  * ClustersClusterIdBrokersBrokerIdGet Get Broker
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the broker specified by &#x60;&#x60;broker_id&#x60;&#x60;.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -261,7 +275,7 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdGet(ctx _context.Co
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -300,6 +314,16 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdGet(ctx _context.Co
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -344,9 +368,9 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdGet(ctx _context.Co
 }
 
 /*
- * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet Search Replicas by Broker
+ * ClustersClusterIdBrokersBrokerIdPartitionReplicasGet List Replicas by Broker
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the list of replicas assigned to the specified broker.
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of replicas assigned to the specified broker.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -383,7 +407,7 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdPartitionReplicasGe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -422,6 +446,16 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersBrokerIdPartitionReplicasGe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -502,7 +536,7 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersGet(ctx _context.Context, c
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -541,6 +575,166 @@ func (a *BrokerV3ApiService) ClustersClusterIdBrokersGet(ctx _context.Context, c
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode >= 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+// ClustersClusterIdBrokersdeletePostOpts Optional parameters for the method 'ClustersClusterIdBrokersdeletePost'
+type ClustersClusterIdBrokersdeletePostOpts struct {
+	ShouldShutdown           optional.Bool
+	RemoveBrokersRequestData optional.Interface
+}
+
+/*
+ * ClustersClusterIdBrokersdeletePost Delete several brokers
+ *
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @param optional nil or *ClustersClusterIdBrokersdeletePostOpts - Optional Parameters:
+ * @param "ShouldShutdown" (optional.Bool) -  To shutdown the broker or not, Default: true
+ * @param "RemoveBrokersRequestData" (optional.Interface of RemoveBrokersRequestData) -  Broker ids to remove
+ * @return BrokerRemovalDataList
+ */
+func (a *BrokerV3ApiService) ClustersClusterIdBrokersdeletePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdBrokersdeletePostOpts) (BrokerRemovalDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  BrokerRemovalDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/brokers:delete"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if localVarOptionals != nil && localVarOptionals.ShouldShutdown.IsSet() {
+		localVarQueryParams.Add("should_shutdown", parameterToString(localVarOptionals.ShouldShutdown.Value(), ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.RemoveBrokersRequestData.IsSet() {
+		localVarOptionalRemoveBrokersRequestData, localVarOptionalRemoveBrokersRequestDataok := localVarOptionals.RemoveBrokersRequestData.Value().(RemoveBrokersRequestData)
+		if !localVarOptionalRemoveBrokersRequestDataok {
+			return localVarReturnValue, nil, reportError("removeBrokersRequestData should be RemoveBrokersRequestData")
+		}
+		localVarPostBody = &localVarOptionalRemoveBrokersRequestData
+	}
+
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
