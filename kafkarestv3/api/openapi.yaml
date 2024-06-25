@@ -45,6 +45,8 @@ tags:
 - description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
   name: Cluster (v3)
 - description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
+  name: Cell (v3)
+- description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
   name: Configs (v3)
 - description: '[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)'
   name: ACL (v3)
@@ -1506,6 +1508,145 @@ paths:
       summary: Update Cluster Config
       tags:
       - Configs (v3)
+  /clusters/{cluster_id}/cells:
+    get:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Returns a list of cells that belong to the specified Kafka cluster.
+      operationId: describeCells
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaCellList
+                metadata:
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/cells
+                  next: null
+                data:
+                - kind: KafkaCells
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/cells
+                    resource_name: crn:///kafka=cluster-1
+                  cluster_id: cluster-1
+                  cells:
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 0
+                    state: 1
+                    brokers:
+                    - 0
+                    - 1
+                    - 2
+                    open-for-tenant-assignment: true
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 1
+                    state: 1
+                    brokers:
+                    - 3
+                    - 4
+                    - 5
+                    open-for-tenant-assignment: true
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 2
+                    state: 1
+                    brokers:
+                    - 6
+                    open-for-tenant-assignment: true
+                  cells_enabled: true
+              schema:
+                $ref: '#/components/schemas/CellConfigData_allOf'
+          description: The list of cells.
+        "400":
+          content:
+            application/json:
+              examples:
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              example:
+                description: Thrown when trying to create a topic and passing a string
+                  for the replication factor.
+                value: 'Cannot deserialize value of type `java.lang.Integer` from
+                  String "all": not a valid Integer value\n at [Source: (org.glassfish.jersey.message.internal.ReaderInterceptorExecutor$UnCloseableInputStream);
+                  line: 1, column: 53] (through reference chain: io.confluent.kafkarest.entities.v3.CreateTopicRequest["partitions_count"])'
+              schema:
+                type: string
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure. Usually
+            serves application/json content, although in some cases simple text/plain
+            content can be returned.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      tags:
+      - Cell (v3)
   /clusters/{cluster_id}/brokers:
     get:
       description: |-
@@ -16488,6 +16629,52 @@ components:
           type: string
       required:
       - self
+      type: object
+    CellConfigData_allOf:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/CellConfigData'
+    CellConfigData:
+      properties:
+        cluster_id:
+          type: string
+        cells:
+          items:
+            $ref: '#/components/schemas/CellData_allOf'
+          type: array
+        cells_enabled:
+          type: boolean
+        error_code:
+          nullable: true
+          type: integer
+        error_message:
+          nullable: true
+          type: string
+      required:
+      - cluster_id
+      - cells
+      - cells_enabled
+    CellData_allOf:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/CellData'
+    CellData:
+      properties:
+        cell_id:
+          type: integer
+        state:
+          type: integer
+        brokers:
+          items:
+            type: integer
+          type: array
+        open_for_tenant_assignment:
+          type: boolean
+      required:
+      - cell_id
+      - state
+      - brokers
+      - open_for_tenant_assignment
       type: object
     TopicConfigData:
       allOf:
