@@ -27,41 +27,41 @@ var (
 type RecordsV3Api interface {
 
 	/*
-	 * ProduceRecord Produce Records
+	 * ClustersClusterIdTopicsTopicNameRecordsPost Produce records to the given topic.
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.  Note that the cluster_id is validated only when running in Confluent Cloud.
+	 * [![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @param topicName The topic name.
-	 * @param optional nil or *ProduceRecordOpts - Optional Parameters:
-	 * @param "ProduceRequest" (optional.Interface of ProduceRequest) -  A single record to be produced to Kafka. To produce multiple records in the same request, simply concatenate the records. The delivery reports are concatenated in the same order as the records are sent.
+	 * @param optional nil or *ClustersClusterIdTopicsTopicNameRecordsPostOpts - Optional Parameters:
+	 * @param "ProduceRequest" (optional.Interface of ProduceRequest) -  A single record to be produced to Kafka. To produce multiple records on the same connection, simply concatenate all the records, e.g.: {\"partition_id\":1}{\"partition_id\":2}. Delivery reports will be concatenated on the same order as the records are sent. See examples for the options available.
 	 * @return ProduceResponse
 	 */
-	ProduceRecord(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ProduceRecordOpts) (ProduceResponse, *_nethttp.Response, error)
+	ClustersClusterIdTopicsTopicNameRecordsPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameRecordsPostOpts) (ProduceResponse, *_nethttp.Response, error)
 }
 
 // RecordsV3ApiService RecordsV3Api service
 type RecordsV3ApiService service
 
-// ProduceRecordOpts Optional parameters for the method 'ProduceRecord'
-type ProduceRecordOpts struct {
+// ClustersClusterIdTopicsTopicNameRecordsPostOpts Optional parameters for the method 'ClustersClusterIdTopicsTopicNameRecordsPost'
+type ClustersClusterIdTopicsTopicNameRecordsPostOpts struct {
 	ProduceRequest optional.Interface
 }
 
 /*
- * ProduceRecord Produce Records
+ * ClustersClusterIdTopicsTopicNameRecordsPost Produce records to the given topic.
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.  Note that the cluster_id is validated only when running in Confluent Cloud.
+ * [![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \&quot;Transfer-Encoding: chunked\&quot; header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param topicName The topic name.
- * @param optional nil or *ProduceRecordOpts - Optional Parameters:
- * @param "ProduceRequest" (optional.Interface of ProduceRequest) -  A single record to be produced to Kafka. To produce multiple records in the same request, simply concatenate the records. The delivery reports are concatenated in the same order as the records are sent.
+ * @param optional nil or *ClustersClusterIdTopicsTopicNameRecordsPostOpts - Optional Parameters:
+ * @param "ProduceRequest" (optional.Interface of ProduceRequest) -  A single record to be produced to Kafka. To produce multiple records on the same connection, simply concatenate all the records, e.g.: {\"partition_id\":1}{\"partition_id\":2}. Delivery reports will be concatenated on the same order as the records are sent. See examples for the options available.
  * @return ProduceResponse
  */
-func (a *RecordsV3ApiService) ProduceRecord(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ProduceRecordOpts) (ProduceResponse, *_nethttp.Response, error) {
+func (a *RecordsV3ApiService) ClustersClusterIdTopicsTopicNameRecordsPost(ctx _context.Context, clusterId string, topicName string, localVarOptionals *ClustersClusterIdTopicsTopicNameRecordsPostOpts) (ProduceResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -91,7 +91,7 @@ func (a *RecordsV3ApiService) ProduceRecord(ctx _context.Context, clusterId stri
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -139,56 +139,6 @@ func (a *RecordsV3ApiService) ProduceRecord(ctx _context.Context, clusterId stri
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 413 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 415 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 422 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

@@ -28,7 +28,7 @@ type BalancerStatusV3Api interface {
 	/*
 	 * ClustersClusterIdBalancerAnyUnevenLoadGet Get AnyUnevenLoad status
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -39,7 +39,7 @@ type BalancerStatusV3Api interface {
 	/*
 	 * ClustersClusterIdBalancerGet Get status of the balancer
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Return status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.&#39;
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Returns status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.&#39;
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
@@ -54,7 +54,7 @@ type BalancerStatusV3ApiService service
 /*
  * ClustersClusterIdBalancerAnyUnevenLoadGet Get AnyUnevenLoad status
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns status of the AnyUnevenLoad for the cluster specified by &#x60;&#x60;cluster_id&#x60;&#x60;.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -173,7 +173,7 @@ func (a *BalancerStatusV3ApiService) ClustersClusterIdBalancerAnyUnevenLoadGet(c
 /*
  * ClustersClusterIdBalancerGet Get status of the balancer
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Return status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.&#39;
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Returns status about the balancer component for the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.&#39;
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
@@ -207,7 +207,7 @@ func (a *BalancerStatusV3ApiService) ClustersClusterIdBalancerGet(ctx _context.C
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

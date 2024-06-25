@@ -26,53 +26,50 @@ var (
 type ClusterV3Api interface {
 
 	/*
+	 * ClustersGet List Clusters
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Returns a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.&#39;
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @return ClusterDataList
+	 */
+	ClustersGet(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error)
+
+	/*
 	 * GetKafkaCluster Get Cluster
 	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
 	 *
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @return ClusterData
 	 */
 	GetKafkaCluster(ctx _context.Context, clusterId string) (ClusterData, *_nethttp.Response, error)
-
-	/*
-	 * ListKafkaClusters List Clusters
-	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Return a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.&#39;
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @return ClusterDataList
-	 */
-	ListKafkaClusters(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error)
 }
 
 // ClusterV3ApiService ClusterV3Api service
 type ClusterV3ApiService service
 
 /*
- * GetKafkaCluster Get Cluster
+ * ClustersGet List Clusters
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Returns a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.&#39;
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @return ClusterData
+ * @return ClusterDataList
  */
-func (a *ClusterV3ApiService) GetKafkaCluster(ctx _context.Context, clusterId string) (ClusterData, *_nethttp.Response, error) {
+func (a *ClusterV3ApiService) ClustersGet(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ClusterData
+		localVarReturnValue  ClusterDataList
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
-
+	localVarPath := a.client.cfg.BasePath + "/clusters"
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -87,7 +84,7 @@ func (a *ClusterV3ApiService) GetKafkaCluster(ctx _context.Context, clusterId st
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -126,16 +123,6 @@ func (a *ClusterV3ApiService) GetKafkaCluster(ctx _context.Context, clusterId st
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -180,25 +167,28 @@ func (a *ClusterV3ApiService) GetKafkaCluster(ctx _context.Context, clusterId st
 }
 
 /*
- * ListKafkaClusters List Clusters
+ * GetKafkaCluster Get Cluster
  *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  &#39;Return a list of known Kafka clusters. Currently both Kafka and Kafka REST Proxy are only aware of the Kafka cluster pointed at by the &#x60;&#x60;bootstrap.servers&#x60;&#x60; configuration. Therefore only one Kafka cluster will be returned in the response.&#39;
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the Kafka cluster with the specified &#x60;&#x60;cluster_id&#x60;&#x60;.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ClusterDataList
+ * @param clusterId The Kafka cluster ID.
+ * @return ClusterData
  */
-func (a *ClusterV3ApiService) ListKafkaClusters(ctx _context.Context) (ClusterDataList, *_nethttp.Response, error) {
+func (a *ClusterV3ApiService) GetKafkaCluster(ctx _context.Context, clusterId string) (ClusterData, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ClusterDataList
+		localVarReturnValue  ClusterData
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
@@ -213,7 +203,7 @@ func (a *ClusterV3ApiService) ListKafkaClusters(ctx _context.Context) (ClusterDa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/plain", "text/html"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -252,16 +242,6 @@ func (a *ClusterV3ApiService) ListKafkaClusters(ctx _context.Context) (ClusterDa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

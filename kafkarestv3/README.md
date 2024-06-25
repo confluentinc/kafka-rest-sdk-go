@@ -33,26 +33,24 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ACLV3Api* | [**BatchCreateKafkaAcls**](docs/ACLV3Api.md#batchcreatekafkaacls) | **Post** /clusters/{cluster_id}/acls:batch | Batch Create ACLs
-*ACLV3Api* | [**CreateKafkaAcls**](docs/ACLV3Api.md#createkafkaacls) | **Post** /clusters/{cluster_id}/acls | Create an ACL
+*ACLV3Api* | [**CreateKafkaAcls**](docs/ACLV3Api.md#createkafkaacls) | **Post** /clusters/{cluster_id}/acls | Create ACLs
 *ACLV3Api* | [**DeleteKafkaAcls**](docs/ACLV3Api.md#deletekafkaacls) | **Delete** /clusters/{cluster_id}/acls | Delete ACLs
-*ACLV3Api* | [**GetKafkaAcls**](docs/ACLV3Api.md#getkafkaacls) | **Get** /clusters/{cluster_id}/acls | List ACLs
+*ACLV3Api* | [**GetKafkaAcls**](docs/ACLV3Api.md#getkafkaacls) | **Get** /clusters/{cluster_id}/acls | Search ACLs
 *BalancerStatusV3Api* | [**ClustersClusterIdBalancerAnyUnevenLoadGet**](docs/BalancerStatusV3Api.md#clustersclusteridbalanceranyunevenloadget) | **Get** /clusters/{cluster_id}/balancer/any-uneven-load | Get AnyUnevenLoad status
 *BalancerStatusV3Api* | [**ClustersClusterIdBalancerGet**](docs/BalancerStatusV3Api.md#clustersclusteridbalancerget) | **Get** /clusters/{cluster_id}/balancer | Get status of the balancer
-*BrokerReplicaExclusionV3Api* | [**ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet**](docs/BrokerReplicaExclusionV3Api.md#clustersclusteridbrokerreplicaexclusionsbrokeridget) | **Get** /clusters/{cluster_id}/broker-replica-exclusions/{broker_id} | Get a Broker Replica Exclusions.
-*BrokerReplicaExclusionV3Api* | [**ClustersClusterIdBrokerReplicaExclusionsGet**](docs/BrokerReplicaExclusionV3Api.md#clustersclusteridbrokerreplicaexclusionsget) | **Get** /clusters/{cluster_id}/broker-replica-exclusions | Get all Broker Replica Exclusions.
-*BrokerReplicaExclusionV3Api* | [**ClustersClusterIdBrokerReplicaExclusionscreatePost**](docs/BrokerReplicaExclusionV3Api.md#clustersclusteridbrokerreplicaexclusionscreatepost) | **Post** /clusters/{cluster_id}/broker-replica-exclusions:create | Create Broker Replica Exclusions
-*BrokerReplicaExclusionV3Api* | [**ClustersClusterIdBrokerReplicaExclusionsdeletePost**](docs/BrokerReplicaExclusionV3Api.md#clustersclusteridbrokerreplicaexclusionsdeletepost) | **Post** /clusters/{cluster_id}/broker-replica-exclusions:delete | Delete Broker Replica Exclusions
-*BrokerTaskV3Api* | [**ClustersClusterIdBrokersBrokerIdTasksGet**](docs/BrokerTaskV3Api.md#clustersclusteridbrokersbrokeridtasksget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/tasks | List Broker Tasks of a specific Broker
-*BrokerTaskV3Api* | [**ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet**](docs/BrokerTaskV3Api.md#clustersclusteridbrokersbrokeridtaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/tasks/{task_type} | Get single Broker Task.
-*BrokerTaskV3Api* | [**ClustersClusterIdBrokersTasksGet**](docs/BrokerTaskV3Api.md#clustersclusteridbrokerstasksget) | **Get** /clusters/{cluster_id}/brokers/-/tasks | List Broker Tasks
-*BrokerTaskV3Api* | [**ClustersClusterIdBrokersTasksTaskTypeGet**](docs/BrokerTaskV3Api.md#clustersclusteridbrokerstaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/-/tasks/{task_type} | List Broker Tasks of a specific TaskType
+*BrokerApi* | [**ClustersClusterIdBrokersdeletePost**](docs/BrokerApi.md#clustersclusteridbrokersdeletepost) | **Post** /clusters/{cluster_id}/brokers:delete | Delete several brokers
+*BrokerReplicaExclusionApi* | [**ClustersClusterIdBrokerReplicaExclusionsBrokerIdGet**](docs/BrokerReplicaExclusionApi.md#clustersclusteridbrokerreplicaexclusionsbrokeridget) | **Get** /clusters/{cluster_id}/broker-replica-exclusions/{broker_id} | Get a Broker Replica Exclusions.
+*BrokerReplicaExclusionApi* | [**ClustersClusterIdBrokerReplicaExclusionsGet**](docs/BrokerReplicaExclusionApi.md#clustersclusteridbrokerreplicaexclusionsget) | **Get** /clusters/{cluster_id}/broker-replica-exclusions | Get all Broker Replica Exclusions.
+*BrokerReplicaExclusionApi* | [**ClustersClusterIdBrokerReplicaExclusionscreatePost**](docs/BrokerReplicaExclusionApi.md#clustersclusteridbrokerreplicaexclusionscreatepost) | **Post** /clusters/{cluster_id}/broker-replica-exclusions:create | Create Broker Replica Exclusions
+*BrokerReplicaExclusionApi* | [**ClustersClusterIdBrokerReplicaExclusionsdeletePost**](docs/BrokerReplicaExclusionApi.md#clustersclusteridbrokerreplicaexclusionsdeletepost) | **Post** /clusters/{cluster_id}/broker-replica-exclusions:delete | Delete Broker Replica Exclusions
+*BrokerTaskApi* | [**ClustersClusterIdBrokersBrokerIdTasksGet**](docs/BrokerTaskApi.md#clustersclusteridbrokersbrokeridtasksget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/tasks | List Broker Tasks of a specific Broker
+*BrokerTaskApi* | [**ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet**](docs/BrokerTaskApi.md#clustersclusteridbrokersbrokeridtaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/tasks/{task_type} | Get single Broker Task.
+*BrokerTaskApi* | [**ClustersClusterIdBrokersTasksGet**](docs/BrokerTaskApi.md#clustersclusteridbrokerstasksget) | **Get** /clusters/{cluster_id}/brokers/-/tasks | List Broker Tasks
+*BrokerTaskApi* | [**ClustersClusterIdBrokersTasksTaskTypeGet**](docs/BrokerTaskApi.md#clustersclusteridbrokerstaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/-/tasks/{task_type} | List Broker Tasks of a specific TaskType
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdDelete**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeriddelete) | **Delete** /clusters/{cluster_id}/brokers/{broker_id} | Delete Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridget) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
-*BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | List Replicas by Broker
+*BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersGet**](docs/BrokerV3Api.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
-*BrokerV3Api* | [**ClustersClusterIdBrokersdeletePost**](docs/BrokerV3Api.md#clustersclusteridbrokersdeletepost) | **Post** /clusters/{cluster_id}/brokers:delete | Delete several brokers
-*CellV3Api* | [**DescribeCells**](docs/CellV3Api.md#describecells) | **Get** /clusters/{cluster_id}/cells | Get Cluster Cell Configuration
 *ClusterLinkingV3Api* | [**CreateKafkaLink**](docs/ClusterLinkingV3Api.md#createkafkalink) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterLinkingV3Api* | [**CreateKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#createkafkamirrortopic) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
 *ClusterLinkingV3Api* | [**DeleteKafkaLink**](docs/ClusterLinkingV3Api.md#deletekafkalink) | **Delete** /clusters/{cluster_id}/links/{link_name} | Delete the cluster link
@@ -69,57 +67,56 @@ Class | Method | HTTP request | Description
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsFailover**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsfailover) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:failover | Failover the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPause**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspause) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:pause | Pause the mirror topics
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPromote**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspromote) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote | Promote the mirror topics
+*ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPromoteLocalAndPauseRemoteMirror**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspromotelocalandpauseremotemirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-pause-remote-mirror | Promote the local mirror topic and Pause the remote mirror topic
+*ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsPromoteLocalAndStartRemoteMirror**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicspromotelocalandstartremotemirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:promote-local-and-start-remote-mirror | Promote the local mirror topic and start the remote mirror topic
 *ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsResume**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsresume) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:resume | Resume the mirror topics
-*ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsReverseAndPauseMirror**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsreverseandpausemirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:reverse-and-pause-mirror | Reverse local mirror topic and pause the remote mirror topic
-*ClusterLinkingV3Api* | [**UpdateKafkaMirrorTopicsReverseAndStarMirror**](docs/ClusterLinkingV3Api.md#updatekafkamirrortopicsreverseandstarmirror) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors:reverse-and-start-mirror | Reverse local mirror topic and start the remote mirror topic
+*ClusterV3Api* | [**ClustersGet**](docs/ClusterV3Api.md#clustersget) | **Get** /clusters | List Clusters
 *ClusterV3Api* | [**GetKafkaCluster**](docs/ClusterV3Api.md#getkafkacluster) | **Get** /clusters/{cluster_id} | Get Cluster
-*ClusterV3Api* | [**ListKafkaClusters**](docs/ClusterV3Api.md#listkafkaclusters) | **Get** /clusters | List Clusters
 *ConfigsV3Api* | [**ClustersClusterIdBrokersBrokerIdConfigsGet**](docs/ConfigsV3Api.md#clustersclusteridbrokersbrokeridconfigsget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/configs | List Broker Configs
 *ConfigsV3Api* | [**ClustersClusterIdBrokersBrokerIdConfigsNameDelete**](docs/ConfigsV3Api.md#clustersclusteridbrokersbrokeridconfigsnamedelete) | **Delete** /clusters/{cluster_id}/brokers/{broker_id}/configs/{name} | Reset Broker Config
 *ConfigsV3Api* | [**ClustersClusterIdBrokersBrokerIdConfigsNameGet**](docs/ConfigsV3Api.md#clustersclusteridbrokersbrokeridconfigsnameget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/configs/{name} | Get Broker Config
 *ConfigsV3Api* | [**ClustersClusterIdBrokersBrokerIdConfigsNamePut**](docs/ConfigsV3Api.md#clustersclusteridbrokersbrokeridconfigsnameput) | **Put** /clusters/{cluster_id}/brokers/{broker_id}/configs/{name} | Update Broker Config
 *ConfigsV3Api* | [**ClustersClusterIdBrokersBrokerIdConfigsalterPost**](docs/ConfigsV3Api.md#clustersclusteridbrokersbrokeridconfigsalterpost) | **Post** /clusters/{cluster_id}/brokers/{broker_id}/configs:alter | Batch Alter Broker Configs
-*ConfigsV3Api* | [**ClustersClusterIdBrokersConfigsGet**](docs/ConfigsV3Api.md#clustersclusteridbrokersconfigsget) | **Get** /clusters/{cluster_id}/brokers/-/configs | List Dynamic Broker Configs
-*ConfigsV3Api* | [**DeleteKafkaClusterConfig**](docs/ConfigsV3Api.md#deletekafkaclusterconfig) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Dynamic Broker Config
+*ConfigsV3Api* | [**ClustersClusterIdBrokersConfigsGet**](docs/ConfigsV3Api.md#clustersclusteridbrokersconfigsget) | **Get** /clusters/{cluster_id}/brokers/-/configs | List All Broker Configs
+*ConfigsV3Api* | [**DeleteKafkaClusterConfig**](docs/ConfigsV3Api.md#deletekafkaclusterconfig) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config
 *ConfigsV3Api* | [**DeleteKafkaTopicConfig**](docs/ConfigsV3Api.md#deletekafkatopicconfig) | **Delete** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Reset Topic Config
-*ConfigsV3Api* | [**GetKafkaClusterConfig**](docs/ConfigsV3Api.md#getkafkaclusterconfig) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Dynamic Broker Config
+*ConfigsV3Api* | [**GetKafkaClusterConfig**](docs/ConfigsV3Api.md#getkafkaclusterconfig) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Cluster Config
 *ConfigsV3Api* | [**GetKafkaTopicConfig**](docs/ConfigsV3Api.md#getkafkatopicconfig) | **Get** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Get Topic Config
-*ConfigsV3Api* | [**ListKafkaAllTopicConfigs**](docs/ConfigsV3Api.md#listkafkaalltopicconfigs) | **Get** /clusters/{cluster_id}/topics/-/configs | List All Topic Configs
-*ConfigsV3Api* | [**ListKafkaClusterConfigs**](docs/ConfigsV3Api.md#listkafkaclusterconfigs) | **Get** /clusters/{cluster_id}/broker-configs | List Dynamic Broker Configs
-*ConfigsV3Api* | [**ListKafkaDefaultTopicConfigs**](docs/ConfigsV3Api.md#listkafkadefaulttopicconfigs) | **Get** /clusters/{cluster_id}/topics/{topic_name}/default-configs | List New Topic Default Configs
+*ConfigsV3Api* | [**ListKafkaAllTopicConfigs**](docs/ConfigsV3Api.md#listkafkaalltopicconfigs) | **Get** /clusters/{cluster_id}/topics/-/configs | Get All Topic Configs
+*ConfigsV3Api* | [**ListKafkaClusterConfigs**](docs/ConfigsV3Api.md#listkafkaclusterconfigs) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
+*ConfigsV3Api* | [**ListKafkaDefaultTopicConfigs**](docs/ConfigsV3Api.md#listkafkadefaulttopicconfigs) | **Get** /clusters/{cluster_id}/topics/{topic_name}/default-configs | List Default Topic Configs
 *ConfigsV3Api* | [**ListKafkaTopicConfigs**](docs/ConfigsV3Api.md#listkafkatopicconfigs) | **Get** /clusters/{cluster_id}/topics/{topic_name}/configs | List Topic Configs
-*ConfigsV3Api* | [**UpdateKafkaClusterConfig**](docs/ConfigsV3Api.md#updatekafkaclusterconfig) | **Put** /clusters/{cluster_id}/broker-configs/{name} | Update Dynamic Broker Config
-*ConfigsV3Api* | [**UpdateKafkaClusterConfigs**](docs/ConfigsV3Api.md#updatekafkaclusterconfigs) | **Post** /clusters/{cluster_id}/broker-configs:alter | Batch Alter Dynamic Broker Configs
+*ConfigsV3Api* | [**UpdateKafkaClusterConfig**](docs/ConfigsV3Api.md#updatekafkaclusterconfig) | **Put** /clusters/{cluster_id}/broker-configs/{name} | Update Cluster Config
+*ConfigsV3Api* | [**UpdateKafkaClusterConfigs**](docs/ConfigsV3Api.md#updatekafkaclusterconfigs) | **Post** /clusters/{cluster_id}/broker-configs:alter | Batch Alter Cluster Configs
 *ConfigsV3Api* | [**UpdateKafkaTopicConfig**](docs/ConfigsV3Api.md#updatekafkatopicconfig) | **Put** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Update Topic Config
 *ConfigsV3Api* | [**UpdateKafkaTopicConfigBatch**](docs/ConfigsV3Api.md#updatekafkatopicconfigbatch) | **Post** /clusters/{cluster_id}/topics/{topic_name}/configs:alter | Batch Alter Topic Configs
 *ConsumerGroupV3Api* | [**GetKafkaConsumer**](docs/ConsumerGroupV3Api.md#getkafkaconsumer) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id} | Get Consumer
 *ConsumerGroupV3Api* | [**GetKafkaConsumerAssignment**](docs/ConsumerGroupV3Api.md#getkafkaconsumerassignment) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments/{topic_name}/partitions/{partition_id} | Get Consumer Assignment
 *ConsumerGroupV3Api* | [**GetKafkaConsumerGroup**](docs/ConsumerGroupV3Api.md#getkafkaconsumergroup) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id} | Get Consumer Group
-*ConsumerGroupV3Api* | [**GetKafkaConsumerGroupLagSummary**](docs/ConsumerGroupV3Api.md#getkafkaconsumergrouplagsummary) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary | Get Consumer Group Lag Summary
-*ConsumerGroupV3Api* | [**GetKafkaConsumerLag**](docs/ConsumerGroupV3Api.md#getkafkaconsumerlag) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags/{topic_name}/partitions/{partition_id} | Get Consumer Lag
+*ConsumerGroupV3Api* | [**GetKafkaConsumerGroupLagSummary**](docs/ConsumerGroupV3Api.md#getkafkaconsumergrouplagsummary) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lag-summary | Get Consumer Group Lag Summary.
 *ConsumerGroupV3Api* | [**ListKafkaConsumerAssignment**](docs/ConsumerGroupV3Api.md#listkafkaconsumerassignment) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers/{consumer_id}/assignments | List Consumer Assignments
 *ConsumerGroupV3Api* | [**ListKafkaConsumerGroups**](docs/ConsumerGroupV3Api.md#listkafkaconsumergroups) | **Get** /clusters/{cluster_id}/consumer-groups | List Consumer Groups
 *ConsumerGroupV3Api* | [**ListKafkaConsumerLags**](docs/ConsumerGroupV3Api.md#listkafkaconsumerlags) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags | List Consumer Lags
 *ConsumerGroupV3Api* | [**ListKafkaConsumers**](docs/ConsumerGroupV3Api.md#listkafkaconsumers) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers | List Consumers
-*PartitionV3Api* | [**ClustersClusterIdTopicsPartitionsReassignmentGet**](docs/PartitionV3Api.md#clustersclusteridtopicspartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/reassignment | List All Replica Reassignments
-*PartitionV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet**](docs/PartitionV3Api.md#clustersclusteridtopicstopicnamepartitionspartitionidreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/reassignment | Get Replica Reassignments
-*PartitionV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet**](docs/PartitionV3Api.md#clustersclusteridtopicstopicnamepartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/reassignment | List Replica Reassignments By Topic
+*PartitionApi* | [**ClustersClusterIdTopicsPartitionsReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicspartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/reassignment | List All Replica Reassignments
+*PartitionApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/reassignment | Get Replica Reassignments
+*PartitionApi* | [**ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicstopicnamepartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/reassignment | Search Replica Reassignments By Topic
+*PartitionV3Api* | [**GetKafkaConsumerLag**](docs/PartitionV3Api.md#getkafkaconsumerlag) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags/{topic_name}/partitions/{partition_id} | Get Consumer Lag
 *PartitionV3Api* | [**GetKafkaPartition**](docs/PartitionV3Api.md#getkafkapartition) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id} | Get Partition
 *PartitionV3Api* | [**ListKafkaPartitions**](docs/PartitionV3Api.md#listkafkapartitions) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions | List Partitions
-*RecordsV3Api* | [**ProduceRecord**](docs/RecordsV3Api.md#producerecord) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce Records
-*RemoveBrokerTaskV3Api* | [**ClustersClusterIdRemoveBrokerTasksBrokerIdGet**](docs/RemoveBrokerTaskV3Api.md#clustersclusteridremovebrokertasksbrokeridget) | **Get** /clusters/{cluster_id}/remove-broker-tasks/{broker_id} | Get Remove Broker Task
-*RemoveBrokerTaskV3Api* | [**ClustersClusterIdRemoveBrokerTasksGet**](docs/RemoveBrokerTaskV3Api.md#clustersclusteridremovebrokertasksget) | **Get** /clusters/{cluster_id}/remove-broker-tasks | List Remove Broker Tasks
-*ReplicaStatusV3Api* | [**ClustersClusterIdTopicsPartitionsReplicaStatusGet**](docs/ReplicaStatusV3Api.md#clustersclusteridtopicspartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/replica-status | List All Replica Statuses from a cluster.
-*ReplicaStatusV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet**](docs/ReplicaStatusV3Api.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status | List Partition Replica Statuses.
-*ReplicaStatusV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet**](docs/ReplicaStatusV3Api.md#clustersclusteridtopicstopicnamepartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status | List All Partition Replica Statuses.
-*ReplicaV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/ReplicaV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | List Replicas by Broker
-*ReplicaV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet**](docs/ReplicaV3Api.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasbrokeridget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas/{broker_id} | Get Replica
-*ReplicaV3Api* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet**](docs/ReplicaV3Api.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas | List Replicas
+*RecordsV3Api* | [**ClustersClusterIdTopicsTopicNameRecordsPost**](docs/RecordsV3Api.md#clustersclusteridtopicstopicnamerecordspost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
+*RemoveBrokerTaskApi* | [**ClustersClusterIdRemoveBrokerTasksBrokerIdGet**](docs/RemoveBrokerTaskApi.md#clustersclusteridremovebrokertasksbrokeridget) | **Get** /clusters/{cluster_id}/remove-broker-tasks/{broker_id} | Get Remove Broker Task
+*RemoveBrokerTaskApi* | [**ClustersClusterIdRemoveBrokerTasksGet**](docs/RemoveBrokerTaskApi.md#clustersclusteridremovebrokertasksget) | **Get** /clusters/{cluster_id}/remove-broker-tasks | List Remove Broker Tasks
+*ReplicaApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasBrokerIdGet**](docs/ReplicaApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasbrokeridget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas/{broker_id} | Get Replica
+*ReplicaApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicasGet**](docs/ReplicaApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicasget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replicas | List Replicas
+*ReplicaStatusApi* | [**ClustersClusterIdTopicsPartitionsReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicspartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/replica-status | List All Replica Statuses from a cluster.
+*ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status | List Partition Replica Statuses.
+*ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status | List All Partition Replica Statuses.
+*ReplicaV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/ReplicaV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *TopicV3Api* | [**CreateKafkaTopic**](docs/TopicV3Api.md#createkafkatopic) | **Post** /clusters/{cluster_id}/topics | Create Topic
 *TopicV3Api* | [**DeleteKafkaTopic**](docs/TopicV3Api.md#deletekafkatopic) | **Delete** /clusters/{cluster_id}/topics/{topic_name} | Delete Topic
 *TopicV3Api* | [**GetKafkaTopic**](docs/TopicV3Api.md#getkafkatopic) | **Get** /clusters/{cluster_id}/topics/{topic_name} | Get Topic
 *TopicV3Api* | [**ListKafkaTopics**](docs/TopicV3Api.md#listkafkatopics) | **Get** /clusters/{cluster_id}/topics | List Topics
-*TopicV3Api* | [**UpdatePartitionCountKafkaTopic**](docs/TopicV3Api.md#updatepartitioncountkafkatopic) | **Patch** /clusters/{cluster_id}/topics/{topic_name} | Update Partition Count
 *UnregisterV3Api* | [**ClustersClusterIdBrokersBrokerIdunregisterPost**](docs/UnregisterV3Api.md#clustersclusteridbrokersbrokeridunregisterpost) | **Post** /clusters/{cluster_id}/brokers/{broker_id}:unregister | Unregister a Broker
 
 
@@ -169,10 +166,6 @@ Class | Method | HTTP request | Description
  - [BrokerTaskDataList](docs/BrokerTaskDataList.md)
  - [BrokerTaskDataListAllOf](docs/BrokerTaskDataListAllOf.md)
  - [BrokerTaskType](docs/BrokerTaskType.md)
- - [CellConfigData](docs/CellConfigData.md)
- - [CellConfigDataAllOf](docs/CellConfigDataAllOf.md)
- - [CellData](docs/CellData.md)
- - [CellDataAllOf](docs/CellDataAllOf.md)
  - [ClusterConfigData](docs/ClusterConfigData.md)
  - [ClusterConfigDataAllOf](docs/ClusterConfigDataAllOf.md)
  - [ClusterConfigDataList](docs/ClusterConfigDataList.md)
@@ -202,16 +195,13 @@ Class | Method | HTTP request | Description
  - [ConsumerLagDataList](docs/ConsumerLagDataList.md)
  - [ConsumerLagDataListAllOf](docs/ConsumerLagDataListAllOf.md)
  - [CreateAclRequestData](docs/CreateAclRequestData.md)
- - [CreateAclRequestDataList](docs/CreateAclRequestDataList.md)
- - [CreateAclRequestDataListAllOf](docs/CreateAclRequestDataListAllOf.md)
  - [CreateLinkRequestData](docs/CreateLinkRequestData.md)
  - [CreateMirrorTopicRequestData](docs/CreateMirrorTopicRequestData.md)
  - [CreateTopicRequestData](docs/CreateTopicRequestData.md)
  - [CreateTopicRequestDataConfigs](docs/CreateTopicRequestDataConfigs.md)
+ - [CreateTopicRequestDataReplicasAssignments](docs/CreateTopicRequestDataReplicasAssignments.md)
  - [Error](docs/Error.md)
  - [InlineResponse200](docs/InlineResponse200.md)
- - [LinkTask](docs/LinkTask.md)
- - [LinkTaskError](docs/LinkTaskError.md)
  - [ListLinkConfigsResponseData](docs/ListLinkConfigsResponseData.md)
  - [ListLinkConfigsResponseDataAllOf](docs/ListLinkConfigsResponseDataAllOf.md)
  - [ListLinkConfigsResponseDataList](docs/ListLinkConfigsResponseDataList.md)
@@ -265,10 +255,10 @@ Class | Method | HTTP request | Description
  - [TopicDataAllOf](docs/TopicDataAllOf.md)
  - [TopicDataList](docs/TopicDataList.md)
  - [TopicDataListAllOf](docs/TopicDataListAllOf.md)
+ - [TopicList](docs/TopicList.md)
  - [UnregisterBrokerData](docs/UnregisterBrokerData.md)
  - [UpdateConfigRequestData](docs/UpdateConfigRequestData.md)
  - [UpdateLinkConfigRequestData](docs/UpdateLinkConfigRequestData.md)
- - [UpdatePartitionCountRequestData](docs/UpdatePartitionCountRequestData.md)
 
 
 ## Documentation For Authorization
