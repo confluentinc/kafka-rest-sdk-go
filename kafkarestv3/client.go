@@ -61,6 +61,8 @@ type APIClient struct {
 
 	BrokerV3Api BrokerV3Api
 
+	CellV3Api CellV3Api
+
 	ClusterLinkingV3Api ClusterLinkingV3Api
 
 	ClusterV3Api ClusterV3Api
@@ -110,6 +112,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BrokerReplicaExclusionApi = (*BrokerReplicaExclusionApiService)(&c.common)
 	c.BrokerTaskApi = (*BrokerTaskApiService)(&c.common)
 	c.BrokerV3Api = (*BrokerV3ApiService)(&c.common)
+	c.CellV3Api = (*CellV3ApiService)(&c.common)
 	c.ClusterLinkingV3Api = (*ClusterLinkingV3ApiService)(&c.common)
 	c.ClusterV3Api = (*ClusterV3ApiService)(&c.common)
 	c.ConfigsV3Api = (*ConfigsV3ApiService)(&c.common)

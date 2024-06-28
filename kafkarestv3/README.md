@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridget) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersGet**](docs/BrokerV3Api.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
+*CellV3Api* | [**DescribeCells**](docs/CellV3Api.md#describecells) | **Get** /clusters/{cluster_id}/cells | Get Cluster Cell Configuration
 *ClusterLinkingV3Api* | [**CreateKafkaLink**](docs/ClusterLinkingV3Api.md#createkafkalink) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterLinkingV3Api* | [**CreateKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#createkafkamirrortopic) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
 *ClusterLinkingV3Api* | [**DeleteKafkaLink**](docs/ClusterLinkingV3Api.md#deletekafkalink) | **Delete** /clusters/{cluster_id}/links/{link_name} | Delete the cluster link
@@ -166,6 +167,10 @@ Class | Method | HTTP request | Description
  - [BrokerTaskDataList](docs/BrokerTaskDataList.md)
  - [BrokerTaskDataListAllOf](docs/BrokerTaskDataListAllOf.md)
  - [BrokerTaskType](docs/BrokerTaskType.md)
+ - [CellConfigData](docs/CellConfigData.md)
+ - [CellConfigDataAllOf](docs/CellConfigDataAllOf.md)
+ - [CellData](docs/CellData.md)
+ - [CellDataAllOf](docs/CellDataAllOf.md)
  - [ClusterConfigData](docs/ClusterConfigData.md)
  - [ClusterConfigDataAllOf](docs/ClusterConfigDataAllOf.md)
  - [ClusterConfigDataList](docs/ClusterConfigDataList.md)
