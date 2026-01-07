@@ -10,8 +10,7 @@
 
 package kafkarestv3
 
-// AlterConfigBatchRequestData struct for AlterConfigBatchRequestData
-type AlterConfigBatchRequestData struct {
-	Data         []AlterConfigBatchRequestDataData `json:"data"`
-	ValidateOnly bool                              `json:"validate_only,omitempty"`
+// CreateAclRequestDataList struct for CreateAclRequestDataList
+type CreateAclRequestDataList struct {
+	Data []CreateAclRequestData `json:"data"`
 }

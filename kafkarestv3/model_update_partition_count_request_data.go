@@ -10,8 +10,7 @@
 
 package kafkarestv3
 
-// AlterConfigBatchRequestData struct for AlterConfigBatchRequestData
-type AlterConfigBatchRequestData struct {
-	Data         []AlterConfigBatchRequestDataData `json:"data"`
-	ValidateOnly bool                              `json:"validate_only,omitempty"`
+// UpdatePartitionCountRequestData struct for UpdatePartitionCountRequestData
+type UpdatePartitionCountRequestData struct {
+	PartitionsCount int32 `json:"partitions_count"`
 }

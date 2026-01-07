@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **IsSimple** | **bool** |  | 
 **PartitionAssignor** | **string** |  | 
 **State** | **string** |  | 
+**Type** | **string** |  | 
+**IsMixedConsumerGroup** | **bool** |  | 
 **Coordinator** | [**Relationship**](Relationship.md) |  | 
-**Consumer** | [**Relationship**](Relationship.md) |  | [optional] 
+**Consumers** | [**Relationship**](Relationship.md) |  | 
 **LagSummary** | [**Relationship**](Relationship.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

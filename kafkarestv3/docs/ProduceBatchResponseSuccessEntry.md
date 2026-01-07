@@ -1,11 +1,10 @@
-# ProduceResponse
+# ProduceBatchResponseSuccessEntry
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorCode** | **int32** |  | 
-**Message** | **string** |  | [optional] 
+**Id** | **string** | Batch entry ID. | 
 **ClusterId** | **string** |  | [optional] 
 **TopicName** | **string** |  | [optional] 
 **PartitionId** | **int32** |  | [optional] 

@@ -9,17 +9,16 @@ Method | HTTP request | Description
 [**ClustersClusterIdBrokersBrokerIdConfigsNameGet**](ConfigsV3Api.md#ClustersClusterIdBrokersBrokerIdConfigsNameGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/configs/{name} | Get Broker Config
 [**ClustersClusterIdBrokersBrokerIdConfigsNamePut**](ConfigsV3Api.md#ClustersClusterIdBrokersBrokerIdConfigsNamePut) | **Put** /clusters/{cluster_id}/brokers/{broker_id}/configs/{name} | Update Broker Config
 [**ClustersClusterIdBrokersBrokerIdConfigsalterPost**](ConfigsV3Api.md#ClustersClusterIdBrokersBrokerIdConfigsalterPost) | **Post** /clusters/{cluster_id}/brokers/{broker_id}/configs:alter | Batch Alter Broker Configs
-[**ClustersClusterIdBrokersConfigsGet**](ConfigsV3Api.md#ClustersClusterIdBrokersConfigsGet) | **Get** /clusters/{cluster_id}/brokers/-/configs | List All Broker Configs
-[**DeleteKafkaClusterConfig**](ConfigsV3Api.md#DeleteKafkaClusterConfig) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Cluster Config
+[**ClustersClusterIdBrokersConfigsGet**](ConfigsV3Api.md#ClustersClusterIdBrokersConfigsGet) | **Get** /clusters/{cluster_id}/brokers/-/configs | List Dynamic Broker Configs
+[**DeleteKafkaClusterConfig**](ConfigsV3Api.md#DeleteKafkaClusterConfig) | **Delete** /clusters/{cluster_id}/broker-configs/{name} | Reset Dynamic Broker Config
 [**DeleteKafkaTopicConfig**](ConfigsV3Api.md#DeleteKafkaTopicConfig) | **Delete** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Reset Topic Config
-[**GetKafkaClusterConfig**](ConfigsV3Api.md#GetKafkaClusterConfig) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Cluster Config
+[**GetKafkaClusterConfig**](ConfigsV3Api.md#GetKafkaClusterConfig) | **Get** /clusters/{cluster_id}/broker-configs/{name} | Get Dynamic Broker Config
 [**GetKafkaTopicConfig**](ConfigsV3Api.md#GetKafkaTopicConfig) | **Get** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Get Topic Config
-[**ListKafkaAllTopicConfigs**](ConfigsV3Api.md#ListKafkaAllTopicConfigs) | **Get** /clusters/{cluster_id}/topics/-/configs | Get All Topic Configs
-[**ListKafkaClusterConfigs**](ConfigsV3Api.md#ListKafkaClusterConfigs) | **Get** /clusters/{cluster_id}/broker-configs | List Cluster Configs
-[**ListKafkaDefaultTopicConfigs**](ConfigsV3Api.md#ListKafkaDefaultTopicConfigs) | **Get** /clusters/{cluster_id}/topics/{topic_name}/default-configs | List Default Topic Configs
+[**ListKafkaAllTopicConfigs**](ConfigsV3Api.md#ListKafkaAllTopicConfigs) | **Get** /clusters/{cluster_id}/topics/-/configs | List All Topic Configs
+[**ListKafkaClusterConfigs**](ConfigsV3Api.md#ListKafkaClusterConfigs) | **Get** /clusters/{cluster_id}/broker-configs | List Dynamic Broker Configs
 [**ListKafkaTopicConfigs**](ConfigsV3Api.md#ListKafkaTopicConfigs) | **Get** /clusters/{cluster_id}/topics/{topic_name}/configs | List Topic Configs
-[**UpdateKafkaClusterConfig**](ConfigsV3Api.md#UpdateKafkaClusterConfig) | **Put** /clusters/{cluster_id}/broker-configs/{name} | Update Cluster Config
-[**UpdateKafkaClusterConfigs**](ConfigsV3Api.md#UpdateKafkaClusterConfigs) | **Post** /clusters/{cluster_id}/broker-configs:alter | Batch Alter Cluster Configs
+[**UpdateKafkaClusterConfig**](ConfigsV3Api.md#UpdateKafkaClusterConfig) | **Put** /clusters/{cluster_id}/broker-configs/{name} | Update Dynamic Broker Config
+[**UpdateKafkaClusterConfigs**](ConfigsV3Api.md#UpdateKafkaClusterConfigs) | **Post** /clusters/{cluster_id}/broker-configs:alter | Batch Alter Dynamic Broker Configs
 [**UpdateKafkaTopicConfig**](ConfigsV3Api.md#UpdateKafkaTopicConfig) | **Put** /clusters/{cluster_id}/topics/{topic_name}/configs/{name} | Update Topic Config
 [**UpdateKafkaTopicConfigBatch**](ConfigsV3Api.md#UpdateKafkaTopicConfigBatch) | **Post** /clusters/{cluster_id}/topics/{topic_name}/configs:alter | Batch Alter Topic Configs
 
@@ -40,7 +39,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 
 ### Return type
 
@@ -53,7 +52,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -66,7 +65,7 @@ No authorization required
 
 Reset Broker Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Resets the configuration parameter specified by ``name`` to its default value.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Reset the configuration parameter specified by ``name`` to its default value.
 
 ### Required Parameters
 
@@ -75,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 **name** | **string**| The configuration parameter name. | 
 
 ### Return type
@@ -89,7 +88,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -111,7 +110,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 **name** | **string**| The configuration parameter name. | 
 
 ### Return type
@@ -125,7 +124,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -138,7 +137,7 @@ No authorization required
 
 Update Broker Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates the configuration parameter specified by ``name``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update the configuration parameter specified by ``name``.
 
 ### Required Parameters
 
@@ -147,7 +146,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
 **name** | **string**| The configuration parameter name. | 
  **optional** | ***ClustersClusterIdBrokersBrokerIdConfigsNamePutOpts** | optional parameters | nil if no parameters
 
@@ -174,7 +173,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -187,7 +186,7 @@ No authorization required
 
 Batch Alter Broker Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates or deletes a set of broker configuration parameters.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update or delete a set of broker configuration parameters.
 
 ### Required Parameters
 
@@ -196,7 +195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
-**brokerId** | **int32**| The Kafka broker ID. | 
+**brokerId** | **int32**| The broker ID. | 
  **optional** | ***ClustersClusterIdBrokersBrokerIdConfigsalterPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -221,7 +220,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -232,9 +231,9 @@ No authorization required
 
 > BrokerConfigDataList ClustersClusterIdBrokersConfigsGet(ctx, clusterId)
 
-List All Broker Configs
+List Dynamic Broker Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of configuration parameters for all the brokers in the given Kafka cluster.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of dynamic configuration parameters for all the brokers in the given Kafka cluster.
 
 ### Required Parameters
 
@@ -255,7 +254,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -266,9 +265,9 @@ No authorization required
 
 > DeleteKafkaClusterConfig(ctx, clusterId, name)
 
-Reset Cluster Config
+Reset Dynamic Broker Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Resets the configuration parameter specified by ``name`` to its default value.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Reset the configuration parameter specified by ``name`` to its default value by deleting a dynamic cluster-wide configuration.
 
 ### Required Parameters
 
@@ -290,7 +289,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -303,7 +302,7 @@ No authorization required
 
 Reset Topic Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Resets the config with given `name` to its default value.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Reset the configuration parameter with given `name` to its default value.
 
 ### Required Parameters
 
@@ -326,7 +325,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -337,9 +336,9 @@ No authorization required
 
 > ClusterConfigData GetKafkaClusterConfig(ctx, clusterId, name)
 
-Get Cluster Config
+Get Dynamic Broker Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns the configuration parameter specified by ``name``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the dynamic cluster-wide broker configuration parameter specified by ``name``.
 
 ### Required Parameters
 
@@ -361,7 +360,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -374,7 +373,7 @@ No authorization required
 
 Get Topic Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the config with the given `name`.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the configuration parameter with the given `name`.
 
 ### Required Parameters
 
@@ -397,7 +396,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -408,9 +407,9 @@ No authorization required
 
 > TopicConfigDataList ListKafkaAllTopicConfigs(ctx, clusterId)
 
-Get All Topic Configs
+List All Topic Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns all topic configurations for topics hosted by the specified cluster.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of configuration parameters for all topics hosted by the specified cluster.
 
 ### Required Parameters
 
@@ -431,7 +430,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -442,9 +441,9 @@ No authorization required
 
 > ClusterConfigDataList ListKafkaClusterConfigs(ctx, clusterId)
 
-List Cluster Configs
+List Dynamic Broker Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Returns a list of configuration parameters for the specified Kafka cluster.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return a list of dynamic cluster-wide broker configuration parameters for the specified Kafka cluster. Returns an empty list if there are no dynamic cluster-wide broker configuration parameters.
 
 ### Required Parameters
 
@@ -465,42 +464,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListKafkaDefaultTopicConfigs
-
-> TopicConfigDataList ListKafkaDefaultTopicConfigs(ctx, clusterId, topicName)
-
-List Default Topic Configs
-
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
-
-### Required Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clusterId** | **string**| The Kafka cluster ID. | 
-**topicName** | **string**| The topic name. | 
-
-### Return type
-
-[**TopicConfigDataList**](TopicConfigDataList.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -513,7 +477,7 @@ No authorization required
 
 List Topic Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of configs that belong to the specified topic.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return the list of configuration parameters that belong to the specified topic.
 
 ### Required Parameters
 
@@ -535,7 +499,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -546,9 +510,9 @@ No authorization required
 
 > UpdateKafkaClusterConfig(ctx, clusterId, name, optional)
 
-Update Cluster Config
+Update Dynamic Broker Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates the configuration parameter specified by ``name``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update the dynamic cluster-wide broker configuration parameter specified by ``name``.
 
 ### Required Parameters
 
@@ -582,7 +546,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -593,9 +557,9 @@ No authorization required
 
 > UpdateKafkaClusterConfigs(ctx, clusterId, optional)
 
-Batch Alter Cluster Configs
+Batch Alter Dynamic Broker Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates or deletes a set of Kafka cluster configuration parameters.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update or delete a set of dynamic cluster-wide broker configuration parameters.
 
 ### Required Parameters
 
@@ -627,7 +591,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -640,7 +604,7 @@ No authorization required
 
 Update Topic Config
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates the config with given `name`.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update the configuration parameter with given `name`.
 
 ### Required Parameters
 
@@ -676,7 +640,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -689,7 +653,7 @@ No authorization required
 
 Batch Alter Topic Configs
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Updates or deletes a set of topic configs.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Update or delete a set of topic configuration parameters. Also supports a dry-run mode that only validates whether the operation would succeed if the ``validate_only`` request property is explicitly specified and set to true.
 
 ### Required Parameters
 
@@ -723,7 +687,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

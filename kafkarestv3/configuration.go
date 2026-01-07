@@ -130,6 +130,10 @@ func NewConfiguration() *Configuration {
 					},
 				},
 			},
+			{
+				Url:         "https://pkc-00000.region.provider.confluent.cloud/kafka/v3",
+				Description: "Confluent Cloud REST Endpoint. For example https://pkc-00000.region.provider.confluent.cloud",
+			},
 		},
 	}
 	return cfg

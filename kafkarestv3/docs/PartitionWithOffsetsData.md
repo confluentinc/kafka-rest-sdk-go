@@ -1,4 +1,4 @@
-# TopicData
+# PartitionWithOffsetsData
 
 ## Properties
 
@@ -8,13 +8,9 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **TopicName** | **string** |  | 
-**IsInternal** | **bool** |  | 
-**ReplicationFactor** | **int32** |  | 
-**PartitionsCount** | **int32** |  | 
-**Partitions** | [**Relationship**](Relationship.md) |  | 
-**Configs** | [**Relationship**](Relationship.md) |  | 
-**PartitionReassignments** | [**Relationship**](Relationship.md) |  | 
-**AuthorizedOperations** | **[]string** |  | [optional] 
+**PartitionId** | **int32** |  | 
+**EarliestOffset** | **int64** |  | 
+**LatestOffset** | **int64** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

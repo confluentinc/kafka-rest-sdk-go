@@ -10,8 +10,12 @@
 
 package kafkarestv3
 
-// AlterConfigBatchRequestData struct for AlterConfigBatchRequestData
-type AlterConfigBatchRequestData struct {
-	Data         []AlterConfigBatchRequestDataData `json:"data"`
-	ValidateOnly bool                              `json:"validate_only,omitempty"`
+// ProduceBatchResponseFailureEntry struct for ProduceBatchResponseFailureEntry
+type ProduceBatchResponseFailureEntry struct {
+	// Batch entry ID.
+	Id string `json:"id"`
+	// Error code.
+	ErrorCode int32 `json:"error_code"`
+	// Error message.
+	Message string `json:"message,omitempty"`
 }

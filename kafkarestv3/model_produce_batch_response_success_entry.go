@@ -14,10 +14,10 @@ import (
 	"time"
 )
 
-// ProduceResponse struct for ProduceResponse
-type ProduceResponse struct {
-	ErrorCode   int32                `json:"error_code"`
-	Message     string               `json:"message,omitempty"`
+// ProduceBatchResponseSuccessEntry struct for ProduceBatchResponseSuccessEntry
+type ProduceBatchResponseSuccessEntry struct {
+	// Batch entry ID.
+	Id          string               `json:"id"`
 	ClusterId   string               `json:"cluster_id,omitempty"`
 	TopicName   string               `json:"topic_name,omitempty"`
 	PartitionId int32                `json:"partition_id,omitempty"`

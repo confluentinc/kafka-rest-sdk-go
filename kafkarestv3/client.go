@@ -51,19 +51,7 @@ type APIClient struct {
 
 	ACLV3Api ACLV3Api
 
-	BalancerStatusV3Api BalancerStatusV3Api
-
-	BrokerApi BrokerApi
-
-	BrokerReplicaExclusionApi BrokerReplicaExclusionApi
-
-	BrokerTaskApi BrokerTaskApi
-
 	BrokerV3Api BrokerV3Api
-
-	CellV3Api CellV3Api
-
-	ClusterLinkingV3Api ClusterLinkingV3Api
 
 	ClusterV3Api ClusterV3Api
 
@@ -71,23 +59,13 @@ type APIClient struct {
 
 	ConsumerGroupV3Api ConsumerGroupV3Api
 
-	PartitionApi PartitionApi
-
 	PartitionV3Api PartitionV3Api
 
 	RecordsV3Api RecordsV3Api
 
-	RemoveBrokerTaskApi RemoveBrokerTaskApi
-
-	ReplicaApi ReplicaApi
-
-	ReplicaStatusApi ReplicaStatusApi
-
 	ReplicaV3Api ReplicaV3Api
 
 	TopicV3Api TopicV3Api
-
-	UnregisterV3Api UnregisterV3Api
 }
 
 type service struct {
@@ -107,25 +85,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ACLV3Api = (*ACLV3ApiService)(&c.common)
-	c.BalancerStatusV3Api = (*BalancerStatusV3ApiService)(&c.common)
-	c.BrokerApi = (*BrokerApiService)(&c.common)
-	c.BrokerReplicaExclusionApi = (*BrokerReplicaExclusionApiService)(&c.common)
-	c.BrokerTaskApi = (*BrokerTaskApiService)(&c.common)
 	c.BrokerV3Api = (*BrokerV3ApiService)(&c.common)
-	c.CellV3Api = (*CellV3ApiService)(&c.common)
-	c.ClusterLinkingV3Api = (*ClusterLinkingV3ApiService)(&c.common)
 	c.ClusterV3Api = (*ClusterV3ApiService)(&c.common)
 	c.ConfigsV3Api = (*ConfigsV3ApiService)(&c.common)
 	c.ConsumerGroupV3Api = (*ConsumerGroupV3ApiService)(&c.common)
-	c.PartitionApi = (*PartitionApiService)(&c.common)
 	c.PartitionV3Api = (*PartitionV3ApiService)(&c.common)
 	c.RecordsV3Api = (*RecordsV3ApiService)(&c.common)
-	c.RemoveBrokerTaskApi = (*RemoveBrokerTaskApiService)(&c.common)
-	c.ReplicaApi = (*ReplicaApiService)(&c.common)
-	c.ReplicaStatusApi = (*ReplicaStatusApiService)(&c.common)
 	c.ReplicaV3Api = (*ReplicaV3ApiService)(&c.common)
 	c.TopicV3Api = (*TopicV3ApiService)(&c.common)
-	c.UnregisterV3Api = (*UnregisterV3ApiService)(&c.common)
 
 	return c
 }

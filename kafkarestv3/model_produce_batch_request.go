@@ -10,8 +10,7 @@
 
 package kafkarestv3
 
-// AlterConfigBatchRequestData struct for AlterConfigBatchRequestData
-type AlterConfigBatchRequestData struct {
-	Data         []AlterConfigBatchRequestDataData `json:"data"`
-	ValidateOnly bool                              `json:"validate_only,omitempty"`
+// ProduceBatchRequest Request for producing a batch of records.
+type ProduceBatchRequest struct {
+	Entries []ProduceBatchRequestEntry `json:"entries"`
 }

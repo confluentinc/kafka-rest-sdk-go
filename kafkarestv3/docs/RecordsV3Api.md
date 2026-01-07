@@ -4,17 +4,18 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdTopicsTopicNameRecordsPost**](RecordsV3Api.md#ClustersClusterIdTopicsTopicNameRecordsPost) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce records to the given topic.
+[**ProduceRecord**](RecordsV3Api.md#ProduceRecord) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records | Produce Records
+[**ProduceRecordsBatch**](RecordsV3Api.md#ProduceRecordsBatch) | **Post** /clusters/{cluster_id}/topics/{topic_name}/records:batch | Produce Records Batch
 
 
 
-## ClustersClusterIdTopicsTopicNameRecordsPost
+## ProduceRecord
 
-> ProduceResponse ClustersClusterIdTopicsTopicNameRecordsPost(ctx, clusterId, topicName, optional)
+> ProduceResponse ProduceRecord(ctx, clusterId, topicName, optional)
 
-Produce records to the given topic.
+Produce Records
 
-[![Early Access](https://img.shields.io/badge/Lifecycle%20Stage-Early%20Access-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each record produced. This API can be used in streaming mode by setting \"Transfer-Encoding: chunked\" header. For as long as the connection is kept open, the server will keep accepting records. For each record sent to the server, the server will asynchronously send back a delivery report, in the same order. Records are streamed to and from the server as Concatenated JSON. Errors are reported per record. The HTTP status code will be HTTP 200 OK as long as the connection is successfully established.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce records to the given topic, returning delivery reports for each             record produced. This API can be used in streaming mode by setting \"Transfer-Encoding:             chunked\" header. For as long as the connection is kept open, the server will             keep accepting records. Records are streamed to and from the server as Concatenated              JSON. For each record sent to the server, the server will             asynchronously send back a delivery report, in the same order, each with its own             error_code. An error_code of 200 indicates success. The HTTP status code will be HTTP              200 OK as long as the connection is successfully established. To identify records             that have encountered an error, check the error_code of each delivery report.  Note that the cluster_id is validated only when running in Confluent Cloud.
 
 ### Required Parameters
 
@@ -24,18 +25,18 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
 **topicName** | **string**| The topic name. | 
- **optional** | ***ClustersClusterIdTopicsTopicNameRecordsPostOpts** | optional parameters | nil if no parameters
+ **optional** | ***ProduceRecordOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdTopicsTopicNameRecordsPostOpts struct
+Optional parameters are passed through a pointer to a ProduceRecordOpts struct
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **produceRequest** | [**optional.Interface of ProduceRequest**](ProduceRequest.md)| A single record to be produced to Kafka. To produce multiple records on the same connection, simply concatenate all the records, e.g.: {\&quot;partition_id\&quot;:1}{\&quot;partition_id\&quot;:2}. Delivery reports will be concatenated on the same order as the records are sent. See examples for the options available. | 
+ **produceRequest** | [**optional.Interface of ProduceRequest**](ProduceRequest.md)| A single record to be produced to Kafka. To produce multiple records in the same request, simply concatenate the records. The delivery reports are concatenated in the same order as the records are sent. | 
 
 ### Return type
 
@@ -48,7 +49,54 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json, text/plain, text/html
+- **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProduceRecordsBatch
+
+> ProduceBatchResponse ProduceRecordsBatch(ctx, clusterId, topicName, optional)
+
+Produce Records Batch
+
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Produce a batch of records to the given topic, returning delivery reports for each record produced. To identify records that have encountered an error, check the error_code of each delivery report.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+**topicName** | **string**| The topic name. | 
+ **optional** | ***ProduceRecordsBatchOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ProduceRecordsBatchOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **produceBatchRequest** | [**optional.Interface of ProduceBatchRequest**](ProduceBatchRequest.md)| A batch of records to be produced to Kafka. The delivery reports are sent in the response in the same order as the records in the request. | 
+
+### Return type
+
+[**ProduceBatchResponse**](ProduceBatchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
