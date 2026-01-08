@@ -336,15 +336,15 @@ paths:
         Returns a list of cells that belong to the specified Kafka cluster.
       operationId: describeCells
       parameters:
-      - description: The Kafka cluster ID.
-        example: cluster-1
-        explode: false
-        in: path
-        name: cluster_id
-        required: true
-        schema:
-          type: string
-        style: simple
+        - description: The Kafka cluster ID.
+          example: cluster-1
+          explode: false
+          in: path
+          name: cluster_id
+          required: true
+          schema:
+            type: string
+          style: simple
       responses:
         "200":
           content:
@@ -356,37 +356,37 @@ paths:
                   resource_name: crn:///kafka=cluster-1
                 cluster_id: cluster-1
                 cells:
-                - kind: Cell
-                  metadata:
-                    self: cells
-                    resource_name: cell
-                  cell_id: 0
-                  state: 1
-                  brokers:
-                  - 0
-                  - 1
-                  - 2
-                  open-for-tenant-assignment: true
-                - kind: Cell
-                  metadata:
-                    self: cells
-                    resource_name: cell
-                  cell_id: 1
-                  state: 1
-                  brokers:
-                  - 3
-                  - 4
-                  - 5
-                  open-for-tenant-assignment: true
-                - kind: Cell
-                  metadata:
-                    self: cells
-                    resource_name: cell
-                  cell_id: 2
-                  state: 1
-                  brokers:
-                  - 6
-                  open-for-tenant-assignment: true
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 0
+                    state: 1
+                    brokers:
+                      - 0
+                      - 1
+                      - 2
+                    open-for-tenant-assignment: true
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 1
+                    state: 1
+                    brokers:
+                      - 3
+                      - 4
+                      - 5
+                    open-for-tenant-assignment: true
+                  - kind: Cell
+                    metadata:
+                      self: cells
+                      resource_name: cell
+                    cell_id: 2
+                    state: 1
+                    brokers:
+                      - 6
+                    open-for-tenant-assignment: true
                 cells_enabled: true
               schema:
                 $ref: '#/components/schemas/CellConfigData_allOf'
@@ -479,7 +479,7 @@ paths:
             response body.
       summary: Get Cluster Cell Configuration
       tags:
-      - Cell (v3)
+        - Cell (v3)
   /clusters/{cluster_id}/acls:
     delete:
       description: |-
@@ -16827,16 +16827,6 @@ components:
           nullable: true
           type: string
       type: object
-    UpdatePartitionCountRequestData:
-      example:
-        partitions_count: 0
-      properties:
-        partitions_count:
-          format: int32
-          type: integer
-      required:
-      - partitions_count
-      type: object
     ReplicaStatusData:
       allOf:
       - $ref: '#/components/schemas/Resource'
@@ -16974,6 +16964,16 @@ components:
           type: string
       required:
       - value
+      type: object
+    UpdatePartitionCountRequestData:
+      example:
+        partitions_count: 0
+      properties:
+        partitions_count:
+          format: int32
+          type: integer
+      required:
+      - partitions_count
       type: object
     ListLinksResponseData:
       allOf:
