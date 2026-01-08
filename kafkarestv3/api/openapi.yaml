@@ -336,15 +336,15 @@ paths:
         Returns a list of cells that belong to the specified Kafka cluster.
       operationId: describeCells
       parameters:
-        - description: The Kafka cluster ID.
-          example: cluster-1
-          explode: false
-          in: path
-          name: cluster_id
-          required: true
-          schema:
-            type: string
-          style: simple
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -356,37 +356,37 @@ paths:
                   resource_name: crn:///kafka=cluster-1
                 cluster_id: cluster-1
                 cells:
-                  - kind: Cell
-                    metadata:
-                      self: cells
-                      resource_name: cell
-                    cell_id: 0
-                    state: 1
-                    brokers:
-                      - 0
-                      - 1
-                      - 2
-                    open-for-tenant-assignment: true
-                  - kind: Cell
-                    metadata:
-                      self: cells
-                      resource_name: cell
-                    cell_id: 1
-                    state: 1
-                    brokers:
-                      - 3
-                      - 4
-                      - 5
-                    open-for-tenant-assignment: true
-                  - kind: Cell
-                    metadata:
-                      self: cells
-                      resource_name: cell
-                    cell_id: 2
-                    state: 1
-                    brokers:
-                      - 6
-                    open-for-tenant-assignment: true
+                - kind: Cell
+                  metadata:
+                    self: cells
+                    resource_name: cell
+                  cell_id: 0
+                  state: 1
+                  brokers:
+                  - 0
+                  - 1
+                  - 2
+                  open-for-tenant-assignment: true
+                - kind: Cell
+                  metadata:
+                    self: cells
+                    resource_name: cell
+                  cell_id: 1
+                  state: 1
+                  brokers:
+                  - 3
+                  - 4
+                  - 5
+                  open-for-tenant-assignment: true
+                - kind: Cell
+                  metadata:
+                    self: cells
+                    resource_name: cell
+                  cell_id: 2
+                  state: 1
+                  brokers:
+                  - 6
+                  open-for-tenant-assignment: true
                 cells_enabled: true
               schema:
                 $ref: '#/components/schemas/CellConfigData_allOf'
@@ -479,7 +479,7 @@ paths:
             response body.
       summary: Get Cluster Cell Configuration
       tags:
-        - Cell (v3)
+      - Cell (v3)
   /clusters/{cluster_id}/acls:
     delete:
       description: |-
@@ -5190,6 +5190,77 @@ paths:
             client side. Retriable Kafka errors will contain error code 50003 in the
             response body.
       summary: Get Topic
+      tags:
+      - Topic (v3)
+    patch:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Increase the number of partitions for a topic.
+      operationId: updatePartitionCountKafkaTopic
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The topic name.
+        example: topic-1
+        explode: false
+        in: path
+        name: topic_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePartitionCountRequestData'
+        description: The number of partitions to increase the partition count to.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicData'
+          description: The topic.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authorization error.
+        "429":
+          content:
+            text/html:
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem.
+      summary: Update Partition Count
       tags:
       - Topic (v3)
   /clusters/{cluster_id}/topics/{topic_name}/configs:
@@ -16755,6 +16826,16 @@ components:
         value:
           nullable: true
           type: string
+      type: object
+    UpdatePartitionCountRequestData:
+      example:
+        partitions_count: 0
+      properties:
+        partitions_count:
+          format: int32
+          type: integer
+      required:
+      - partitions_count
       type: object
     ReplicaStatusData:
       allOf:
