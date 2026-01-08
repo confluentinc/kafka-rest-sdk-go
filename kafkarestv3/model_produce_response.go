@@ -16,12 +16,10 @@ import (
 
 // ProduceResponse struct for ProduceResponse
 type ProduceResponse struct {
-	ErrorCode   int32                `json:"error_code"`
-	Message     string               `json:"message,omitempty"`
-	ClusterId   string               `json:"cluster_id,omitempty"`
-	TopicName   string               `json:"topic_name,omitempty"`
-	PartitionId int32                `json:"partition_id,omitempty"`
-	Offset      int64                `json:"offset,omitempty"`
+	ClusterId   string               `json:"cluster_id"`
+	TopicName   string               `json:"topic_name"`
+	PartitionId int32                `json:"partition_id"`
+	Offset      int32                `json:"offset"`
 	Timestamp   *time.Time           `json:"timestamp,omitempty"`
 	Key         *ProduceResponseData `json:"key,omitempty"`
 	Value       *ProduceResponseData `json:"value,omitempty"`

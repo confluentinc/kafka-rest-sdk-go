@@ -20,5 +20,4 @@ type TopicDataAllOf struct {
 	Partitions             Relationship `json:"partitions"`
 	Configs                Relationship `json:"configs"`
 	PartitionReassignments Relationship `json:"partition_reassignments"`
-	AuthorizedOperations   []string     `json:"authorized_operations,omitempty"`
 }

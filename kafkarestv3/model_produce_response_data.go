@@ -13,7 +13,7 @@ package kafkarestv3
 // ProduceResponseData struct for ProduceResponseData
 type ProduceResponseData struct {
 	Size          int64   `json:"size"`
-	Type          *string `json:"type"`
+	Type          *string `json:"type,omitempty"`
 	Subject       *string `json:"subject,omitempty"`
 	SchemaId      *int32  `json:"schema_id,omitempty"`
 	SchemaVersion *int32  `json:"schema_version,omitempty"`
