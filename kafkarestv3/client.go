@@ -85,6 +85,8 @@ type APIClient struct {
 
 	ReplicaV3Api ReplicaV3Api
 
+	ShareGroupV3Api ShareGroupV3Api
+
 	TopicV3Api TopicV3Api
 
 	UnregisterV3Api UnregisterV3Api
@@ -124,6 +126,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ReplicaApi = (*ReplicaApiService)(&c.common)
 	c.ReplicaStatusApi = (*ReplicaStatusApiService)(&c.common)
 	c.ReplicaV3Api = (*ReplicaV3ApiService)(&c.common)
+	c.ShareGroupV3Api = (*ShareGroupV3ApiService)(&c.common)
 	c.TopicV3Api = (*TopicV3ApiService)(&c.common)
 	c.UnregisterV3Api = (*UnregisterV3ApiService)(&c.common)
 
