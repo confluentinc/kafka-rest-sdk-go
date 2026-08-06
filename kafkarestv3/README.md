@@ -114,6 +114,9 @@ Class | Method | HTTP request | Description
 *ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status | List Partition Replica Statuses.
 *ReplicaStatusApi* | [**ClustersClusterIdTopicsTopicNamePartitionsReplicaStatusGet**](docs/ReplicaStatusApi.md#clustersclusteridtopicstopicnamepartitionsreplicastatusget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status | List All Partition Replica Statuses.
 *ReplicaV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/ReplicaV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
+*ReplicationFactorChangeV3Api* | [**ClustersClusterIdReplicationFactorChangesGet**](docs/ReplicationFactorChangeV3Api.md#clustersclusteridreplicationfactorchangesget) | **Get** /clusters/{cluster_id}/replication-factor-changes | List Replication Factor Changes
+*ReplicationFactorChangeV3Api* | [**ClustersClusterIdReplicationFactorChangescancelPost**](docs/ReplicationFactorChangeV3Api.md#clustersclusteridreplicationfactorchangescancelpost) | **Post** /clusters/{cluster_id}/replication-factor-changes:cancel | Cancel Replication Factor Change
+*ReplicationFactorChangeV3Api* | [**ClustersClusterIdReplicationFactorChangescreatePost**](docs/ReplicationFactorChangeV3Api.md#clustersclusteridreplicationfactorchangescreatepost) | **Post** /clusters/{cluster_id}/replication-factor-changes:create | Change Replication Factor
 *ShareGroupV3Api* | [**GetKafkaShareGroup**](docs/ShareGroupV3Api.md#getkafkasharegroup) | **Get** /clusters/{cluster_id}/share-groups/{group_id} | Get Share Group
 *ShareGroupV3Api* | [**GetKafkaShareGroupConsumer**](docs/ShareGroupV3Api.md#getkafkasharegroupconsumer) | **Get** /clusters/{cluster_id}/share-groups/{group_id}/consumers/{consumer_id} | Get Share Group Consumer
 *ShareGroupV3Api* | [**ListKafkaShareGroupConsumerAssignments**](docs/ShareGroupV3Api.md#listkafkasharegroupconsumerassignments) | **Get** /clusters/{cluster_id}/share-groups/{group_id}/consumers/{consumer_id}/assignments | List Share Group Consumer Assignments
@@ -173,10 +176,14 @@ Class | Method | HTTP request | Description
  - [BrokerTaskDataList](docs/BrokerTaskDataList.md)
  - [BrokerTaskDataListAllOf](docs/BrokerTaskDataListAllOf.md)
  - [BrokerTaskType](docs/BrokerTaskType.md)
+ - [CancelReplicationFactorChangeRequestData](docs/CancelReplicationFactorChangeRequestData.md)
+ - [CanceledPartitionData](docs/CanceledPartitionData.md)
  - [CellConfigData](docs/CellConfigData.md)
  - [CellConfigDataAllOf](docs/CellConfigDataAllOf.md)
  - [CellData](docs/CellData.md)
  - [CellDataAllOf](docs/CellDataAllOf.md)
+ - [ChangeReplicationFactorBatchRequestData](docs/ChangeReplicationFactorBatchRequestData.md)
+ - [ChangeReplicationFactorRequestData](docs/ChangeReplicationFactorRequestData.md)
  - [ClusterConfigData](docs/ClusterConfigData.md)
  - [ClusterConfigDataAllOf](docs/ClusterConfigDataAllOf.md)
  - [ClusterConfigDataList](docs/ClusterConfigDataList.md)
@@ -254,6 +261,14 @@ Class | Method | HTTP request | Description
  - [ReplicaStatusDataAllOf](docs/ReplicaStatusDataAllOf.md)
  - [ReplicaStatusDataList](docs/ReplicaStatusDataList.md)
  - [ReplicaStatusDataListAllOf](docs/ReplicaStatusDataListAllOf.md)
+ - [ReplicationFactorChangeCancelData](docs/ReplicationFactorChangeCancelData.md)
+ - [ReplicationFactorChangeCancelDataAllOf](docs/ReplicationFactorChangeCancelDataAllOf.md)
+ - [ReplicationFactorChangeCancelDataList](docs/ReplicationFactorChangeCancelDataList.md)
+ - [ReplicationFactorChangeCancelDataListAllOf](docs/ReplicationFactorChangeCancelDataListAllOf.md)
+ - [ReplicationFactorChangeData](docs/ReplicationFactorChangeData.md)
+ - [ReplicationFactorChangeDataAllOf](docs/ReplicationFactorChangeDataAllOf.md)
+ - [ReplicationFactorChangeDataList](docs/ReplicationFactorChangeDataList.md)
+ - [ReplicationFactorChangeDataListAllOf](docs/ReplicationFactorChangeDataListAllOf.md)
  - [Resource](docs/Resource.md)
  - [ResourceCollection](docs/ResourceCollection.md)
  - [ResourceCollectionMetadata](docs/ResourceCollectionMetadata.md)
