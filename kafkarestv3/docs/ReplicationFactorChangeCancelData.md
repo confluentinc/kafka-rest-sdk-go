@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **TopicName** | **string** |  | 
-**PriorStatus** | Pointer to **string** |  | 
+**PriorStatus** | **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | 
 **ErrorMessage** | Pointer to **string** |  | 
 **CanceledPartitions** | [**[]CanceledPartitionData**](CanceledPartitionData.md) |  | 

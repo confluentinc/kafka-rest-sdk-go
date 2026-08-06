@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
 **TopicName** | **string** |  | 
-**PriorStatus** | Pointer to **string** |  | 
+**PriorStatus** | **string** |  | 
 **ErrorCode** | Pointer to **int32** |  | 
 **ErrorMessage** | Pointer to **string** |  | 
 **CanceledPartitions** | [**[]CanceledPartitionData**](CanceledPartitionData.md) |  | 
