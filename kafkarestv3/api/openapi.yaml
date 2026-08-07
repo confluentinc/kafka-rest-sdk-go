@@ -9732,7 +9732,7 @@ paths:
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
                   cluster_id: cluster-1
                   topic_name: topic-1
-                  replication_factor: 6
+                  desired_replication_factor: 6
                   status: IN_PROGRESS
                   created_at: 2026-08-07T07:20:50Z
                   updated_at: 2026-08-07T07:22:10Z
@@ -9746,7 +9746,7 @@ paths:
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
                   cluster_id: cluster-1
                   topic_name: topic-2
-                  replication_factor: 2
+                  desired_replication_factor: 2
                   status: FAILED
                   created_at: 2026-08-07T07:19:05Z
                   updated_at: 2026-08-07T07:19:40Z
@@ -9851,7 +9851,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/ChangeReplicationFactorRequest'
       responses:
-        "204":
+        "202":
           description: No Content
         "400":
           content:
@@ -9966,8 +9966,8 @@ paths:
                   error_code: null
                   error_message: null
                   canceled_partitions:
-                  - partition_id: 0
-                  - partition_id: 1
+                  - 0
+                  - 1
                   topic:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
                 - kind: KafkaReplicationFactorChangeCancel
@@ -15255,9 +15255,9 @@ components:
           example:
             data:
             - topic_name: topic-1
-              replication_factor: 6
+              desired_replication_factor: 6
             - topic_name: topic-2
-              replication_factor: 2
+              desired_replication_factor: 2
             timeout_ms: 60000
           schema:
             $ref: '#/components/schemas/ChangeReplicationFactorBatchRequestData'
@@ -17344,7 +17344,7 @@ components:
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
               cluster_id: cluster-1
               topic_name: topic-1
-              replication_factor: 6
+              desired_replication_factor: 6
               status: IN_PROGRESS
               created_at: 2026-08-07T07:20:50Z
               updated_at: 2026-08-07T07:22:10Z
@@ -17358,7 +17358,7 @@ components:
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
               cluster_id: cluster-1
               topic_name: topic-2
-              replication_factor: 2
+              desired_replication_factor: 2
               status: FAILED
               created_at: 2026-08-07T07:19:05Z
               updated_at: 2026-08-07T07:19:40Z
@@ -17388,8 +17388,8 @@ components:
               error_code: null
               error_message: null
               canceled_partitions:
-              - partition_id: 0
-              - partition_id: 1
+              - 0
+              - 1
               topic:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
             - kind: KafkaReplicationFactorChangeCancel
@@ -18525,23 +18525,23 @@ components:
     ChangeReplicationFactorRequestData:
       example:
         topic_name: topic_name
-        replication_factor: 0
+        desired_replication_factor: 4
       properties:
         topic_name:
           type: string
-        replication_factor:
+        desired_replication_factor:
           type: integer
       required:
-      - replication_factor
+      - desired_replication_factor
       - topic_name
       type: object
     ChangeReplicationFactorBatchRequestData:
       example:
         data:
         - topic_name: topic_name
-          replication_factor: 0
+          desired_replication_factor: 4
         - topic_name: topic_name
-          replication_factor: 0
+          desired_replication_factor: 4
         timeout_ms: 0
       properties:
         data:
@@ -18581,15 +18581,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/ReplicationFactorChangeDataList_allOf'
-    CanceledPartitionData:
-      example:
-        partition_id: 0
-      properties:
-        partition_id:
-          type: integer
-      required:
-      - partition_id
-      type: object
     ReplicationFactorChangeCancelData:
       allOf:
       - $ref: '#/components/schemas/Resource'
@@ -19871,7 +19862,7 @@ components:
           type: string
         topic_name:
           type: string
-        replication_factor:
+        desired_replication_factor:
           description: The desired replication factor for the topic.
           type: integer
         status:
@@ -19907,7 +19898,7 @@ components:
       required:
       - cluster_id
       - created_at
-      - replication_factor
+      - desired_replication_factor
       - status
       - topic
       - topic_name
@@ -19945,7 +19936,7 @@ components:
           type: string
         canceled_partitions:
           items:
-            $ref: '#/components/schemas/CanceledPartitionData'
+            type: integer
           type: array
         topic:
           $ref: '#/components/schemas/Relationship'
