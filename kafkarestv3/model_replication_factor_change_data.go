@@ -21,8 +21,8 @@ type ReplicationFactorChangeData struct {
 	ClusterId string           `json:"cluster_id"`
 	TopicName string           `json:"topic_name"`
 	// The desired replication factor for the topic.
-	ReplicationFactor int32  `json:"replication_factor"`
-	Status            string `json:"status"`
+	DesiredReplicationFactor int32                         `json:"desired_replication_factor"`
+	Status                   ReplicationFactorChangeStatus `json:"status"`
 	// The date and time at which this Replication Factor Change was created.
 	CreatedAt time.Time `json:"created_at"`
 	// The date and time at which this Replication Factor Change was last updated.

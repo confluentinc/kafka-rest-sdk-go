@@ -19856,6 +19856,14 @@ components:
           type: array
       required:
       - data
+    ReplicationFactorChangeStatus:
+      type: string
+      x-extensible-enum:
+      - PENDING
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+      - UNKNOWN
     ReplicationFactorChangeData_allOf:
       properties:
         cluster_id:
@@ -19866,13 +19874,7 @@ components:
           description: The desired replication factor for the topic.
           type: integer
         status:
-          type: string
-          x-extensible-enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-          - UNKNOWN
+          $ref: '#/components/schemas/ReplicationFactorChangeStatus'
         created_at:
           description: The date and time at which this Replication Factor Change
             was created.
@@ -19921,13 +19923,8 @@ components:
           description: Status just before cancellation (``PENDING`` or ``IN_PROGRESS``);
             null if no tracked change existed for the topic.
           nullable: true
-          type: string
-          x-extensible-enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-          - FAILED
-          - UNKNOWN
+          allOf:
+          - $ref: '#/components/schemas/ReplicationFactorChangeStatus'
         error_code:
           nullable: true
           type: integer

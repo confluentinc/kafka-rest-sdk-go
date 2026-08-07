@@ -12,11 +12,11 @@ package kafkarestv3
 
 // ReplicationFactorChangeCancelDataAllOf struct for ReplicationFactorChangeCancelDataAllOf
 type ReplicationFactorChangeCancelDataAllOf struct {
-	ClusterId          string                  `json:"cluster_id"`
-	TopicName          string                  `json:"topic_name"`
-	PriorStatus        *string                 `json:"prior_status"`
-	ErrorCode          *int32                  `json:"error_code"`
-	ErrorMessage       *string                 `json:"error_message"`
-	CanceledPartitions []CanceledPartitionData `json:"canceled_partitions"`
-	Topic              Relationship            `json:"topic"`
+	ClusterId          string                         `json:"cluster_id"`
+	TopicName          string                         `json:"topic_name"`
+	PriorStatus        *ReplicationFactorChangeStatus `json:"prior_status"`
+	ErrorCode          *int32                         `json:"error_code"`
+	ErrorMessage       *string                        `json:"error_message"`
+	CanceledPartitions []int32                        `json:"canceled_partitions"`
+	Topic              Relationship                   `json:"topic"`
 }

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Metadata** | [**ResourceMetadata**](ResourceMetadata.md) |  | 
 **ClusterId** | **string** |  | 
 **TopicName** | **string** |  | 
-**ReplicationFactor** | **int32** | The desired replication factor for the topic. | 
-**Status** | **string** |  | 
+**DesiredReplicationFactor** | **int32** | The desired replication factor for the topic. | 
+**Status** | [**ReplicationFactorChangeStatus**](ReplicationFactorChangeStatus.md) |  | 
 **CreatedAt** | [**time.Time**](time.Time.md) | The date and time at which this Replication Factor Change was created. | [readonly] 
 **UpdatedAt** | [**time.Time**](time.Time.md) | The date and time at which this Replication Factor Change was last updated. | [readonly] 
 **ErrorCode** | Pointer to **int32** |  | [optional] 
