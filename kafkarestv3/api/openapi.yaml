@@ -9728,7 +9728,7 @@ paths:
                 data:
                 - kind: KafkaReplicationFactorChange
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
                   cluster_id: cluster-1
                   topic_name: topic-1
@@ -9742,7 +9742,7 @@ paths:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
                 - kind: KafkaReplicationFactorChange
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
                   cluster_id: cluster-1
                   topic_name: topic-2
@@ -9958,21 +9958,19 @@ paths:
                 data:
                 - kind: KafkaReplicationFactorChangeCancel
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
                   cluster_id: cluster-1
                   topic_name: topic-1
                   prior_status: IN_PROGRESS
                   error_code: null
                   error_message: null
-                  canceled_partitions:
-                  - 0
-                  - 1
+                  canceled_partitions: [0, 1]
                   topic:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
                 - kind: KafkaReplicationFactorChangeCancel
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                     resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
                   cluster_id: cluster-1
                   topic_name: topic-2
@@ -15261,7 +15259,7 @@ components:
             timeout_ms: 60000
           schema:
             $ref: '#/components/schemas/ChangeReplicationFactorBatchRequestData'
-      description: Replication Factor changes to submit, keyed by topic.
+      description: Replication Factor changes to submit, one entry per topic
     CancelReplicationFactorChangeRequest:
       content:
         application/json:
@@ -17340,7 +17338,7 @@ components:
             data:
             - kind: KafkaReplicationFactorChange
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
               cluster_id: cluster-1
               topic_name: topic-1
@@ -17354,7 +17352,7 @@ components:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
             - kind: KafkaReplicationFactorChange
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
               cluster_id: cluster-1
               topic_name: topic-2
@@ -17380,21 +17378,19 @@ components:
             data:
             - kind: KafkaReplicationFactorChangeCancel
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
               cluster_id: cluster-1
               topic_name: topic-1
               prior_status: IN_PROGRESS
               error_code: null
               error_message: null
-              canceled_partitions:
-              - 0
-              - 1
+              canceled_partitions: [0, 1]
               topic:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
             - kind: KafkaReplicationFactorChangeCancel
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
                 resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
               cluster_id: cluster-1
               topic_name: topic-2
@@ -18530,6 +18526,7 @@ components:
         topic_name:
           type: string
         desired_replication_factor:
+          minimum: 1
           type: integer
       required:
       - desired_replication_factor
@@ -18547,6 +18544,7 @@ components:
         data:
           items:
             $ref: '#/components/schemas/ChangeReplicationFactorRequestData'
+          minItems: 1
           type: array
         timeout_ms:
           description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
@@ -18565,6 +18563,7 @@ components:
         topic_names:
           items:
             type: string
+          minItems: 1
           type: array
         timeout_ms:
           description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
@@ -19863,6 +19862,8 @@ components:
       - IN_PROGRESS
       - COMPLETED
       - FAILED
+      - CANCELED
+      - INVALID
       - UNKNOWN
     ReplicationFactorChangeData_allOf:
       properties:
@@ -19872,6 +19873,7 @@ components:
           type: string
         desired_replication_factor:
           description: The desired replication factor for the topic.
+          minimum: 1
           type: integer
         status:
           $ref: '#/components/schemas/ReplicationFactorChangeStatus'

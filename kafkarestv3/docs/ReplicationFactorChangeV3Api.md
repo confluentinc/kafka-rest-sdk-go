@@ -114,7 +114,7 @@ Optional parameters are passed through a pointer to a ClustersClusterIdReplicati
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **changeReplicationFactorBatchRequestData** | [**optional.Interface of ChangeReplicationFactorBatchRequestData**](ChangeReplicationFactorBatchRequestData.md)| Replication Factor changes to submit, keyed by topic. | 
+ **changeReplicationFactorBatchRequestData** | [**optional.Interface of ChangeReplicationFactorBatchRequestData**](ChangeReplicationFactorBatchRequestData.md)| Replication Factor changes to submit, one entry per topic. | 
 
 ### Return type
 

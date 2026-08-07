@@ -58,7 +58,7 @@ type ReplicationFactorChangeV3Api interface {
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param clusterId The Kafka cluster ID.
 	 * @param optional nil or *ClustersClusterIdReplicationFactorChangescreatePostOpts - Optional Parameters:
-	 * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, keyed by topic.
+	 * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, one entry per topic.
 	 */
 	ClustersClusterIdReplicationFactorChangescreatePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescreatePostOpts) (*_nethttp.Response, error)
 }
@@ -333,7 +333,7 @@ type ClustersClusterIdReplicationFactorChangescreatePostOpts struct {
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
  * @param optional nil or *ClustersClusterIdReplicationFactorChangescreatePostOpts - Optional Parameters:
- * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, keyed by topic.
+ * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, one entry per topic.
  */
 func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactorChangescreatePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescreatePostOpts) (*_nethttp.Response, error) {
 	var (
