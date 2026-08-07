@@ -9852,7 +9852,7 @@ paths:
         $ref: '#/components/requestBodies/ChangeReplicationFactorRequest'
       responses:
         "202":
-          description: No Content
+          description: Accepted
         "400":
           content:
             application/json:
