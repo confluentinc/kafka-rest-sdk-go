@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridget) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersGet**](docs/BrokerV3Api.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
+*BrokerV3Api* | [**ClustersClusterIdBrokersaddPost**](docs/BrokerV3Api.md#clustersclusteridbrokersaddpost) | **Post** /clusters/{cluster_id}/brokers:add | Register brokers for SBC broker addition
 *CellV3Api* | [**DescribeCells**](docs/CellV3Api.md#describecells) | **Get** /clusters/{cluster_id}/cells | Get Cluster Cell Configuration
 *ClusterLinkingV3Api* | [**CreateKafkaLink**](docs/ClusterLinkingV3Api.md#createkafkalink) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterLinkingV3Api* | [**CreateKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#createkafkamirrortopic) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
@@ -138,6 +139,7 @@ Class | Method | HTTP request | Description
  - [AclDataAllOf](docs/AclDataAllOf.md)
  - [AclDataList](docs/AclDataList.md)
  - [AclResourceType](docs/AclResourceType.md)
+ - [AddBrokersRequestData](docs/AddBrokersRequestData.md)
  - [AlterBrokerReplicaExclusionData](docs/AlterBrokerReplicaExclusionData.md)
  - [AlterBrokerReplicaExclusionDataAllOf](docs/AlterBrokerReplicaExclusionDataAllOf.md)
  - [AlterBrokerReplicaExclusionDataList](docs/AlterBrokerReplicaExclusionDataList.md)

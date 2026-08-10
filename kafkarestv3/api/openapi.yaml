@@ -8089,6 +8089,113 @@ paths:
       summary: Delete several brokers
       tags:
       - Broker
+  /clusters/{cluster_id}/brokers:add:
+    post:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Register the given brokers with SBC's broker-addition workflow, triggering rebalancing onto them that can be tracked to completion.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AddBrokersRequest'
+      responses:
+        "202":
+          description: Request accepted for processing, no content in the response
+        "400":
+          content:
+            application/json:
+              examples:
+                IllegalBrokerRemoval:
+                  value:
+                    error_code: 400
+                    message: 'Cannot remove broker 1 as there are partitions with
+                      replication factor equal to 1 on the broker. One such partition:
+                      test_topic_partition_0.'
+                InvalidBrokerAddition:
+                  value:
+                    error_code: 400
+                    message: The requested broker addition operation is invalid, for
+                      example because the broker ID list is empty or contains duplicates.
+                      See the server logs for more details.
+                BalancerOffline:
+                  value:
+                    error_code: 400
+                    message: The Confluent Balancer component is disabled or not started
+                      yet.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad broker or balancer request
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "404":
+          content:
+            application/json:
+              example:
+                error_code: 404
+                message: 'Broker not found. Broker: 1 not found in the cluster: cluster-1'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Broker not found.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Register brokers for SBC broker addition
+      tags:
+      - Broker (v3)
   /clusters/{cluster_id}/brokers/-/tasks:
     get:
       description: |-
@@ -15120,6 +15227,16 @@ components:
           schema:
             $ref: '#/components/schemas/RemoveBrokersRequestData'
       description: Broker ids to remove
+    AddBrokersRequest:
+      content:
+        application/json:
+          example:
+            broker_ids:
+            - 6
+            - 7
+          schema:
+            $ref: '#/components/schemas/AddBrokersRequestData'
+      description: Broker ids to register with the SBC broker-addition workflow
     BrokerReplicaExclusionBatchRequest:
       content:
         application/json:
@@ -18632,6 +18749,23 @@ components:
           items:
             type: integer
           type: array
+      required:
+      - broker_ids
+      type: object
+    AddBrokersRequestData:
+      example:
+        broker_ids:
+        - 0
+        - 0
+      properties:
+        broker_ids:
+          description: Broker IDs to register with the SBC broker-addition workflow.
+          items:
+            format: int32
+            type: integer
+          minItems: 1
+          type: array
+          uniqueItems: true
       required:
       - broker_ids
       type: object
