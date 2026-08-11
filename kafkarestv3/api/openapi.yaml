@@ -9593,6 +9593,368 @@ paths:
       summary: Get Remove Broker Task
       tags:
       - RemoveBrokerTask
+  /clusters/{cluster_id}/replication-factor-changes:
+    get:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Return all tracked Replication Factor Changes in the cluster specified with ``cluster_id``.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaReplicationFactorChangeList
+                metadata:
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+                  next: null
+                data:
+                - kind: KafkaReplicationFactorChange
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                  cluster_id: cluster-1
+                  topic_name: topic-1
+                  replication_factor: 6
+                  status: IN_PROGRESS
+                  created_at: 2026-08-07T07:20:50Z
+                  updated_at: 2026-08-07T07:22:10Z
+                  error_code: null
+                  error_message: null
+                  topic:
+                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
+                - kind: KafkaReplicationFactorChange
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                  cluster_id: cluster-1
+                  topic_name: topic-2
+                  replication_factor: 2
+                  status: FAILED
+                  created_at: 2026-08-07T07:19:05Z
+                  updated_at: 2026-08-07T07:19:40Z
+                  error_code: 10038
+                  error_message: The requested replication factor is unattainable due to placement constraints.
+                  topic:
+                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
+              schema:
+                $ref: '#/components/schemas/ReplicationFactorChangeDataList'
+          description: The list of tracked Replication Factor Changes.
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: List Replication Factor Changes
+      tags:
+      - ReplicationFactorChange (v3)
+  /clusters/{cluster_id}/replication-factor-changes:create:
+    post:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Submit a Replication Factor change for one or more topics in the cluster specified with ``cluster_id``. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ChangeReplicationFactorRequest'
+      responses:
+        "204":
+          description: No Content
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Change Replication Factor
+      tags:
+      - ReplicationFactorChange (v3)
+  /clusters/{cluster_id}/replication-factor-changes:cancel:
+    post:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/CancelReplicationFactorChangeRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaReplicationFactorChangeCancelList
+                metadata:
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+                  next: null
+                data:
+                - kind: KafkaReplicationFactorChangeCancel
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                  cluster_id: cluster-1
+                  topic_name: topic-1
+                  prior_status: IN_PROGRESS
+                  error_code: null
+                  error_message: null
+                  canceled_partitions:
+                  - partition_id: 0
+                  - partition_id: 1
+                  topic:
+                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
+                - kind: KafkaReplicationFactorChangeCancel
+                  metadata:
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                  cluster_id: cluster-1
+                  topic_name: topic-2
+                  prior_status: null
+                  error_code: 10037
+                  error_message: No Replication Factor Change is in progress for topic topic-2.
+                  canceled_partitions: []
+                  topic:
+                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
+              schema:
+                $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList'
+          description: The list of canceled Replication Factor Changes. Topics for
+            which no change was tracked are included with a non-null error_code and
+            error_message.
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Cancel Replication Factor Change
+      tags:
+      - ReplicationFactorChange (v3)
   /clusters/{cluster_id}/brokers/{broker_id}:unregister:
     post:
       description: |-
@@ -14770,6 +15132,30 @@ components:
           schema:
             $ref: '#/components/schemas/BrokerReplicaExclusionBatchRequestData'
       description: Alter Broker Replica Exclusions.
+    ChangeReplicationFactorRequest:
+      content:
+        application/json:
+          example:
+            data:
+            - topic_name: topic-1
+              replication_factor: 6
+            - topic_name: topic-2
+              replication_factor: 2
+            timeout_ms: 60000
+          schema:
+            $ref: '#/components/schemas/ChangeReplicationFactorBatchRequestData'
+      description: Replication Factor changes to submit, keyed by topic.
+    CancelReplicationFactorChangeRequest:
+      content:
+        application/json:
+          example:
+            topic_names:
+            - topic-1
+            - topic-2
+            timeout_ms: 60000
+          schema:
+            $ref: '#/components/schemas/CancelReplicationFactorChangeRequestData'
+      description: Topic names whose Replication Factor Change should be canceled.
   responses:
     CreateTopicResponse:
       content:
@@ -16826,6 +17212,85 @@ components:
           schema:
             $ref: '#/components/schemas/RemoveBrokerTaskDataList'
       description: The list of remove broker tasks.
+    ListReplicationFactorChangeResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaReplicationFactorChangeList
+            metadata:
+              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+              next: null
+            data:
+            - kind: KafkaReplicationFactorChange
+              metadata:
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+              cluster_id: cluster-1
+              topic_name: topic-1
+              replication_factor: 6
+              status: IN_PROGRESS
+              created_at: 2026-08-07T07:20:50Z
+              updated_at: 2026-08-07T07:22:10Z
+              error_code: null
+              error_message: null
+              topic:
+                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
+            - kind: KafkaReplicationFactorChange
+              metadata:
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+              cluster_id: cluster-1
+              topic_name: topic-2
+              replication_factor: 2
+              status: FAILED
+              created_at: 2026-08-07T07:19:05Z
+              updated_at: 2026-08-07T07:19:40Z
+              error_code: 10038
+              error_message: The requested replication factor is unattainable due to placement constraints.
+              topic:
+                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
+          schema:
+            $ref: '#/components/schemas/ReplicationFactorChangeDataList'
+      description: The list of tracked Replication Factor Changes.
+    ListCancelReplicationFactorChangeResponse:
+      content:
+        application/json:
+          example:
+            kind: KafkaReplicationFactorChangeCancelList
+            metadata:
+              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+              next: null
+            data:
+            - kind: KafkaReplicationFactorChangeCancel
+              metadata:
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-1
+                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+              cluster_id: cluster-1
+              topic_name: topic-1
+              prior_status: IN_PROGRESS
+              error_code: null
+              error_message: null
+              canceled_partitions:
+              - partition_id: 0
+              - partition_id: 1
+              topic:
+                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
+            - kind: KafkaReplicationFactorChangeCancel
+              metadata:
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes/topic-2
+                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+              cluster_id: cluster-1
+              topic_name: topic-2
+              prior_status: null
+              error_code: 10037
+              error_message: No Replication Factor Change is in progress for topic topic-2.
+              canceled_partitions: []
+              topic:
+                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
+          schema:
+            $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList'
+      description: The list of canceled Replication Factor Changes. Topics for which
+        no change was tracked are included with a non-null error_code and error_message.
     NoContentResponse:
       description: Operation succeeded, no content in the response
     ListLinksResponse:
@@ -17940,6 +18405,82 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/AlterBrokerReplicaExclusionDataList_allOf'
+    ChangeReplicationFactorRequestData:
+      example:
+        topic_name: topic_name
+        replication_factor: 0
+      properties:
+        topic_name:
+          type: string
+        replication_factor:
+          type: integer
+      required:
+      - replication_factor
+      - topic_name
+      type: object
+    ChangeReplicationFactorBatchRequestData:
+      example:
+        data:
+        - topic_name: topic_name
+          replication_factor: 0
+        - topic_name: topic_name
+          replication_factor: 0
+        timeout_ms: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ChangeReplicationFactorRequestData'
+          type: array
+        timeout_ms:
+          description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
+          nullable: true
+          type: integer
+      required:
+      - data
+      type: object
+    CancelReplicationFactorChangeRequestData:
+      example:
+        topic_names:
+        - topic_names
+        - topic_names
+        timeout_ms: 0
+      properties:
+        topic_names:
+          items:
+            type: string
+          type: array
+        timeout_ms:
+          description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
+          nullable: true
+          type: integer
+      required:
+      - topic_names
+      type: object
+    ReplicationFactorChangeData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ReplicationFactorChangeData_allOf'
+    ReplicationFactorChangeDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ReplicationFactorChangeDataList_allOf'
+    CanceledPartitionData:
+      example:
+        partition_id: 0
+      properties:
+        partition_id:
+          type: integer
+      required:
+      - partition_id
+      type: object
+    ReplicationFactorChangeCancelData:
+      allOf:
+      - $ref: '#/components/schemas/Resource'
+      - $ref: '#/components/schemas/ReplicationFactorChangeCancelData_allOf'
+    ReplicationFactorChangeCancelDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList_allOf'
     UnregisterBrokerData:
       example:
         cluster_id: cluster_id
@@ -19187,6 +19728,106 @@ components:
         data:
           items:
             $ref: '#/components/schemas/AlterBrokerReplicaExclusionData'
+          type: array
+      required:
+      - data
+    ReplicationFactorChangeData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        topic_name:
+          type: string
+        replication_factor:
+          description: The desired replication factor for the topic.
+          type: integer
+        status:
+          type: string
+          x-extensible-enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - UNKNOWN
+        created_at:
+          description: The date and time at which this Replication Factor Change
+            was created.
+          example: 2019-10-12T07:20:50Z
+          format: date-time
+          readOnly: true
+          type: string
+        updated_at:
+          description: The date and time at which this Replication Factor Change
+            was last updated.
+          example: 2019-10-12T07:20:50Z
+          format: date-time
+          readOnly: true
+          type: string
+        error_code:
+          nullable: true
+          type: integer
+        error_message:
+          nullable: true
+          type: string
+        topic:
+          $ref: '#/components/schemas/Relationship'
+      required:
+      - cluster_id
+      - created_at
+      - replication_factor
+      - status
+      - topic
+      - topic_name
+      - updated_at
+    ReplicationFactorChangeDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReplicationFactorChangeData'
+          type: array
+      required:
+      - data
+    ReplicationFactorChangeCancelData_allOf:
+      properties:
+        cluster_id:
+          type: string
+        topic_name:
+          type: string
+        prior_status:
+          description: Status just before cancellation (``PENDING`` or ``IN_PROGRESS``);
+            null if no tracked change existed for the topic.
+          nullable: true
+          type: string
+          x-extensible-enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - UNKNOWN
+        error_code:
+          nullable: true
+          type: integer
+        error_message:
+          nullable: true
+          type: string
+        canceled_partitions:
+          items:
+            $ref: '#/components/schemas/CanceledPartitionData'
+          type: array
+        topic:
+          $ref: '#/components/schemas/Relationship'
+      required:
+      - canceled_partitions
+      - cluster_id
+      - error_code
+      - error_message
+      - prior_status
+      - topic
+      - topic_name
+    ReplicationFactorChangeCancelDataList_allOf:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ReplicationFactorChangeCancelData'
           type: array
       required:
       - data
