@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**ClustersClusterIdBrokersBrokerIdGet**](BrokerV3Api.md#ClustersClusterIdBrokersBrokerIdGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](BrokerV3Api.md#ClustersClusterIdBrokersBrokerIdPartitionReplicasGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 [**ClustersClusterIdBrokersGet**](BrokerV3Api.md#ClustersClusterIdBrokersGet) | **Get** /clusters/{cluster_id}/brokers | List Brokers
+[**ClustersClusterIdBrokersaddPost**](BrokerV3Api.md#ClustersClusterIdBrokersaddPost) | **Post** /clusters/{cluster_id}/brokers:add | Register brokers for SBC broker addition
 
 
 
@@ -161,3 +162,46 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+## ClustersClusterIdBrokersaddPost
+
+> ClustersClusterIdBrokersaddPost(ctx, clusterId, optional)
+
+Register brokers for SBC broker addition
+
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Register the given brokers with SBC's broker-addition workflow, triggering rebalancing onto them that can be tracked to completion.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+ **optional** | ***ClustersClusterIdBrokersaddPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a ClustersClusterIdBrokersaddPostOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **addBrokersRequestData** | [**optional.Interface of AddBrokersRequestData**](AddBrokersRequestData.md)| Broker ids to register with the SBC broker-addition workflow | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
