@@ -11226,6 +11226,402 @@ paths:
       summary: Batch Alter Cluster Link Configs
       tags:
       - Cluster Linking (v3)
+  /clusters/{cluster_id}/licenses:
+    get:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        List the licenses for the cluster specified by ``cluster_id``.
+      operationId: getLicenses
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLicenseList
+                metadata:
+                  self: http://localhost:8090/kafka/v3/clusters/cluster-1/licenses
+                  next: null
+                data:
+                - kind: KafkaLicense
+                  metadata:
+                    self: http://localhost:8090/kafka/v3/clusters/cluster-1/licenses/cp
+                  cluster_id: cluster-1
+                  category: Confluent Platform
+                  category_short_name: cp
+                  license_type: ENTERPRISE
+                  expires_at: 2026-10-30T07:00:00Z
+                  audience: 006cV000005Kx8mQA0
+                  license_jwt: eyJ0eXAiOiJKV1Qi...
+                  status: ACTIVE
+                  topic_name: _confluent-command
+              schema:
+                $ref: '#/components/schemas/LicenseDataList'
+          description: The list of licenses for the cluster.
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: List licenses
+      tags:
+      - License (v3)
+    put:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Validate and store a license for the cluster specified by ``cluster_id``.
+      operationId: updateLicense
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: 'To validate the license without storing it. Default: false'
+        explode: true
+        in: query
+        name: dry_run
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            example:
+              license_jwt: eyJ0eXAiOiJKV1Qi...
+            schema:
+              $ref: '#/components/schemas/UpdateLicenseRequestData'
+        description: The license to validate and store.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLicenseUpdateResult
+                metadata:
+                  self: http://localhost:8090/kafka/v3/clusters/cluster-1/licenses
+                updated_category: Confluent Platform
+                licenses:
+                - kind: KafkaLicense
+                  metadata:
+                    self: http://localhost:8090/kafka/v3/clusters/cluster-1/licenses/cp
+                  cluster_id: cluster-1
+                  category: Confluent Platform
+                  category_short_name: cp
+                  license_type: ENTERPRISE
+                  expires_at: 2026-10-30T07:00:00Z
+                  audience: 006cV000005Kx8mQA0
+                  license_jwt: eyJ0eXAiOiJKV1Qi...
+                  status: ACTIVE
+                  topic_name: _confluent-command
+              schema:
+                $ref: '#/components/schemas/UpdateLicenseResponseData'
+          description: The result of validating and storing the license.
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Update (validate and store) a license
+      tags:
+      - License (v3)
+  /clusters/{cluster_id}/licenses/{category_short_name}:
+    get:
+      description: |-
+        [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
+
+        Get the license with the specified category short name for the cluster specified by ``cluster_id``.
+      operationId: getLicense
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The short name of the license category.
+        explode: false
+        in: path
+        name: category_short_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kind: KafkaLicense
+                metadata:
+                  self: http://localhost:8090/kafka/v3/clusters/cluster-1/licenses/cp
+                cluster_id: cluster-1
+                category: Confluent Platform
+                category_short_name: cp
+                license_type: ENTERPRISE
+                expires_at: 2026-10-30T07:00:00Z
+                audience: 006cV000005Kx8mQA0
+                license_jwt: eyJ0eXAiOiJKV1Qi...
+                status: ACTIVE
+                topic_name: _confluent-command
+              schema:
+                $ref: '#/components/schemas/LicenseData'
+          description: The license for the specified category short name.
+        "400":
+          content:
+            application/json:
+              examples:
+                bad_request_cannot_deserialize:
+                  description: Thrown when trying to deserialize an integer from non-integer
+                    data.
+                  value:
+                    error_code: 400
+                    message: 'Cannot deserialize value of type `java.lang.Integer`
+                      from String "A": not a valid `java.lang.Integer` value'
+                unsupported_version_exception:
+                  description: Thrown when the version of this API is not supported
+                    in the underlying Kafka cluster.
+                  value:
+                    error_code: 40035
+                    message: The version of this API is not supported in the underlying
+                      Kafka cluster.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a bad request error. It could be caused by an unexpected
+            request body format or other forms of request validation failure.
+        "401":
+          content:
+            application/json:
+              examples:
+                kafka_authentication_failed:
+                  description: Thrown when using Basic authentication with wrong Kafka
+                    credentials.
+                  value:
+                    error_code: 40101
+                    message: Authentication failed
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates a client authentication error. Kafka authentication
+            failures will contain error code 40101 in the response body.
+        "404":
+          content:
+            application/json:
+              examples:
+                endpoint_not_found:
+                  description: Thrown for generic HTTP 404 errors.
+                  value:
+                    error_code: 404
+                    message: HTTP 404 Not Found
+                cluster_not_found:
+                  description: Thrown when using a non-existing cluster ID.
+                  value:
+                    error_code: 404
+                    message: Cluster my-cluster cannot be found.
+                unknown_topic_or_partition:
+                  description: Thrown when using a non-existing topic name or partition
+                    ID.
+                  value:
+                    error_code: 40403
+                    message: This server does not host this topic-partition.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Indicates attempted access to an unreachable or non-existing
+            resource like e.g. an unknown topic or partition. GET requests to endpoints
+            not allowed in the accesslists will also result in this response.
+        "429":
+          content:
+            text/html:
+              example:
+                description: A sample response from Jetty's DoSFilter.
+                value: <html> <head> <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+                  <title>Error 429 Too Many Requests</title> </head> <body> <h2>HTTP
+                  ERROR 429 Too Many Requests</h2> <table> <tr> <th>URI:</th> <td>/v3/clusters/my-cluster</td>
+                  </tr> <tr> <th>STATUS:</th> <td>429</td> </tr> <tr> <th>MESSAGE:</th>
+                  <td>Too Many Requests</td> </tr> <tr> <th>SERVLET:</th> <td>default</td>
+                  </tr> </table> </body> </html>
+              schema:
+                type: string
+          description: Indicates that a rate limit threshold has been reached, and
+            the client should retry again later.
+        "5XX":
+          content:
+            application/json:
+              examples:
+                generic_internal_server_error:
+                  description: Thrown for generic HTTP 500 errors.
+                  value:
+                    error_code: 500
+                    message: Internal Server Error
+                produce_v3_missing_schema:
+                  description: Thrown when the specified schema cannot be fetched
+                    from Schema Registry.
+                  value:
+                    error_code: 50002
+                    message: Error when fetching latest schema version. subject =
+                      my-topic
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: A server-side problem that might not be addressable from the
+            client side. Retriable Kafka errors will contain error code 50003 in the
+            response body.
+      summary: Get license
+      tags:
+      - License (v3)
   /clusters/{cluster_id}/links/{link_name}/mirrors:
     get:
       description: |-
@@ -18136,6 +18532,138 @@ components:
           type: array
       required:
       - topics
+      type: object
+    LicenseData:
+      example:
+        metadata:
+          self: self
+          resource_name: resource_name
+        cluster_id: cluster_id
+        audience: audience
+        expires_at: 2026-11-20T23:59:59Z
+        kind: kind
+        license_type: license_type
+        license_jwt: license_jwt
+        topic_name: topic_name
+        category_short_name: category_short_name
+        category: category
+        status: status
+      properties:
+        kind:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/ResourceMetadata'
+        cluster_id:
+          type: string
+        category:
+          type: string
+        category_short_name:
+          type: string
+          x-extensible-enum:
+          - cp
+          - cpc
+          - cp_for_cc
+          - cp_trial
+          - cp_developer
+        license_type:
+          type: string
+          x-extensible-enum:
+          - ENTERPRISE
+          - TRIAL
+          - FREE_TIER
+        expires_at:
+          description: Absent when the license does not expire (e.g., the built-in
+            Developer / Free-Forever license).
+          example: 2026-11-20T23:59:59Z
+          format: date-time
+          type: string
+        audience:
+          type: string
+        license_jwt:
+          type: string
+        status:
+          readOnly: true
+          type: string
+          x-extensible-enum:
+          - ACTIVE
+          - EXPIRED
+        topic_name:
+          description: Internal Kafka topic the license is stored in. Absent when
+            not applicable.
+          readOnly: true
+          type: string
+      required:
+      - category
+      - category_short_name
+      - cluster_id
+      - kind
+      - license_jwt
+      - license_type
+      - metadata
+      - status
+      type: object
+    LicenseDataList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceCollection'
+      - $ref: '#/components/schemas/LicenseDataList_allOf'
+    UpdateLicenseResponseData:
+      example:
+        updated_category: updated_category
+        metadata:
+          self: self
+          resource_name: resource_name
+        licenses:
+        - metadata:
+            self: self
+            resource_name: resource_name
+          cluster_id: cluster_id
+          audience: audience
+          expires_at: 2026-11-20T23:59:59Z
+          kind: kind
+          license_type: license_type
+          license_jwt: license_jwt
+          topic_name: topic_name
+          category_short_name: category_short_name
+          category: category
+          status: status
+        - metadata:
+            self: self
+            resource_name: resource_name
+          cluster_id: cluster_id
+          audience: audience
+          expires_at: 2026-11-20T23:59:59Z
+          kind: kind
+          license_type: license_type
+          license_jwt: license_jwt
+          topic_name: topic_name
+          category_short_name: category_short_name
+          category: category
+          status: status
+        kind: kind
+      properties:
+        kind:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/ResourceMetadata'
+        updated_category:
+          type: string
+        licenses:
+          items:
+            $ref: '#/components/schemas/LicenseData'
+          type: array
+      required:
+      - kind
+      - licenses
+      - metadata
+      type: object
+    UpdateLicenseRequestData:
+      example:
+        license_jwt: license_jwt
+      properties:
+        license_jwt:
+          type: string
+      required:
+      - license_jwt
       type: object
     AnyUnevenLoadStatus:
       type: string

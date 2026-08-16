@@ -99,6 +99,9 @@ Class | Method | HTTP request | Description
 *ConsumerGroupV3Api* | [**ListKafkaConsumerGroups**](docs/ConsumerGroupV3Api.md#listkafkaconsumergroups) | **Get** /clusters/{cluster_id}/consumer-groups | List Consumer Groups
 *ConsumerGroupV3Api* | [**ListKafkaConsumerLags**](docs/ConsumerGroupV3Api.md#listkafkaconsumerlags) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/lags | List Consumer Lags
 *ConsumerGroupV3Api* | [**ListKafkaConsumers**](docs/ConsumerGroupV3Api.md#listkafkaconsumers) | **Get** /clusters/{cluster_id}/consumer-groups/{consumer_group_id}/consumers | List Consumers
+*LicenseV3Api* | [**GetLicense**](docs/LicenseV3Api.md#getlicense) | **Get** /clusters/{cluster_id}/licenses/{category_short_name} | Get license
+*LicenseV3Api* | [**GetLicenses**](docs/LicenseV3Api.md#getlicenses) | **Get** /clusters/{cluster_id}/licenses | List licenses
+*LicenseV3Api* | [**UpdateLicense**](docs/LicenseV3Api.md#updatelicense) | **Put** /clusters/{cluster_id}/licenses | Update (validate and store) a license
 *PartitionApi* | [**ClustersClusterIdTopicsPartitionsReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicspartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/-/partitions/-/reassignment | List All Replica Reassignments
 *PartitionApi* | [**ClustersClusterIdTopicsTopicNamePartitionsPartitionIdReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicstopicnamepartitionspartitionidreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/reassignment | Get Replica Reassignments
 *PartitionApi* | [**ClustersClusterIdTopicsTopicNamePartitionsReassignmentGet**](docs/PartitionApi.md#clustersclusteridtopicstopicnamepartitionsreassignmentget) | **Get** /clusters/{cluster_id}/topics/{topic_name}/partitions/-/reassignment | Search Replica Reassignments By Topic
@@ -213,6 +216,9 @@ Class | Method | HTTP request | Description
  - [CreateTopicRequestDataReplicasAssignments](docs/CreateTopicRequestDataReplicasAssignments.md)
  - [Error](docs/Error.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [LicenseData](docs/LicenseData.md)
+ - [LicenseDataList](docs/LicenseDataList.md)
+ - [LicenseDataListAllOf](docs/LicenseDataListAllOf.md)
  - [ListLinkConfigsResponseData](docs/ListLinkConfigsResponseData.md)
  - [ListLinkConfigsResponseDataAllOf](docs/ListLinkConfigsResponseDataAllOf.md)
  - [ListLinkConfigsResponseDataList](docs/ListLinkConfigsResponseDataList.md)
@@ -283,6 +289,8 @@ Class | Method | HTTP request | Description
  - [TopicList](docs/TopicList.md)
  - [UnregisterBrokerData](docs/UnregisterBrokerData.md)
  - [UpdateConfigRequestData](docs/UpdateConfigRequestData.md)
+ - [UpdateLicenseRequestData](docs/UpdateLicenseRequestData.md)
+ - [UpdateLicenseResponseData](docs/UpdateLicenseResponseData.md)
  - [UpdateLinkConfigRequestData](docs/UpdateLinkConfigRequestData.md)
  - [UpdatePartitionCountRequestData](docs/UpdatePartitionCountRequestData.md)
 

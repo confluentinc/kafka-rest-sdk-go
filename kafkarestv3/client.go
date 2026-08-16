@@ -71,6 +71,8 @@ type APIClient struct {
 
 	ConsumerGroupV3Api ConsumerGroupV3Api
 
+	LicenseV3Api LicenseV3Api
+
 	PartitionApi PartitionApi
 
 	PartitionV3Api PartitionV3Api
@@ -119,6 +121,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ClusterV3Api = (*ClusterV3ApiService)(&c.common)
 	c.ConfigsV3Api = (*ConfigsV3ApiService)(&c.common)
 	c.ConsumerGroupV3Api = (*ConsumerGroupV3ApiService)(&c.common)
+	c.LicenseV3Api = (*LicenseV3ApiService)(&c.common)
 	c.PartitionApi = (*PartitionApiService)(&c.common)
 	c.PartitionV3Api = (*PartitionV3ApiService)(&c.common)
 	c.RecordsV3Api = (*RecordsV3ApiService)(&c.common)
