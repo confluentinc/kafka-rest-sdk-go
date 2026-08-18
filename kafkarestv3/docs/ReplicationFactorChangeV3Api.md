@@ -4,19 +4,19 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdTopicsReplicationFactorChangesGet**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangesGet) | **Get** /clusters/{cluster_id}/topics/-/replication-factor-changes | List Replication Factor Changes
-[**ClustersClusterIdTopicsReplicationFactorChangesPatch**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangesPatch) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes | Change Replication Factor
-[**ClustersClusterIdTopicsReplicationFactorChangescancelPatch**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangescancelPatch) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes:cancel | Cancel Replication Factor Change
+[**CancelKafkaReplicationFactorChange**](ReplicationFactorChangeV3Api.md#CancelKafkaReplicationFactorChange) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes:cancel | Cancel Replication Factor Change
+[**ChangeKafkaReplicationFactor**](ReplicationFactorChangeV3Api.md#ChangeKafkaReplicationFactor) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes | Change Replication Factor
+[**ListKafkaReplicationFactorChanges**](ReplicationFactorChangeV3Api.md#ListKafkaReplicationFactorChanges) | **Get** /clusters/{cluster_id}/topics/-/replication-factor-changes | List Replication Factor Changes
 
 
 
-## ClustersClusterIdTopicsReplicationFactorChangesGet
+## CancelKafkaReplicationFactorChange
 
-> ReplicationFactorChangeDataList ClustersClusterIdTopicsReplicationFactorChangesGet(ctx, clusterId)
+> ReplicationFactorChangeCancellationDataList CancelKafkaReplicationFactorChange(ctx, clusterId, optional)
 
-List Replication Factor Changes
+Cancel Replication Factor Change
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return all tracked Replication Factor Changes in the cluster specified with ``cluster_id``.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
 
 ### Required Parameters
 
@@ -25,10 +25,21 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
+ **optional** | ***CancelKafkaReplicationFactorChangeOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a CancelKafkaReplicationFactorChangeOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cancelReplicationFactorChangeRequestData** | [**optional.Interface of CancelReplicationFactorChangeRequestData**](CancelReplicationFactorChangeRequestData.md)| Topic names whose Replication Factor Change should be canceled. | 
 
 ### Return type
 
-[**ReplicationFactorChangeDataList**](ReplicationFactorChangeDataList.md)
+[**ReplicationFactorChangeCancellationDataList**](ReplicationFactorChangeCancellationDataList.md)
 
 ### Authorization
 
@@ -36,7 +47,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -44,9 +55,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdTopicsReplicationFactorChangesPatch
+## ChangeKafkaReplicationFactor
 
-> ClustersClusterIdTopicsReplicationFactorChangesPatch(ctx, clusterId, optional)
+> ChangeKafkaReplicationFactor(ctx, clusterId, optional)
 
 Change Replication Factor
 
@@ -59,11 +70,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***ClustersClusterIdTopicsReplicationFactorChangesPatchOpts** | optional parameters | nil if no parameters
+ **optional** | ***ChangeKafkaReplicationFactorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdTopicsReplicationFactorChangesPatchOpts struct
+Optional parameters are passed through a pointer to a ChangeKafkaReplicationFactorOpts struct
 
 
 Name | Type | Description  | Notes
@@ -89,13 +100,13 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdTopicsReplicationFactorChangescancelPatch
+## ListKafkaReplicationFactorChanges
 
-> ReplicationFactorChangeCancellationDataList ClustersClusterIdTopicsReplicationFactorChangescancelPatch(ctx, clusterId, optional)
+> ReplicationFactorChangeDataList ListKafkaReplicationFactorChanges(ctx, clusterId)
 
-Cancel Replication Factor Change
+List Replication Factor Changes
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return all tracked Replication Factor Changes in the cluster specified with ``cluster_id``.
 
 ### Required Parameters
 
@@ -104,21 +115,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***ClustersClusterIdTopicsReplicationFactorChangescancelPatchOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ClustersClusterIdTopicsReplicationFactorChangescancelPatchOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **cancelReplicationFactorChangeRequestData** | [**optional.Interface of CancelReplicationFactorChangeRequestData**](CancelReplicationFactorChangeRequestData.md)| Topic names whose Replication Factor Change should be canceled. | 
 
 ### Return type
 
-[**ReplicationFactorChangeCancellationDataList**](ReplicationFactorChangeCancellationDataList.md)
+[**ReplicationFactorChangeDataList**](ReplicationFactorChangeDataList.md)
 
 ### Authorization
 
@@ -126,7 +126,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
