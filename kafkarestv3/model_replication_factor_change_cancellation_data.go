@@ -12,10 +12,13 @@ package kafkarestv3
 
 // ReplicationFactorChangeCancellationData struct for ReplicationFactorChangeCancellationData
 type ReplicationFactorChangeCancellationData struct {
-	Kind               string                         `json:"kind"`
-	Metadata           ResourceMetadata               `json:"metadata"`
-	ClusterId          string                         `json:"cluster_id"`
-	TopicName          string                         `json:"topic_name"`
+	Kind      string           `json:"kind"`
+	Metadata  ResourceMetadata `json:"metadata"`
+	ClusterId string           `json:"cluster_id"`
+	TopicName string           `json:"topic_name"`
+	// Kept as *ReplicationFactorChangeStatus rather than *string: a `make gen`
+	// run currently mistypes this because the generator doesn't resolve a
+	// nullable allOf-wrapped $ref to a named type.
 	PriorStatus        *ReplicationFactorChangeStatus `json:"prior_status"`
 	ErrorCode          *int32                         `json:"error_code"`
 	ErrorMessage       *string                        `json:"error_message"`

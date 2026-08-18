@@ -21,8 +21,11 @@ type ReplicationFactorChangeData struct {
 	ClusterId string           `json:"cluster_id"`
 	TopicName string           `json:"topic_name"`
 	// The desired replication factor for the topic.
-	DesiredReplicationFactor int32                         `json:"desired_replication_factor"`
-	Status                   ReplicationFactorChangeStatus `json:"status"`
+	DesiredReplicationFactor int32 `json:"desired_replication_factor"`
+	// Kept as the enum type rather than string: a `make gen` run currently
+	// mistypes this as string due to an openapi-generator property-name
+	// collision with unrelated inline "status" enums elsewhere in the spec.
+	Status ReplicationFactorChangeStatus `json:"status"`
 	// The date and time at which this Replication Factor Change was created.
 	CreatedAt time.Time `json:"created_at"`
 	// The date and time at which this Replication Factor Change was last updated.
