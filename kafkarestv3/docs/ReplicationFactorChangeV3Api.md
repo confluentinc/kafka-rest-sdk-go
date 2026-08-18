@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ClustersClusterIdReplicationFactorChangesGet**](ReplicationFactorChangeV3Api.md#ClustersClusterIdReplicationFactorChangesGet) | **Get** /clusters/{cluster_id}/replication-factor-changes | List Replication Factor Changes
-[**ClustersClusterIdReplicationFactorChangescancelPost**](ReplicationFactorChangeV3Api.md#ClustersClusterIdReplicationFactorChangescancelPost) | **Post** /clusters/{cluster_id}/replication-factor-changes:cancel | Cancel Replication Factor Change
-[**ClustersClusterIdReplicationFactorChangescreatePost**](ReplicationFactorChangeV3Api.md#ClustersClusterIdReplicationFactorChangescreatePost) | **Post** /clusters/{cluster_id}/replication-factor-changes:create | Change Replication Factor
+[**ClustersClusterIdTopicsReplicationFactorChangesGet**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangesGet) | **Get** /clusters/{cluster_id}/topics/-/replication-factor-changes | List Replication Factor Changes
+[**ClustersClusterIdTopicsReplicationFactorChangesPatch**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangesPatch) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes | Change Replication Factor
+[**ClustersClusterIdTopicsReplicationFactorChangescancelPatch**](ReplicationFactorChangeV3Api.md#ClustersClusterIdTopicsReplicationFactorChangescancelPatch) | **Patch** /clusters/{cluster_id}/topics/-/replication-factor-changes:cancel | Cancel Replication Factor Change
 
 
 
-## ClustersClusterIdReplicationFactorChangesGet
+## ClustersClusterIdTopicsReplicationFactorChangesGet
 
-> ReplicationFactorChangeDataList ClustersClusterIdReplicationFactorChangesGet(ctx, clusterId)
+> ReplicationFactorChangeDataList ClustersClusterIdTopicsReplicationFactorChangesGet(ctx, clusterId)
 
 List Replication Factor Changes
 
@@ -44,13 +44,13 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdReplicationFactorChangescancelPost
+## ClustersClusterIdTopicsReplicationFactorChangesPatch
 
-> ReplicationFactorChangeCancelDataList ClustersClusterIdReplicationFactorChangescancelPost(ctx, clusterId, optional)
+> ClustersClusterIdTopicsReplicationFactorChangesPatch(ctx, clusterId, optional)
 
-Cancel Replication Factor Change
+Change Replication Factor
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Submit a Replication Factor change for one or more topics in the cluster specified with ``cluster_id``. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
 
 ### Required Parameters
 
@@ -59,21 +59,21 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***ClustersClusterIdReplicationFactorChangescancelPostOpts** | optional parameters | nil if no parameters
+ **optional** | ***ClustersClusterIdTopicsReplicationFactorChangesPatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdReplicationFactorChangescancelPostOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdTopicsReplicationFactorChangesPatchOpts struct
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cancelReplicationFactorChangeRequestData** | [**optional.Interface of CancelReplicationFactorChangeRequestData**](CancelReplicationFactorChangeRequestData.md)| Topic names whose Replication Factor Change should be canceled. | 
+ **changeReplicationFactorRequestData** | [**optional.Interface of ChangeReplicationFactorRequestData**](ChangeReplicationFactorRequestData.md)| Replication Factor changes to submit, one entry per topic. | 
 
 ### Return type
 
-[**ReplicationFactorChangeCancelDataList**](ReplicationFactorChangeCancelDataList.md)
+ (empty response body)
 
 ### Authorization
 
@@ -89,13 +89,13 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ClustersClusterIdReplicationFactorChangescreatePost
+## ClustersClusterIdTopicsReplicationFactorChangescancelPatch
 
-> ClustersClusterIdReplicationFactorChangescreatePost(ctx, clusterId, optional)
+> ReplicationFactorChangeCancellationDataList ClustersClusterIdTopicsReplicationFactorChangescancelPatch(ctx, clusterId, optional)
 
-Change Replication Factor
+Cancel Replication Factor Change
 
-[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Submit a Replication Factor change for one or more topics in the cluster specified with ``cluster_id``. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
+[![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
 
 ### Required Parameters
 
@@ -104,21 +104,21 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string**| The Kafka cluster ID. | 
- **optional** | ***ClustersClusterIdReplicationFactorChangescreatePostOpts** | optional parameters | nil if no parameters
+ **optional** | ***ClustersClusterIdTopicsReplicationFactorChangescancelPatchOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
-Optional parameters are passed through a pointer to a ClustersClusterIdReplicationFactorChangescreatePostOpts struct
+Optional parameters are passed through a pointer to a ClustersClusterIdTopicsReplicationFactorChangescancelPatchOpts struct
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **changeReplicationFactorBatchRequestData** | [**optional.Interface of ChangeReplicationFactorBatchRequestData**](ChangeReplicationFactorBatchRequestData.md)| Replication Factor changes to submit, one entry per topic. | 
+ **cancelReplicationFactorChangeRequestData** | [**optional.Interface of CancelReplicationFactorChangeRequestData**](CancelReplicationFactorChangeRequestData.md)| Topic names whose Replication Factor Change should be canceled. | 
 
 ### Return type
 
- (empty response body)
+[**ReplicationFactorChangeCancellationDataList**](ReplicationFactorChangeCancellationDataList.md)
 
 ### Authorization
 

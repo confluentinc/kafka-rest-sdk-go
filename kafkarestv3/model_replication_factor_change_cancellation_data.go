@@ -10,8 +10,10 @@
 
 package kafkarestv3
 
-// ReplicationFactorChangeCancelDataAllOf struct for ReplicationFactorChangeCancelDataAllOf
-type ReplicationFactorChangeCancelDataAllOf struct {
+// ReplicationFactorChangeCancellationData struct for ReplicationFactorChangeCancellationData
+type ReplicationFactorChangeCancellationData struct {
+	Kind               string                         `json:"kind"`
+	Metadata           ResourceMetadata               `json:"metadata"`
 	ClusterId          string                         `json:"cluster_id"`
 	TopicName          string                         `json:"topic_name"`
 	PriorStatus        *ReplicationFactorChangeStatus `json:"prior_status"`

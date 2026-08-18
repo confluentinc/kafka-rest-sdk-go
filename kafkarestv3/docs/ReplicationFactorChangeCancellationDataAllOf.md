@@ -1,4 +1,4 @@
-# ReplicationFactorChangeCancelDataAllOf
+# ReplicationFactorChangeCancellationDataAllOf
 
 ## Properties
 

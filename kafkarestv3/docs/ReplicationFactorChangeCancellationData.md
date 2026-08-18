@@ -1,4 +1,4 @@
-# ReplicationFactorChangeCancelData
+# ReplicationFactorChangeCancellationData
 
 ## Properties
 

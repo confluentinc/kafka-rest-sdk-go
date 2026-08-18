@@ -10,7 +10,7 @@
 
 package kafkarestv3
 
-// CancelReplicationFactorChangeRequestData struct for CancelReplicationFactorChangeRequestData
-type CancelReplicationFactorChangeRequestData struct {
-	TopicNames []string `json:"topic_names"`
+// ReplicationFactorChangeCancellationDataListAllOf struct for ReplicationFactorChangeCancellationDataListAllOf
+type ReplicationFactorChangeCancellationDataListAllOf struct {
+	Data []ReplicationFactorChangeCancellationData `json:"data"`
 }
