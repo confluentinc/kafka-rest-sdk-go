@@ -9700,12 +9700,13 @@ paths:
       summary: Get Remove Broker Task
       tags:
       - RemoveBrokerTask
-  /clusters/{cluster_id}/replication-factor-changes:
+  /clusters/{cluster_id}/topics/-/replication-factor-changes:
     get:
       description: |-
         [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
         Return all tracked Replication Factor Changes in the cluster specified with ``cluster_id``.
+      operationId: listKafkaReplicationFactorChanges
       parameters:
       - description: The Kafka cluster ID.
         example: cluster-1
@@ -9723,13 +9724,13 @@ paths:
               example:
                 kind: KafkaReplicationFactorChangeList
                 metadata:
-                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
                   next: null
                 data:
                 - kind: KafkaReplicationFactorChange
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-1
                   desired_replication_factor: 6
@@ -9742,8 +9743,8 @@ paths:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
                 - kind: KafkaReplicationFactorChange
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-2
                   desired_replication_factor: 2
@@ -9832,12 +9833,12 @@ paths:
       summary: List Replication Factor Changes
       tags:
       - ReplicationFactorChange (v3)
-  /clusters/{cluster_id}/replication-factor-changes:create:
-    post:
+    patch:
       description: |-
         [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
         Submit a Replication Factor change for one or more topics in the cluster specified with ``cluster_id``. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
+      operationId: changeKafkaReplicationFactor
       parameters:
       - description: The Kafka cluster ID.
         example: cluster-1
@@ -9852,7 +9853,7 @@ paths:
         $ref: '#/components/requestBodies/ChangeReplicationFactorRequest'
       responses:
         "202":
-          description: Accepted
+          description: Request accepted for processing, no content in the response
         "400":
           content:
             application/json:
@@ -9928,12 +9929,13 @@ paths:
       summary: Change Replication Factor
       tags:
       - ReplicationFactorChange (v3)
-  /clusters/{cluster_id}/replication-factor-changes:cancel:
-    post:
+  /clusters/{cluster_id}/topics/-/replication-factor-changes:cancel:
+    patch:
       description: |-
         [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)
 
         Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with ``cluster_id``. Cancellation does not roll back replicas already applied.
+      operationId: cancelKafkaReplicationFactorChange
       parameters:
       - description: The Kafka cluster ID.
         example: cluster-1
@@ -9951,15 +9953,15 @@ paths:
           content:
             application/json:
               example:
-                kind: KafkaReplicationFactorChangeCancelList
+                kind: KafkaReplicationFactorChangeCancellationList
                 metadata:
-                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
                   next: null
                 data:
-                - kind: KafkaReplicationFactorChangeCancel
+                - kind: KafkaReplicationFactorChangeCancellation
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-1
                   prior_status: IN_PROGRESS
@@ -9968,10 +9970,10 @@ paths:
                   canceled_partitions: [0, 1]
                   topic:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
-                - kind: KafkaReplicationFactorChangeCancel
+                - kind: KafkaReplicationFactorChangeCancellation
                   metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-2
                   prior_status: null
@@ -9981,7 +9983,7 @@ paths:
                   topic:
                     related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
               schema:
-                $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList'
+                $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList'
           description: The list of canceled Replication Factor Changes. Topics for
             which no change was tracked are included with a non-null error_code and
             error_message.
@@ -15251,15 +15253,14 @@ components:
       content:
         application/json:
           example:
-            data:
+            topics:
             - topic_name: topic-1
-              desired_replication_factor: 6
+              replication_factor: 6
             - topic_name: topic-2
-              desired_replication_factor: 2
-            timeout_ms: 60000
+              replication_factor: 2
           schema:
-            $ref: '#/components/schemas/ChangeReplicationFactorBatchRequestData'
-      description: Replication Factor changes to submit, one entry per topic
+            $ref: '#/components/schemas/ChangeReplicationFactorRequestData'
+      description: Replication Factor changes to submit, one entry per topic.
     CancelReplicationFactorChangeRequest:
       content:
         application/json:
@@ -15267,7 +15268,6 @@ components:
             topic_names:
             - topic-1
             - topic-2
-            timeout_ms: 60000
           schema:
             $ref: '#/components/schemas/CancelReplicationFactorChangeRequestData'
       description: Topic names whose Replication Factor Change should be canceled.
@@ -17333,13 +17333,13 @@ components:
           example:
             kind: KafkaReplicationFactorChangeList
             metadata:
-              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
               next: null
             data:
             - kind: KafkaReplicationFactorChange
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-1
               desired_replication_factor: 6
@@ -17352,8 +17352,8 @@ components:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
             - kind: KafkaReplicationFactorChange
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-2
               desired_replication_factor: 2
@@ -17371,15 +17371,15 @@ components:
       content:
         application/json:
           example:
-            kind: KafkaReplicationFactorChangeCancelList
+            kind: KafkaReplicationFactorChangeCancellationList
             metadata:
-              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
+              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
               next: null
             data:
-            - kind: KafkaReplicationFactorChangeCancel
+            - kind: KafkaReplicationFactorChangeCancellation
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-1
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-1
               prior_status: IN_PROGRESS
@@ -17388,10 +17388,10 @@ components:
               canceled_partitions: [0, 1]
               topic:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
-            - kind: KafkaReplicationFactorChangeCancel
+            - kind: KafkaReplicationFactorChangeCancellation
               metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/replication-factor-changes=topic-2
+                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-2
               prior_status: null
@@ -17401,7 +17401,7 @@ components:
               topic:
                 related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
           schema:
-            $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList'
+            $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList'
       description: The list of canceled Replication Factor Changes. Topics for which
         no change was tracked are included with a non-null error_code and error_message.
     NoContentResponse:
@@ -18518,57 +18518,48 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/AlterBrokerReplicaExclusionDataList_allOf'
-    ChangeReplicationFactorRequestData:
+    ChangeReplicationFactorRequestTopicData:
       example:
         topic_name: topic_name
-        desired_replication_factor: 4
+        replication_factor: 4
       properties:
         topic_name:
           type: string
-        desired_replication_factor:
+        replication_factor:
           minimum: 1
           type: integer
+          format: int32
       required:
-      - desired_replication_factor
+      - replication_factor
       - topic_name
       type: object
-    ChangeReplicationFactorBatchRequestData:
+    ChangeReplicationFactorRequestData:
       example:
-        data:
+        topics:
         - topic_name: topic_name
-          desired_replication_factor: 4
+          replication_factor: 4
         - topic_name: topic_name
-          desired_replication_factor: 4
-        timeout_ms: 0
+          replication_factor: 4
       properties:
-        data:
+        topics:
           items:
-            $ref: '#/components/schemas/ChangeReplicationFactorRequestData'
+            $ref: '#/components/schemas/ChangeReplicationFactorRequestTopicData'
           minItems: 1
           type: array
-        timeout_ms:
-          description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
-          nullable: true
-          type: integer
       required:
-      - data
+      - topics
       type: object
     CancelReplicationFactorChangeRequestData:
       example:
         topic_names:
         - topic_names
         - topic_names
-        timeout_ms: 0
       properties:
         topic_names:
           items:
             type: string
           minItems: 1
           type: array
-        timeout_ms:
-          description: 'The time in milliseconds to wait for the request to complete. Default: 60000'
-          nullable: true
-          type: integer
       required:
       - topic_names
       type: object
@@ -18580,14 +18571,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/ReplicationFactorChangeDataList_allOf'
-    ReplicationFactorChangeCancelData:
+    ReplicationFactorChangeCancellationData:
       allOf:
       - $ref: '#/components/schemas/Resource'
-      - $ref: '#/components/schemas/ReplicationFactorChangeCancelData_allOf'
-    ReplicationFactorChangeCancelDataList:
+      - $ref: '#/components/schemas/ReplicationFactorChangeCancellationData_allOf'
+    ReplicationFactorChangeCancellationDataList:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
-      - $ref: '#/components/schemas/ReplicationFactorChangeCancelDataList_allOf'
+      - $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList_allOf'
     UnregisterBrokerData:
       example:
         cluster_id: cluster_id
@@ -19862,8 +19853,6 @@ components:
       - IN_PROGRESS
       - COMPLETED
       - FAILED
-      - CANCELED
-      - INVALID
       - UNKNOWN
     ReplicationFactorChangeData_allOf:
       properties:
@@ -19873,7 +19862,6 @@ components:
           type: string
         desired_replication_factor:
           description: The desired replication factor for the topic.
-          minimum: 1
           type: integer
         status:
           $ref: '#/components/schemas/ReplicationFactorChangeStatus'
@@ -19915,7 +19903,7 @@ components:
           type: array
       required:
       - data
-    ReplicationFactorChangeCancelData_allOf:
+    ReplicationFactorChangeCancellationData_allOf:
       properties:
         cluster_id:
           type: string
@@ -19947,11 +19935,11 @@ components:
       - prior_status
       - topic
       - topic_name
-    ReplicationFactorChangeCancelDataList_allOf:
+    ReplicationFactorChangeCancellationDataList_allOf:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ReplicationFactorChangeCancelData'
+            $ref: '#/components/schemas/ReplicationFactorChangeCancellationData'
           type: array
       required:
       - data
