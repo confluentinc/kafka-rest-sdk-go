@@ -12,6 +12,5 @@ package kafkarestv3
 
 // ChangeReplicationFactorRequestData struct for ChangeReplicationFactorRequestData
 type ChangeReplicationFactorRequestData struct {
-	TopicName         string `json:"topic_name"`
-	ReplicationFactor int32  `json:"replication_factor"`
+	Topics []ChangeReplicationFactorRequestTopicData `json:"topics"`
 }

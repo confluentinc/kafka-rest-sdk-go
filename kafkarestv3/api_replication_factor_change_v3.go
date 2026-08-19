@@ -27,7 +27,32 @@ var (
 type ReplicationFactorChangeV3Api interface {
 
 	/*
-	 * ClustersClusterIdReplicationFactorChangesGet List Replication Factor Changes
+	 * CancelKafkaReplicationFactorChange Cancel Replication Factor Change
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. Cancellation does not roll back replicas already applied.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *CancelKafkaReplicationFactorChangeOpts - Optional Parameters:
+	 * @param "CancelReplicationFactorChangeRequestData" (optional.Interface of CancelReplicationFactorChangeRequestData) -  Topic names whose Replication Factor Change should be canceled.
+	 * @return ReplicationFactorChangeCancellationDataList
+	 */
+	CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (ReplicationFactorChangeCancellationDataList, *_nethttp.Response, error)
+
+	/*
+	 * ChangeKafkaReplicationFactor Change Replication Factor
+	 *
+	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Submit a Replication Factor change for one or more topics in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
+	 *
+	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	 * @param clusterId The Kafka cluster ID.
+	 * @param optional nil or *ChangeKafkaReplicationFactorOpts - Optional Parameters:
+	 * @param "ChangeReplicationFactorRequestData" (optional.Interface of ChangeReplicationFactorRequestData) -  Replication Factor changes to submit, one entry per topic.
+	 */
+	ChangeKafkaReplicationFactor(ctx _context.Context, clusterId string, localVarOptionals *ChangeKafkaReplicationFactorOpts) (*_nethttp.Response, error)
+
+	/*
+	 * ListKafkaReplicationFactorChanges List Replication Factor Changes
 	 *
 	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return all tracked Replication Factor Changes in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
 	 *
@@ -35,184 +60,40 @@ type ReplicationFactorChangeV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @return ReplicationFactorChangeDataList
 	 */
-	ClustersClusterIdReplicationFactorChangesGet(ctx _context.Context, clusterId string) (ReplicationFactorChangeDataList, *_nethttp.Response, error)
-
-	/*
-	 * ClustersClusterIdReplicationFactorChangescancelPost Cancel Replication Factor Change
-	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. Cancellation does not roll back replicas already applied.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param optional nil or *ClustersClusterIdReplicationFactorChangescancelPostOpts - Optional Parameters:
-	 * @param "CancelReplicationFactorChangeRequestData" (optional.Interface of CancelReplicationFactorChangeRequestData) -  Topic names whose Replication Factor Change should be canceled.
-	 * @return ReplicationFactorChangeCancelDataList
-	 */
-	ClustersClusterIdReplicationFactorChangescancelPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescancelPostOpts) (ReplicationFactorChangeCancelDataList, *_nethttp.Response, error)
-
-	/*
-	 * ClustersClusterIdReplicationFactorChangescreatePost Change Replication Factor
-	 *
-	 * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Submit a Replication Factor change for one or more topics in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
-	 *
-	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @param clusterId The Kafka cluster ID.
-	 * @param optional nil or *ClustersClusterIdReplicationFactorChangescreatePostOpts - Optional Parameters:
-	 * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, keyed by topic.
-	 */
-	ClustersClusterIdReplicationFactorChangescreatePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescreatePostOpts) (*_nethttp.Response, error)
+	ListKafkaReplicationFactorChanges(ctx _context.Context, clusterId string) (ReplicationFactorChangeDataList, *_nethttp.Response, error)
 }
 
 // ReplicationFactorChangeV3ApiService ReplicationFactorChangeV3Api service
 type ReplicationFactorChangeV3ApiService service
 
-/*
- * ClustersClusterIdReplicationFactorChangesGet List Replication Factor Changes
- *
- * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return all tracked Replication Factor Changes in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
- *
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param clusterId The Kafka cluster ID.
- * @return ReplicationFactorChangeDataList
- */
-func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactorChangesGet(ctx _context.Context, clusterId string) (ReplicationFactorChangeDataList, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  ReplicationFactorChangeDataList
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/replication-factor-changes"
-	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v string
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode >= 500 {
-			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-// ClustersClusterIdReplicationFactorChangescancelPostOpts Optional parameters for the method 'ClustersClusterIdReplicationFactorChangescancelPost'
-type ClustersClusterIdReplicationFactorChangescancelPostOpts struct {
+// CancelKafkaReplicationFactorChangeOpts Optional parameters for the method 'CancelKafkaReplicationFactorChange'
+type CancelKafkaReplicationFactorChangeOpts struct {
 	CancelReplicationFactorChangeRequestData optional.Interface
 }
 
 /*
- * ClustersClusterIdReplicationFactorChangescancelPost Cancel Replication Factor Change
+ * CancelKafkaReplicationFactorChange Cancel Replication Factor Change
  *
  * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Cancel the in-flight Replication Factor Change for the topics specified in the request body, in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. Cancellation does not roll back replicas already applied.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @param optional nil or *ClustersClusterIdReplicationFactorChangescancelPostOpts - Optional Parameters:
+ * @param optional nil or *CancelKafkaReplicationFactorChangeOpts - Optional Parameters:
  * @param "CancelReplicationFactorChangeRequestData" (optional.Interface of CancelReplicationFactorChangeRequestData) -  Topic names whose Replication Factor Change should be canceled.
- * @return ReplicationFactorChangeCancelDataList
+ * @return ReplicationFactorChangeCancellationDataList
  */
-func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactorChangescancelPost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescancelPostOpts) (ReplicationFactorChangeCancelDataList, *_nethttp.Response, error) {
+func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (ReplicationFactorChangeCancellationDataList, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ReplicationFactorChangeCancelDataList
+		localVarReturnValue  ReplicationFactorChangeCancellationDataList
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/replication-factor-changes:cancel"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/-/replication-factor-changes:cancel"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -320,24 +201,24 @@ func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-// ClustersClusterIdReplicationFactorChangescreatePostOpts Optional parameters for the method 'ClustersClusterIdReplicationFactorChangescreatePost'
-type ClustersClusterIdReplicationFactorChangescreatePostOpts struct {
-	ChangeReplicationFactorBatchRequestData optional.Interface
+// ChangeKafkaReplicationFactorOpts Optional parameters for the method 'ChangeKafkaReplicationFactor'
+type ChangeKafkaReplicationFactorOpts struct {
+	ChangeReplicationFactorRequestData optional.Interface
 }
 
 /*
- * ClustersClusterIdReplicationFactorChangescreatePost Change Replication Factor
+ * ChangeKafkaReplicationFactor Change Replication Factor
  *
  * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Submit a Replication Factor change for one or more topics in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;. The change is applied asynchronously; poll the List Replication Factor Changes API to follow progress.
  *
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param clusterId The Kafka cluster ID.
- * @param optional nil or *ClustersClusterIdReplicationFactorChangescreatePostOpts - Optional Parameters:
- * @param "ChangeReplicationFactorBatchRequestData" (optional.Interface of ChangeReplicationFactorBatchRequestData) -  Replication Factor changes to submit, keyed by topic.
+ * @param optional nil or *ChangeKafkaReplicationFactorOpts - Optional Parameters:
+ * @param "ChangeReplicationFactorRequestData" (optional.Interface of ChangeReplicationFactorRequestData) -  Replication Factor changes to submit, one entry per topic.
  */
-func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactorChangescreatePost(ctx _context.Context, clusterId string, localVarOptionals *ClustersClusterIdReplicationFactorChangescreatePostOpts) (*_nethttp.Response, error) {
+func (a *ReplicationFactorChangeV3ApiService) ChangeKafkaReplicationFactor(ctx _context.Context, clusterId string, localVarOptionals *ChangeKafkaReplicationFactorOpts) (*_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -345,7 +226,7 @@ func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactor
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/replication-factor-changes:create"
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/-/replication-factor-changes"
 	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -370,12 +251,12 @@ func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactor
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.ChangeReplicationFactorBatchRequestData.IsSet() {
-		localVarOptionalChangeReplicationFactorBatchRequestData, localVarOptionalChangeReplicationFactorBatchRequestDataok := localVarOptionals.ChangeReplicationFactorBatchRequestData.Value().(ChangeReplicationFactorBatchRequestData)
-		if !localVarOptionalChangeReplicationFactorBatchRequestDataok {
-			return nil, reportError("changeReplicationFactorBatchRequestData should be ChangeReplicationFactorBatchRequestData")
+	if localVarOptionals != nil && localVarOptionals.ChangeReplicationFactorRequestData.IsSet() {
+		localVarOptionalChangeReplicationFactorRequestData, localVarOptionalChangeReplicationFactorRequestDataok := localVarOptionals.ChangeReplicationFactorRequestData.Value().(ChangeReplicationFactorRequestData)
+		if !localVarOptionalChangeReplicationFactorRequestDataok {
+			return nil, reportError("changeReplicationFactorRequestData should be ChangeReplicationFactorRequestData")
 		}
-		localVarPostBody = &localVarOptionalChangeReplicationFactorBatchRequestData
+		localVarPostBody = &localVarOptionalChangeReplicationFactorRequestData
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -442,4 +323,123 @@ func (a *ReplicationFactorChangeV3ApiService) ClustersClusterIdReplicationFactor
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+/*
+ * ListKafkaReplicationFactorChanges List Replication Factor Changes
+ *
+ * [![Generally Available](https://img.shields.io/badge/Lifecycle%20Stage-Generally%20Available-%2345c6e8)](#section/Versioning/API-Lifecycle-Policy)  Return all tracked Replication Factor Changes in the cluster specified with &#x60;&#x60;cluster_id&#x60;&#x60;.
+ *
+ * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param clusterId The Kafka cluster ID.
+ * @return ReplicationFactorChangeDataList
+ */
+func (a *ReplicationFactorChangeV3ApiService) ListKafkaReplicationFactorChanges(ctx _context.Context, clusterId string) (ReplicationFactorChangeDataList, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  ReplicationFactorChangeDataList
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/clusters/{cluster_id}/topics/-/replication-factor-changes"
+	localVarPath = strings.Replace(localVarPath, "{"+"cluster_id"+"}", _neturl.PathEscape(parameterToString(clusterId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/html"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode >= 500 {
+			var v Error
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

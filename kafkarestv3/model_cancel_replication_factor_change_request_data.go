@@ -13,6 +13,4 @@ package kafkarestv3
 // CancelReplicationFactorChangeRequestData struct for CancelReplicationFactorChangeRequestData
 type CancelReplicationFactorChangeRequestData struct {
 	TopicNames []string `json:"topic_names"`
-	// The time in milliseconds to wait for the request to complete. Default: 60000
-	TimeoutMs *int32 `json:"timeout_ms,omitempty"`
 }

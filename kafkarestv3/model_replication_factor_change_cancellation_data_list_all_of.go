@@ -10,7 +10,7 @@
 
 package kafkarestv3
 
-// CanceledPartitionData struct for CanceledPartitionData
-type CanceledPartitionData struct {
-	PartitionId int32 `json:"partition_id"`
+// ReplicationFactorChangeCancellationDataListAllOf struct for ReplicationFactorChangeCancellationDataListAllOf
+type ReplicationFactorChangeCancellationDataListAllOf struct {
+	Data []ReplicationFactorChangeCancellationData `json:"data"`
 }
