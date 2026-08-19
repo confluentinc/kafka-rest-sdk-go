@@ -9730,7 +9730,7 @@ paths:
                 - kind: KafkaReplicationFactorChange
                   metadata:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topic=topic-1/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-1
                   desired_replication_factor: 6
@@ -9744,7 +9744,7 @@ paths:
                 - kind: KafkaReplicationFactorChange
                   metadata:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topic=topic-2/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-2
                   desired_replication_factor: 2
@@ -9961,7 +9961,7 @@ paths:
                 - kind: KafkaReplicationFactorChangeCancellation
                   metadata:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topic=topic-1/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-1
                   prior_status: IN_PROGRESS
@@ -9973,7 +9973,7 @@ paths:
                 - kind: KafkaReplicationFactorChangeCancellation
                   metadata:
                     self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                    resource_name: crn:///kafka=cluster-1/topic=topic-2/replication-factor-changes
                   cluster_id: cluster-1
                   topic_name: topic-2
                   prior_status: null
@@ -17339,7 +17339,7 @@ components:
             - kind: KafkaReplicationFactorChange
               metadata:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topic=topic-1/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-1
               desired_replication_factor: 6
@@ -17353,7 +17353,7 @@ components:
             - kind: KafkaReplicationFactorChange
               metadata:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topic=topic-2/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-2
               desired_replication_factor: 2
@@ -17379,7 +17379,7 @@ components:
             - kind: KafkaReplicationFactorChangeCancellation
               metadata:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topic=topic-1/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-1
               prior_status: IN_PROGRESS
@@ -17391,7 +17391,7 @@ components:
             - kind: KafkaReplicationFactorChangeCancellation
               metadata:
                 self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topics=-/replication-factor-changes
+                resource_name: crn:///kafka=cluster-1/topic=topic-2/replication-factor-changes
               cluster_id: cluster-1
               topic_name: topic-2
               prior_status: null
@@ -19863,6 +19863,7 @@ components:
         desired_replication_factor:
           description: The desired replication factor for the topic.
           type: integer
+          format: int32
         status:
           $ref: '#/components/schemas/ReplicationFactorChangeStatus'
         created_at:
