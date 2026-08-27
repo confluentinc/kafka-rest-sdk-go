@@ -8114,26 +8114,24 @@ paths:
           content:
             application/json:
               examples:
-                IllegalBrokerRemoval:
+                invalid_broker_addition:
+                  description: Thrown when the broker id list is empty, null, or contains
+                    a duplicate broker id.
                   value:
                     error_code: 400
-                    message: 'Cannot remove broker 1 as there are partitions with
-                      replication factor equal to 1 on the broker. One such partition:
-                      test_topic_partition_0.'
-                InvalidBrokerAddition:
+                    message: 'Invalid broker addition request: The request contains
+                      a null broker id.'
+                unrepresentable_broker_id:
+                  description: Thrown when the broker id list contains a negative
+                    or otherwise unrepresentable broker id.
                   value:
                     error_code: 400
-                    message: The requested broker addition operation is invalid, for
-                      example because the broker ID list is empty or contains duplicates.
-                      See the server logs for more details.
-                BalancerOffline:
-                  value:
-                    error_code: 400
-                    message: The Confluent Balancer component is disabled or not started
-                      yet.
+                    message: 'Unrepresentable broker id: The request contains an unrepresentable
+                      broker id: -1.'
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Bad broker or balancer request
+          description: The broker addition request is invalid, e.g. because the broker
+            id list is empty, contains a null, negative, or duplicate broker id.
         "401":
           content:
             application/json:
@@ -8151,12 +8149,49 @@ paths:
         "404":
           content:
             application/json:
-              example:
-                error_code: 404
-                message: 'Broker not found. Broker: 1 not found in the cluster: cluster-1'
+              examples:
+                cluster_not_found:
+                  description: Thrown when using a non-existing cluster ID.
+                  value:
+                    error_code: 404
+                    message: Cluster my-cluster cannot be found.
+                broker_id_not_registered:
+                  description: Thrown when one or more of the requested broker ids
+                    are not alive and registered in the cluster.
+                  value:
+                    error_code: 404
+                    message: 'BrokerIdNotRegisteredException: Cannot add brokers [2]
+                      because the following broker ids are not alive and registered
+                      in the cluster: [2]'
               schema:
                 $ref: '#/components/schemas/Error'
-          description: Broker not found.
+          description: Indicates the specified cluster does not exist, or the request
+            named broker ids that are not alive and registered in the cluster.
+        "409":
+          content:
+            application/json:
+              examples:
+                broker_excluded_for_replica_placement:
+                  value:
+                    error_code: 409
+                    message: 'Broker excluded from replica placement: Cannot add brokers
+                      [2] because the following broker ids have an active replica
+                      placement exclusion: [2]'
+                broker_removal_in_progress:
+                  value:
+                    error_code: 409
+                    message: 'Broker removal in progress: Cannot add brokers [3] because
+                      a broker removal operation is currently in progress'
+                broker_degraded:
+                  value:
+                    error_code: 409
+                    message: 'Broker degraded: Cannot add brokers [2] because the
+                      following broker ids are degraded: [2]'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The broker addition request conflicts with the current cluster
+            state, e.g. an active broker exclusion, an in-progress broker removal,
+            or a degraded broker.
         "429":
           content:
             text/html:
@@ -8172,6 +8207,16 @@ paths:
                 type: string
           description: Indicates that a rate limit threshold has been reached, and
             the client should retry again later.
+        "503":
+          content:
+            application/json:
+              example:
+                error_code: 503
+                message: 'Balancer offline: Received request to add brokers [2] while
+                  DataBalancer is not started.'
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Confluent Balancer is not started or not enabled.
         "5XX":
           content:
             application/json:
@@ -18095,6 +18140,28 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
       description: Bad broker or balancer request
+    AddBrokersBadRequestErrorResponse:
+      content:
+        application/json:
+          examples:
+            invalid_broker_addition:
+              description: Thrown when the broker id list is empty, null, or contains
+                a duplicate broker id.
+              value:
+                error_code: 400
+                message: 'Invalid broker addition request: The request contains a
+                  null broker id.'
+            unrepresentable_broker_id:
+              description: Thrown when the broker id list contains a negative or otherwise
+                unrepresentable broker id.
+              value:
+                error_code: 400
+                message: 'Unrepresentable broker id: The request contains an unrepresentable
+                  broker id: -1.'
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: The broker addition request is invalid, e.g. because the broker
+        id list is empty, contains a null, negative, or duplicate broker id.
     BalancerOfflineErrorResponse:
       content:
         application/json:
@@ -18122,6 +18189,62 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
       description: Broker not found.
+    AddBrokersNotFoundErrorResponse:
+      content:
+        application/json:
+          examples:
+            cluster_not_found:
+              description: Thrown when using a non-existing cluster ID.
+              value:
+                error_code: 404
+                message: Cluster my-cluster cannot be found.
+            broker_id_not_registered:
+              description: Thrown when one or more of the requested broker ids are
+                not alive and registered in the cluster.
+              value:
+                error_code: 404
+                message: 'BrokerIdNotRegisteredException: Cannot add brokers [2] because
+                  the following broker ids are not alive and registered in the cluster:
+                  [2]'
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Indicates the specified cluster does not exist, or the request
+        named broker ids that are not alive and registered in the cluster.
+    AddBrokersConflictErrorResponse:
+      content:
+        application/json:
+          examples:
+            broker_excluded_for_replica_placement:
+              value:
+                error_code: 409
+                message: 'Broker excluded from replica placement: Cannot add brokers
+                  [2] because the following broker ids have an active replica placement
+                  exclusion: [2]'
+            broker_removal_in_progress:
+              value:
+                error_code: 409
+                message: 'Broker removal in progress: Cannot add brokers [3] because
+                  a broker removal operation is currently in progress'
+            broker_degraded:
+              value:
+                error_code: 409
+                message: 'Broker degraded: Cannot add brokers [2] because the following
+                  broker ids are degraded: [2]'
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: The broker addition request conflicts with the current cluster
+        state, e.g. an active broker exclusion, an in-progress broker removal, or
+        a degraded broker.
+    BalancerServiceUnavailableErrorResponse:
+      content:
+        application/json:
+          example:
+            error_code: 503
+            message: 'Balancer offline: Received request to add brokers [2] while
+              DataBalancer is not started.'
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Confluent Balancer is not started or not enabled.
     UnrepresentableBrokerErrorResponse:
       content:
         application/json:
