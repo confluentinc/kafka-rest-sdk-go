@@ -32,10 +32,6 @@ See Makefile:
 TODO: Fix to fit prod style
 
 ## Releasing a git tag
-
-Direct `git push` of tags/branches to this repo is blocked by GitHub repository rules, so tags are
-created via a Semaphore task instead of running `git tag`/`git push` locally.
-
 1. Go to the [`kafka-rest-sdk-go`](https://semaphore.ci.confluent.io/projects/kafka-rest-sdk-go) project in Semaphore.
 2. Under Tasks, select **Create Git Tag**.
 3. Run it, providing the `TAG` parameter with the tag name to create (e.g. `kafkarestv3/v0.3.1`).
