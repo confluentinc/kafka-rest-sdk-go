@@ -37,7 +37,7 @@ Direct `git push` of tags/branches to this repo is blocked by GitHub repository 
 created via a Semaphore task instead of running `git tag`/`git push` locally.
 
 1. Go to the `kafka-rest-sdk-go` project in Semaphore.
-2. Under Tasks, select **git tag**.
+2. Under Tasks, select **Create Git Tag**.
 3. Run it, providing the `TAG` parameter with the tag name to create (e.g. `v1.2.3`).
 4. The task clones the repo, tags the current tip of `master`, and pushes the tag.
 
