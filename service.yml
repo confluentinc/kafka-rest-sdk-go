@@ -1,5 +1,7 @@
 name: kafka-rest-sdk-go
 lang: go
+git:
+  enable: true
 semaphore:
   enable: true
   pipeline_enable: false
