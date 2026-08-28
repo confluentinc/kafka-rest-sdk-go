@@ -4,12 +4,59 @@ All URIs are relative to *http://localhost:8082/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AlterBrokerHealth**](BrokerV3Api.md#AlterBrokerHealth) | **Post** /clusters/{cluster_id}/brokers:alter-health | Alter Broker Health
 [**ClustersClusterIdBrokersBrokerIdDelete**](BrokerV3Api.md#ClustersClusterIdBrokersBrokerIdDelete) | **Delete** /clusters/{cluster_id}/brokers/{broker_id} | Delete Broker
 [**ClustersClusterIdBrokersBrokerIdGet**](BrokerV3Api.md#ClustersClusterIdBrokersBrokerIdGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](BrokerV3Api.md#ClustersClusterIdBrokersBrokerIdPartitionReplicasGet) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 [**ClustersClusterIdBrokersGet**](BrokerV3Api.md#ClustersClusterIdBrokersGet) | **Get** /clusters/{cluster_id}/brokers | List Brokers
 [**ClustersClusterIdBrokersaddPost**](BrokerV3Api.md#ClustersClusterIdBrokersaddPost) | **Post** /clusters/{cluster_id}/brokers:add | Register brokers for SBC broker addition
+[**DescribeBrokerHealth**](BrokerV3Api.md#DescribeBrokerHealth) | **Get** /clusters/{cluster_id}/brokers:describe-health | Describe Broker Health
 
+
+
+## AlterBrokerHealth
+
+> []AlterBrokerHealthData AlterBrokerHealth(ctx, clusterId, optional)
+
+Alter Broker Health
+
+Mark a broker component's health as degraded or healthy for one or more brokers. Used to demote or restore brokers outside of the normal partition-assignment lifecycle. This is an all-or-nothing operation: if any broker in the batch fails, none of the requested health changes are guaranteed to have applied.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+ **optional** | ***AlterBrokerHealthOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a AlterBrokerHealthOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **alterBrokerHealthRequestData** | [**optional.Interface of AlterBrokerHealthRequestData**](AlterBrokerHealthRequestData.md)| The desired health status for one or more broker components. | 
+
+### Return type
+
+[**[]AlterBrokerHealthData**](AlterBrokerHealthData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ClustersClusterIdBrokersBrokerIdDelete
@@ -162,6 +209,7 @@ No authorization required
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+
 ## ClustersClusterIdBrokersaddPost
 
 > ClustersClusterIdBrokersaddPost(ctx, clusterId, optional)
@@ -205,3 +253,38 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
+
+
+## DescribeBrokerHealth
+
+> []BrokerHealthData DescribeBrokerHealth(ctx, clusterId)
+
+Describe Broker Health
+
+List the brokers in the cluster that are currently degraded, including which components are degraded and why. A broker not present in the response is currently healthy.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string**| The Kafka cluster ID. | 
+
+### Return type
+
+[**[]BrokerHealthData**](BrokerHealthData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, text/plain, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

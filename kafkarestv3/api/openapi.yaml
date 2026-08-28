@@ -8196,6 +8196,74 @@ paths:
       summary: Register brokers for SBC broker addition
       tags:
       - Broker (v3)
+  /clusters/{cluster_id}/brokers:alter-health:
+    post:
+      description: |-
+        Mark a broker component's health as degraded or healthy for one or more brokers. Used to
+        demote or restore brokers outside of the normal partition-assignment lifecycle. This is an
+        all-or-nothing operation: if any broker in the batch fails, none of the requested health
+        changes are guaranteed to have applied.
+      operationId: alterBrokerHealth
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AlterBrokerHealthRequest'
+      responses:
+        "202":
+          $ref: '#/components/responses/AlterBrokerHealthResponse'
+        "400":
+          $ref: '#/components/responses/BadBrokerOrBalancerRequestErrorResponse'
+        "401":
+          $ref: '#/components/responses/UnauthorizedErrorResponse'
+        "404":
+          $ref: '#/components/responses/BrokerIdNotRegisteredErrorResponse'
+        "429":
+          $ref: '#/components/responses/TooManyRequestsErrorResponse'
+        "5XX":
+          $ref: '#/components/responses/ServerErrorResponse'
+      summary: Alter Broker Health
+      tags:
+      - Broker (v3)
+  /clusters/{cluster_id}/brokers:describe-health:
+    get:
+      description: |-
+        List the brokers in the cluster that are currently degraded, including which components
+        are degraded and why. A broker not present in the response is currently healthy.
+      operationId: describeBrokerHealth
+      parameters:
+      - description: The Kafka cluster ID.
+        example: cluster-1
+        explode: false
+        in: path
+        name: cluster_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          $ref: '#/components/responses/DescribeBrokerHealthResponse'
+        "400":
+          $ref: '#/components/responses/BadRequestErrorResponse'
+        "401":
+          $ref: '#/components/responses/UnauthorizedErrorResponse'
+        "404":
+          $ref: '#/components/responses/NotFoundErrorResponse'
+        "429":
+          $ref: '#/components/responses/TooManyRequestsErrorResponse'
+        "5XX":
+          $ref: '#/components/responses/ServerErrorResponse'
+      summary: Describe Broker Health
+      tags:
+      - Broker (v3)
   /clusters/{cluster_id}/brokers/-/tasks:
     get:
       description: |-
@@ -15633,6 +15701,19 @@ components:
           schema:
             $ref: '#/components/schemas/AddBrokersRequestData'
       description: Broker ids to register with the SBC broker-addition workflow
+    AlterBrokerHealthRequest:
+      content:
+        application/json:
+          example:
+            broker_ids:
+            - 1
+            - 2
+            component: UNSPECIFIED
+            health_status: DEGRADED
+            reason: INCIDENT-1234
+          schema:
+            $ref: '#/components/schemas/AlterBrokerHealthRequestData'
+      description: The desired health status for one or more broker components.
     BrokerReplicaExclusionBatchRequest:
       content:
         application/json:
@@ -18195,6 +18276,39 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
       description: The server received the request, but the operation time out
+    AlterBrokerHealthResponse:
+      content:
+        application/json:
+          example:
+          - cluster_id: cluster-1
+            broker_id: 1
+            component: UNSPECIFIED
+            health_status: DEGRADED
+          - cluster_id: cluster-1
+            broker_id: 2
+            component: UNSPECIFIED
+            health_status: DEGRADED
+          schema:
+            items:
+              $ref: '#/components/schemas/AlterBrokerHealthData'
+            type: array
+      description: The result of altering broker health for each requested broker.
+    DescribeBrokerHealthResponse:
+      content:
+        application/json:
+          example:
+          - cluster_id: cluster-1
+            broker_id: 1
+            degraded_components:
+            - component: STORAGE
+              reason: disk full
+          schema:
+            items:
+              $ref: '#/components/schemas/BrokerHealthData'
+            type: array
+      description: |-
+        The brokers in the cluster currently degraded. A broker not present in the response is
+        currently healthy.
   schemas:
     AbstractConfigData:
       allOf:
@@ -19145,6 +19259,87 @@ components:
           uniqueItems: true
       required:
       - broker_ids
+      type: object
+    AlterBrokerHealthRequestData:
+      properties:
+        broker_ids:
+          description: Broker IDs whose health is being altered.
+          items:
+            format: int32
+            type: integer
+          minItems: 1
+          type: array
+          uniqueItems: true
+        component:
+          default: UNSPECIFIED
+          description: Which broker component health is being altered.
+          enum:
+          - UNSPECIFIED
+          - STORAGE
+          - NETWORK
+          - EXTERNAL_CONNECTIVITY_STARTUP
+          type: string
+        health_status:
+          description: The health status to set for the given component.
+          enum:
+          - DEGRADED
+          - HEALTHY
+          type: string
+        reason:
+          description: An explanation for altering broker health, e.g. an incident
+            ticket.
+          type: string
+        force:
+          default: false
+          description: |-
+            Apply the change even if the cluster has reached the maximum number of demoted
+            brokers.
+          type: boolean
+      required:
+      - broker_ids
+      - health_status
+      - reason
+      type: object
+    AlterBrokerHealthData:
+      properties:
+        cluster_id:
+          type: string
+        broker_id:
+          type: integer
+        component:
+          type: string
+        health_status:
+          type: string
+      required:
+      - broker_id
+      - cluster_id
+      - component
+      - health_status
+      type: object
+    DegradedBrokerComponentData:
+      properties:
+        component:
+          type: string
+        reason:
+          type: string
+      required:
+      - component
+      - reason
+      type: object
+    BrokerHealthData:
+      properties:
+        cluster_id:
+          type: string
+        broker_id:
+          type: integer
+        degraded_components:
+          items:
+            $ref: '#/components/schemas/DegradedBrokerComponentData'
+          type: array
+      required:
+      - broker_id
+      - cluster_id
+      - degraded_components
       type: object
     MirrorLags:
       items:
