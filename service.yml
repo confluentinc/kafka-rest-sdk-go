@@ -4,7 +4,7 @@ semaphore:
   enable: true
   pipeline_enable: false
   tasks:
-    - name: git tag
+    - name: Create Git Tag
       branch: git-tag
       pipeline_file: .semaphore/git-tag.yml
       parameters:
