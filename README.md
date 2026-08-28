@@ -31,6 +31,15 @@ See Makefile:
 
 TODO: Fix to fit prod style
 
+## Releasing a git tag
+1. Go to the [`kafka-rest-sdk-go`](https://semaphore.ci.confluent.io/projects/kafka-rest-sdk-go) project in Semaphore.
+2. Under Tasks, select **Create Git Tag**.
+3. Run it, providing the `TAG` parameter with the tag name to create (e.g. `kafkarestv3/v0.3.1`).
+4. The task clones the repo, tags the current tip of `master`, and pushes the tag.
+
+The task definition lives on the dedicated `git-tag` branch, at
+[`.semaphore/git-tag.yml`](https://github.com/confluentinc/kafka-rest-sdk-go/blob/git-tag/.semaphore/git-tag.yml).
+
 ## kafkarestv1
 See [README.md](https://github.com/confluentinc/kafka-rest-sdk-go/blob/master/kafkarestv3/README.md) for description of generated go sdk.
 

@@ -1,0 +1,15 @@
+name: kafka-rest-sdk-go
+lang: go
+git:
+  enable: true
+semaphore:
+  enable: true
+  pipeline_enable: false
+  tasks:
+    - name: Create Git Tag
+      branch: git-tag
+      pipeline_file: .semaphore/git-tag.yml
+      parameters:
+        - name: TAG
+          required: true
+          description: The name of the tag to be created.
