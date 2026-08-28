@@ -47,11 +47,13 @@ Class | Method | HTTP request | Description
 *BrokerTaskApi* | [**ClustersClusterIdBrokersBrokerIdTasksTaskTypeGet**](docs/BrokerTaskApi.md#clustersclusteridbrokersbrokeridtaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/tasks/{task_type} | Get single Broker Task.
 *BrokerTaskApi* | [**ClustersClusterIdBrokersTasksGet**](docs/BrokerTaskApi.md#clustersclusteridbrokerstasksget) | **Get** /clusters/{cluster_id}/brokers/-/tasks | List Broker Tasks
 *BrokerTaskApi* | [**ClustersClusterIdBrokersTasksTaskTypeGet**](docs/BrokerTaskApi.md#clustersclusteridbrokerstaskstasktypeget) | **Get** /clusters/{cluster_id}/brokers/-/tasks/{task_type} | List Broker Tasks of a specific TaskType
+*BrokerV3Api* | [**AlterBrokerHealth**](docs/BrokerV3Api.md#alterbrokerhealth) | **Post** /clusters/{cluster_id}/brokers:alter-health | Alter Broker Health
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdDelete**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeriddelete) | **Delete** /clusters/{cluster_id}/brokers/{broker_id} | Delete Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridget) | **Get** /clusters/{cluster_id}/brokers/{broker_id} | Get Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersBrokerIdPartitionReplicasGet**](docs/BrokerV3Api.md#clustersclusteridbrokersbrokeridpartitionreplicasget) | **Get** /clusters/{cluster_id}/brokers/{broker_id}/partition-replicas | Search Replicas by Broker
 *BrokerV3Api* | [**ClustersClusterIdBrokersGet**](docs/BrokerV3Api.md#clustersclusteridbrokersget) | **Get** /clusters/{cluster_id}/brokers | List Brokers
 *BrokerV3Api* | [**ClustersClusterIdBrokersaddPost**](docs/BrokerV3Api.md#clustersclusteridbrokersaddpost) | **Post** /clusters/{cluster_id}/brokers:add | Register brokers for SBC broker addition
+*BrokerV3Api* | [**DescribeBrokerHealth**](docs/BrokerV3Api.md#describebrokerhealth) | **Get** /clusters/{cluster_id}/brokers:describe-health | Describe Broker Health
 *CellV3Api* | [**DescribeCells**](docs/CellV3Api.md#describecells) | **Get** /clusters/{cluster_id}/cells | Get Cluster Cell Configuration
 *ClusterLinkingV3Api* | [**CreateKafkaLink**](docs/ClusterLinkingV3Api.md#createkafkalink) | **Post** /clusters/{cluster_id}/links | Create a cluster link
 *ClusterLinkingV3Api* | [**CreateKafkaMirrorTopic**](docs/ClusterLinkingV3Api.md#createkafkamirrortopic) | **Post** /clusters/{cluster_id}/links/{link_name}/mirrors | Create a mirror topic
@@ -143,6 +145,8 @@ Class | Method | HTTP request | Description
  - [AclDataList](docs/AclDataList.md)
  - [AclResourceType](docs/AclResourceType.md)
  - [AddBrokersRequestData](docs/AddBrokersRequestData.md)
+ - [AlterBrokerHealthData](docs/AlterBrokerHealthData.md)
+ - [AlterBrokerHealthRequestData](docs/AlterBrokerHealthRequestData.md)
  - [AlterBrokerReplicaExclusionData](docs/AlterBrokerReplicaExclusionData.md)
  - [AlterBrokerReplicaExclusionDataAllOf](docs/AlterBrokerReplicaExclusionDataAllOf.md)
  - [AlterBrokerReplicaExclusionDataList](docs/AlterBrokerReplicaExclusionDataList.md)
@@ -166,6 +170,7 @@ Class | Method | HTTP request | Description
  - [BrokerDataAllOf](docs/BrokerDataAllOf.md)
  - [BrokerDataList](docs/BrokerDataList.md)
  - [BrokerDataListAllOf](docs/BrokerDataListAllOf.md)
+ - [BrokerHealthData](docs/BrokerHealthData.md)
  - [BrokerRemovalData](docs/BrokerRemovalData.md)
  - [BrokerRemovalDataAllOf](docs/BrokerRemovalDataAllOf.md)
  - [BrokerRemovalDataList](docs/BrokerRemovalDataList.md)
@@ -222,6 +227,7 @@ Class | Method | HTTP request | Description
  - [CreateTopicRequestData](docs/CreateTopicRequestData.md)
  - [CreateTopicRequestDataConfigs](docs/CreateTopicRequestDataConfigs.md)
  - [CreateTopicRequestDataReplicasAssignments](docs/CreateTopicRequestDataReplicasAssignments.md)
+ - [DegradedBrokerComponentData](docs/DegradedBrokerComponentData.md)
  - [Error](docs/Error.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [LicenseData](docs/LicenseData.md)
