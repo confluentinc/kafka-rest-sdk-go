@@ -36,9 +36,9 @@ TODO: Fix to fit prod style
 Direct `git push` of tags/branches to this repo is blocked by GitHub repository rules, so tags are
 created via a Semaphore task instead of running `git tag`/`git push` locally.
 
-1. Go to the `kafka-rest-sdk-go` project in Semaphore.
+1. Go to the [`kafka-rest-sdk-go`](https://semaphore.ci.confluent.io/projects/kafka-rest-sdk-go) project in Semaphore.
 2. Under Tasks, select **Create Git Tag**.
-3. Run it, providing the `TAG` parameter with the tag name to create (e.g. `v1.2.3`).
+3. Run it, providing the `TAG` parameter with the tag name to create (e.g. `kafkarestv3/v0.3.1`).
 4. The task clones the repo, tags the current tip of `master`, and pushes the tag.
 
 The task definition lives on the dedicated `git-tag` branch, at
