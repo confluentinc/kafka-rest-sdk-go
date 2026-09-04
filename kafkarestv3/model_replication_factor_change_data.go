@@ -22,6 +22,8 @@ type ReplicationFactorChangeData struct {
 	TopicName string           `json:"topic_name"`
 	// The desired replication factor for the topic.
 	DesiredReplicationFactor int32 `json:"desired_replication_factor"`
+	// Kept as the enum type rather than string, same generator caveat as Status below.
+	Action ReplicationFactorChangeAction `json:"action"`
 	// Kept as the enum type rather than string: a `make gen` run currently
 	// mistypes this as string due to an openapi-generator property-name
 	// collision with unrelated inline "status" enums elsewhere in the spec.

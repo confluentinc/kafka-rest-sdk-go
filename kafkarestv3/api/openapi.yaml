@@ -20700,6 +20700,12 @@ components:
       - COMPLETED
       - FAILED
       - UNKNOWN
+    ReplicationFactorChangeAction:
+      type: string
+      x-extensible-enum:
+      - REPLICATION_FACTOR_CHANGE
+      - CANCELLATION
+      - UNKNOWN
     ReplicationFactorChangeData_allOf:
       properties:
         cluster_id:
@@ -20710,6 +20716,8 @@ components:
           description: The desired replication factor for the topic.
           type: integer
           format: int32
+        action:
+          $ref: '#/components/schemas/ReplicationFactorChangeAction'
         status:
           $ref: '#/components/schemas/ReplicationFactorChangeStatus'
         created_at:
@@ -20735,6 +20743,7 @@ components:
         topic:
           $ref: '#/components/schemas/Relationship'
       required:
+      - action
       - cluster_id
       - created_at
       - desired_replication_factor

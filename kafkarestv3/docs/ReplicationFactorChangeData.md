@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **TopicName** | **string** |  | 
 **DesiredReplicationFactor** | **int32** | The desired replication factor for the topic. | 
+**Action** | [**ReplicationFactorChangeAction**](ReplicationFactorChangeAction.md) |  | 
 **Status** | [**ReplicationFactorChangeStatus**](ReplicationFactorChangeStatus.md) |  | 
 **CreatedAt** | [**time.Time**](time.Time.md) | The date and time at which this Replication Factor Change was created. | [readonly] 
 **UpdatedAt** | [**time.Time**](time.Time.md) | The date and time at which this Replication Factor Change was last updated. | [readonly] 
