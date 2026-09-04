@@ -274,6 +274,7 @@ Class | Method | HTTP request | Description
  - [ReplicaStatusDataAllOf](docs/ReplicaStatusDataAllOf.md)
  - [ReplicaStatusDataList](docs/ReplicaStatusDataList.md)
  - [ReplicaStatusDataListAllOf](docs/ReplicaStatusDataListAllOf.md)
+ - [ReplicationFactorChangeAction](docs/ReplicationFactorChangeAction.md)
  - [ReplicationFactorChangeCancellationData](docs/ReplicationFactorChangeCancellationData.md)
  - [ReplicationFactorChangeCancellationDataAllOf](docs/ReplicationFactorChangeCancellationDataAllOf.md)
  - [ReplicationFactorChangeCancellationDataList](docs/ReplicationFactorChangeCancellationDataList.md)
