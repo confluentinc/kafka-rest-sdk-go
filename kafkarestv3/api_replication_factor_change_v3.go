@@ -35,9 +35,8 @@ type ReplicationFactorChangeV3Api interface {
 	 * @param clusterId The Kafka cluster ID.
 	 * @param optional nil or *CancelKafkaReplicationFactorChangeOpts - Optional Parameters:
 	 * @param "CancelReplicationFactorChangeRequestData" (optional.Interface of CancelReplicationFactorChangeRequestData) -  Topic names whose Replication Factor Change should be canceled.
-	 * @return ReplicationFactorChangeCancellationDataList
 	 */
-	CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (ReplicationFactorChangeCancellationDataList, *_nethttp.Response, error)
+	CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (*_nethttp.Response, error)
 
 	/*
 	 * ChangeKafkaReplicationFactor Change Replication Factor
@@ -80,16 +79,14 @@ type CancelKafkaReplicationFactorChangeOpts struct {
  * @param clusterId The Kafka cluster ID.
  * @param optional nil or *CancelKafkaReplicationFactorChangeOpts - Optional Parameters:
  * @param "CancelReplicationFactorChangeRequestData" (optional.Interface of CancelReplicationFactorChangeRequestData) -  Topic names whose Replication Factor Change should be canceled.
- * @return ReplicationFactorChangeCancellationDataList
  */
-func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (ReplicationFactorChangeCancellationDataList, *_nethttp.Response, error) {
+func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange(ctx _context.Context, clusterId string, localVarOptionals *CancelKafkaReplicationFactorChangeOpts) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ReplicationFactorChangeCancellationDataList
 	)
 
 	// create path and map variables
@@ -121,25 +118,25 @@ func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange
 	if localVarOptionals != nil && localVarOptionals.CancelReplicationFactorChangeRequestData.IsSet() {
 		localVarOptionalCancelReplicationFactorChangeRequestData, localVarOptionalCancelReplicationFactorChangeRequestDataok := localVarOptionals.CancelReplicationFactorChangeRequestData.Value().(CancelReplicationFactorChangeRequestData)
 		if !localVarOptionalCancelReplicationFactorChangeRequestDataok {
-			return localVarReturnValue, nil, reportError("cancelReplicationFactorChangeRequestData should be CancelReplicationFactorChangeRequestData")
+			return nil, reportError("cancelReplicationFactorChangeRequestData should be CancelReplicationFactorChangeRequestData")
 		}
 		localVarPostBody = &localVarOptionalCancelReplicationFactorChangeRequestData
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -152,53 +149,44 @@ func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v string
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode >= 500 {
 			var v Error
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 			newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 // ChangeKafkaReplicationFactorOpts Optional parameters for the method 'ChangeKafkaReplicationFactor'
