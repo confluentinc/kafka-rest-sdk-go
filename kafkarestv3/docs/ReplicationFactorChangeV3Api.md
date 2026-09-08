@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CancelKafkaReplicationFactorChange
 
-> ReplicationFactorChangeCancellationDataList CancelKafkaReplicationFactorChange(ctx, clusterId, optional)
+> CancelKafkaReplicationFactorChange(ctx, clusterId, optional)
 
 Cancel Replication Factor Change
 
@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReplicationFactorChangeCancellationDataList**](ReplicationFactorChangeCancellationDataList.md)
+ (empty response body)
 
 ### Authorization
 
