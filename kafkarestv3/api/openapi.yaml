@@ -9847,6 +9847,7 @@ paths:
                   cluster_id: cluster-1
                   topic_name: topic-1
                   desired_replication_factor: 6
+                  action: REPLICATION_FACTOR_CHANGE
                   status: IN_PROGRESS
                   created_at: 2026-08-07T07:20:50Z
                   updated_at: 2026-08-07T07:22:10Z
@@ -9861,6 +9862,7 @@ paths:
                   cluster_id: cluster-1
                   topic_name: topic-2
                   desired_replication_factor: 2
+                  action: REPLICATION_FACTOR_CHANGE
                   status: FAILED
                   created_at: 2026-08-07T07:19:05Z
                   updated_at: 2026-08-07T07:19:40Z
@@ -10062,44 +10064,8 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/CancelReplicationFactorChangeRequest'
       responses:
-        "200":
-          content:
-            application/json:
-              example:
-                kind: KafkaReplicationFactorChangeCancellationList
-                metadata:
-                  self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                  next: null
-                data:
-                - kind: KafkaReplicationFactorChangeCancellation
-                  metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topic=-/replication-factor-changes
-                  cluster_id: cluster-1
-                  topic_name: topic-1
-                  prior_status: IN_PROGRESS
-                  error_code: null
-                  error_message: null
-                  canceled_partitions: [0, 1]
-                  topic:
-                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
-                - kind: KafkaReplicationFactorChangeCancellation
-                  metadata:
-                    self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                    resource_name: crn:///kafka=cluster-1/topic=-/replication-factor-changes
-                  cluster_id: cluster-1
-                  topic_name: topic-2
-                  prior_status: null
-                  error_code: 10037
-                  error_message: No Replication Factor Change is in progress for topic topic-2.
-                  canceled_partitions: []
-                  topic:
-                    related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
-              schema:
-                $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList'
-          description: The list of canceled Replication Factor Changes. Topics for
-            which no change was tracked are included with a non-null error_code and
-            error_message.
+        "202":
+          description: Request accepted for processing, no content in the response
         "400":
           content:
             application/json:
@@ -17865,6 +17831,7 @@ components:
               cluster_id: cluster-1
               topic_name: topic-1
               desired_replication_factor: 6
+              action: REPLICATION_FACTOR_CHANGE
               status: IN_PROGRESS
               created_at: 2026-08-07T07:20:50Z
               updated_at: 2026-08-07T07:22:10Z
@@ -17879,6 +17846,7 @@ components:
               cluster_id: cluster-1
               topic_name: topic-2
               desired_replication_factor: 2
+              action: REPLICATION_FACTOR_CHANGE
               status: FAILED
               created_at: 2026-08-07T07:19:05Z
               updated_at: 2026-08-07T07:19:40Z
@@ -17889,43 +17857,6 @@ components:
           schema:
             $ref: '#/components/schemas/ReplicationFactorChangeDataList'
       description: The list of tracked Replication Factor Changes.
-    ListCancelReplicationFactorChangeResponse:
-      content:
-        application/json:
-          example:
-            kind: KafkaReplicationFactorChangeCancellationList
-            metadata:
-              self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-              next: null
-            data:
-            - kind: KafkaReplicationFactorChangeCancellation
-              metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topic=-/replication-factor-changes
-              cluster_id: cluster-1
-              topic_name: topic-1
-              prior_status: IN_PROGRESS
-              error_code: null
-              error_message: null
-              canceled_partitions: [0, 1]
-              topic:
-                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-1
-            - kind: KafkaReplicationFactorChangeCancellation
-              metadata:
-                self: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/-/replication-factor-changes
-                resource_name: crn:///kafka=cluster-1/topic=-/replication-factor-changes
-              cluster_id: cluster-1
-              topic_name: topic-2
-              prior_status: null
-              error_code: 10037
-              error_message: No Replication Factor Change is in progress for topic topic-2.
-              canceled_partitions: []
-              topic:
-                related: https://pkc-00000.region.provider.confluent.cloud/kafka/v3/clusters/cluster-1/topics/topic-2
-          schema:
-            $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList'
-      description: The list of canceled Replication Factor Changes. Topics for which
-        no change was tracked are included with a non-null error_code and error_message.
     NoContentResponse:
       description: Operation succeeded, no content in the response
     ListLinksResponse:
@@ -19204,14 +19135,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResourceCollection'
       - $ref: '#/components/schemas/ReplicationFactorChangeDataList_allOf'
-    ReplicationFactorChangeCancellationData:
-      allOf:
-      - $ref: '#/components/schemas/Resource'
-      - $ref: '#/components/schemas/ReplicationFactorChangeCancellationData_allOf'
-    ReplicationFactorChangeCancellationDataList:
-      allOf:
-      - $ref: '#/components/schemas/ResourceCollection'
-      - $ref: '#/components/schemas/ReplicationFactorChangeCancellationDataList_allOf'
     UnregisterBrokerData:
       example:
         cluster_id: cluster_id
@@ -20700,6 +20623,12 @@ components:
       - COMPLETED
       - FAILED
       - UNKNOWN
+    ReplicationFactorChangeAction:
+      type: string
+      x-extensible-enum:
+      - REPLICATION_FACTOR_CHANGE
+      - CANCELLATION
+      - UNKNOWN
     ReplicationFactorChangeData_allOf:
       properties:
         cluster_id:
@@ -20710,6 +20639,8 @@ components:
           description: The desired replication factor for the topic.
           type: integer
           format: int32
+        action:
+          $ref: '#/components/schemas/ReplicationFactorChangeAction'
         status:
           $ref: '#/components/schemas/ReplicationFactorChangeStatus'
         created_at:
@@ -20735,6 +20666,7 @@ components:
         topic:
           $ref: '#/components/schemas/Relationship'
       required:
+      - action
       - cluster_id
       - created_at
       - desired_replication_factor
@@ -20747,46 +20679,6 @@ components:
         data:
           items:
             $ref: '#/components/schemas/ReplicationFactorChangeData'
-          type: array
-      required:
-      - data
-    ReplicationFactorChangeCancellationData_allOf:
-      properties:
-        cluster_id:
-          type: string
-        topic_name:
-          type: string
-        prior_status:
-          description: Status just before cancellation (``PENDING`` or ``IN_PROGRESS``);
-            null if no tracked change existed for the topic.
-          nullable: true
-          allOf:
-          - $ref: '#/components/schemas/ReplicationFactorChangeStatus'
-        error_code:
-          nullable: true
-          type: integer
-        error_message:
-          nullable: true
-          type: string
-        canceled_partitions:
-          items:
-            type: integer
-          type: array
-        topic:
-          $ref: '#/components/schemas/Relationship'
-      required:
-      - canceled_partitions
-      - cluster_id
-      - error_code
-      - error_message
-      - prior_status
-      - topic
-      - topic_name
-    ReplicationFactorChangeCancellationDataList_allOf:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ReplicationFactorChangeCancellationData'
           type: array
       required:
       - data
