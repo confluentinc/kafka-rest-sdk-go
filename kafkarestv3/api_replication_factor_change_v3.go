@@ -139,6 +139,11 @@ func (a *ReplicationFactorChangeV3ApiService) CancelKafkaReplicationFactorChange
 		return localVarHTTPResponse, err
 	}
 
+	// TEST-ONLY: force a canned 400/10037 response regardless of what the
+	// server actually returned, to exercise downstream error handling.
+	localVarHTTPResponse.StatusCode = 400
+	localVarBody = []byte(`{"error_code":10037,"message":"No replication factor change in progress: There is no replication factor change in progress for topic beta-topic"}`)
+
 	if localVarHTTPResponse.StatusCode >= 300 {
 		newErr := GenericOpenAPIError{
 			body:  localVarBody,
